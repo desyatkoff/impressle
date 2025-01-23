@@ -4,5 +4,29 @@
 {% block title %}impressle | Log In{% endblock %}
 
 {% block content%}
-<h1>Test 123 login</h1>
+<form method="POST">
+    <div>
+        <label for="username">Username</label>
+        <input
+            type = "text"
+            id = "username"
+            name = "username"
+            placeholder = "Enter username"
+        />
+
+        <label for="password">Password</label>
+        <input
+            type = "password"
+            id = "password"
+            name = "password"
+            placeholder = "Enter password"
+        />
+
+        <br />
+
+        <div>
+            <button type="submit">Log In</button>
+        </div>
+    </div>
+</form>
 {% endblock %}
