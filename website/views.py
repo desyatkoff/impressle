@@ -1,3 +1,5 @@
+import base64
+
 import flask
 import flask_login
 
@@ -35,3 +37,36 @@ def user_profile(username):
         user = flask_login.current_user,
         username = username
     )
+
+
+@views.route("/create-post", methods=["GET", "POST"])
+@flask_login.login_required
+def create_post():
+    if flask.request.method == "POST":
+        image_data = flask.request.form.get("image_data")
+
+        if image_data is not None:
+            image_binary = base64.b64decode(image_data.split(",")[1])
+
+            post = website.models.Post(
+                image_data = image_binary,
+                author = flask_login.current_user.id
+            )
+
+
+            website.db.session.add(post)
+            website.db.session.commit()
+
+
+            return flask.redirect(flask.url_for("views.index"))
+        else:
+            flask.flash(
+                message = "No image data",
+                category = "error"
+            )
+
+
+            return flask.redirect(flask.url_for("views.create_post"))
+
+
+    return flask.render_template("create_post.html", user=flask_login.current_user)

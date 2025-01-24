@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block title %}impressle | Create Post{% endblock %}
+
+{% block content%}
+<form id="canvas_form" method="post">
+    <canvas id="main_canvas" width="800" height="600"></canvas>
+    <input type="hidden" id="image_data" name="image_data" />
+    <button type="submit">Publish</button>
+</form>
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='canvas.js') }}"></script>
+{% endblock %}

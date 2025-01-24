@@ -1,3 +1,8 @@
 body {
+    background-color: #121212;
+}
+
+canvas {
     background-color: #212121;
+    cursor: crosshair;
 }
