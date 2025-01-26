@@ -51,7 +51,8 @@ def create_post():
             post = website.models.Post(
                 title = flask.request.form.get("title"),
                 image_data = image_binary,
-                author_id = flask_login.current_user.id
+                author_id = flask_login.current_user.id,
+                author_username = flask_login.current_user.username
             )
 
 

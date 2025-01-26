@@ -75,6 +75,10 @@ class Post(website.db.Model):
         ),
         nullable = False
     )
+    author_username = website.db.Column(
+        website.db.String,
+        nullable = False
+    )
 
 
 class Comment(website.db.Model):
@@ -106,6 +110,10 @@ class Comment(website.db.Model):
         ),
         nullable = False
     )
+    author_username = website.db.Column(
+        website.db.String,
+        nullable = False
+    )
 
 
 class Like(website.db.Model):
@@ -131,5 +139,9 @@ class Like(website.db.Model):
             "user.id",
             ondelete = "CASCADE"
         ),
+        nullable = False
+    )
+    author_username = website.db.Column(
+        website.db.String,
         nullable = False
     )
