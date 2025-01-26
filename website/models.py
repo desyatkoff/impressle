@@ -11,12 +11,12 @@ class User(website.db.Model, flask_login.UserMixin):
         primary_key = True
     )
     username = website.db.Column(
-        website.db.String(32),
+        website.db.String,
         unique = True,
         nullable = False
     )
     password = website.db.Column(
-        website.db.String(256),
+        website.db.String,
         nullable = False
     )
     date_created = website.db.Column(
@@ -46,7 +46,7 @@ class Post(website.db.Model):
         primary_key = True
     )
     title = website.db.Column(
-        website.db.String(32),
+        website.db.String,
         nullable = False
     )
     image_data = website.db.Column(
@@ -67,7 +67,7 @@ class Post(website.db.Model):
         backref = "post",
         passive_deletes = True
     )
-    author = website.db.Column(
+    author_id = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
             "user.id",
@@ -83,7 +83,7 @@ class Comment(website.db.Model):
         primary_key = True
     )
     text = website.db.Column(
-        website.db.String(200),
+        website.db.String,
         nullable = False
     )
     date_created = website.db.Column(
@@ -98,7 +98,7 @@ class Comment(website.db.Model):
         ),
         nullable = False
     )
-    author = website.db.Column(
+    author_id = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
             "user.id",
@@ -117,18 +117,18 @@ class Like(website.db.Model):
         website.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.UTC)
     )
-    author = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
-            "user.id",
-            ondelete = "CASCADE"
-        ),
-        nullable = False
-    )
     post_id = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
             "post.id",
+            ondelete = "CASCADE"
+        ),
+        nullable = False
+    )
+    author_id = website.db.Column(
+        website.db.Integer,
+        website.db.ForeignKey(
+            "user.id",
             ondelete = "CASCADE"
         ),
         nullable = False
