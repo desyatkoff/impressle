@@ -4,9 +4,6 @@ import config
 import website
 
 
-website.init_flask_app()
-
-
 app = website.init_flask_app()
 
 
