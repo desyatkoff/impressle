@@ -8,12 +8,17 @@
 
 <div id="posts">
     {% for post in posts %}
-    <div>
-        <b>{{ post.title }}</b> by <b>{{ post.author }}</b>
+    <div class="post">
+        <p class="post_title">
+            {{ post.title }}
+        </p>
+        <p class="post_author">
+            @{{ url_for('api.get_username_by_id', user_id=post.author_id) }}
+        </p>
+        <img src="{{ url_for('api.get_post_image_by_id', post_id=post.id) }}" alt="Post Image" />
     </div>
-    <div>
-        <img src="data:image/png;base64, {{ post.image_data }}" alt="Post Image">
-    </div>
+
+    <br />
     {% endfor %}
 </div>
 {% endblock %}
