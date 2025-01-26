@@ -3,10 +3,12 @@
 
 {% block title %}impressle | Create Post{% endblock %}
 
-{% block content%}
+{% block content %}
 <form id="canvas_form" method="post">
     <canvas id="main_canvas" width="800" height="600"></canvas>
     <input type="hidden" id="image_data" name="image_data" />
+    <input type="text" id="title" name="title" />
+
     <button type="submit">Publish</button>
 </form>
 
