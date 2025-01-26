@@ -15,7 +15,7 @@ views = flask.Blueprint(
 @views.route("/")
 @views.route("/home")
 def index():
-    return flask.render_template("index.html", user=flask_login.current_user)
+    return flask.render_template("index.html", user=flask_login.current_user, posts=website.models.Post.query.all())
 
 
 @views.route("/user/@<username>")
@@ -49,6 +49,7 @@ def create_post():
             image_binary = base64.b64decode(image_data.split(",")[1])
 
             post = website.models.Post(
+                title = flask.request.form.get("title"),
                 image_data = image_binary,
                 author = flask_login.current_user.id
             )

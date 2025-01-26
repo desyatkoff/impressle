@@ -45,6 +45,10 @@ class Post(website.db.Model):
         website.db.Integer,
         primary_key = True
     )
+    title = website.db.Column(
+        website.db.String(32),
+        nullable = False
+    )
     image_data = website.db.Column(
         website.db.LargeBinary,
         nullable = False
