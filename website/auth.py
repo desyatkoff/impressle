@@ -91,11 +91,6 @@ def login():
                     message = "Invalid password",
                     category = "error"
                 )
-        elif user.is_banned:
-            flask.flash(
-                message = "Account is banned",
-                category = "error"
-            )
         else:
             flask.flash(
                 message = "Account does not exist",
@@ -109,6 +104,12 @@ def login():
 @auth.route("/logout")
 @flask_login.login_required
 def logout():
+    flask.flash(
+        message = "Successfully logget out",
+        category = "success"
+    )
+
+
     flask_login.logout_user()
 
 
