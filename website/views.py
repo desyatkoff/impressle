@@ -35,7 +35,10 @@ def user_profile(username):
     return flask.render_template(
         "user_profile.html",
         user = flask_login.current_user,
-        username = username
+        username = username,
+        posts = website.models.Post.query.filter_by(
+            author_username = username
+        ).all()
     )
 
 
@@ -46,6 +49,12 @@ def create_post():
         image_data = flask.request.form.get("image_data")
 
         if image_data is not None:
+            flask.flash(
+                message = "Successfully published your post",
+                category = "success"
+            )
+
+
             image_binary = base64.b64decode(image_data.split(",")[1])
 
             post = website.models.Post(

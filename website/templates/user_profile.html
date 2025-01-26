@@ -5,4 +5,20 @@
 
 {% block content %}
 <h1>@{{ username }}'s profile</h1>
+
+<div id="posts">
+    {% for post in posts %}
+    <div class="post">
+        <p class="post_title">
+            {{ post.title }}
+        </p>
+        <p class="post_author">
+            @{{ post.author_username }}
+        </p>
+        <img src="{{ url_for('api.get_post_image_by_id', post_id=post.id) }}" alt="Post Image" />
+    </div>
+
+    <br />
+    {% endfor %}
+</div>
 {% endblock %}
