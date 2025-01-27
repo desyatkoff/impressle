@@ -81,3 +81,42 @@ def create_post():
 
 
     return flask.render_template("create_post.html", user=flask_login.current_user)
+
+
+@views.route("/like-post/<post_id>", methods=["POST"])
+@flask_login.login_required
+def like_post(post_id):
+    post = website.models.Post.query.filter_by(id=post_id).first()
+    like = website.models.Like.query.filter_by(
+        post_id = post_id,
+        author_id = flask_login.current_user.id,
+        author_username = flask_login.current_user.username
+    ).first()
+
+
+    if not post:
+        flask.flash(
+            message = "Post does not exist",
+            category = "error"
+        )
+    else:
+        if like:
+            website.db.session.delete(like)
+        else:
+            like = website.models.Like(
+                post_id = post_id,
+                author_id = flask_login.current_user.id,
+                author_username = flask_login.current_user.username
+            )
+
+            website.db.session.add(like)
+
+        website.db.session.commit()
+
+
+    return flask.jsonify(
+        {
+            "likes": len(post.likes),
+            "liked": flask_login.current_user.id in map(lambda x: x.author_id, post.likes)
+        }
+    )
