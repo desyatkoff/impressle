@@ -20,8 +20,12 @@ class User(website.db.Model, flask_login.UserMixin):
         nullable = False
     )
     date_created = website.db.Column(
-        website.db.DateTime(timezone=True),
+        website.db.DateTime,
         default = datetime.datetime.now(datetime.UTC)
+    )
+    about_me = website.db.Column(
+        website.db.String(),
+        default = "Nothing yet..."
     )
     posts = website.db.relationship(
         "Post",

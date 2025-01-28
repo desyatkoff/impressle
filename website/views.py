@@ -15,7 +15,11 @@ views = flask.Blueprint(
 @views.route("/")
 @views.route("/home")
 def index():
-    return flask.render_template("index.html", user=flask_login.current_user, posts=website.models.Post.query.all())
+    return flask.render_template(
+        "index.html",
+        user = flask_login.current_user,
+        posts = website.models.Post.query.all()
+    )
 
 
 @views.route("/user/@<username>")
@@ -35,10 +39,47 @@ def user_profile(username):
     return flask.render_template(
         "user_profile.html",
         user = flask_login.current_user,
-        username = username,
+        user_profile = user,
         posts = website.models.Post.query.filter_by(
-            author_username = username
+            author_id = user.id
         ).all()
+    )
+
+
+@views.route("/settings", methods=["GET", "POST"])
+@flask_login.login_required
+def user_settings():
+    if flask.request.method == "POST":
+        user = flask_login.current_user
+        about_me_data = flask.request.form.get("about_me")
+
+        if about_me_data is not None:
+            flask.flash(
+                message = "Successfully saved new settings",
+                category = "success"
+            )
+
+
+            user.about_me = about_me_data
+            website.db.session.commit()
+
+
+            return flask.redirect(
+                flask.url_for(
+                    endpoint = "views.user_profile",
+                    username = user.username
+                )
+            )
+        else:
+            flask.flash(
+                message = "No any data",
+                category = "error"
+            )
+
+
+    return flask.render_template(
+        "user_settings.html",
+        user = flask_login.current_user
     )
 
 
@@ -80,7 +121,10 @@ def create_post():
             return flask.redirect(flask.url_for("views.create_post"))
 
 
-    return flask.render_template("create_post.html", user=flask_login.current_user)
+    return flask.render_template(
+        "create_post.html",
+        user = flask_login.current_user
+    )
 
 
 @views.route("/like-post/<post_id>", methods=["POST"])

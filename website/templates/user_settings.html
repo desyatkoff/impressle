@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block title %}impressle | Settings{% endblock %}
+
+{% block content %}
+<form id="settings_form" method="post">
+    <label for="about_me">
+        About Me
+    </label>
+    <input type="text" id="about_me" name="about_me" />
+
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
