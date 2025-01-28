@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block title %}impressle | {{ post.title }}{% endblock %}
+
+{% block content %}
+    {% include "div_post.html" %}
+
+    <div class="comments" id="comments_{{ post.id }}">
+        <form id="comment_form" method="post" action="{{ url_for('views.create_comment', post_id=post.id) }}">
+            <input type="text" id="comment_text" name="comment_text" />
+        
+            <button type="submit">Submit</button>
+        </form>
+
+
+        {% for comment in post.comments %}
+            {% include "div_comment.html" %}
+
+            <br />
+        {% endfor %}
+    </div>
+{% endblock %}

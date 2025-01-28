@@ -85,14 +85,10 @@ class Post(website.db.Model):
     )
 
 
-class Comment(website.db.Model):
+class Like(website.db.Model):
     id = website.db.Column(
         website.db.Integer,
         primary_key = True
-    )
-    text = website.db.Column(
-        website.db.String,
-        nullable = False
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
@@ -120,10 +116,14 @@ class Comment(website.db.Model):
     )
 
 
-class Like(website.db.Model):
+class Comment(website.db.Model):
     id = website.db.Column(
         website.db.Integer,
         primary_key = True
+    )
+    text = website.db.Column(
+        website.db.String,
+        nullable = False
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),

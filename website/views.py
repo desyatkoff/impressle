@@ -127,6 +127,27 @@ def create_post():
     )
 
 
+@views.route("/post/<post_id>")
+def post_full_view(post_id):
+    post = website.models.Post.query.filter_by(id=post_id).first()
+
+    if not post:
+        flask.flash(
+            message = "Post does not exist",
+            category = "error"
+        )
+
+
+        return flask.redirect(flask.url_for("views.index"))
+
+
+    return flask.render_template(
+        "post.html",
+        user = flask_login.current_user,
+        post = post
+    )
+
+
 @views.route("/like-post/<post_id>", methods=["POST"])
 @flask_login.login_required
 def like_post(post_id):
@@ -163,4 +184,80 @@ def like_post(post_id):
             "likes": len(post.likes),
             "liked": flask_login.current_user.id in map(lambda x: x.author_id, post.likes)
         }
+    )
+
+
+@views.route("/create-comment/<post_id>", methods=["POST"])
+@flask_login.login_required
+def create_comment(post_id):
+    comment_text = flask.request.form.get("comment_text")
+    post = website.models.Post.query.filter_by(id=post_id).first()
+
+
+    if not comment_text:
+        flask.flash(
+            message = "No comment text",
+            category = "error"
+        )
+    else:
+        if post:
+            flask.flash(
+                message = "Successfully published your comment",
+                category = "success"
+            )
+
+
+            comment = website.models.Comment(
+                text = comment_text,
+                post_id = post_id,
+                author_id = flask_login.current_user.id,
+                author_username = flask_login.current_user.username
+            )
+
+
+            website.db.session.add(comment)
+            website.db.session.commit()
+        else:
+            flask.flash(
+                message = "Post does not exist",
+                category = "error"
+            )
+
+
+    return flask.redirect(
+        flask.url_for(
+            endpoint = "views.post_full_view",
+            post_id = post.id
+        )
+    )
+
+
+@views.route("/delete-comment/<comment_id>", methods=["POST"])
+@flask_login.login_required
+def delete_comment(comment_id):
+    comment = website.models.Comment.query.filter_by(id=comment_id).first()
+    post = website.models.Post.query.filter_by(id=comment.post_id).first()
+
+
+    if not comment:
+        flask.flash(
+            message = "Comment does not exist",
+            category = "error"
+        )
+    else:
+        if post:
+            website.db.session.delete(comment)
+            website.db.session.commit()
+        else:
+            flask.flash(
+                message = "Post does not exist",
+                category = "error"
+            )
+
+
+    return flask.redirect(
+        flask.url_for(
+            endpoint = "views.post_full_view",
+            post_id = post.id
+        )
     )

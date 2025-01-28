@@ -3,7 +3,7 @@ canvas {
     cursor: crosshair;
 }
 
-.post {
+.post, .comment {
     border-style: solid;
     border-color: black;
 }

@@ -1,0 +1,17 @@
+<div class="comment" id="comment_{{ comment.id }}">
+    <div class="comment_info">
+        <p class="comment_author">
+            <a href="{{ url_for('views.user_profile', username=comment.author_username) }}">
+                @{{comment.author_username}}
+            </a>
+        </p>
+        <p class="date_created">
+            {{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }}
+        </p>
+    </div>
+    <div class="comment_text">
+        <p class="comment_text">
+            {{ comment.text }}
+        </p>
+    </div>
+</div>

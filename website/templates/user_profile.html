@@ -31,6 +31,12 @@
     </div>
 
 
-    {% include "div_posts.html" %}
+    <div id="posts">
+        {% for post in posts %}
+            {% include "div_post.html" %}
+    
+            <br />
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
