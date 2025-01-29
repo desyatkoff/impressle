@@ -39,6 +39,7 @@ def signup():
                 category = "success"
             )
 
+
             new_user = website.models.User(
                 username = username,
                 password = werkzeug.security.generate_password_hash(
@@ -46,6 +47,7 @@ def signup():
                     method = "scrypt"
                 )
             )
+
 
             website.db.session.add(new_user)
             website.db.session.commit()

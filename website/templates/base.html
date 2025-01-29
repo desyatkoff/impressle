@@ -5,12 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="stylesheet" href="/static/styles/style.css" />
     </head>
     <body>
         {% block content %}{% endblock %}
 
 
-        <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+        <script type="text/javascript" src="/static/scripts/index.js"></script>
     </body>
 </html>

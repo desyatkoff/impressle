@@ -14,4 +14,17 @@
             {{ comment.text }}
         </p>
     </div>
+
+
+    {% if user.id == comment.author_id %}
+        <div class="comment_other">
+            <form id="delete_comment_form" method="POST" action="{{ url_for('views.delete_comment', comment_id=comment.id) }}">
+                <button type="submit">
+                    <img src="/static/images/cross.png" height="16" />
+
+                    Delete
+                </button>
+            </form>
+        </div>
+    {% endif %}
 </div>

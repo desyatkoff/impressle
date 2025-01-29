@@ -23,4 +23,17 @@
             <button class="not_liked" id="like_button_{{ post.id }}" onclick="like({{ post.id }})"></button>
         {% endif %}
     </div>
+
+
+    {% if user.id == post.author_id %}
+        <div class="post_other">
+            <form id="delete_post_form" method="POST" action="{{ url_for('views.delete_post', post_id=post.id) }}">
+                <button type="submit">
+                    <img src="/static/images/cross.png" height="16" />
+
+                    Delete
+                </button>
+            </form>
+        </div>
+    {% endif %}
 </div>

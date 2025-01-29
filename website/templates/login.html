@@ -4,9 +4,10 @@
 {% block title %}impressle | Log In{% endblock %}
 
 {% block content %}
-<form method="POST">
-    <div>
-        <label for="username">Username</label>
+    <form method="POST">
+        <label for="username">
+            Username
+        </label>
         <input
             type = "text"
             id = "username"
@@ -14,7 +15,9 @@
             placeholder = "Enter username"
         />
 
-        <label for="password">Password</label>
+        <label for="password">
+            Password
+        </label>
         <input
             type = "password"
             id = "password"
@@ -24,9 +27,9 @@
 
         <br />
 
-        <div>
-            <button type="submit">Log In</button>
-        </div>
-    </div>
-</form>
+
+        <button type="submit">
+            Log In
+        </button>
+    </form>
 {% endblock %}

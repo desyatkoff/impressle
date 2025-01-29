@@ -53,6 +53,7 @@ def user_settings():
         user = flask_login.current_user
         about_me_data = flask.request.form.get("about_me")
 
+
         if about_me_data is not None:
             flask.flash(
                 message = "Successfully saved new settings",
@@ -64,17 +65,12 @@ def user_settings():
             website.db.session.commit()
 
 
-            return flask.redirect(
-                flask.url_for(
-                    endpoint = "views.user_profile",
-                    username = user.username
-                )
+        return flask.redirect(
+            flask.url_for(
+                endpoint = "views.user_profile",
+                username = user.username
             )
-        else:
-            flask.flash(
-                message = "No any data",
-                category = "error"
-            )
+        )
 
 
     return flask.render_template(
@@ -127,8 +123,36 @@ def create_post():
     )
 
 
+@views.route("/delete-post/<post_id>", methods=["POST"])
+@flask_login.login_required
+def delete_post(post_id):
+    post = website.models.Post.query.filter_by(id=post_id).first()
+
+
+    if not post:
+        flask.flash(
+            message = "Post does not exist",
+            category = "error"
+        )
+    else:
+        if flask_login.current_user.id == post.author_id:
+            flask.flash(
+                message = "Successfully deleted your post",
+                category = "success"
+            )
+
+
+            website.db.session.delete(post)
+            website.db.session.commit()
+        else:
+            flask.flash(
+                message = "You do not have enough permissions to delete this post",
+                category = "error"
+            )
+
+
 @views.route("/post/<post_id>")
-def post_full_view(post_id):
+def view_post(post_id):
     post = website.models.Post.query.filter_by(id=post_id).first()
 
     if not post:
@@ -224,40 +248,29 @@ def create_comment(post_id):
             )
 
 
-    return flask.redirect(
-        flask.url_for(
-            endpoint = "views.post_full_view",
-            post_id = post.id
-        )
-    )
-
-
 @views.route("/delete-comment/<comment_id>", methods=["POST"])
 @flask_login.login_required
 def delete_comment(comment_id):
     comment = website.models.Comment.query.filter_by(id=comment_id).first()
-    post = website.models.Post.query.filter_by(id=comment.post_id).first()
 
 
     if not comment:
         flask.flash(
-            message = "Comment does not exist",
+            message = "Post does not exist",
             category = "error"
         )
     else:
-        if post:
+        if flask_login.current_user.id == comment.author_id:
+            flask.flash(
+                message = "Successfully deleted your comment",
+                category = "success"
+            )
+
+
             website.db.session.delete(comment)
             website.db.session.commit()
         else:
             flask.flash(
-                message = "Post does not exist",
+                message = "You do not have enough permissions to delete this comment",
                 category = "error"
             )
-
-
-    return flask.redirect(
-        flask.url_for(
-            endpoint = "views.post_full_view",
-            post_id = post.id
-        )
-    )

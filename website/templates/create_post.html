@@ -4,14 +4,26 @@
 {% block title %}impressle | Create Post{% endblock %}
 
 {% block content %}
-<form id="canvas_form" method="post">
-    <canvas id="main_canvas" width="800" height="600"></canvas>
-    <input type="hidden" id="image_data" name="image_data" />
-    <input type="text" id="title" name="title" />
+    <form id="canvas_form" method="POST">
+        <canvas id="main_canvas" width="800" height="600"></canvas>
+        <input
+            type = "hidden"
+            id = "image_data"
+            name = "image_data"
+        />
+        <input
+            type = "text"
+            id = "title"
+            name = "title"
+            placeholder = "Enter post title"
+        />
 
-    <button type="submit">Publish</button>
-</form>
+
+        <button type="submit">
+            Publish
+        </button>
+    </form>
 
 
-<script type="text/javascript" src="{{ url_for('static', filename='canvas.js') }}"></script>
+    <script type="text/javascript" src="/static/scripts/canvas.js"></script>
 {% endblock %}
