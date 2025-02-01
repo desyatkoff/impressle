@@ -98,17 +98,18 @@ Want to help? You can update or fix something, here's how to contribute to the p
 1. Fork the repository
 2. Create new branch
 3. Edit some code
-    > [!NOTE]\
-    > **Prefer naming your git commits something like that:**
-    >
-    > 1. "UPDATE: Added/Removed the \*feature\*"\
-    > *OR*\
-    > "ADD: \*Feature\*"\
-    > "REMOVE: \*Feature\*"
-    > 2. "FIX: Fixed the \*bug\*"
-    > 3. "COMMENT: Added/Edited/Removed a comment on line \*123\*"
 4. Push the changes to your branch
 5. Open a pull request here
+
+> [!NOTE]\
+> **Prefer naming your git commits something like that:**
+>
+> 1. "UPDATE: Added/Removed the \*feature\*"\
+> *OR*\
+> "ADD: \*Feature\*"\
+> "REMOVE: \*Feature\*"
+> 2. "FIX: Fixed the \*bug\*"
+> 3. "COMMENT: Added/Edited/Removed a comment on line \*123\*"
 
 Done! I'll review your code changes and *maybe* will accept them. Even just adding comments for some lines is a good contribution
 
