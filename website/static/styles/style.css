@@ -1,9 +1,15 @@
-canvas {
-    background-color: #212121;
-    cursor: crosshair;
+* {
+    font-family: "Nunito", serif;
+    font-optical-sizing: auto;
 }
 
-.post, .comment {
-    border-style: solid;
-    border-color: black;
+body {
+    color: #bfbfbf;
+    text-decoration: none;
+    background-color: #333333;
+}
+
+a {
+    color: #a347ff;
+    text-decoration: none;
 }

@@ -4,39 +4,56 @@
 {% block title %}impressle | @{{ user_profile.username }}{% endblock %}
 
 {% block content %}
-<div id="profile">
-    <div id="profile_info">
-        <h1 id="h1_username">
-            @{{ user_profile.username }}
-        </h1>
+    <div id="profile">
+        <div id="profile-info">
+            <h1>
+                @{{ user_profile.username }}
+            </h1>
 
-        <h2 id="about_me">
-            About Me
-        </h2>
-        <p id="about_me">
-            {{ user_profile.about_me }}
-        </p>
 
-        <br />
+            <p id="uid">
+                ID: {{ user_profile.uid }}
+            </p>
 
-        <h2 id="other_info">
-            Other Info
-        </h2>
-        <p>
-            User ID: {{ user_profile.id }}
-        </p>
-        <p>
-            Account Created: {{ user_profile.date_created.day }}.{{ user_profile.date_created.month }}.{{ user_profile.date_created.year }}
-        </p>
+            <p id="account-created">
+                <b>ACCOUNT CREATED:</b>
+                <br />
+                {{ user_profile.date_created.day }}.{{ user_profile.date_created.month }}.{{ user_profile.date_created.year }}
+            </p>
+
+            <p id="about-me">
+                <b>ABOUT ME:</b>
+                <br />
+                {{ user_profile.about_me }}
+            </p>
+
+            <p id="rank">
+                <b>RANK:</b>
+                <br />
+                {{ user_profile.rank }}
+            </p>
+
+            <p id="xp">
+                <b>XP:</b>
+                <br />
+                {{ user_profile.xp }}
+            </p>
+        </div>
+
+
+        {% if user_profile.pictures|count > 0 %}
+            <div id="pictures">
+                <h1>
+                    Pictures
+                </h1>
+
+
+                {% for picture in pictures %}
+                    {% include "div_picture.html" %}
+            
+                    <br />
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
-
-
-    <div id="posts">
-        {% for post in posts %}
-            {% include "div_post.html" %}
-    
-            <br />
-        {% endfor %}
-    </div>
-</div>
 {% endblock %}

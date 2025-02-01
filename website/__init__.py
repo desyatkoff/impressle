@@ -20,6 +20,7 @@ def init_flask_app():
     from . import api
     from . import auth
     from . import views
+    from . import admin
     from . import models
 
 
@@ -36,6 +37,7 @@ def init_flask_app():
     login_manager.init_app(app)
 
 
+    app.register_blueprint(admin.admin, url_prefix="/admin")
     app.register_blueprint(api.api, url_prefix="/api")
     app.register_blueprint(auth.auth, url_prefix="/")
     app.register_blueprint(views.views, url_prefix="/")
@@ -43,7 +45,7 @@ def init_flask_app():
 
     @login_manager.user_loader
     def load_user(id):
-        return models.User.query.get(int(id))
+        return models.User.query.filter_by(id=int(id)).first()
 
 
     return app

@@ -9,9 +9,9 @@ api = flask.Blueprint(
 )
 
 
-@api.route("/get-username-by-id/id=<user_id>")
-def get_username_by_id(user_id):
-    user = website.models.User.query.get(user_id)
+@api.route("/get-username-by-uid/<int:user_uid>")
+def get_username_by_uid(user_uid):
+    user = website.models.User.query.filter_by(uid=user_uid).first()
 
 
     if user is not None:
@@ -21,21 +21,21 @@ def get_username_by_id(user_id):
         )
 
 
-@api.route("/get-post-image-by-id/id=<post_id>")
-def get_post_image_by_id(post_id):
-    post = website.models.Post.query.get(post_id)
+@api.route("/get-picture-by-uid/<int:picture_uid>")
+def get_picture_by_uid(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
 
 
-    if post is not None:
+    if picture is not None:
         return website.app.response_class(
-            post.image_data,
+            picture.image_data,
             mimetype = "image/png"
         )
 
 
-@api.route("/get-comment-text-by-id/id=<comment_id>")
-def get_comment_text_by_id(comment_id):
-    comment = website.models.Comment.query.get(comment_id)
+@api.route("/get-comment-text-by-uid/<int:comment_uid>")
+def get_comment_text_by_uid(comment_uid):
+    comment = website.models.Comment.query.filter_by(uid=comment_uid).first()
 
 
     if comment is not None:

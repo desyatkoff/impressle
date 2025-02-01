@@ -59,7 +59,12 @@ def signup():
             )
 
 
-            return flask.redirect(f"/user/@{new_user.username}")
+            return flask.redirect(
+                flask.url_for(
+                    endpoint = "views.user_profile",
+                    username = new_user.username
+                )
+            )
 
 
     return flask.render_template("signup.html", user=flask_login.current_user)

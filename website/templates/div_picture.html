@@ -1,0 +1,44 @@
+<div class="picture" id="picture-{{ picture.uid }}">
+    <div class="picture-info">
+        <p class="picture-title">
+            {{ picture.title }}
+        </p>
+        <p class="picture-author">
+            <a href="{{ url_for('views.user_profile', username=picture.author_username) }}">
+                @{{ picture.author_username }}
+            </a>
+        </p>
+        <p class="date-created">
+            {{ picture.date_created.day }}.{{ picture.date_created.month }}.{{ picture.date_created.year }}
+        </p>
+    </div>
+    <div class="picture-data">
+        <img src="{{ url_for('api.get_picture_by_uid', picture_uid=picture.uid) }}" alt="Picture" />
+    </div>
+    <div class="picture-likes">
+        <span id="likes-count-{{picture.uid}}">
+            {{ picture.likes|length }}
+        </span> 
+
+        {% if user.uid in picture.likes|map(attribute="author_uid")|list %}
+            <button class="liked" id="like-button-{{ picture.uid}} " onclick="like({{ picture.uid }})">
+                Like
+            </button>
+        {% else %}
+            <button class="not-liked" id="like-button-{{ picture.uid }}" onclick="like({{ picture.uid }})">
+                Like
+            </button>
+        {% endif %}
+    </div>
+
+
+    {% if user.uid == picture.author_uid %}
+        <div class="picture-other">
+            <form id="delete-picture-form" method="POST" action="{{ url_for('views.delete_picture', picture_uid=picture.uid) }}">
+                <button type="submit">
+                    Delete
+                </button>
+            </form>
+        </div>
+    {% endif %}
+</div>

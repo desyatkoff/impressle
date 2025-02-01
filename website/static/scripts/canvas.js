@@ -1,11 +1,11 @@
-let canvas = document.getElementById("main_canvas");
+let canvas = document.getElementById("main-canvas");
 let context = canvas.getContext("2d");
-let stroke_color = "#9966cc";
+let stroke_color = "#7f00ff";
 let stroke_width = "4";
 let is_drawing = false;
 
 
-context.fillStyle = "#212121";
+context.fillStyle = "#0d0d0d";
 context.fillRect(0, 0, canvas.width, canvas.height);
 
 
@@ -69,10 +69,10 @@ canvas.addEventListener("mousemove", draw, false);
 canvas.addEventListener("mouseup", stop, false);
 canvas.addEventListener("mouseout", stop, false);
 
-document.getElementById("canvas_form").addEventListener("submit", (element) => {
+document.getElementById("canvas-form").addEventListener("submit", (element) => {
     element.preventDefault();
     const IMAGE_DATA = canvas.toDataURL("image/png");
-    document.getElementById("image_data").value = IMAGE_DATA;
+    document.getElementById("image-data").value = IMAGE_DATA;
 
 
     element.target.submit();

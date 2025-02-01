@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+
+{% block title %}impressle | FAQ{% endblock %}
+
+{% block content %}
+    <h1>Frequently Asked Questions (FAQ)</h1>
+
+    <div id="faq">
+        <div>
+            <h2 class="question">
+                What is impressle?
+            </h2>
+
+            <p class="answer">
+                <b>impressle</b> is a unique social network where you have to draw by hand,
+                not uploading image files. Follow your favorite artists, give likes to other users' pictures
+                and make your own ones!
+            </p>
+        </div>
+
+        <div>
+            <h2 class="question">
+                How to become an artist on impressle?
+            </h2>
+
+            <p class="answer">
+                <ol>
+                    <li>
+                        <a href="{{ url_for('auth.login') }}">Log in</a> to your account
+                        (or <a href="{{ url_for('auth.signup') }}">sign up</a> if you do not have one)
+                    </li>
+                    <li>
+                        Go to <a href="{{ url_for('views.create_picture') }}">Create Picture</a> page
+                    </li>
+                    <li>
+                        Draw something IMPRESSIVE
+                    </li>
+                    <li>
+                        Click "Publish" button
+                    </li>
+                    <li>
+                        You are now officially another new artist!
+                    </li>
+                </ol>
+            </p>
+        </div>
+
+        <div>
+            <h2 class="question">
+                Are there any limits on posting pictures and other things?
+            </h2>
+
+            <p class="answer">
+                No! You can post as many pictures as you want, without any limits
+            </p>
+        </div>
+
+        <div>
+            <h2 class="question">
+                Can I trust this website?
+            </h2>
+
+            <p class="answer">
+                Absolutely. Source code of impressle is available on GitHub.
+                You can check it on <a href="https://github.com/desyatkoff/impressle">this repository</a> (click)
+            </p>
+        </div>
+
+        <div>
+            <h2 class="question">
+                I have other questions. Where to ask?
+            </h2>
+
+            <p class="answer">
+                If you have some questions, you can ask on official impressle Telegram
+                community chat. Currently, there are available English and Russian channels and groups.
+                All of them are listed <a href="https://t.me/+B8xsRBp4wyBjYzIy">here</a> (click)
+
+                <br />
+
+                Also, you can ask on GitHub
+                (<a href="https://github.com/desyatkoff/impressle">impressle repository</a> > Issues > New issue)
+            </p>
+        </div>
+    </div>
+{% endblock %}

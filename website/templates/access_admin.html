@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block title %}impressle | Access Admin Panel{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        <label for="secret-key">
+            Secret Key
+        </label>
+        <input
+            type = "password"
+            name = "secret-key"
+            id = "secret-key"
+        />
+
+        <br />
+
+
+        <button type="submit">
+            Access Admin Panel
+        </button>
+    </form>
+{% endblock %}

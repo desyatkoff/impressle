@@ -1,9 +1,9 @@
-function like(post_id) {
-    const LIKE_COUNT = document.getElementById(`likes_count_${post_id}`);
-    const LIKE_BUTTON = document.getElementById(`like_button_${post_id}`);
+function like(picture_uid) {
+    const LIKE_COUNT = document.getElementById(`likes-count-${picture_uid}`);
+    const LIKE_BUTTON = document.getElementById(`like-button-${picture_uid}`);
 
 
-    fetch(`/like-post/${post_id}`, {method: "POST"})
+    fetch(`/like-picture/${picture_uid}`, {method: "POST"})
         .then((res) => res.json())
         .then((data) => {
             LIKE_COUNT.innerHTML = data["likes"];

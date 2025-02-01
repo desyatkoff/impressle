@@ -1,27 +1,25 @@
-<div class="comment" id="comment_{{ comment.id }}">
-    <div class="comment_info">
-        <p class="comment_author">
+<div class="comment" id="comment-{{ comment.uid }}">
+    <div class="comment-info">
+        <p class="comment-author">
             <a href="{{ url_for('views.user_profile', username=comment.author_username) }}">
                 @{{comment.author_username}}
             </a>
         </p>
-        <p class="date_created">
+        <p class="date-created">
             {{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }}
         </p>
     </div>
-    <div class="comment_text">
-        <p class="comment_text">
+    <div class="comment-text">
+        <p class="comment-text">
             {{ comment.text }}
         </p>
     </div>
 
 
-    {% if user.id == comment.author_id %}
-        <div class="comment_other">
-            <form id="delete_comment_form" method="POST" action="{{ url_for('views.delete_comment', comment_id=comment.id) }}">
+    {% if user.uid == comment.author_uid %}
+        <div class="comment-other">
+            <form id="delete-comment-form" method="POST" action="{{ url_for('views.delete_comment', comment_uid=comment.uid) }}">
                 <button type="submit">
-                    <img src="/static/images/cross.png" height="16" />
-
                     Delete
                 </button>
             </form>

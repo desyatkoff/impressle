@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block title %}impressle | {{ picture.title }}{% endblock %}
+
+{% block content %}
+    {% include "div_picture.html" %}
+
+    <div class="comments" id="comments-{{ picture.uid }}">
+        <form id="comment-form" method="POST" action="{{ url_for('views.create_comment', picture_uid=picture.uid) }}">
+            <input type="text" id="comment-text" name="comment-text" placeholder="Comment" />
+
+
+            <button type="submit">Publish</button>
+        </form>
+
+
+        {% for comment in picture.comments %}
+            {% include "div_comment.html" %}
+
+            <br />
+        {% endfor %}
+    </div>
+{% endblock %}

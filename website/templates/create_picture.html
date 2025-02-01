@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | Create Post{% endblock %}
+{% block title %}impressle | Create a Picture{% endblock %}
 
 {% block content %}
-    <form id="canvas_form" method="POST">
-        <canvas id="main_canvas" width="800" height="600"></canvas>
+    <form id="canvas-form" method="POST">
+        <canvas id="main-canvas" width="800" height="600"></canvas>
         <input
             type = "hidden"
-            id = "image_data"
-            name = "image_data"
+            id = "image-data"
+            name = "image-data"
         />
         <input
             type = "text"
             id = "title"
             name = "title"
-            placeholder = "Enter post title"
+            placeholder = "Picture title"
         />
 
 

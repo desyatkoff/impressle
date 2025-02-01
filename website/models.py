@@ -10,6 +10,12 @@ class User(website.db.Model, flask_login.UserMixin):
         website.db.Integer,
         primary_key = True
     )
+
+    uid = website.db.Column(
+        website.db.Integer,
+        unique = True,
+        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+    )
     username = website.db.Column(
         website.db.String,
         unique = True,
@@ -23,12 +29,20 @@ class User(website.db.Model, flask_login.UserMixin):
         website.db.DateTime,
         default = datetime.datetime.now(datetime.UTC)
     )
+    rank = website.db.Column(
+        website.db.String,
+        default = "Newbie"
+    )
+    xp = website.db.Column(
+        website.db.Integer,
+        default = 0
+    )
     about_me = website.db.Column(
-        website.db.String(),
+        website.db.String,
         default = "Nothing yet..."
     )
-    posts = website.db.relationship(
-        "Post",
+    pictures = website.db.relationship(
+        "Picture",
         backref = "user",
         passive_deletes = True
     )
@@ -44,10 +58,16 @@ class User(website.db.Model, flask_login.UserMixin):
     )
 
 
-class Post(website.db.Model):
+class Picture(website.db.Model):
     id = website.db.Column(
         website.db.Integer,
         primary_key = True
+    )
+
+    uid = website.db.Column(
+        website.db.Integer,
+        unique = True,
+        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
     )
     title = website.db.Column(
         website.db.String,
@@ -63,18 +83,18 @@ class Post(website.db.Model):
     )
     likes = website.db.relationship(
         "Like",
-        backref = "post",
+        backref = "picture",
         passive_deletes = True
     )
     comments = website.db.relationship(
         "Comment",
-        backref = "post",
+        backref = "picture",
         passive_deletes = True
     )
-    author_id = website.db.Column(
+    author_uid = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
-            "user.id",
+            "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
@@ -90,22 +110,28 @@ class Like(website.db.Model):
         website.db.Integer,
         primary_key = True
     )
+
+    uid = website.db.Column(
+        website.db.Integer,
+        unique = True,
+        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+    )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.UTC)
     )
-    post_id = website.db.Column(
+    picture_uid = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
-            "post.id",
+            "picture.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_id = website.db.Column(
+    author_uid = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
-            "user.id",
+            "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
@@ -121,6 +147,12 @@ class Comment(website.db.Model):
         website.db.Integer,
         primary_key = True
     )
+
+    uid = website.db.Column(
+        website.db.Integer,
+        unique = True,
+        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+    )
     text = website.db.Column(
         website.db.String,
         nullable = False
@@ -129,18 +161,18 @@ class Comment(website.db.Model):
         website.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.UTC)
     )
-    post_id = website.db.Column(
+    picture_uid = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
-            "post.id",
+            "picture.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_id = website.db.Column(
+    author_uid = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
-            "user.id",
+            "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False

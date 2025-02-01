@@ -3,6 +3,7 @@ import base64
 import flask
 import flask_login
 
+import config
 import website
 
 
@@ -12,13 +13,44 @@ views = flask.Blueprint(
 )
 
 
+def update_user_rank():
+    user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
+
+
+    if user.xp > 0:
+        user.rank = "Artist"
+
+    if user.xp > 24:
+        user.rank = "Amateur Artist"
+
+    if user.xp > 49:
+        user.rank = "Cool Guy"
+
+    if user.xp > 99:
+        user.rank = "Skilled"
+
+    if user.xp == 666:
+        user.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
+
+    if user.xp > 999:
+        user.rank = "impressive"
+
+
+    for super_uid in config.SUPER_USERS:
+        if user.uid == super_uid:
+            user.rank = config.SUPER_USERS[super_uid]
+
+
+    website.db.session.commit()
+
+
 @views.route("/")
 @views.route("/home")
 def index():
     return flask.render_template(
         "index.html",
         user = flask_login.current_user,
-        posts = website.models.Post.query.all()
+        pictures = website.models.Picture.query.all()
     )
 
 
@@ -33,15 +65,15 @@ def user_profile(username):
         )
 
 
-        return flask.redirect(flask.url_for("views.index"))
+        return flask.redirect(flask.request.referrer)
 
 
     return flask.render_template(
         "user_profile.html",
         user = flask_login.current_user,
         user_profile = user,
-        posts = website.models.Post.query.filter_by(
-            author_id = user.id
+        pictures = website.models.Picture.query.filter_by(
+            author_uid = user.uid
         ).all()
     )
 
@@ -51,7 +83,7 @@ def user_profile(username):
 def user_settings():
     if flask.request.method == "POST":
         user = flask_login.current_user
-        about_me_data = flask.request.form.get("about_me")
+        about_me_data = flask.request.form.get("about-me")
 
 
         if about_me_data is not None:
@@ -79,34 +111,45 @@ def user_settings():
     )
 
 
-@views.route("/create-post", methods=["GET", "POST"])
+@views.route("/create-picture", methods=["GET", "POST"])
 @flask_login.login_required
-def create_post():
+def create_picture():
     if flask.request.method == "POST":
-        image_data = flask.request.form.get("image_data")
+        user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
+        image_data = flask.request.form.get("image-data")
 
         if image_data is not None:
             flask.flash(
-                message = "Successfully published your post",
+                message = "Successfully published your picture",
                 category = "success"
             )
 
 
             image_binary = base64.b64decode(image_data.split(",")[1])
 
-            post = website.models.Post(
+            picture = website.models.Picture(
                 title = flask.request.form.get("title"),
                 image_data = image_binary,
-                author_id = flask_login.current_user.id,
+                author_uid = flask_login.current_user.uid,
                 author_username = flask_login.current_user.username
             )
 
+            user.xp += 1
 
-            website.db.session.add(post)
+
+            website.db.session.add(picture)
             website.db.session.commit()
 
 
-            return flask.redirect(flask.url_for("views.index"))
+            update_user_rank()
+
+
+            return flask.redirect(
+                flask.url_for(
+                    endpoint = "views.view_picture",
+                    picture_uid = picture.uid
+                )
+            )
         else:
             flask.flash(
                 message = "No image data",
@@ -114,108 +157,147 @@ def create_post():
             )
 
 
-            return flask.redirect(flask.url_for("views.create_post"))
+            return flask.redirect(flask.url_for("views.create_picture"))
 
 
     return flask.render_template(
-        "create_post.html",
+        "create_picture.html",
         user = flask_login.current_user
     )
 
 
-@views.route("/delete-post/<post_id>", methods=["POST"])
+@views.route("/delete-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
-def delete_post(post_id):
-    post = website.models.Post.query.filter_by(id=post_id).first()
+def delete_picture(picture_uid):
+    user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
 
 
-    if not post:
+    if not picture:
         flask.flash(
-            message = "Post does not exist",
+            message = "Picture does not exist",
             category = "error"
         )
     else:
-        if flask_login.current_user.id == post.author_id:
+        if flask_login.current_user.uid == picture.author_uid:
             flask.flash(
-                message = "Successfully deleted your post",
+                message = "Successfully deleted your picture",
                 category = "success"
             )
 
 
-            website.db.session.delete(post)
+            user.xp -= 1
+
+
+            website.db.session.delete(picture)
             website.db.session.commit()
+
+
+            update_user_rank()
         else:
             flask.flash(
-                message = "You do not have enough permissions to delete this post",
+                message = "You do not have enough permissions to delete this picture",
                 category = "error"
             )
 
 
-@views.route("/post/<post_id>")
-def view_post(post_id):
-    post = website.models.Post.query.filter_by(id=post_id).first()
+    return flask.redirect("/")
 
-    if not post:
+
+@views.route("/picture/<picture_uid>")
+def view_picture(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+
+    if not picture:
         flask.flash(
-            message = "Post does not exist",
+            message = "Picture does not exist",
             category = "error"
         )
 
 
-        return flask.redirect(flask.url_for("views.index"))
+        return flask.redirect(flask.request.referrer)
 
 
     return flask.render_template(
-        "post.html",
+        "picture.html",
         user = flask_login.current_user,
-        post = post
+        picture = picture
     )
 
 
-@views.route("/like-post/<post_id>", methods=["POST"])
+@views.route("/about")
+def about():
+    return flask.render_template(
+        "about.html",
+        user = flask_login.current_user
+    )
+
+
+@views.route("/faq")
+def faq():
+    return flask.render_template(
+        "faq.html",
+        user = flask_login.current_user
+    )
+
+
+@views.route("/like-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
-def like_post(post_id):
-    post = website.models.Post.query.filter_by(id=post_id).first()
+def like_picture(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
     like = website.models.Like.query.filter_by(
-        post_id = post_id,
-        author_id = flask_login.current_user.id,
+        picture_uid = picture_uid,
+        author_uid = flask_login.current_user.uid,
         author_username = flask_login.current_user.username
     ).first()
 
 
-    if not post:
+    if not picture:
         flask.flash(
-            message = "Post does not exist",
+            message = "Picture does not exist",
             category = "error"
         )
     else:
+        picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+
+
         if like:
             website.db.session.delete(like)
+
+
+            picture_author.xp -= 1
         else:
             like = website.models.Like(
-                post_id = post_id,
-                author_id = flask_login.current_user.id,
+                picture_uid = picture_uid,
+                author_uid = flask_login.current_user.uid,
                 author_username = flask_login.current_user.username
             )
 
             website.db.session.add(like)
 
+
+            picture_author.xp += 1
+
+
         website.db.session.commit()
+
+
+        update_user_rank()
 
 
     return flask.jsonify(
         {
-            "likes": len(post.likes),
-            "liked": flask_login.current_user.id in map(lambda x: x.author_id, post.likes)
+            "likes": len(picture.likes),
+            "liked": flask_login.current_user.uid in map(lambda x: x.author_uid, picture.likes)
         }
     )
 
 
-@views.route("/create-comment/<post_id>", methods=["POST"])
+@views.route("/create-comment/<picture_uid>", methods=["POST"])
 @flask_login.login_required
-def create_comment(post_id):
-    comment_text = flask.request.form.get("comment_text")
-    post = website.models.Post.query.filter_by(id=post_id).first()
+def create_comment(picture_uid):
+    comment_text = flask.request.form.get("comment-text")
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
 
 
     if not comment_text:
@@ -224,7 +306,7 @@ def create_comment(post_id):
             category = "error"
         )
     else:
-        if post:
+        if picture:
             flask.flash(
                 message = "Successfully published your comment",
                 category = "success"
@@ -233,8 +315,8 @@ def create_comment(post_id):
 
             comment = website.models.Comment(
                 text = comment_text,
-                post_id = post_id,
-                author_id = flask_login.current_user.id,
+                picture_uid = picture_uid,
+                author_uid = flask_login.current_user.uid,
                 author_username = flask_login.current_user.username
             )
 
@@ -243,24 +325,27 @@ def create_comment(post_id):
             website.db.session.commit()
         else:
             flask.flash(
-                message = "Post does not exist",
+                message = "Picture does not exist",
                 category = "error"
             )
 
 
-@views.route("/delete-comment/<comment_id>", methods=["POST"])
+    return flask.redirect(flask.request.referrer)
+
+
+@views.route("/delete-comment/<comment_uid>", methods=["POST"])
 @flask_login.login_required
-def delete_comment(comment_id):
-    comment = website.models.Comment.query.filter_by(id=comment_id).first()
+def delete_comment(comment_uid):
+    comment = website.models.Comment.query.filter_by(id=comment_uid).first()
 
 
     if not comment:
         flask.flash(
-            message = "Post does not exist",
+            message = "Picture does not exist",
             category = "error"
         )
     else:
-        if flask_login.current_user.id == comment.author_id:
+        if flask_login.current_user.uid == comment.author_uid:
             flask.flash(
                 message = "Successfully deleted your comment",
                 category = "success"
@@ -274,3 +359,6 @@ def delete_comment(comment_id):
                 message = "You do not have enough permissions to delete this comment",
                 category = "error"
             )
+
+
+    return flask.redirect(flask.request.referrer)
