@@ -1,5 +1,9 @@
 # impressle
 
+<p align="center">
+    <img src="/website/static/images/logo-full-dark.png" height="256" />
+</p>
+
 
 ## Description
 
