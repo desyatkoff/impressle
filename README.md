@@ -2,7 +2,7 @@
 
 <p align="center">
     <img
-        src = "/website/static/images/logo-full-dark.png"
+        src = "/website/static/images/logo-full-dark.svg"
         height = "256"
     />
 </p>
