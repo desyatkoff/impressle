@@ -12,7 +12,7 @@ function like(picture_uid) {
             if (data["liked"] === true) {
                 LIKE_BUTTON.className = "liked";
             } else {
-                LIKE_BUTTON.className = "not_liked";
+                LIKE_BUTTON.className = "not-liked";
             }
         })
 }
