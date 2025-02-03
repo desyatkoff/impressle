@@ -6,11 +6,25 @@
 {% block content %}
     <h1>Home Page</h1>
 
-    <div id="pictures">
-        {% for picture in pictures %}
-            {% include "div_picture.html" %}
+    <div class="pure-g" id="pictures">
+        {% if pictures|length > 0 %}
+            {% for picture in pictures %}
+                {% if picture.is_banned == False %}
+                    {% include "div_picture.html" %}
 
-            <br />
-        {% endfor %}
+                    <br />
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <div class="card">
+                <h1>
+                    It seems that there are no any pictures available... :(
+                </h1>
+
+                <p>
+                    <a href="{{ url_for('views.create_picture') }}">Create a picture</a> so impressle won't be empty
+                </p>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

@@ -4,69 +4,192 @@
 {% block title %}impressle | Admin Panel{% endblock %}
 
 {% block content %}
-    <h1>
-        Welcome back!
-    </h1>
-    <p>
-        <b>
-            Your Admin Dashboard is here:
-        </b>
-    </p>
+    <div id="panel">
+        <h1>
+            Database Panel
+        </h1>
 
 
-    <div id="dashboard">
-        <div id="users">
-            <h1>
-                Users
-            </h1>
+        <div class="card">
+            <div id="users">
+                <h1>
+                    Users
+                </h1>
 
 
-            <ol>
-                {% for user in users %}
-                    <li id="user-{{ user.uid }}">
-                        <b>Database Row ID</b> - {{ user.id }}
-                        <br />
-                        <b>UID (actually unique ID)</b> - {{ user.uid }}
-                        <br />
-                        <b>Username</b> - @{{ user.username }}
-                        <br />
-                        <b>Date Created</b> - {{ user.date_created }} ({{ user.date_created.day }}.{{ user.date_created.month }}.{{ user.date_created.year }})
-                        <br />
-                        <b>Rank</b> - {{ user.rank }}
-                        <br />
-                        <b>XP (experience)</b> - {{ user.xp }}
-                        <br />
-                        <b>"About Me"</b> - {{ user.about_me }}
-                    </li>
-                {% endfor %}
-            </ol>
+                <table class="pure-table">
+                    <thead>
+                        <tr>
+                            <th>Row ID</th>
+                            <th>UID</th>
+                            <th>Username</th>
+                            <th>Date Created</th>
+                            <th>Rank</th>
+                            <th>XP</th>
+                            <th>About Me</th>
+                            <th>Followers</th>
+                            <th>Is Banned?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.uid }}</td>
+                                <td>@{{ user.username }}</td>
+                                <td>{{ user.date_created }} ({{ user.date_created.day }}.{{ user.date_created.month }}.{{ user.date_created.year }})</td>
+                                <td>{{ user.rank }}</td>
+                                <td>{{ user.xp }}</td>
+                                <td>{{ user.about_me }}</td>
+                                <td>{{ user.follows|length }}</td>
+                                <td>{{ user.is_banned }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <div id="pictures">
+        <div class="card">
+            <div id="pictures">
+                <h1>
+                    Pictures
+                </h1>
+
+
+                <table class="pure-table">
+                    <thead>
+                        <tr>
+                            <th>Row ID</th>
+                            <th>UID</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Date Created</th>
+                            <th>Author UID</th>
+                            <th>Author Username</th>
+                            <th>Is Banned?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for picture in pictures %}
+                            <tr>
+                                <td>{{ picture.id }}</td>
+                                <td>{{ picture.uid }}</td>
+                                <td>{{ picture.title }}</td>
+                                <td>
+                                    <img
+                                        src = "{{ url_for('api.get_picture_by_uid', picture_uid=picture.uid) }}"
+                                        height = "64"
+                                    />
+                                </td>
+                                <td>{{ picture.date_created }} ({{ picture.date_created.day }}.{{ picture.date_created.month }}.{{ picture.date_created.year }})</td>
+                                <td>{{ picture.author_uid }}</td>
+                                <td>@{{ picture.author_username }}</td>
+                                <td>{{ picture.is_banned }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="comments">
+                <h1>
+                    Comments
+                </h1>
+
+
+                <table class="pure-table">
+                    <thead>
+                        <tr>
+                            <th>Row ID</th>
+                            <th>UID</th>
+                            <th>Text</th>
+                            <th>Date Created</th>
+                            <th>Author UID</th>
+                            <th>Author Username</th>
+                            <th>Is Banned?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comment in comments %}
+                            <tr>
+                                <td>{{ comment.id }}</td>
+                                <td>{{ comment.uid }}</td>
+                                <td>{{ comment.text }}</td>
+                                <td>{{ comment.date_created }} ({{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }})</td>
+                                <td>{{ comment.author_uid }}</td>
+                                <td>@{{ comment.author_username }}</td>
+                                <td>{{ comment.is_banned }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div id="ban-forms">
             <h1>
-                Pictures
+                Ban Panel
             </h1>
 
 
-            <ol>
-                {% for picture in pictures %}
-                    <li id="picture-{{ picture.uid }}">
-                        <b>Database Row ID</b> - {{ picture.id }}
-                        <br />
-                        <b>UID (actually unique ID)</b> - {{ picture.uid }}
-                        <br />
-                        <b>Title</b> - {{ picture.title }}
-                        <br />
-                        <b>Image</b> - <img src="{{ url_for('api.get_picture_by_uid', picture_uid=picture.uid) }}" alt="Picture" />
-                        <br />
-                        <b>Date Created</b> - {{ picture.date_created }} ({{ picture.date_created.day }}.{{ picture.date_created.month }}.{{ picture.date_created.year }})
-                        <br />
-                        <b>Author UID</b> - {{ picture.author_uid }}
-                        <br />
-                        <b>Author Username</b> - {{ picture.author_username }}
-                    </li>
-                {% endfor %}
-            </ol>
+            <div class="card">
+                <div class="pure-g">
+                    <div class="pure-u-1-3">
+                        <form id="ban-user-form" method="POST">
+                            <input
+                                type = "text"
+                                class = "pure-input"
+                                id = "user-uid"
+                                name = "user-uid"
+                                placeholder = "User UID"
+                            />
+
+
+                            <button class="pure-button button-main" type="submit">
+                                Ban
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="pure-u-1-3">
+                        <form id="ban-picture-form" method="POST">
+                            <input
+                                type = "text"
+                                class = "pure-input"
+                                id = "picture-uid"
+                                name = "picture-uid"
+                                placeholder = "Picture UID"
+                            />
+
+
+                            <button class="pure-button button-main" type="submit">
+                                Ban
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="pure-u-1-3">
+                        <form id="ban-comment-form" method="POST">
+                            <input
+                                type = "text"
+                                class = "pure-input"
+                                id = "comment-uid"
+                                name = "comment-uid"
+                                placeholder = "Comment UID"
+                            />
+
+
+                            <button class="pure-button button-main" type="submit">
+                                Ban
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

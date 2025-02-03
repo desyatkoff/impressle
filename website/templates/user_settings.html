@@ -4,19 +4,29 @@
 {% block title %}impressle | Settings{% endblock %}
 
 {% block content %}
+    <h1>
+        Settings
+    </h1>
+
+
     <form id="settings-form" method="POST">
-        <label for="about-me">
-            About Me
-        </label>
-        <input
-            type = "text"
-            id = "about-me"
-            name = "about-me"
-        />
+        <div class="card">
+            <label for="about-me">
+                About Me
+            </label>
+            <input
+                type = "text"
+                id = "about-me"
+                name = "about-me"
+            />
 
 
-        <button type="submit">
-            Save
-        </button>
+            <button
+                class = "pure-button button-main"
+                type = "submit"
+            >
+                Save
+            </button>
+        </div>
     </form>
 {% endblock %}

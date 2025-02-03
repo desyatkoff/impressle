@@ -6,13 +6,13 @@
 {% block content %}
     <h1>Frequently Asked Questions (FAQ)</h1>
 
-    <div id="faq">
+    <div class="card" id="faq">
         <div>
             <h2 class="question">
                 What is impressle?
             </h2>
 
-            <p class="answer">
+            <p class="card answer">
                 <b>impressle</b> is a unique social network where you have to draw by hand,
                 not uploading image files. Follow your favorite artists, give likes to other users' pictures
                 and make your own ones!
@@ -25,7 +25,7 @@
             </h2>
 
             <p class="answer">
-                <ol>
+                <ol class="card">
                     <li>
                         <a href="{{ url_for('auth.login') }}">Log in</a> to your account
                         (or <a href="{{ url_for('auth.signup') }}">sign up</a> if you do not have one)
@@ -34,15 +34,84 @@
                         Go to <a href="{{ url_for('views.create_picture') }}">Create Picture</a> page
                     </li>
                     <li>
-                        Draw something IMPRESSIVE
+                        Draw something impressive
                     </li>
                     <li>
                         Click "Publish" button
                     </li>
                     <li>
-                        You are now officially another new artist!
+                        You are now officially a new artist!
                     </li>
                 </ol>
+            </p>
+        </div>
+
+        <div>
+            <h2 class="question">
+                What is "Rank"?
+            </h2>
+
+            <p class="card answer">
+                User Rank shows their skills at drawing on impressle. More XP -> higher Rank
+
+                <br />
+
+                And if you want to know the details:
+
+                <br />
+                <br />
+
+                0 XP = "Newbie" Rank
+                <br />
+                1-24 XP = "Artist" Rank
+                <br />
+                25-49 = "Amateur Artist" Rank
+                <br />
+                50-99 = "Cool Guy" Rank
+                <br />
+                100-999 = "Skilled" Rank
+                <br />
+                1000+ = "impressive" Rank
+
+                <br />
+                <br />
+
+                Also, there are some <i>*special*</i> Ranks. For example: "Admin"
+                is a special Rank and regular users cannot get this Rank
+            </p>
+        </div>
+
+        <div>
+            <h2 class="question">
+                What is "XP"?
+            </h2>
+
+            <p class="card answer">
+                As said above, more XP -> higher Rank
+
+                <br />
+                <br />
+
+                You get +1 XP for publishing a picture
+                <br />
+                You get +1 XP for every follower
+                <br />
+                You get +1 XP for every like on your picture
+                <br />
+                You get +1 XP for every comment on your picture
+                <br />
+                You get -1 XP for deleting a picture
+                <br />
+                You get -1 XP if your picture gets banned
+                <br />
+                You get -1 XP if your comment gets banned
+                <br />
+                You get -1 XP if someone deletes their comment on your picture
+
+                <br />
+                <br />
+
+                You should get more XP to become the best on impressle
             </p>
         </div>
 
@@ -51,8 +120,36 @@
                 Are there any limits on posting pictures and other things?
             </h2>
 
-            <p class="answer">
-                No! You can post as many pictures as you want, without any limits
+            <p class="card answer">
+                No! You can post as many pictures as you want without any limits,
+                but don't spam, please
+            </p>
+        </div>
+
+        <div>
+            <h2 class="question">
+                What if my account/picture/comment gets banned?
+            </h2>
+
+            <p class="card answer">
+                If your account gets banned, you will not be able to log in to your account anymore
+                and other users will see "[ BANNED ]" tag in your profile
+
+                <br />
+                <br />
+
+                If your picture gets banned, it will be not showing at home page, but users still
+                can view the picture in your profile
+
+                <br />
+                <br />
+
+                If your comment gets banned, its text will be replaced with "[ BANNED ]"
+
+                <br />
+                <br />
+
+                Just don't be a bad guy and we will not ban you :)
             </p>
         </div>
 
@@ -61,26 +158,26 @@
                 Can I trust this website?
             </h2>
 
-            <p class="answer">
+            <p class="card answer">
                 Absolutely. Source code of impressle is available on GitHub.
-                You can check it on <a href="https://github.com/desyatkoff/impressle">this repository</a> (click)
+                You can check it on <a href="https://github.com/desyatkoff/impressle">this repository</a>
             </p>
         </div>
 
         <div>
             <h2 class="question">
-                I have other questions. Where to ask?
+                I didn't find answer to my question here. Where to ask?
             </h2>
 
-            <p class="answer">
+            <p class="card answer">
                 If you have some questions, you can ask on official impressle Telegram
                 community chat. Currently, there are available English and Russian channels and groups.
-                All of them are listed <a href="https://t.me/+B8xsRBp4wyBjYzIy">here</a> (click)
+                All of them are listed <a href="https://t.me/+B8xsRBp4wyBjYzIy">here</a>
 
                 <br />
 
                 Also, you can ask on GitHub
-                (<a href="https://github.com/desyatkoff/impressle">impressle repository</a> > Issues > New issue)
+                (<a href="https://github.com/desyatkoff/impressle">impressle repository</a> -> Issues -> New issue)
             </p>
         </div>
     </div>

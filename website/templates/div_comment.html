@@ -1,28 +1,33 @@
-<div class="comment" id="comment-{{ comment.uid }}">
+<div class="comment card" id="comment-{{ comment.uid }}">
     <div class="comment-info">
         <p class="comment-author">
+            Author:
             <a href="{{ url_for('views.user_profile', username=comment.author_username) }}">
                 @{{comment.author_username}}
             </a>
         </p>
-        <p class="date-created">
-            {{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }}
+        <p class="comment-date-created">
+            Commented on {{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }}
         </p>
     </div>
     <div class="comment-text">
         <p class="comment-text">
-            {{ comment.text }}
+            {% if comment.is_banned == True %}
+                <span style="color: red;">[ BANNED ]</span>
+            {% else %}
+                {{ comment.text }}
+            {% endif %}
         </p>
     </div>
 
 
     {% if user.uid == comment.author_uid %}
-        <div class="comment-other">
-            <form id="delete-comment-form" method="POST" action="{{ url_for('views.delete_comment', comment_uid=comment.uid) }}">
-                <button type="submit">
-                    Delete
-                </button>
-            </form>
-        </div>
+        <hr />
+
+        <form id="delete-comment-form" method="POST" action="{{ url_for('views.delete_comment', comment_uid=comment.uid) }}">
+            <button class="pure-button button-main" type="submit">
+                Delete Comment
+            </button>
+        </form>
     {% endif %}
 </div>

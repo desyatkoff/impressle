@@ -4,21 +4,33 @@
 {% block title %}impressle | Access Admin Panel{% endblock %}
 
 {% block content %}
+    <h1>
+        Welcome to the Admin Panel
+    </h1>
+
+    <b>
+        You have to provide the secret key to prove that you are an admin
+    </b>
+
+
     <form method="POST">
-        <label for="secret-key">
-            Secret Key
-        </label>
-        <input
-            type = "password"
-            name = "secret-key"
-            id = "secret-key"
-        />
+        <div class="card">
+            <label for="secret-key">
+                Secret Key
+            </label>
+            <input
+                type = "password"
+                id = "secret-key"
+                name = "secret-key"
+                placeholder = "Secret Key"
+            />
 
-        <br />
+            <br />
+            <br />
 
-
-        <button type="submit">
-            Access Admin Panel
-        </button>
+            <button type="submit" class="pure-button button-main">
+                Access the Admin Panel
+            </button>
+        </div>
     </form>
 {% endblock %}

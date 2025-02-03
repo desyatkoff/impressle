@@ -66,6 +66,11 @@ class User(website.db.Model, flask_login.UserMixin):
         backref = "user",
         passive_deletes = True
     )
+    follows = website.db.relationship(
+        "Follow",
+        backref = "user",
+        passive_deletes = True
+    )
     likes = website.db.relationship(
         "Like",
         backref = "user",
@@ -75,6 +80,10 @@ class User(website.db.Model, flask_login.UserMixin):
         "Comment",
         backref = "user",
         passive_deletes = True
+    )
+    is_banned = website.db.Column(
+        website.db.Boolean,
+        default = False
     )
 
 
@@ -111,6 +120,11 @@ class Picture(website.db.Model):
         backref = "picture",
         passive_deletes = True
     )
+    views = website.db.relationship(
+        "View",
+        backref = "picture",
+        passive_deletes = True
+    )
     author_uid = website.db.Column(
         website.db.Integer,
         website.db.ForeignKey(
@@ -121,6 +135,39 @@ class Picture(website.db.Model):
     )
     author_username = website.db.Column(
         website.db.String,
+        nullable = False
+    )
+    is_banned = website.db.Column(
+        website.db.Boolean,
+        default = False
+    )
+
+
+class Follow(website.db.Model):
+    id = website.db.Column(
+        website.db.Integer,
+        primary_key = True
+    )
+
+    uid = website.db.Column(
+        website.db.Integer,
+        unique = True,
+        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+    )
+    date_created = website.db.Column(
+        website.db.DateTime(timezone=True),
+        default = datetime.datetime.now(datetime.UTC)
+    )
+    followed_uid = website.db.Column(
+        website.db.Integer,
+        website.db.ForeignKey(
+            "user.uid",
+            ondelete = "CASCADE"
+        ),
+        nullable = False
+    )
+    follower_uid = website.db.Column(
+        website.db.Integer,
         nullable = False
     )
 
@@ -176,6 +223,47 @@ class Comment(website.db.Model):
     text = website.db.Column(
         website.db.String,
         nullable = False
+    )
+    date_created = website.db.Column(
+        website.db.DateTime(timezone=True),
+        default = datetime.datetime.now(datetime.UTC)
+    )
+    picture_uid = website.db.Column(
+        website.db.Integer,
+        website.db.ForeignKey(
+            "picture.uid",
+            ondelete = "CASCADE"
+        ),
+        nullable = False
+    )
+    author_uid = website.db.Column(
+        website.db.Integer,
+        website.db.ForeignKey(
+            "user.uid",
+            ondelete = "CASCADE"
+        ),
+        nullable = False
+    )
+    author_username = website.db.Column(
+        website.db.String,
+        nullable = False
+    )
+    is_banned = website.db.Column(
+        website.db.Boolean,
+        default = False
+    )
+
+
+class View(website.db.Model):
+    id = website.db.Column(
+        website.db.Integer,
+        primary_key = True
+    )
+
+    uid = website.db.Column(
+        website.db.Integer,
+        unique = True,
+        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),

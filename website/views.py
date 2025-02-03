@@ -33,35 +33,44 @@ views = flask.Blueprint(
 )
 
 
-def update_user_rank():
-    user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
+@views.before_request
+def before_request():
+    try:
+        user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
 
 
-    if user.xp > 0:
-        user.rank = "Artist"
+        if user.xp > 0:
+            user.rank = "Artist"
 
-    if user.xp > 24:
-        user.rank = "Amateur Artist"
+        if user.xp > 24:
+            user.rank = "Amateur Artist"
 
-    if user.xp > 49:
-        user.rank = "Cool Guy"
+        if user.xp > 49:
+            user.rank = "Cool Guy"
 
-    if user.xp > 99:
-        user.rank = "Skilled"
+        if user.xp > 99:
+            user.rank = "Skilled"
 
-    if user.xp == 666:
-        user.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
+        if user.xp == 666:
+            user.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
 
-    if user.xp > 999:
-        user.rank = "impressive"
-
-
-    for super_uid in config.SUPER_USERS:
-        if user.uid == super_uid:
-            user.rank = config.SUPER_USERS[super_uid]
+        if user.xp > 999:
+            user.rank = "impressive"
 
 
-    website.db.session.commit()
+        for admin_uid in config.ADMIN_UIDS:
+            if user.uid == admin_uid:
+                user.rank = "Admin"
+
+
+        website.db.session.commit()
+
+
+        if user.is_banned:
+            flask_login.logout_user()
+            flask.redirect(flask.url_for("views.banned"))
+    except:
+        pass
 
 
 @views.route("/")
@@ -70,7 +79,8 @@ def index():
     return flask.render_template(
         "index.html",
         user = flask_login.current_user,
-        pictures = website.models.Picture.query.all()
+        pictures = website.models.Picture.query.all(),
+        models = website.models
     )
 
 
@@ -161,9 +171,6 @@ def create_picture():
             website.db.session.commit()
 
 
-            update_user_rank()
-
-
             return flask.redirect(
                 flask.url_for(
                     endpoint = "views.view_picture",
@@ -211,9 +218,6 @@ def delete_picture(picture_uid):
 
             website.db.session.delete(picture)
             website.db.session.commit()
-
-
-            update_user_rank()
         else:
             flask.flash(
                 message = "You do not have enough permissions to delete this picture",
@@ -228,6 +232,13 @@ def delete_picture(picture_uid):
 def view_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
 
+
+    try:
+        view = website.models.View.query.filter_by(author_uid=flask_login.current_user.uid).first()
+    except AttributeError:
+        view = "Anonymous"
+
+
     if not picture:
         flask.flash(
             message = "Picture does not exist",
@@ -236,12 +247,24 @@ def view_picture(picture_uid):
 
 
         return flask.redirect(flask.request.referrer)
+    else:
+        if view is None:
+            new_view = website.models.View(
+                picture_uid = picture_uid,
+                author_uid = flask_login.current_user.uid,
+                author_username = flask_login.current_user.username
+            )
+
+
+            website.db.session.add(new_view)
+            website.db.session.commit()
 
 
     return flask.render_template(
         "picture.html",
         user = flask_login.current_user,
-        picture = picture
+        picture = picture,
+        models = website.models
     )
 
 
@@ -258,6 +281,79 @@ def faq():
     return flask.render_template(
         "faq.html",
         user = flask_login.current_user
+    )
+
+
+@views.route("/banned", methods=["GET", "POST"])
+def banned():
+    try:
+        return flask.redirect(
+            flask.url_for(
+                "views.user_profile",
+                username = flask_login.current_user.username
+            )
+        )
+    except AttributeError:
+        if flask.request.method == "POST":
+            checkbox = flask.request.form.get("checkbox")
+
+
+            if checkbox is (False or None):
+                flask.flash(
+                    "Go away then",
+                    category = "warning"
+                )
+            else:
+                return flask.redirect(flask.url_for("auth.signup"))
+
+
+        return flask.render_template(
+            "banned.html",
+            user = flask_login.current_user
+        )
+
+
+@views.route("/follow-user/<user_uid>", methods=["POST"])
+@flask_login.login_required
+def follow_user(user_uid):
+    user = website.models.User.query.filter_by(uid=user_uid).first()
+    follow = website.models.Follow.query.filter_by(
+        followed_uid = user.uid,
+        follower_uid = flask_login.current_user.uid
+    ).first()
+
+
+    if not user:
+        flask.flash(
+            message = "User does not exist",
+            category = "error"
+        )
+    else:
+        if follow is None:
+            new_follow = website.models.Follow(
+                followed_uid = user.uid,
+                follower_uid = flask_login.current_user.uid
+            )
+
+            website.db.session.add(new_follow)
+
+
+            user.xp += 1
+        else:
+            website.db.session.delete(follow)
+
+
+            user.xp -= 1
+
+
+        website.db.session.commit()
+
+
+    return flask.jsonify(
+        {
+            "followed": flask_login.current_user.uid in map(lambda x: x.follower_uid, user.follows),
+            "followers": len(user.follows)
+        }
     )
 
 
@@ -302,9 +398,6 @@ def like_picture(picture_uid):
         website.db.session.commit()
 
 
-        update_user_rank()
-
-
     return flask.jsonify(
         {
             "likes": len(picture.likes),
@@ -327,6 +420,9 @@ def create_comment(picture_uid):
         )
     else:
         if picture:
+            picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+
+
             flask.flash(
                 message = "Successfully published your comment",
                 category = "success"
@@ -342,6 +438,11 @@ def create_comment(picture_uid):
 
 
             website.db.session.add(comment)
+
+
+            picture_author.xp += 1
+
+
             website.db.session.commit()
         else:
             flask.flash(
@@ -356,16 +457,20 @@ def create_comment(picture_uid):
 @views.route("/delete-comment/<comment_uid>", methods=["POST"])
 @flask_login.login_required
 def delete_comment(comment_uid):
-    comment = website.models.Comment.query.filter_by(id=comment_uid).first()
+    comment = website.models.Comment.query.filter_by(uid=comment_uid).first()
+    picture = website.models.Picture.query.filter_by(uid=comment.picture_uid).first()
 
 
     if not comment:
         flask.flash(
-            message = "Picture does not exist",
+            message = "Comment does not exist",
             category = "error"
         )
     else:
         if flask_login.current_user.uid == comment.author_uid:
+            picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+
+
             flask.flash(
                 message = "Successfully deleted your comment",
                 category = "success"
@@ -373,6 +478,11 @@ def delete_comment(comment_uid):
 
 
             website.db.session.delete(comment)
+
+
+            picture_author.xp -= 1
+
+
             website.db.session.commit()
         else:
             flask.flash(

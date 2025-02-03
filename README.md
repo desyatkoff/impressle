@@ -66,13 +66,24 @@
     + Log in
     + Edit profile
         - Edit "About Me"
+    + Follow/Unfollow other users
     + Log out
 * Create pictures
 * Interact with pictures
     + Like
     + Comment
 * Delete pictures and comments
+* Ranking system
+    + Get XP to upgrade Rank
+        - +1 XP for publishing a Picture
+        - +1 XP for getting like/comment
+        - +1 XP for getting a follower
 * Admin panel
+    + View all the database tables
+    + Ban users/pictures/comments
+        - Banned user will lost the access to their account and will be marked with `[ BANNED ]` tag in their profile
+        - Banned picture will not be shown in Home page, but still can be accessed by visiting URL ("/picture/{picture_uid}") and author's profile
+        - Banned comment's text will be changed to `[ BANNED ]`
 
 
 ## Installation and Launching
@@ -103,8 +114,16 @@
     ```Shell
     $ pip3 install -r requirements.txt
     ```
-5. Edit `.env` and `config.py` files to make best configuration for you
-6. Launch the app on localhost
+5. Edit configuration
+    * Environment variables (secret data)
+        + Rename `.env.example` to `.env`
+        ```Shell
+        $ mv .env.example .env
+        ```
+        + Edit `.env` using your code editor
+    * Other configs (public data)
+        + Edit `config.py` using your code editor
+6. Launch the app on localhost (127.0.0.1)
     * Using Python
         ```Shell
         $ python main.py

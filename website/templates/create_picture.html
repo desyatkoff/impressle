@@ -4,24 +4,42 @@
 {% block title %}impressle | Create a Picture{% endblock %}
 
 {% block content %}
+    <h1>
+        Create Picture
+    </h1>
+
+
     <form id="canvas-form" method="POST">
-        <canvas id="main-canvas" width="800" height="600"></canvas>
-        <input
-            type = "hidden"
-            id = "image-data"
-            name = "image-data"
-        />
-        <input
-            type = "text"
-            id = "title"
-            name = "title"
-            placeholder = "Picture title"
-        />
+        <div class="card" id="canvas-card">
+            <h2>
+                Time to draw!
+            </h2>
 
 
-        <button type="submit">
-            Publish
-        </button>
+            <canvas id="main-canvas" width="800" height="600"></canvas>
+
+            <hr />
+
+            <input
+                type = "hidden"
+                id = "image-data"
+                name = "image-data"
+            />
+            <input
+                type = "text"
+                id = "title"
+                name = "title"
+                placeholder = "Picture title"
+            />
+
+
+            <button
+                class = "pure-button button-main"
+                type = "submit"
+            >
+                Publish
+            </button>
+        </div>
     </form>
 
 

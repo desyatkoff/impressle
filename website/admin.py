@@ -39,19 +39,26 @@ def access_admin():
 
 
     if flask.request.method == "POST":
+        user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
         secret_key = flask.request.form.get("secret-key")
 
 
         if secret_key == config.FLASK_SECRET:
-            flask.flash(
-                message = "Successfully accessed the Admin Panel",
-                category = "success"
-            )
+            if user.rank == "Admin":
+                flask.flash(
+                    message = "Successfully accessed the Admin Panel",
+                    category = "success"
+                )
 
-            access = True
+                access = True
 
 
-            return flask.redirect(flask.url_for("admin.panel"))
+                return flask.redirect(flask.url_for("admin.panel"))
+            else:
+                flask.flash(
+                    message = "You are not an Admin",
+                    category = "error"
+                )
         else:
             flask.flash(
                 message = "Incorrect Secret Key",
@@ -62,18 +69,63 @@ def access_admin():
             return flask.redirect(flask.request.referrer)
 
 
-    return flask.render_template("access_admin.html")
+    return flask.render_template(
+        "access_admin.html",
+        user = flask_login.current_user
+    )
 
 
-@admin.route("/panel")
+@admin.route("/panel", methods=["GET", "POST"])
 def panel():
     if access:
+        if flask.request.method == "POST":
+            try:
+                user_uid = flask.request.form.get("user-uid")
+                user = website.models.User.query.filter_by(uid=user_uid).first()
+
+                user.is_banned = True
+            except:
+                try:
+                    picture_uid = flask.request.form.get("picture-uid")
+                    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+
+                    picture.is_banned = True
+
+
+                    picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+
+
+                    picture_author.xp -= 1
+                except:
+                    try:
+                        comment_uid = flask.request.form.get("comment-uid")
+                        comment = website.models.Comment.query.filter_by(uid=comment_uid).first()
+
+                        comment.is_banned = True
+
+
+                        comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
+
+
+                        comment_author.xp -= 1
+                    except:
+                        flask.flash(
+                            message = "No any data",
+                            category = "error"
+                        )
+
+
+            website.db.session.commit()
+
+
         return flask.render_template(
             "admin.html",
+            user = flask_login.current_user,
             users = website.models.User.query.all(),
             pictures = website.models.Picture.query.all(),
             likes = website.models.Like.query.all(),
-            comments = website.models.Comment.query.all()
+            comments = website.models.Comment.query.all(),
+            views = website.models.View.query.all()
         )
     else:
         return flask.redirect(flask.url_for("admin.access_admin"))

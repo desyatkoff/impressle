@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block title %}impressle | You are Banned{% endblock %}
+
+{% block content %}
+    <h1>Unfortunately, this account is banned! :(</h1>
+
+    <p>
+        You can't log in to this account anymore. Breaking the rules is bad, you know?
+        It's allowed to create another account, and if you want to do this, then
+        promise that you will not break the rules again
+    </p>
+
+    <form method="POST">
+            <label for="checkbox" class="pure-checkbox">
+                <input
+                    type = "checkbox"
+                    id = "checkbox"
+                    name = "checkbox"
+                />
+                I will not break the rules next time
+            </label>
+
+            <br />
+            <br />
+
+            <button type="submit" class="pure-button button-main">
+                Create new account
+            </button>
+        </div>
+    </form>
+{% endblock %}

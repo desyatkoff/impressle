@@ -5,7 +5,7 @@ let stroke_width = "4";
 let is_drawing = false;
 
 
-context.fillStyle = "#0d0d0d";
+context.fillStyle = "#1a1a1a";
 context.fillRect(0, 0, canvas.width, canvas.height);
 
 

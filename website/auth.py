@@ -36,6 +36,7 @@ def signup():
     if flask.request.method == "POST":
         username = flask.request.form.get("username")
         password = flask.request.form.get("password")
+        checkbox = flask.request.form.get("checkbox")
 
 
         if website.models.User.query.filter_by(username=username).first() is not None:
@@ -51,6 +52,11 @@ def signup():
         elif len(password) < 8:
             flask.flash(
                 message = "Password is too short",
+                category = "error"
+            )
+        elif checkbox is (False or None):
+            flask.flash(
+                message = "You have to read Terms of Service and Privacy Policy",
                 category = "error"
             )
         else:
@@ -101,18 +107,32 @@ def login():
 
         if user is not None:
             if werkzeug.security.check_password_hash(user.password, password):
-                flask.flash(
-                    message = "Successfully logged in",
-                    category = "success"
-                )
-
-                flask_login.login_user(
-                    user = user,
-                    remember = True
-                )
+                if user.is_banned is True:
+                    flask.flash(
+                        message = "Account is banned",
+                        category = "error"
+                    )
 
 
-                return flask.redirect(f"/user/@{user.username}")
+                    return flask.redirect(flask.url_for("views.banned"))
+                else:
+                    flask.flash(
+                        message = "Successfully logged in",
+                        category = "success"
+                    )
+
+                    flask_login.login_user(
+                        user = user,
+                        remember = True
+                    )
+
+
+                    return flask.redirect(
+                        flask.url_for(
+                            endpoint = "views.user_profile",
+                            username = user.username
+                        )
+                    )
             else:
                 flask.flash(
                     message = "Invalid password",

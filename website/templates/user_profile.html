@@ -5,39 +5,67 @@
 
 {% block content %}
     <div id="profile">
-        <div id="profile-info">
-            <h1>
-                @{{ user_profile.username }}
-            </h1>
+        <h1>
+            Profile
+        </h1>
 
+        <div class="card" id="profile-info">
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <h1 align="left">
+                        @{{ user_profile.username }}
+                        {% if user_profile.rank == "Admin" %}
+                            <span style="color: #7f00ff">[ ADMIN ]</span>
+                        {% endif %}
+                        {% if user_profile.is_banned == True %}
+                            <span style="color: red;">[ BANNED ]</span>
+                        {% endif %}
+                    </h1>
+                </div>
+                <div class="pure-u-1-2" >
+                    <p class="followers" align="right">
+                        <span>
+                            <span class="followers-count" id="followers-count-{{ user_profile.uid }}">
+                                {{ user_profile.follows|length }}
+                            </span>
+                            Followers
+                        </span>
 
-            <p id="uid">
-                ID: {{ user_profile.uid }}
-            </p>
+                        {% if user.uid != user_profile.uid %}
+                            {% if user.uid in user_profile.follows|map(attribute="follower_uid")|list %}
+                                <button class="button following pure-button button-main" id="follow-button-{{ user_profile.uid }}" onclick="follow({{ user_profile.uid }})">
+                                    Unfollow
+                                </button>
+                            {% else %}
+                                <button class="button not-following pure-button button-main" id="follow-button-{{ user_profile.uid }}" onclick="follow({{ user_profile.uid }})">
+                                    Follow
+                                </button>
+                            {% endif %}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
 
-            <p id="account-created">
-                <b>ACCOUNT CREATED:</b>
-                <br />
-                {{ user_profile.date_created.day }}.{{ user_profile.date_created.month }}.{{ user_profile.date_created.year }}
-            </p>
-
-            <p id="about-me">
-                <b>ABOUT ME:</b>
-                <br />
-                {{ user_profile.about_me }}
-            </p>
-
-            <p id="rank">
-                <b>RANK:</b>
-                <br />
-                {{ user_profile.rank }}
-            </p>
-
-            <p id="xp">
-                <b>XP:</b>
-                <br />
-                {{ user_profile.xp }}
-            </p>
+            <table class="pure-table" align="center" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Account Created</th>
+                        <th>Rank</th>
+                        <th>XP</th>
+                        <th>About Me</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ user_profile.uid }}</td>
+                        <td>{{ user_profile.date_created.day }}.{{ user_profile.date_created.month }}.{{ user_profile.date_created.year }}</td>
+                        <td>{{ user_profile.rank }}</td>
+                        <td>{{ user_profile.xp }}</td>
+                        <td>{{ user_profile.about_me }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
 

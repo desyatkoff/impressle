@@ -36,6 +36,6 @@ HOST = "0.0.0.0"
 PORT = 5000
 DEBUG_MODE = False
 
-SUPER_USERS = {
-    -1: "Admin"
-}
+ADMIN_UIDS = [
+    -1
+]
