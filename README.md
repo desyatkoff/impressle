@@ -12,7 +12,7 @@
 
 **Unleash your creativity!**
 
-**impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just try it!
+**impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give Likes to other Users' Pictures and make your own ones. It's fun, just try it!
 
 
 ## Table of Contents
@@ -22,7 +22,7 @@
 3. [Table of Contents](#table%20of%20contents)
 4. [Tech Stack](#tech%20stack)
 5. [Features](#features)
-6. [Installation](#installation)
+6. [Install and Setup](#install&20and&20setup)
 7. [Contributing](#contributing)
 8. [Support the Project](#support%20the%20project)
 
@@ -30,23 +30,11 @@
 ## Tech Stack
 \
 <img
-    src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+    src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
     height = "64"
 />
 <img
     src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
-    height = "64"
-/>
-<img
-    src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-    height = "64"
-/>
-<img
-    src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-    height = "64"
-/>
-<img
-    src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
     height = "64"
 />
 <img
@@ -57,64 +45,70 @@
     src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
     height = "64"
 />
+<img
+    src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+    height = "64"
+/>
+<img
+    src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+    height = "64"
+/>
+<img
+    src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+    height = "64"
+/>
+
+* **Backend**
+    + Python
+        - [Flask](https://flask.palletsprojects.com/en/stable)
+        - [SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/stable)
+    + SQLite Database
+* **Frontend**
+    + HTML
+    + CSS
+        - [Pure.CSS](https://pure-css.github.io)
+    + JavaScript
 
 
 ## Features
 
-* Account system
+* **Account System**
     + Sign up
     + Log in
-    + Edit profile
+    + Edit Profile
         - Edit "About Me"
-    + Follow/Unfollow other users
+    + Follow/Unfollow other Users
     + Log out
-* Create pictures
-* Interact with pictures
+* **Create Pictures**
+* **Interact with Pictures**
     + Like
     + Comment
-* Delete pictures and comments
-* Ranking system
-    + Get XP to upgrade Rank
-        - +1 XP for publishing a Picture
-        - +1 XP for getting like/comment
-        - +1 XP for getting a follower
-* Admin panel
-    + View all the database tables
-    + Ban users/pictures/comments
-        - Banned user will lost the access to their account and will be marked with `[ BANNED ]` tag in their profile
-        - Banned picture will not be shown in Home page, but still can be accessed by visiting URL ("/picture/{picture_uid}") and author's profile
-        - Banned comment's text will be changed to `[ BANNED ]`
+* **Delete Pictures and Comments**
+* **Ranking System**
+    + Get more Karma to upgrade Rank
+        - +1 Karma for publishing a Picture
+        - +1 Karma for getting a Like/Comment
+        - +1 Karma for getting a Follower
+        - Visit the FAQ (Frequently Asked Questions) page for more details
+* **Admin Panel**
+    + Inspect the Database
+    + Ban Users/Pictures/Comments
+        - Banned User will lost the access to their account and will be marked with `[ BANNED ]` tag in their profile
+        - Banned Picture will not be shown in Feed page, but still can be accessed by visiting URL ("/picture/{picture_uid}") and author's profile
+        - Banned Comment's text will be changed to `[ BANNED ]`
 
 
-## Installation and Launching
+## Install and Setup
 
-1. Clone the repository
+1. **Clone the Repository**
     ```Shell
     $ git clone https://github.com/desyatkoff/impressle.git
     ```
-2. Go to the repository directory
+2. **Go to the Repository Directory**
     ```Shell
     $ cd impressle/
     ```
-3. Create and activate Python virtual environment
-    * Create
-        ```Shell
-        $ python3 -m venv .venv/
-        ```
-    * Activate
-        + Windows
-            ```Shell
-            $ .venv\Scripts\activate
-            ```
-        + Linux/macOS
-            ```Shell
-            $ source .venv/bin/activate
-            ```
-4. Install all the dependencies
-    ```Shell
-    $ pip3 install -r requirements.txt
-    ```
-5. Edit configuration
+3. **Edit Configuration Files**
     * Environment variables (secret data)
         + Rename `.env.example` to `.env`
         ```Shell
@@ -123,7 +117,23 @@
         + Edit `.env` using your code editor
     * Other configs (public data)
         + Edit `config.py` using your code editor
-6. Launch the app on localhost (127.0.0.1)
+4. **Install `pipenv`**
+    ```Shell
+    $ pipx install pipenv
+    ```
+5. **Add `pipenv` to PATH**
+    ```Shell
+    $ pipx ensurepath
+    ```
+6. **Install All the Dependencies**
+    ```Shell
+    $ pipenv sync
+    ```
+7. **Activate the Virtual Environment**
+    ```Shell
+    $ pipenv shell
+    ```
+8. **Launch the Web App**
     * Using Python
         ```Shell
         $ python main.py
@@ -140,7 +150,7 @@
 
 ## Contributing
 
-Want to help? You can update or fix something, here's how to contribute to the project repository:
+**Want to help? You can update or fix something, here's how to contribute to the project repository:**
 
 1. Fork the repository
 2. Create new branch
@@ -163,7 +173,7 @@ Done! I'll review your code changes and *maybe* will accept them. Even just addi
 
 ## Support the Project
 
-Want to help but don't know how to code?
+**Want to help but don't know how to code?**
 
 * Crypto (only send TON, other coins will be lost!)
     ```
