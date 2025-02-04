@@ -19,14 +19,14 @@
 
 1. [Title](#impressle)
 2. [Description](#description)
-3. [Table of Contents](#table%20of%20contents)
-4. [Tech Stack](#tech%20stack)
+3. [Table of Contents](#table-of-contents)
+4. [Tech Stack](#tech-stack)
 5. [Features](#features)
-6. [Install and Setup](#install&20and&20setup)
-    * [Easy Method](#easy%20method)
-    * [Normal Method](#normal%20method)
+6. [Install and Setup](#install-and-setup)
+    * [Easy Method](#easy-method)
+    * [Normal Method](#normal-method)
 7. [Contributing](#contributing)
-8. [Support the Project](#support%20the%20project)
+8. [Support the Project](#support-the-project)
 
 
 ## Tech Stack
