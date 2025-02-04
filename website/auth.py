@@ -152,7 +152,7 @@ def login():
 @flask_login.login_required
 def logout():
     flask.flash(
-        message = "Successfully logget out",
+        message = "Successfully logged out",
         category = "success"
     )
 
