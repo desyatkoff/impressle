@@ -23,6 +23,8 @@
 4. [Tech Stack](#tech%20stack)
 5. [Features](#features)
 6. [Install and Setup](#install&20and&20setup)
+    * [Easy Method](#easy%20method)
+    * [Normal Method](#normal%20method)
 7. [Contributing](#contributing)
 8. [Support the Project](#support%20the%20project)
 
@@ -100,6 +102,27 @@
 
 ## Install and Setup
 
+### Easy Method
+
+1. **Clone the Repository**
+    ```Shell
+    $ git clone https://github.com/desyatkoff/impressle.git
+    ```
+2. **Go to the Repository Directory**
+    ```Shell
+    $ cd impressle/
+    ```
+3. **Launch Auto-Setup script (`setup.sh`)**
+    ```Shell
+    $ sh setup.sh
+    ```
+4. **Launch the Web App**
+    ```Shell
+    $ python main.py
+    ```
+
+### Normal Method
+
 1. **Clone the Repository**
     ```Shell
     $ git clone https://github.com/desyatkoff/impressle.git
@@ -125,15 +148,19 @@
     ```Shell
     $ pipx ensurepath
     ```
-6. **Install All the Dependencies**
+6. **Lock the `Pipfile`**
+    ```Shell
+    $ pipenv lock
+    ```
+7. **Install All the Dependencies**
     ```Shell
     $ pipenv sync
     ```
-7. **Activate the Virtual Environment**
+8. **Activate the Virtual Environment**
     ```Shell
     $ pipenv shell
     ```
-8. **Launch the Web App**
+9. **Launch the Web App**
     * Using Python
         ```Shell
         $ python main.py
