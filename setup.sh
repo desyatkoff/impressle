@@ -1,3 +1,6 @@
+#!usr/bin/bash
+
+
 mv .env.example .env
 
 echo "$(cat .env)FLASK_SECRET" > .env
