@@ -62,6 +62,11 @@
                                 href = "{{ url_for('views.create_picture') }}"
                                 class = "pure-menu-link pure-button button-main"
                             >
+                                <img
+                                    src = "/static/images/plus-square.svg"
+                                    height = "32"
+                                    class = "icon"
+                                />
                                 Create Picture
                             </a>
                         </li>
@@ -70,6 +75,11 @@
                                 href = "{{ url_for('views.feed') }}"
                                 class = "pure-menu-link pure-button"
                             >
+                                <img
+                                    src = "/static/images/compass.svg"
+                                    height = "32"
+                                    class = "icon"
+                                />
                                 Feed
                             </a>
                         </li>
@@ -79,6 +89,11 @@
                                     href = "{{ url_for('views.user_profile', username=user.username) }}"
                                     class = "pure-menu-link pure-button"
                                 >
+                                    <img
+                                        src = "/static/images/user.svg"
+                                        height = "32"
+                                        class = "icon"
+                                    />
                                     Profile (@{{ user.username }})
                                 </a>
                             </li>
@@ -87,6 +102,11 @@
                                     href = "{{ url_for('views.user_settings') }}"
                                     class = "pure-menu-link pure-button"
                                 >
+                                    <img
+                                        src = "/static/images/settings.svg"
+                                        height = "32"
+                                        class = "icon"
+                                    />
                                     Settings
                                 </a>
                             </li>
@@ -96,6 +116,11 @@
                                     href = "{{ url_for('auth.login') }}"
                                     class = "pure-menu-link pure-button"
                                 >
+                                    <img
+                                        src = "/static/images/log-in.svg"
+                                        height = "32"
+                                        class = "icon"
+                                    />
                                     Log In
                                 </a>
                             </li>
@@ -104,6 +129,11 @@
                                     href = "{{ url_for('auth.signup') }}"
                                     class = "pure-menu-link pure-button"
                                 >
+                                    <img
+                                        src = "/static/images/user-plus.svg"
+                                        height = "32"
+                                        class = "icon"
+                                    />
                                     Sign Up
                                 </a>
                             </li>
@@ -113,6 +143,11 @@
                                 href = "{{ url_for('views.about') }}"
                                 class = "pure-menu-link pure-button"
                             >
+                                <img
+                                    src = "/static/images/info.svg"
+                                    height = "32"
+                                    class = "icon"
+                                />
                                 About
                             </a>
                         </li>
@@ -121,6 +156,11 @@
                                 href = "{{ url_for('views.faq') }}"
                                 class = "pure-menu-link pure-button"
                             >
+                                <img
+                                    src = "/static/images/info.svg"
+                                    height = "32"
+                                    class = "icon"
+                                />
                                 FAQ
                             </a>
                         </li>
@@ -130,6 +170,11 @@
                                     href = "{{ url_for('admin.panel') }}"
                                     class = "pure-menu-link pure-button"
                                 >
+                                    <img
+                                        src = "/static/images/database.svg"
+                                        height = "32"
+                                        class = "icon"
+                                    />
                                     Admin Panel
                                 </a>
                             </li>
@@ -140,6 +185,11 @@
                                     href = "{{ url_for('auth.logout') }}"
                                     class = "pure-menu-link pure-button"
                                 >
+                                    <img
+                                        src = "/static/images/log-out.svg"
+                                        height = "32"
+                                        class = "icon"
+                                    />
                                     Log Out
                                 </a>
                             </li>
