@@ -12,7 +12,7 @@
 
 **Unleash your creativity!**
 
-**impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give Likes to other Users' Pictures and make your own ones. It's fun, just try it!
+**impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just try it!
 
 
 ## Table of Contents
@@ -77,27 +77,34 @@
 * **Account System**
     + Sign up
     + Log in
-    + Edit Profile
-        - Edit "About Me"
-    + Follow/Unfollow other Users
+    + Account settings
+        - Profile
+            - Edit "About Me"
+        - Privacy
+            - Show followers count in your profile?
+            - Allow users to comment your pictures?
+        - Danger Zone
+            - Delete account
+    + Follow/Unfollow other users
     + Log out
 * **Create Pictures**
-* **Interact with Pictures**
+* **Interact With Pictures**
     + Like
     + Comment
 * **Delete Pictures and Comments**
 * **Ranking System**
-    + Get more Karma to upgrade Rank
-        - +1 Karma for publishing a Picture
-        - +1 Karma for getting a Like/Comment
-        - +1 Karma for getting a Follower
+    + Get more karma to upgrade rank
+        - +1 karma for publishing a picture
+        - +1 karma for getting a like/comment
+        - +1 karma for getting a follower
         - Visit the FAQ (Frequently Asked Questions) page for more details
 * **Admin Panel**
-    + Inspect the Database
-    + Ban Users/Pictures/Comments
-        - Banned User will lost the access to their account and will be marked with `[ BANNED ]` tag in their profile
-        - Banned Picture will not be shown in Feed page, but still can be accessed by visiting URL ("/picture/{picture_uid}") and author's profile
-        - Banned Comment's text will be changed to `[ BANNED ]`
+    + Inspect the database
+    + Edit the database (not recommended though)
+    + Ban users/pictures/comments
+        - Banned user will lost the access to their account and will be marked with `[ BANNED ]` tag in their profile
+        - Banned picture will not be shown in Feed page, but still can be accessed by visiting URL ("/picture/{picture_uid}") and author's profile
+        - Banned comment's text will be changed to `[ BANNED ]`
 
 
 ## Install and Setup
@@ -112,7 +119,7 @@
     ```Shell
     $ cd impressle/
     ```
-3. **Launch Auto-Setup script (`setup.sh`)**
+3. **Launch Auto-Setup Script (`setup.sh`)**
     ```Shell
     $ sh setup.sh
     ```
@@ -188,7 +195,7 @@
 > [!NOTE]\
 > **Prefer naming your git commits something like that:**
 >
-> 1. "UPDATE: Added/Removed the \*feature\*"\
+> 1. "UPDATE: Added/Improved/Removed the \*feature\*"\
 > *OR*\
 > "ADD: \*Feature\*"\
 > "REMOVE: \*Feature\*"
