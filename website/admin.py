@@ -204,33 +204,35 @@ def panel():
                         item.author_uid = new_value
                     elif column_name.lower() == ("author_username" or "author username"):
                         item.author_username = new_value
-            elif form_type == "ban-user":
+            elif form_type == "ban-form":
                 user_uid = flask.request.form.get("user-uid")
-                user = website.models.User.query.filter_by(uid=user_uid).first()
-
-                user.status = "banned"
-            elif form_type == "ban-picture":
                 picture_uid = flask.request.form.get("picture-uid")
-                picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
-
-                picture.status = "banned"
-
-
-                picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
-
-
-                picture_author.karma -= 1
-            elif form_type == "ban-comment":
                 comment_uid = flask.request.form.get("comment-uid")
-                comment = website.models.Comment.query.filter_by(uid=comment_uid).first()
-
-                comment.status = "banned"
 
 
-                comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
+                try:
+                    user = website.models.User.query.filter_by(uid=int(user_uid)).first()
+                    user.status = "banned"
+                except:
+                    pass
 
+                try:
+                    picture = website.models.Picture.query.filter_by(uid=int(picture_uid)).first()
+                    picture.status = "banned"
 
-                comment_author.karma -= 1
+                    picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+                    picture_author.karma -= 1
+                except:
+                    pass
+
+                try:
+                    comment = website.models.Comment.query.filter_by(uid=int(comment_uid)).first()
+                    comment.status = "banned"
+
+                    comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
+                    comment_author.karma -= 1
+                except:
+                    pass
 
 
             website.db.session.commit()

@@ -318,39 +318,51 @@
                 />
 
 
-                <input
-                    type = "text"
-                    id = "table-name"
-                    name = "table-name"
-                    placeholder = "Table Name"
-                />
+                <div class="pure-g" align="center" width="100%"></div>
+                    <div class="pure-u-1-4">
+                        <input
+                            type = "text"
+                            id = "table-name"
+                            name = "table-name"
+                            placeholder = "Table Name"
+                        />
+                    </div>
 
-                <input
-                    type = "text"
-                    id = "row-id"
-                    name = "row-id"
-                    placeholder = "Row ID"
-                />
+                    <div class="pure-u-1-4">
+                        <input
+                            type = "text"
+                            id = "row-id"
+                            name = "row-id"
+                            placeholder = "Row ID"
+                        />
+                    </div>
 
-                <input
-                    type = "text"
-                    id = "column-name"
-                    name = "column-name"
-                    placeholder = "Column Name"
-                />
+                    <div class="pure-u-1-4">
+                        <input
+                            type = "text"
+                            id = "column-name"
+                            name = "column-name"
+                            placeholder = "Column Name"
+                        />
+                    </div>
 
-                <input
-                    type = "text"
-                    id = "new-value"
-                    name = "new-value"
-                    placeholder = "New Value"
-                />
+                    <div class="pure-u-1-4">
+                        <input
+                            type = "text"
+                            id = "new-value"
+                            name = "new-value"
+                            placeholder = "New Value"
+                        />
+                    </div>
 
-                <hr />
 
-                <button class="pure-button button-main" type="submit">
-                    Save
-                </button>
+                    <hr />
+
+
+                    <button class="pure-button button-main" type="submit">
+                        Edit Value
+                    </button>
+                </div>
             </form>
         </div>
 
@@ -361,17 +373,17 @@
 
 
         <div class="card">
-            <div class="pure-g" align="center" width="100%">
-                <div class="pure-u-1-3">
-                    <form id="ban-user-form" method="POST">
-                        <input
-                            type = "hidden"
-                            id = "form-type"
-                            name = "form-type"
-                            value = "ban-user"
-                        />
+            <form id="ban-form" method="POST">
+                <input
+                    type = "hidden"
+                    id = "form-type"
+                    name = "form-type"
+                    value = "ban-form"
+                />
 
 
+                <div class="pure-g" align="center" width="100%">
+                    <div class="pure-u-1-3">
                         <input
                             type = "text"
                             class = "pure-input"
@@ -379,64 +391,37 @@
                             name = "user-uid"
                             placeholder = "User UID"
                         />
+                    </div>
 
-
-                        <button class="pure-button button-main" type="submit">
-                            Ban
-                        </button>
-                    </form>
-                </div>
-
-                <div class="pure-u-1-3">
-                    <form id="ban-picture-form" method="POST">
-                        <input
-                            type = "hidden"
-                            id = "form-type"
-                            name = "form-type"
-                            value = "ban-picture"
-                        />
-
-
+                    <div class="pure-u-1-3">
                         <input
                             type = "text"
                             class = "pure-input"
                             id = "picture-uid"
                             name = "picture-uid"
                             placeholder = "Picture UID"
-                        />
+                        >
+                    </div>
 
-
-                        <button class="pure-button button-main" type="submit">
-                            Ban
-                        </button>
-                    </form>
-                </div>
-
-                <div class="pure-u-1-3">
-                    <form id="ban-comment-form" method="POST">
-                        <input
-                            type = "hidden"
-                            id = "form-type"
-                            name = "form-type"
-                            value = "ban-comment"
-                        />
-
-
+                    <div class="pure-u-1-3">
                         <input
                             type = "text"
                             class = "pure-input"
                             id = "comment-uid"
                             name = "comment-uid"
                             placeholder = "Comment UID"
-                        />
-
-
-                        <button class="pure-button button-main" type="submit">
-                            Ban
-                        </button>
-                    </form>
+                        >
+                    </div>
                 </div>
-            </div>
+
+
+                <hr />
+
+
+                <button class="pure-button button-main" type="submit">
+                    Ban
+                </button>
+            </form>
         </div>
     </div>
 {% endblock %}
