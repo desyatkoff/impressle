@@ -5,18 +5,24 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="Unleash your creativity!" />
         <link
-        rel = "preconnect"
-        href = "https://fonts.googleapis.com"
+            rel = "icon"
+            href = "{{ url_for('static', filename='images/logo.svg') }}"
+            type = "image/svg+xml"
         />
         <link
-        rel = "preconnect"
-        href = "https://fonts.gstatic.com"
-        crossorigin
+            rel = "preconnect"
+            href = "https://fonts.googleapis.com"
         />
         <link
-        rel = "stylesheet"
-        href = "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+            rel = "preconnect"
+            href = "https://fonts.gstatic.com"
+            crossorigin
+        />
+        <link
+            rel = "stylesheet"
+            href = "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         />
         <link
             rel = "stylesheet"
@@ -36,7 +42,7 @@
     <body>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-4">
-                <div class="sidebar">
+                <div class="sidebar sidebar-left">
                     <img
                         src = "/static/images/logo-full.svg"
                         alt = "impressle"
@@ -44,11 +50,11 @@
                         class = "logo pure-img"
                     />
 
-                    <p class="slogan">
-                        Unleash your creativity!
+                    <p class="slogan" align="center">
+                        <b>
+                            Unleash your creativity!
+                        </b>
                     </p>
-
-                    <hr />
 
                     <ul class="pure-menu-list">
                         <li class="pure-menu-item">
@@ -61,10 +67,10 @@
                         </li>
                         <li class="pure-menu-item">
                             <a
-                                href = "/"
+                                href = "{{ url_for('views.feed') }}"
                                 class = "pure-menu-link pure-button"
                             >
-                                Home
+                                Feed
                             </a>
                         </li>
                         {% if user.is_authenticated %}
@@ -139,6 +145,23 @@
                             </li>
                         {% endif %}
                     </ul>
+
+                    <div class="sidebar-footer">
+                        <p>
+                            <a href="{{ url_for('views.terms_of_service') }}">
+                                Terms of Service
+                            </a>
+                            |
+                            <a href="{{ url_for('views.privacy_policy') }}">
+                                Privacy Policy
+                            </a>
+                        </p>
+                        <p>
+                            Copyright © 2025 impressle.
+                            <br />
+                            All rights reserved.
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="pure-u-1 pure-u-md-3-4">

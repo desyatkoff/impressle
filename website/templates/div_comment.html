@@ -10,9 +10,12 @@
             Commented on {{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }}
         </p>
     </div>
+
+    <hr />
+
     <div class="comment-text">
         <p class="comment-text">
-            {% if comment.is_banned == True %}
+            {% if comment.status == "banned" %}
                 <span style="color: red;">[ BANNED ]</span>
             {% else %}
                 {{ comment.text }}

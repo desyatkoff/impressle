@@ -36,6 +36,7 @@ def signup():
     if flask.request.method == "POST":
         username = flask.request.form.get("username")
         password = flask.request.form.get("password")
+        about_me = flask.request.form.get("about-me")
         checkbox = flask.request.form.get("checkbox")
 
 
@@ -71,7 +72,8 @@ def signup():
                 password = werkzeug.security.generate_password_hash(
                     password = password,
                     method = "scrypt"
-                )
+                ),
+                about_me = about_me
             )
 
 
@@ -107,7 +109,21 @@ def login():
 
         if user is not None:
             if werkzeug.security.check_password_hash(user.password, password):
-                if user.is_banned is True:
+                flask_login.login_user(
+                    user = user,
+                    remember = True
+                )
+
+
+                if user.status == "inactive":
+                    flask.flash(
+                        message = "Account is deleted",
+                        category = "error"
+                    )
+
+
+                    return flask.redirect(flask.url_for("views.inactive"))
+                elif user.status == "banned":
                     flask.flash(
                         message = "Account is banned",
                         category = "error"
@@ -119,11 +135,6 @@ def login():
                     flask.flash(
                         message = "Successfully logged in",
                         category = "success"
-                    )
-
-                    flask_login.login_user(
-                        user = user,
-                        remember = True
                     )
 
 

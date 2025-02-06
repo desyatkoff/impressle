@@ -6,13 +6,19 @@
 {% block content %}
     <h1>Unfortunately, this account is banned! :(</h1>
 
+
+    <hr />
+
+
     <p>
-        You can't log in to this account anymore. Breaking the rules is bad, you know?
+        You can no longer log in to this account. Breaking the rules is bad, you know?
         It's allowed to create another account, and if you want to do this, then
         promise that you will not break the rules again
     </p>
 
+
     <form method="POST">
+        <div class="card">
             <label for="checkbox" class="pure-checkbox">
                 <input
                     type = "checkbox"
@@ -26,7 +32,7 @@
             <br />
 
             <button type="submit" class="pure-button button-main">
-                Create new account
+                Create New Account
             </button>
         </div>
     </form>

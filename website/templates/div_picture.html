@@ -2,7 +2,7 @@
     <div class="card">
         <h2 class="picture-title">
             {{ picture.title }}
-            {% if picture.is_banned == True %}
+            {% if picture.status == "banned" %}
                 <span style="color: red;">[ BANNED ]</span>
             {% endif %}
         </h2>
@@ -20,11 +20,13 @@
 
         <hr />
 
-        <img
-            src = "{{ url_for('api.get_picture_by_uid', picture_uid=picture.uid) }}"
-            alt = "Picture"
-            class = "picture-image pure-img"
-        />
+        <p align="center">
+            <img
+                src = "{{ url_for('api.get_picture_by_uid', picture_uid=picture.uid) }}"
+                alt = "Picture"
+                class = "picture-image pure-img"
+            />
+        </p>
 
         <hr />
 
@@ -53,20 +55,22 @@
                 </p>
             </div>
 
-            <div class="pure-u-1-8">
-                <p class="comments-icon">
-                    <span class="comments-count" id="comment-count-{{ picture.uid }}">
-                        {{ picture.comments|length }}
-                    </span>
+            {% if models.User.query.filter_by(uid=picture.author_uid).first().allow_comments %}
+                <div class="pure-u-1-8">
+                    <p class="comments-icon">
+                        <span class="comments-count" id="comment-count-{{ picture.uid }}">
+                            {{ picture.comments|length }}
+                        </span>
 
-                    <button class="comment-button" id="comment-button-{{ picture.uid }} " onclick="comment({{ picture.uid }})">
-                        <img
-                            src = "/static/images/message-square.svg"
-                            height = "24"
-                        />
-                    </button>
-                </p>
-            </div>
+                        <button class="comment-button" id="comment-button-{{ picture.uid }} " onclick="comment({{ picture.uid }})">
+                            <img
+                                src = "/static/images/message-square.svg"
+                                height = "24"
+                            />
+                        </button>
+                    </p>
+                </div>
+            {% endif %}
 
             <div class="pure-u-1-8">
                 <p class="views-icon">

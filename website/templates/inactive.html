@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block title %}impressle | This Account is Deleted{% endblock %}
+
+{% block content %}
+    <h1>This account is deleted!</h1>
+
+
+    <hr />
+
+
+    <p>
+        You can no longer log in to this account. Why did that happened? Actual reasons:
+
+        <ul>
+            <li>
+                You deleted this account intentionally (Settings > Delete Account)
+            </li>
+            <li>
+                Your account may be deleted because of inactivity
+                (if you didn't visit impressle for the last 30 days)
+            </li>
+        </ul>
+
+        Try
+        <a href="{{ url_for('auth.signup') }}">
+            creating a new account
+        </a>
+        if you want to use impressle
+    </p>
+{% endblock %}

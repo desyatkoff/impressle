@@ -9,24 +9,116 @@
     </h1>
 
 
-    <form id="settings-form" method="POST">
-        <div class="card">
-            <label for="about-me">
-                About Me
-            </label>
-            <input
-                type = "text"
-                id = "about-me"
-                name = "about-me"
-            />
+    <hr />
 
 
-            <button
-                class = "pure-button button-main"
-                type = "submit"
-            >
-                Save
-            </button>
-        </div>
-    </form>
+    <div id="settings">
+        <form id="form-settings" method="POST">
+            <h1 id="profile-settings">
+                Profile Settings
+            </h1>
+
+
+            <div class="card">
+                <p>
+                    What can you say about yourself?
+                </p>
+
+                <input
+                    type = "text"
+                    id = "about-me"
+                    name = "about-me"
+                    placeholder = "About Me"
+                    {% if user.about_me %}
+                        value = "{{ user.about_me }}"
+                    {% endif %}
+                    maxlength = "64" 
+                />
+
+
+                <hr />
+
+
+                <button
+                    class = "pure-button button-main"
+                    type = "submit"
+                >
+                    Save
+                </button>
+            </div>
+
+
+            <h1 id="privacy-settings">
+                Privacy Settings
+            </h1>
+
+
+            <div class="card">
+                <label for="show-followers-checkbox">
+                    <input
+                        type = "checkbox"
+                        name = "show-followers-checkbox"
+                        id = "show-followers-checkbox"
+                        {% if user.show_followers %}
+                            checked
+                        {% endif %}
+                    />
+                    Show followers count in my profile
+                </label>
+
+                <br />
+
+                <label for="allow-comments-checkbox">
+                    <input
+                        type = "checkbox"
+                        name = "allow-comments-checkbox"
+                        id = "allow-comments-checkbox"
+                        {% if user.allow_comments %}
+                            checked
+                        {% endif %}
+                    />
+                    Allow users to comment my pictures
+                </label>
+
+
+                <hr />
+
+
+                <button
+                    class = "pure-button button-main"
+                    type = "submit"
+                >
+                    Save
+                </button>
+            </div>
+
+
+            <h1>
+                Delete Account
+            </h1>
+
+
+            <div class="card">
+                <label for="delete-account-checkbox">
+                    <input
+                        type = "checkbox"
+                        name = "delete-account-checkbox"
+                        id = "delete-account-checkbox"
+                    >
+                    I am totally sure I want to delete this account
+                </label>
+
+
+                <hr />
+
+
+                <button
+                    class = "pure-button button-danger"
+                    type = "submit"
+                >
+                    Delete Account
+                </button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

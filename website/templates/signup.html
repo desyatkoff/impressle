@@ -8,33 +8,56 @@
         Hello, new user!
     </h1>
 
-    <b>
-        Let's create a new account
-    </b>
+
+    <hr />
+
+
+    <p>
+        <b>
+            Let's create a new account
+        </b>
+    </p>
 
 
     <form method="POST">
         <div class="card">
             <label for="username">
-                Username
+                Username <span style="color: #ff4747;">*</span>
             </label>
             <input
                 type = "text"
                 id = "username"
                 name = "username"
                 placeholder = "Username"
+                minlength = "4"
+                maxlength = "16"
             />
 
             <br />
 
             <label for="password">
-                Password
+                Password <span style="color: #ff4747;">*</span>
             </label>
             <input
                 type = "password"
                 id = "password"
                 name = "password"
                 placeholder = "Password"
+                minlength = "8"
+                maxlength = "32"
+            />
+
+            <br />
+
+            <label for="about-me">
+                About Me
+            </label>
+            <input
+                type = "text"
+                id = "about-me"
+                name = "about-me"
+                placeholder = "About Me"
+                maxlength = "64"
             />
 
             <br />
@@ -46,7 +69,15 @@
                     id = "checkbox"
                     name = "checkbox"
                 />
-                I have read the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                I have read the
+                <a href="{{ url_for('views.terms_of_service') }}">
+                    Terms of Service
+                </a>
+                and
+                <a href="{{ url_for('views.privacy_policy') }}">
+                    Privacy Policy
+                </a>
+                <span style="color: #ff4747;">*</span>
             </label>
 
             <br />

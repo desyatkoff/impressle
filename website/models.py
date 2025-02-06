@@ -36,6 +36,10 @@ class User(website.db.Model, flask_login.UserMixin):
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
     )
+    date_created = website.db.Column(
+        website.db.DateTime,
+        default = datetime.datetime.now(datetime.UTC)
+    )
     username = website.db.Column(
         website.db.String,
         unique = True,
@@ -45,21 +49,16 @@ class User(website.db.Model, flask_login.UserMixin):
         website.db.String,
         nullable = False
     )
-    date_created = website.db.Column(
-        website.db.DateTime,
-        default = datetime.datetime.now(datetime.UTC)
+    about_me = website.db.Column(
+        website.db.String
+    )
+    karma = website.db.Column(
+        website.db.Integer,
+        default = 0
     )
     rank = website.db.Column(
         website.db.String,
         default = "Newbie"
-    )
-    xp = website.db.Column(
-        website.db.Integer,
-        default = 0
-    )
-    about_me = website.db.Column(
-        website.db.String,
-        default = "Nothing yet..."
     )
     pictures = website.db.relationship(
         "Picture",
@@ -81,9 +80,21 @@ class User(website.db.Model, flask_login.UserMixin):
         backref = "user",
         passive_deletes = True
     )
-    is_banned = website.db.Column(
+    show_followers = website.db.Column(
         website.db.Boolean,
-        default = False
+        default = True
+    )
+    allow_comments = website.db.Column(
+        website.db.Boolean,
+        default = True
+    )
+    status = website.db.Column(
+        website.db.String,
+        default = "normal"
+    )
+    last_activity = website.db.Column(
+        website.db.Integer,
+        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
     )
 
 
@@ -98,6 +109,10 @@ class Picture(website.db.Model):
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
     )
+    date_created = website.db.Column(
+        website.db.DateTime(timezone=True),
+        default = datetime.datetime.now(datetime.UTC)
+    )
     title = website.db.Column(
         website.db.String,
         nullable = False
@@ -105,10 +120,6 @@ class Picture(website.db.Model):
     image_data = website.db.Column(
         website.db.LargeBinary,
         nullable = False
-    )
-    date_created = website.db.Column(
-        website.db.DateTime(timezone=True),
-        default = datetime.datetime.now(datetime.UTC)
     )
     likes = website.db.relationship(
         "Like",
@@ -137,9 +148,9 @@ class Picture(website.db.Model):
         website.db.String,
         nullable = False
     )
-    is_banned = website.db.Column(
-        website.db.Boolean,
-        default = False
+    status = website.db.Column(
+        website.db.String,
+        default = "normal"
     )
 
 
@@ -166,8 +177,16 @@ class Follow(website.db.Model):
         ),
         nullable = False
     )
+    followed_username = website.db.Column(
+        website.db.String,
+        nullable = False
+    )
     follower_uid = website.db.Column(
         website.db.Integer,
+        nullable = False
+    )
+    follower_username = website.db.Column(
+        website.db.String,
         nullable = False
     )
 
@@ -220,13 +239,13 @@ class Comment(website.db.Model):
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
     )
-    text = website.db.Column(
-        website.db.String,
-        nullable = False
-    )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.UTC)
+    )
+    text = website.db.Column(
+        website.db.String,
+        nullable = False
     )
     picture_uid = website.db.Column(
         website.db.Integer,
@@ -248,9 +267,9 @@ class Comment(website.db.Model):
         website.db.String,
         nullable = False
     )
-    is_banned = website.db.Column(
-        website.db.Boolean,
-        default = False
+    status = website.db.Column(
+        website.db.String,
+        default = "normal"
     )
 
 

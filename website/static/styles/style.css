@@ -5,16 +5,16 @@
     font-family: "Nunito", serif;
 }
 
-input {
-    background-color: #0d0d0d;
-}
-
 body {
     background-color: #262626;
 }
 
 a {
     color: #a347ff;
+}
+
+.pure-button a {
+    color: #e6e6e6;
 }
 
 .sidebar {
@@ -25,10 +25,14 @@ a {
     background-color: #0d0d0d;
 }
 
-.sidebar-bottom {
+.sidebar-footer {
     width: 16em;
     bottom: 0;
     position: fixed;
+}
+
+.sidebar-footer p {
+    color: #cccccc;
 }
 
 .logo {
@@ -65,7 +69,6 @@ a {
 .card {
     margin: 1em;
     padding: 1em;
-    margin-right: 20em;
     overflow: hidden;
     border-radius: 8px;
     background: #1a1a1a;
@@ -83,8 +86,6 @@ a {
 }
 
 .picture-image {
-    margin-left: 5em;
-    margin-right: 5em;
     border-width: 1px;
     border-radius: 4px;
     border-color: #4c0099;
@@ -93,14 +94,23 @@ a {
 .button-main {
     color: #e6e6e6;
     border-radius: 4px;
-    box-shadow: #4c0099;
     background-color: #a347ff;
 }
 
 .button-main:hover {
     border-radius: 4px;
-    box-shadow: #4c0099;
     background-color: #7f00ff;
+}
+
+.button-danger {
+    color: #e6e6e6;
+    border-radius: 4px;
+    background-color: #ff4747;
+}
+
+.button-danger:hover {
+    border-radius: 4px;
+    background-color: #990000;
 }
 
 .liked, .not-liked, .comment-button, .view-button {
@@ -136,6 +146,7 @@ a {
 input {
     padding: 0.5em;
     margin: 0.5em;
+    background-color: #0d0d0d;
     border: 1px solid #e6e6e6;
     border-radius: 8px;
     transition: border-color 0.25s ease;
@@ -159,10 +170,38 @@ input:focus {
 
 #canvas-card {
     text-align: center;
+    width: 800px;
 }
 
 #main-canvas {
     display: inline-block;
     border-radius: 8px;
     border: 1px solid #7f00ff;
+}
+
+.large-label {
+    font-size: 4em;
+}
+
+#landing-cards {
+    justify-content: center;
+}
+
+#landing-cards .card {
+    transition: background-color 0.25s ease;
+}
+
+#landing-cards .card:hover {
+    background-color: #7f00ff;
+}
+
+.pfp {
+    height: 64px;
+    overflow: hidden;
+    border-radius: 100%;
+    border: 1px solid #7f00ff;
+}
+
+#details {
+    text-align: center;
 }

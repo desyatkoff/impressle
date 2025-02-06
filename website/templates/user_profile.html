@@ -4,32 +4,48 @@
 {% block title %}impressle | @{{ user_profile.username }}{% endblock %}
 
 {% block content %}
-    <div id="profile">
-        <h1>
-            Profile
-        </h1>
+    <h1>
+        @{{ user_profile.username }}'s Profile
+    </h1>
 
+
+    <hr />
+
+
+    <div id="profile">
         <div class="card" id="profile-info">
             <div class="pure-g">
                 <div class="pure-u-1-2">
                     <h1 align="left">
+                        <img
+                            src = "{{ url_for('static', filename='images/user.svg') }}"
+                            alt = "Profile Picture"
+                            class = "pfp pure-img"
+                        />
                         @{{ user_profile.username }}
+
+
                         {% if user_profile.rank == "Admin" %}
                             <span style="color: #7f00ff">[ ADMIN ]</span>
                         {% endif %}
-                        {% if user_profile.is_banned == True %}
+
+                        {% if user_profile.status == "inactive" %}
+                            <span style="color: #ff7f00">[ INACTIVE ]</span>
+                        {% elif user_profile.status == "banned" %}
                             <span style="color: red;">[ BANNED ]</span>
                         {% endif %}
                     </h1>
                 </div>
                 <div class="pure-u-1-2" >
                     <p class="followers" align="right">
-                        <span>
-                            <span class="followers-count" id="followers-count-{{ user_profile.uid }}">
-                                {{ user_profile.follows|length }}
+                        {% if user_profile.show_followers %}
+                            <span>
+                                <span class="followers-count" id="followers-count-{{ user_profile.uid }}">
+                                    {{ user_profile.follows|length }}
+                                </span>
+                                Followers
                             </span>
-                            Followers
-                        </span>
+                        {% endif %}
 
                         {% if user.uid != user_profile.uid %}
                             {% if user.uid in user_profile.follows|map(attribute="follower_uid")|list %}
@@ -46,42 +62,108 @@
                 </div>
             </div>
 
-            <table class="pure-table" align="center" width="100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Account Created</th>
-                        <th>Rank</th>
-                        <th>XP</th>
-                        <th>About Me</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ user_profile.uid }}</td>
-                        <td>{{ user_profile.date_created.day }}.{{ user_profile.date_created.month }}.{{ user_profile.date_created.year }}</td>
-                        <td>{{ user_profile.rank }}</td>
-                        <td>{{ user_profile.xp }}</td>
-                        <td>{{ user_profile.about_me }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+            <hr />
 
 
-        {% if user_profile.pictures|count > 0 %}
-            <div id="pictures">
-                <h1>
-                    Pictures
-                </h1>
+            <h2 id="about-me">
+                About Me
+            </h2>
+
+            <p>
+                {% if user_profile.about_me %}
+                    {{ user_profile.about_me }}
+                {% else %}
+                    <i>
+                        Nothing yet...
+                    </i>
+                {% endif %}
+            </p>
 
 
-                {% for picture in pictures %}
-                    {% include "div_picture.html" %}
-            
-                    <br />
-                {% endfor %}
+            <hr />
+
+
+            <h2>
+                Account Details
+            </h2>
+
+            <div id="details">
+                <div class="pure-g">
+                    <div class="pure-u-1-4">
+                        <h3 id="user-id">
+                            User ID
+                        </h3>
+
+                        <p>
+                            {{ user_profile.uid }}
+                        </p>
+                    </div>
+
+                    <div class="pure-u-1-4">
+                        <h3 id="account-created">
+                            Account Created
+                        </h3>
+
+                        <p>
+                            {{ user_profile.date_created }}
+                        </p>
+                    </div>
+
+                    <div class="pure-u-1-4">
+                        <h3 id="rank">
+                            Rank
+                        </h3>
+
+                        <p>
+                            {{ user_profile.rank }}
+                        </p>
+                    </div>
+
+                    <div class="pure-u-1-4">
+                        <h3 id="">
+                            Karma
+                        </h3>
+
+                        <p>
+                            {{ user_profile.karma }}
+                        </p>
+                    </div>
+                </div>
             </div>
-        {% endif %}
+
+
+            {% if user.uid == user_profile.uid %}
+                <div id="edit-profile">
+                    <hr />
+
+
+                    <button class="pure-button button-main">
+                        <a href="{{ url_for('views.user_settings') }}">
+                            Edit Profile
+                        </a>
+                    </button>
+                </div>
+            {% endif %}
+        </div>
     </div>
+
+
+    {% if user_profile.pictures|count > 0 %}
+        <h1>
+            @{{ user_profile.username }}'s Pictures
+        </h1>
+
+
+        <hr />
+
+
+        <div id="pictures">
+            {% for picture in pictures %}
+                {% include "div_picture.html" %}
+        
+                <br />
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

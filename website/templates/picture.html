@@ -4,33 +4,44 @@
 {% block title %}impressle | {{ picture.title }}{% endblock %}
 
 {% block content %}
+    <h1>
+        Picture
+    </h1>
+
+
+    <hr />
+
+
     {% include "div_picture.html" %}
 
-    <div class="comments" id="comments-{{ picture.uid }}">
-        <form id="comment-form" method="POST" action="{{ url_for('views.create_comment', picture_uid=picture.uid) }}">
-            <div class="card">
-                <input
-                    type = "text"
-                    id = "comment-text"
-                    name = "comment-text"
-                    placeholder = "Comment"
-                />
+
+    {% if models.User.query.filter_by(uid=picture.author_uid).first().allow_comments %}
+        <div class="comments" id="comments-{{ picture.uid }}">
+            <form id="comment-form" method="POST" action="{{ url_for('views.create_comment', picture_uid=picture.uid) }}">
+                <div class="card">
+                    <input
+                        type = "text"
+                        id = "comment-text"
+                        name = "comment-text"
+                        placeholder = "Comment"
+                    />
 
 
-                <button
-                    class = "pure-button button-main"
-                    type = "submit"
-                >
-                    Send
-                </button>
-            </div>
-        </form>
+                    <button
+                        class = "pure-button button-main"
+                        type = "submit"
+                    >
+                        Send
+                    </button>
+                </div>
+            </form>
 
 
-        {% for comment in picture.comments %}
-            {% include "div_comment.html" %}
+            {% for comment in picture.comments %}
+                {% include "div_comment.html" %}
 
-            <br />
-        {% endfor %}
-    </div>
+                <br />
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

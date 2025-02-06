@@ -1,30 +1,92 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | Home{% endblock %}
+{% block title %}impressle{% endblock %}
 
 {% block content %}
-    <h1>Home Page</h1>
+    <div class="card" id="landing-card">
+        <h1 align="center">
+            Welcome to the
+            <br />
+            <span class="large-label">impressle</span><span class="large-label" style="color: #7f00ff;">.fun</span>
+        </h1>
 
-    <div class="pure-g" id="pictures">
-        {% if pictures|length > 0 %}
-            {% for picture in pictures %}
-                {% if picture.is_banned == False %}
-                    {% include "div_picture.html" %}
 
-                    <br />
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            <div class="card">
-                <h1>
-                    It seems that there are no any pictures available... :(
-                </h1>
+        <hr />
 
-                <p>
-                    <a href="{{ url_for('views.create_picture') }}">Create a picture</a> so impressle won't be empty
-                </p>
+
+        <h2 align="center">
+            Unleash your creativity!
+        </h2>
+
+        <p align="center">
+            <b>
+                On this website, you can...:
+            </b>
+        </p>
+
+
+        <div class="pure-g" id="landing-cards">
+            <div class="card pure-u-1-10">
+                <h3>
+                    Draw funny pictures
+                </h3>
             </div>
-        {% endif %}
+
+            <div class="card pure-u-1-10">
+                <h3>
+                    Like and comment others' pictures
+                </h3>
+            </div>
+
+            <div class="card pure-u-1-10">
+                <h3>
+                    Get the highest rank to become the best
+                </h3>
+            </div>
+
+            <div class="card pure-u-1-10">
+                <h3>
+                    Get karma to show others your reputation and drawing skills
+                </h3>
+            </div>
+
+            <div class="card pure-u-1-10">
+                <h3>
+                    Follow your favorite artists and get your own followers too
+                </h3>
+            </div>
+        </div>
+
+
+        <hr />
+
+
+        <h2 align="center">
+            Isn't it impressive?
+        </h2>
+
+        <p align="center">
+            <b>
+                Create an account and start drawing your funny pictures on impressle!
+            </b>
+
+            <br />
+            <br />
+
+            <div class="card" align="center">
+                <span>
+                    Ready to join the community? Click
+                </span>
+                <button class="pure-button button-main">
+                    <a href="{{ url_for('auth.signup') }}">
+                        Sign Up
+                    </a>
+                </button>
+                <span>
+                    to create your own account. Let's start!
+                </span>
+            </div>
+        </p>
     </div>
 {% endblock %}

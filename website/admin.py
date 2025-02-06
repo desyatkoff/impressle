@@ -79,40 +79,158 @@ def access_admin():
 def panel():
     if access:
         if flask.request.method == "POST":
-            try:
+            form_type = flask.request.form.get("form-type")
+
+
+            if form_type == "edit-data":
+                table_name = flask.request.form.get("table-name")
+                row_id = flask.request.form.get("row-id")
+                column_name = flask.request.form.get("column-name")
+
+                new_value = flask.request.form.get("new-value")
+
+
+                if table_name.lower() == "user":
+                    item = website.models.User.query.filter_by(id=row_id).first()
+
+
+                    if column_name.lower() == "id":
+                        item.id = new_value
+                    elif column_name.lower() == "uid":
+                        item.uid = new_value
+                    elif column_name.lower() == ("date_created" or "date created"):
+                        item.date_created = new_value
+                    elif column_name.lower() == "username":
+                        item.username = new_value
+                    elif column_name.lower() == "password":
+                        item.password = new_value
+                    elif column_name.lower() == ("about_me" or "about me"):
+                        item.about_me = new_value
+                    elif column_name.lower() == "karma":
+                        item.karma = new_value
+                    elif column_name.lower() == "rank":
+                        item.rank = new_value
+                    elif column_name.lower() == ("show_followers" or "show followers"):
+                        item.show_followers = new_value
+                    elif column_name.lower() == ("allow_comments" or "allow comments"):
+                        item.allow_comments = new_value
+                    elif column_name.lower() == "status":
+                        item.status = new_value
+                elif table_name.lower() == "picture":
+                    item = website.models.Picture.query.filter_by(id=row_id).first()
+
+
+                    if column_name.lower() == "id":
+                        item.id = new_value
+                    elif column_name.lower() == "uid":
+                        item.uid = new_value
+                    elif column_name.lower() == ("date_created" or "date created"):
+                        item.date_created = new_value
+                    elif column_name.lower() == "title":
+                        item.title = new_value
+                    elif column_name.lower() == ("image_data" or "image data"):
+                        item.image_data = new_value
+                    elif column_name.lower() == ("author_uid" or "author uid"):
+                        item.author_uid = new_value
+                    elif column_name.lower() == ("author_username" or "author username"):
+                        item.author_username = new_value
+                    elif column_name.lower() == "status":
+                        item.status = new_value
+                elif table_name.lower() == "follow":
+                    item = website.models.Follow.query.filter_by(id=row_id).first()
+
+
+                    if column_name.lower() == "id":
+                        item.id = new_value
+                    elif column_name.lower() == "uid":
+                        item.uid = new_value
+                    elif column_name.lower() == ("date_created" or "date created"):
+                        item.date_created = new_value
+                    elif column_name.lower() == ("followed_uid" or "followed uid"):
+                        item.followed_uid = new_value
+                    elif column_name.lower() == ("followed_username" or "followed username"):
+                        item.followed_username = new_value
+                    elif column_name.lower() == ("follower_uid" or "follower uid"):
+                        item.follower_uid = new_value
+                    elif column_name.lower() == ("follower_username" or "follower username"):
+                        item.follower_username = new_value
+                elif table_name.lower() == "like":
+                    item = website.models.Like.query.filter_by(id=row_id).first()
+
+
+                    if column_name.lower() == "id":
+                        item.id = new_value
+                    elif column_name.lower() == "uid":
+                        item.uid = new_value
+                    elif column_name.lower() == ("date_created" or "date created"):
+                        item.date_created = new_value
+                    elif column_name.lower() == ("picture_uid" or "picture uid"):
+                        item.picture_uid = new_value
+                    elif column_name.lower() == ("author_uid" or "author uid"):
+                        item.author_uid = new_value
+                    elif column_name.lower() == ("author_username" or "author username"):
+                        item.author_username = new_value
+                elif table_name.lower() == "comment":
+                    item = website.models.Comment.query.filter_by(id=row_id).first()
+
+
+                    if column_name.lower() == "id":
+                        item.id = new_value
+                    elif column_name.lower() == "uid":
+                        item.uid = new_value
+                    elif column_name.lower() == ("date_created" or "date created"):
+                        item.date_created = new_value
+                    elif column_name.lower() == "text":
+                        item.text = new_value
+                    elif column_name.lower() == ("author_uid" or "author uid"):
+                        item.author_uid = new_value
+                    elif column_name.lower() == ("author_username" or "author username"):
+                        item.author_username = new_value
+                    elif column_name.lower() == "status":
+                        item.status = new_value
+                elif table_name.lower() == "view":
+                    item = website.models.View.query.filter_by(id=row_id).first()
+
+
+                    if column_name.lower() == "id":
+                        item.id = new_value
+                    elif column_name.lower() == "uid":
+                        item.uid = new_value
+                    elif column_name.lower() == ("date_created" or "date created"):
+                        item.date_created = new_value
+                    elif column_name.lower() == ("picture_uid" or "picture uid"):
+                        item.picture_uid = new_value
+                    elif column_name.lower() == ("author_uid" or "author uid"):
+                        item.author_uid = new_value
+                    elif column_name.lower() == ("author_username" or "author username"):
+                        item.author_username = new_value
+            elif form_type == "ban-user":
                 user_uid = flask.request.form.get("user-uid")
                 user = website.models.User.query.filter_by(uid=user_uid).first()
 
-                user.is_banned = True
-            except:
-                try:
-                    picture_uid = flask.request.form.get("picture-uid")
-                    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+                user.status = "banned"
+            elif form_type == "ban-picture":
+                picture_uid = flask.request.form.get("picture-uid")
+                picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
 
-                    picture.is_banned = True
-
-
-                    picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+                picture.status = "banned"
 
 
-                    picture_author.xp -= 1
-                except:
-                    try:
-                        comment_uid = flask.request.form.get("comment-uid")
-                        comment = website.models.Comment.query.filter_by(uid=comment_uid).first()
-
-                        comment.is_banned = True
+                picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
 
 
-                        comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
+                picture_author.karma -= 1
+            elif form_type == "ban-comment":
+                comment_uid = flask.request.form.get("comment-uid")
+                comment = website.models.Comment.query.filter_by(uid=comment_uid).first()
+
+                comment.status = "banned"
 
 
-                        comment_author.xp -= 1
-                    except:
-                        flask.flash(
-                            message = "No any data",
-                            category = "error"
-                        )
+                comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
+
+
+                comment_author.karma -= 1
 
 
             website.db.session.commit()

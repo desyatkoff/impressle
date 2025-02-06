@@ -1,2 +1,5 @@
+__pycache__/
+website/__pycache__/
+
 .env
 database.db

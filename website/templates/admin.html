@@ -4,8 +4,16 @@
 {% block title %}impressle | Admin Panel{% endblock %}
 
 {% block content %}
+    <h1>
+        Admin Panel
+    </h1>
+
+
+    <hr />
+
+
     <div id="panel">
-        <h1>
+        <h1 id="db-panel">
             Database Panel
         </h1>
 
@@ -17,32 +25,49 @@
                 </h1>
 
 
-                <table class="pure-table">
+                <table class="pure-table" align="center" width="100%">
                     <thead>
                         <tr>
                             <th>Row ID</th>
                             <th>UID</th>
-                            <th>Username</th>
                             <th>Date Created</th>
-                            <th>Rank</th>
-                            <th>XP</th>
+                            <th>Username</th>
                             <th>About Me</th>
+                            <th>Karma</th>
+                            <th>Rank</th>
                             <th>Followers</th>
-                            <th>Is Banned?</th>
+                            <th>Show Followers?</th>
+                            <th>Allow Comments?</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1970-01-01 00:00:00.000000 (1.1.1970)</td>
+                            <td>@example</td>
+                            <td>example</td>
+                            <td>0</td>
+                            <td>example</td>
+                            <td>0</td>
+                            <td>False</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
                         {% for user in users %}
                             <tr>
                                 <td>{{ user.id }}</td>
                                 <td>{{ user.uid }}</td>
-                                <td>@{{ user.username }}</td>
                                 <td>{{ user.date_created }} ({{ user.date_created.day }}.{{ user.date_created.month }}.{{ user.date_created.year }})</td>
-                                <td>{{ user.rank }}</td>
-                                <td>{{ user.xp }}</td>
+                                <td>@{{ user.username }}</td>
                                 <td>{{ user.about_me }}</td>
+                                <td>{{ user.karma }}</td>
+                                <td>{{ user.rank }}</td>
                                 <td>{{ user.follows|length }}</td>
-                                <td>{{ user.is_banned }}</td>
+                                <td>{{ user.show_followers }}</td>
+                                <td>{{ user.allow_comments }}</td>
+                                <td>{{ user.status }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -57,24 +82,35 @@
                 </h1>
 
 
-                <table class="pure-table">
+                <table class="pure-table" align="center" width="100%">
                     <thead>
                         <tr>
                             <th>Row ID</th>
                             <th>UID</th>
+                            <th>Date Created</th>
                             <th>Title</th>
                             <th>Image</th>
-                            <th>Date Created</th>
                             <th>Author UID</th>
                             <th>Author Username</th>
-                            <th>Is Banned?</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1970-01-01 00:00:00.000000 (1.1.1970)</td>
+                            <td>example</td>
+                            <td>example</td>
+                            <td>0</td>
+                            <td>@example</td>
+                            <td>False</td>
+                        </tr>
                         {% for picture in pictures %}
                             <tr>
                                 <td>{{ picture.id }}</td>
                                 <td>{{ picture.uid }}</td>
+                                <td>{{ picture.date_created }} ({{ picture.date_created.day }}.{{ picture.date_created.month }}.{{ picture.date_created.year }})</td>
                                 <td>{{ picture.title }}</td>
                                 <td>
                                     <img
@@ -82,10 +118,96 @@
                                         height = "64"
                                     />
                                 </td>
-                                <td>{{ picture.date_created }} ({{ picture.date_created.day }}.{{ picture.date_created.month }}.{{ picture.date_created.year }})</td>
                                 <td>{{ picture.author_uid }}</td>
                                 <td>@{{ picture.author_username }}</td>
-                                <td>{{ picture.is_banned }}</td>
+                                <td>{{ picture.status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="follows">
+                <h1>
+                    Follows
+                </h1>
+
+
+                <table class="pure-table" align="center" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Row ID</th>
+                            <th>UID</th>
+                            <th>Date Created</th>
+                            <th>Followed UID</th>
+                            <th>Followed Username</th>
+                            <th>Follower UID</th>
+                            <th>Follower Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1970-01-01 00:00:00.000000 (1.1.1970)</td>
+                            <td>0</td>
+                            <td>@example</td>
+                            <td>0</td>
+                            <td>@example</td>
+                        </tr>
+                        {% for follow in follows %}
+                            <tr>
+                                <td>{{ follow.id }}</td>
+                                <td>{{ follow.uid }}</td>
+                                <td>{{ follow.date_created }} ({{ follow.date_created.day }}.{{ follow.date_created.month }}.{{ follow.date_created.year }})</td>
+                                <td>{{ follow.followed_uid }}</td>
+                                <td>@{{ follow.followed_username }}</td>
+                                <td>{{ follow.follower_uid }}</td>
+                                <td>@{{ follow.follower_username }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="likes">
+                <h1>
+                    Likes
+                </h1>
+
+
+                <table class="pure-table" align="center" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Row ID</th>
+                            <th>UID</th>
+                            <th>Date Created</th>
+                            <th>Picture UID</th>
+                            <th>Author UID</th>
+                            <th>Author Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1970-01-01 00:00:00.000000 (1.1.1970)</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>@example</td>
+                        </tr>
+                        {% for like in likes %}
+                            <tr>
+                                <td>{{ like.id }}</td>
+                                <td>{{ like.uid }}</td>
+                                <td>{{ like.date_created }} ({{ like.date_created.day }}.{{ like.date_created.month }}.{{ like.date_created.year }})</td>
+                                <td>{{ like.picture_uid }}</td>
+                                <td>{{ like.author_uid }}</td>
+                                <td>@{{ like.author_username }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -100,28 +222,79 @@
                 </h1>
 
 
-                <table class="pure-table">
+                <table class="pure-table" align="center" width="100%">
                     <thead>
                         <tr>
                             <th>Row ID</th>
                             <th>UID</th>
-                            <th>Text</th>
                             <th>Date Created</th>
+                            <th>Text</th>
                             <th>Author UID</th>
                             <th>Author Username</th>
-                            <th>Is Banned?</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1970-01-01 00:00:00.000000 (1.1.1970)</td>
+                            <td>example</td>
+                            <td>0</td>
+                            <td>@example</td>
+                            <td>False</td>
+                        </tr>
                         {% for comment in comments %}
                             <tr>
                                 <td>{{ comment.id }}</td>
                                 <td>{{ comment.uid }}</td>
-                                <td>{{ comment.text }}</td>
                                 <td>{{ comment.date_created }} ({{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }})</td>
+                                <td>{{ comment.text }}</td>
                                 <td>{{ comment.author_uid }}</td>
                                 <td>@{{ comment.author_username }}</td>
-                                <td>{{ comment.is_banned }}</td>
+                                <td>{{ comment.status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="views">
+                <h1>
+                    Views
+                </h1>
+
+
+                <table class="pure-table" align="center" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Row ID</th>
+                            <th>UID</th>
+                            <th>Date Created</th>
+                            <th>Picture UID</th>
+                            <th>Author UID</th>
+                            <th>Author Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1970-01-01 00:00:00.000000 (1.1.1970)</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>@example</td>
+                        </tr>
+                        {% for view in views %}
+                            <tr>
+                                <td>{{ view.id }}</td>
+                                <td>{{ view.uid }}</td>
+                                <td>{{ view.date_created }} ({{ view.date_created.day }}.{{ view.date_created.month }}.{{ view.date_created.year }})</td>
+                                <td>{{ view.picture_uid }}</td>
+                                <td>{{ view.author_uid }}</td>
+                                <td>@{{ view.author_username }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -130,64 +303,138 @@
         </div>
 
 
-        <div id="ban-forms">
-            <h1>
-                Ban Panel
-            </h1>
+        <h1 id="edit-data">
+            Edit Data Panel
+        </h1>
 
 
-            <div class="card">
-                <div class="pure-g">
-                    <div class="pure-u-1-3">
-                        <form id="ban-user-form" method="POST">
-                            <input
-                                type = "text"
-                                class = "pure-input"
-                                id = "user-uid"
-                                name = "user-uid"
-                                placeholder = "User UID"
-                            />
+        <div class="card">
+            <form id="edit-data-form" method="POST">
+                <input
+                    type = "hidden"
+                    id = "form-type"
+                    name = "form-type"
+                    value = "edit-data"
+                />
 
 
-                            <button class="pure-button button-main" type="submit">
-                                Ban
-                            </button>
-                        </form>
-                    </div>
+                <input
+                    type = "text"
+                    id = "table-name"
+                    name = "table-name"
+                    placeholder = "Table Name"
+                />
 
-                    <div class="pure-u-1-3">
-                        <form id="ban-picture-form" method="POST">
-                            <input
-                                type = "text"
-                                class = "pure-input"
-                                id = "picture-uid"
-                                name = "picture-uid"
-                                placeholder = "Picture UID"
-                            />
+                <input
+                    type = "text"
+                    id = "row-id"
+                    name = "row-id"
+                    placeholder = "Row ID"
+                />
+
+                <input
+                    type = "text"
+                    id = "column-name"
+                    name = "column-name"
+                    placeholder = "Column Name"
+                />
+
+                <input
+                    type = "text"
+                    id = "new-value"
+                    name = "new-value"
+                    placeholder = "New Value"
+                />
+
+                <hr />
+
+                <button class="pure-button button-main" type="submit">
+                    Save
+                </button>
+            </form>
+        </div>
 
 
-                            <button class="pure-button button-main" type="submit">
-                                Ban
-                            </button>
-                        </form>
-                    </div>
-
-                    <div class="pure-u-1-3">
-                        <form id="ban-comment-form" method="POST">
-                            <input
-                                type = "text"
-                                class = "pure-input"
-                                id = "comment-uid"
-                                name = "comment-uid"
-                                placeholder = "Comment UID"
-                            />
+        <h1 id="ban-panel">
+            Ban Panel
+        </h1>
 
 
-                            <button class="pure-button button-main" type="submit">
-                                Ban
-                            </button>
-                        </form>
-                    </div>
+        <div class="card">
+            <div class="pure-g" align="center" width="100%">
+                <div class="pure-u-1-3">
+                    <form id="ban-user-form" method="POST">
+                        <input
+                            type = "hidden"
+                            id = "form-type"
+                            name = "form-type"
+                            value = "ban-user"
+                        />
+
+
+                        <input
+                            type = "text"
+                            class = "pure-input"
+                            id = "user-uid"
+                            name = "user-uid"
+                            placeholder = "User UID"
+                        />
+
+
+                        <button class="pure-button button-main" type="submit">
+                            Ban
+                        </button>
+                    </form>
+                </div>
+
+                <div class="pure-u-1-3">
+                    <form id="ban-picture-form" method="POST">
+                        <input
+                            type = "hidden"
+                            id = "form-type"
+                            name = "form-type"
+                            value = "ban-picture"
+                        />
+
+
+                        <input
+                            type = "text"
+                            class = "pure-input"
+                            id = "picture-uid"
+                            name = "picture-uid"
+                            placeholder = "Picture UID"
+                        />
+
+
+                        <button class="pure-button button-main" type="submit">
+                            Ban
+                        </button>
+                    </form>
+                </div>
+
+                <div class="pure-u-1-3">
+                    <form id="ban-comment-form" method="POST">
+                        <input
+                            type = "hidden"
+                            id = "form-type"
+                            name = "form-type"
+                            value = "ban-comment"
+                        />
+
+
+                        <input
+                            type = "text"
+                            class = "pure-input"
+                            id = "comment-uid"
+                            name = "comment-uid"
+                            placeholder = "Comment UID"
+                        />
+
+
+                        <button class="pure-button button-main" type="submit">
+                            Ban
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

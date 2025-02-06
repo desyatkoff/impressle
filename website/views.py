@@ -19,6 +19,7 @@
 
 
 import base64
+import datetime
 
 import flask
 import flask_login
@@ -35,26 +36,26 @@ views = flask.Blueprint(
 
 @views.before_request
 def before_request():
-    try:
+    if not isinstance(flask_login.current_user, flask_login.AnonymousUserMixin):
         user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
 
 
-        if user.xp > 0:
+        if user.karma > 0:
             user.rank = "Artist"
 
-        if user.xp > 24:
+        if user.karma > 24:
             user.rank = "Amateur Artist"
 
-        if user.xp > 49:
+        if user.karma > 49:
             user.rank = "Cool Guy"
 
-        if user.xp > 99:
+        if user.karma > 99:
             user.rank = "Skilled"
 
-        if user.xp == 666:
+        if user.karma == 666:
             user.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
 
-        if user.xp > 999:
+        if user.karma > 999:
             user.rank = "impressive"
 
 
@@ -63,23 +64,88 @@ def before_request():
                 user.rank = "Admin"
 
 
+        for user_ in website.models.User.query.all():
+            if round(datetime.datetime.now(datetime.UTC).timestamp()) - user_.last_activity > 2592000:
+                user_.status = "inactive"
+
+
+        if user.status == "inactive":
+            flask_login.logout_user()
+            flask.redirect(flask.url_for("views.inactive"))
+
+        if user.status == "banned":
+            flask_login.logout_user()
+            flask.redirect(flask.url_for("views.banned"))
+
+
+        user.last_activity = round(datetime.datetime.now(datetime.UTC).timestamp())
+
+
         website.db.session.commit()
 
 
-        if user.is_banned:
-            flask_login.logout_user()
-            flask.redirect(flask.url_for("views.banned"))
-    except:
-        pass
-
-
 @views.route("/")
-@views.route("/home")
 def index():
+    return flask.redirect(flask.url_for("views.landing"))
+
+
+@views.route("/landing")
+def landing():
+    if isinstance(flask_login.current_user, flask_login.AnonymousUserMixin):
+        return flask.render_template(
+            "index.html",
+            user = flask_login.current_user,
+            models = website.models
+        )
+    else:
+        return flask.redirect(
+            flask.url_for(
+                endpoint = "views.user_profile",
+                username = flask_login.current_user.username
+            )
+        )
+
+
+@views.route("/feed")
+def feed():
+    return flask.redirect(flask.url_for("views.feed_recent"))
+
+
+@views.route("/feed/recent")
+def feed_recent():
+    pictures = website.models.Picture
+
+
     return flask.render_template(
-        "index.html",
+        "feed.html",
         user = flask_login.current_user,
-        pictures = website.models.Picture.query.all(),
+        pictures = pictures.query.order_by(pictures.date_created.desc()).all(),
+        models = website.models
+    )
+
+
+@views.route("/feed/popular")
+def feed_popular():
+    pictures = website.models.Picture
+
+
+    return flask.render_template(
+        "feed.html",
+        user = flask_login.current_user,
+        pictures = pictures.query.order_by(len(pictures.views).desc()).all(),
+        models = website.models
+    )
+
+
+@views.route("/feed/most-liked")
+def feed_most_liked():
+    pictures = website.models.Picture
+
+
+    return flask.render_template(
+        "feed.html",
+        user = flask_login.current_user,
+        pictures = pictures.query.order_by(len(pictures.likes).desc()).all(),
         models = website.models
     )
 
@@ -104,7 +170,8 @@ def user_profile(username):
         user_profile = user,
         pictures = website.models.Picture.query.filter_by(
             author_uid = user.uid
-        ).all()
+        ).all(),
+        models = website.models
     )
 
 
@@ -113,18 +180,27 @@ def user_profile(username):
 def user_settings():
     if flask.request.method == "POST":
         user = flask_login.current_user
+
         about_me_data = flask.request.form.get("about-me")
+        show_followers_data = flask.request.form.get("show-followers-checkbox")
+        allow_comments_data = flask.request.form.get("allow-comments-checkbox")
+        delete_account_data = flask.request.form.get("delete-account-checkbox")
 
 
-        if about_me_data is not None:
-            flask.flash(
-                message = "Successfully saved new settings",
-                category = "success"
-            )
+        user.about_me = about_me_data
+        user.show_followers = True if show_followers_data == "on" else False
+        user.allow_comments = True if allow_comments_data == "on" else False
+
+        user.status = "inactive" if delete_account_data == "on" else "normal"
 
 
-            user.about_me = about_me_data
-            website.db.session.commit()
+        flask.flash(
+            message = "Successfully saved new settings",
+            category = "success"
+        )
+
+
+        website.db.session.commit()
 
 
         return flask.redirect(
@@ -137,7 +213,8 @@ def user_settings():
 
     return flask.render_template(
         "user_settings.html",
-        user = flask_login.current_user
+        user = flask_login.current_user,
+        models = website.models
     )
 
 
@@ -164,7 +241,7 @@ def create_picture():
                 author_username = flask_login.current_user.username
             )
 
-            user.xp += 1
+            user.karma += 1
 
 
             website.db.session.add(picture)
@@ -189,7 +266,8 @@ def create_picture():
 
     return flask.render_template(
         "create_picture.html",
-        user = flask_login.current_user
+        user = flask_login.current_user,
+        models = website.models
     )
 
 
@@ -213,7 +291,7 @@ def delete_picture(picture_uid):
             )
 
 
-            user.xp -= 1
+            user.karma -= 1
 
 
             website.db.session.delete(picture)
@@ -231,12 +309,13 @@ def delete_picture(picture_uid):
 @views.route("/picture/<picture_uid>")
 def view_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+    user = flask_login.current_user
 
 
-    try:
-        view = website.models.View.query.filter_by(author_uid=flask_login.current_user.uid).first()
-    except AttributeError:
-        view = "Anonymous"
+    if not isinstance(user, flask_login.AnonymousUserMixin):
+        view = website.models.View.query.filter_by(author_uid=user.uid).first()
+    else:
+        view = ""
 
 
     if not picture:
@@ -272,7 +351,8 @@ def view_picture(picture_uid):
 def about():
     return flask.render_template(
         "about.html",
-        user = flask_login.current_user
+        user = flask_login.current_user,
+        models = website.models
     )
 
 
@@ -280,20 +360,43 @@ def about():
 def faq():
     return flask.render_template(
         "faq.html",
-        user = flask_login.current_user
+        user = flask_login.current_user,
+        models = website.models
     )
+
+
+@views.route("/terms-of-service")
+def terms_of_service():
+    return flask.render_template(
+        "terms_of_service.html",
+        user = flask_login.current_user,
+        models = website.models
+    )
+
+
+@views.route("/privacy-policy")
+def privacy_policy():
+    return flask.render_template(
+        "privacy_policy.html",
+        user = flask_login.current_user,
+        models = website.models
+    )
+
+
+@views.route("/inactive")
+def inactive():
+    try:
+        return flask.render_template(
+            "inactive.html",
+            user = flask_login.current_user
+        )
+    except:
+        pass
 
 
 @views.route("/banned", methods=["GET", "POST"])
 def banned():
     try:
-        return flask.redirect(
-            flask.url_for(
-                "views.user_profile",
-                username = flask_login.current_user.username
-            )
-        )
-    except AttributeError:
         if flask.request.method == "POST":
             checkbox = flask.request.form.get("checkbox")
 
@@ -311,6 +414,8 @@ def banned():
             "banned.html",
             user = flask_login.current_user
         )
+    except:
+        pass
 
 
 @views.route("/follow-user/<user_uid>", methods=["POST"])
@@ -319,7 +424,9 @@ def follow_user(user_uid):
     user = website.models.User.query.filter_by(uid=user_uid).first()
     follow = website.models.Follow.query.filter_by(
         followed_uid = user.uid,
-        follower_uid = flask_login.current_user.uid
+        folowed_username = user.username,
+        follower_uid = flask_login.current_user.uid,
+        follower_username = flask_login.current_user.username
     ).first()
 
 
@@ -332,18 +439,20 @@ def follow_user(user_uid):
         if follow is None:
             new_follow = website.models.Follow(
                 followed_uid = user.uid,
-                follower_uid = flask_login.current_user.uid
+                folowed_username = user.username,
+                follower_uid = flask_login.current_user.uid,
+                follower_username = flask_login.current_user.username
             )
 
             website.db.session.add(new_follow)
 
 
-            user.xp += 1
+            user.karma += 1
         else:
             website.db.session.delete(follow)
 
 
-            user.xp -= 1
+            user.karma -= 1
 
 
         website.db.session.commit()
@@ -381,7 +490,7 @@ def like_picture(picture_uid):
             website.db.session.delete(like)
 
 
-            picture_author.xp -= 1
+            picture_author.karma -= 1
         else:
             like = website.models.Like(
                 picture_uid = picture_uid,
@@ -392,7 +501,7 @@ def like_picture(picture_uid):
             website.db.session.add(like)
 
 
-            picture_author.xp += 1
+            picture_author.karma += 1
 
 
         website.db.session.commit()
@@ -440,7 +549,7 @@ def create_comment(picture_uid):
             website.db.session.add(comment)
 
 
-            picture_author.xp += 1
+            picture_author.karma += 1
 
 
             website.db.session.commit()
@@ -480,7 +589,7 @@ def delete_comment(comment_uid):
             website.db.session.delete(comment)
 
 
-            picture_author.xp -= 1
+            picture_author.karma -= 1
 
 
             website.db.session.commit()
