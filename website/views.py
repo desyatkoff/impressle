@@ -424,7 +424,7 @@ def follow_user(user_uid):
     user = website.models.User.query.filter_by(uid=user_uid).first()
     follow = website.models.Follow.query.filter_by(
         followed_uid = user.uid,
-        folowed_username = user.username,
+        followed_username = user.username,
         follower_uid = flask_login.current_user.uid,
         follower_username = flask_login.current_user.username
     ).first()
@@ -439,7 +439,7 @@ def follow_user(user_uid):
         if follow is None:
             new_follow = website.models.Follow(
                 followed_uid = user.uid,
-                folowed_username = user.username,
+                followed_username = user.username,
                 follower_uid = flask_login.current_user.uid,
                 follower_username = flask_login.current_user.username
             )
