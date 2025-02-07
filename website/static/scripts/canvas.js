@@ -1,8 +1,15 @@
 let canvas = document.getElementById("main-canvas");
 let context = canvas.getContext("2d");
-let stroke_color = "#7f00ff";
-let stroke_width = "4";
-let is_drawing = false;
+
+let brush_color = "#7f00ff";
+let brush_width = "4";
+
+let eraser_color = "#1a1a1a";
+let eraser_width = "8";
+
+let mode = "draw";
+
+let is_mousedown = false;
 
 
 context.fillStyle = "#1a1a1a";
@@ -10,33 +17,41 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 
 
 function start(event) {
-    is_drawing = true;
+    is_mousedown = true;
     context.beginPath();
     context.moveTo(get_x(event), get_y(event));
 
     event.preventDefault();
 }
 
-
 function draw(event) {
-    if (is_drawing) {
-        context.lineTo(get_x(event), get_y(event));
-        context.strokeStyle = stroke_color;
-        context.lineWidth = stroke_width;
-        context.lineCap = "round";
-        context.lineJoin = "round";
-        context.stroke();
+    if (is_mousedown == true) {
+        if (mode == "draw") {
+            context.lineTo(get_x(event), get_y(event));
+            context.strokeStyle = brush_color;
+            context.lineWidth = brush_width;
+            context.lineCap = "round";
+            context.lineJoin = "round";
+            context.stroke();
+        }
+        else if (mode == "erase") {
+            context.lineTo(get_x(event), get_y(event));
+            context.strokeStyle = eraser_color;
+            context.lineWidth = eraser_width;
+            context.lineCap = "round";
+            context.lineJoin = "round";
+            context.stroke();
+        }
     }
 
     event.preventDefault();
 }
 
-
 function stop(event) {
-    if (is_drawing) {
+    if (is_mousedown == true) {
         context.stroke();
         context.closePath();
-        is_drawing = false;
+        is_mousedown = false;
     }
 
     event.preventDefault();
@@ -51,7 +66,6 @@ function get_x(event) {
     }
 }
 
-
 function get_y(event) {
     if (event.pageY == undefined) {
         return event.targetTouches[0].pageY - canvas.offsetTop;
@@ -61,6 +75,11 @@ function get_y(event) {
     }
 }
 
+function reset_canvas() {
+    context.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+
 canvas.addEventListener("touchstart", start, false);
 canvas.addEventListener("touchmove", draw, false);
 canvas.addEventListener("touchend", stop, false);
@@ -68,6 +87,17 @@ canvas.addEventListener("mousedown", start, false);
 canvas.addEventListener("mousemove", draw, false);
 canvas.addEventListener("mouseup", stop, false);
 canvas.addEventListener("mouseout", stop, false);
+
+document.addEventListener("keydown", function(event) {
+    if (event.shiftKey) {
+        if (mode == "draw") {
+            mode = "erase";
+        }
+        else {
+            mode = "draw";
+        }
+    }
+});
 
 document.getElementById("canvas-form").addEventListener("submit", (element) => {
     element.preventDefault();
