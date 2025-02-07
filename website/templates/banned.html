@@ -1,29 +1,45 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | You are Banned{% endblock %}
+{% block title %}Impressle | You are Banned{% endblock %}
 
 {% block content %}
-    <h1>Unfortunately, this account is banned! :(</h1>
+    <h1 id="page-title">
+        Unfortunately, This Account is Banned! :(
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            Uh oh...
+        </b>
+    </p>
 
 
     <hr />
 
 
-    <p>
-        You can no longer log in to this account. Breaking the rules is bad, you know?
-        It's allowed to create another account, and if you want to do this, then
-        promise that you will not break the rules again
-    </p>
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <p>
+            You can no longer log in to this account. Breaking the rules is bad, you know?
+            It's allowed to create another account, and if you want to do this, then
+            promise that you will not break the rules again
+        </p>
 
+        <hr />
 
-    <form method="POST">
-        <div class="card">
-            <label for="checkbox" class="pure-checkbox">
+        <form method="POST">
+            <label
+                for = "checkbox"
+                class = "pure-checkbox"
+            >
                 <input
-                    type = "checkbox"
                     id = "checkbox"
                     name = "checkbox"
+                    type = "checkbox"
                 />
                 I will not break the rules next time
             </label>
@@ -31,9 +47,12 @@
             <br />
             <br />
 
-            <button type="submit" class="pure-button button-main">
+            <button
+                type = "submit"
+                class = "pure-button button-main"
+            >
                 Create New Account
             </button>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

@@ -2,20 +2,26 @@ function view_picture(picture_uid) {
     window.location.replace(`/picture/${picture_uid}`)
 }
 
+
 function like(picture_uid) {
     const LIKE_COUNT = document.getElementById(`likes-count-${picture_uid}`);
     const LIKE_BUTTON = document.getElementById(`like-button-${picture_uid}`);
+    const DISLIKE_COUNT = document.getElementById(`dislikes-count-${picture_uid}`);
+    const DISLIKE_BUTTON = document.getElementById(`dislike-button-${picture_uid}`);
 
 
     fetch(`/like-picture/${picture_uid}`, {method: "POST"})
         .then((res) => res.json())
         .then((data) => {
             LIKE_COUNT.innerHTML = data["likes"];
+            DISLIKE_COUNT.innerHTML = data["dislikes"];
 
 
             if (data["liked"] === true) {
                 LIKE_BUTTON.classList.add("liked");
                 LIKE_BUTTON.classList.remove("not-liked");
+                DISLIKE_BUTTON.classList.add("not-disliked");
+                DISLIKE_BUTTON.classList.remove("disliked");
             } else {
                 LIKE_BUTTON.classList.add("not-liked");
                 LIKE_BUTTON.classList.remove("liked");
@@ -23,9 +29,38 @@ function like(picture_uid) {
         })
 }
 
+
+function dislike(picture_uid) {
+    const LIKE_COUNT = document.getElementById(`likes-count-${picture_uid}`);
+    const LIKE_BUTTON = document.getElementById(`like-button-${picture_uid}`);
+    const DISLIKE_COUNT = document.getElementById(`dislikes-count-${picture_uid}`);
+    const DISLIKE_BUTTON = document.getElementById(`dislike-button-${picture_uid}`);
+
+
+    fetch(`/dislike-picture/${picture_uid}`, {method: "POST"})
+        .then((res) => res.json())
+        .then((data) => {
+            LIKE_COUNT.innerHTML = data["likes"];
+            DISLIKE_COUNT.innerHTML = data["dislikes"];
+
+
+            if (data["disliked"] === true) {
+                LIKE_BUTTON.classList.add("not-liked");
+                LIKE_BUTTON.classList.remove("liked");
+                DISLIKE_BUTTON.classList.add("disliked");
+                DISLIKE_BUTTON.classList.remove("not-disliked");
+            } else {
+                DISLIKE_BUTTON.classList.add("not-disliked");
+                DISLIKE_BUTTON.classList.remove("disliked");
+            }
+        })
+}
+
+
 function comment(picture_uid) {
     window.location.replace(`/picture/${picture_uid}#comment-text`)
 }
+
 
 function follow(user_uid) {
     const FOLLOWERS_COUNT = document.getElementById(`followers-count-${user_uid}`);

@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | Log In{% endblock %}
+{% block title %}Impressle | Log In{% endblock %}
 
 {% block content %}
-    <h1>
+    <h1 id="page-title">
         Welcome back!
     </h1>
+
+
+    <p id="page-subtitle">
+        Here you can log in to your account
+    </p>
 
 
     <hr />
 
 
-    <p>
-        <b>
-            Here you can log in to your account
-        </b>
-    </p>
-
-
-    <form method="POST">
-        <div class="card">
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <form method="POST">
             <label for="username">
                 Username
             </label>
@@ -37,8 +38,8 @@
                 Password
             </label>
             <input
-                type = "password"
                 id = "password"
+                type = "password"
                 name = "password"
                 placeholder = "Password"
             />
@@ -46,17 +47,23 @@
             <br />
             <br />
 
-            <button type="submit" class="pure-button button-main">
+            <button
+                type = "submit"
+                class = "pure-button button-main"
+            >
                 Log In
             </button>
 
-            <br />
-            <br />
-            <br />
+
+            <hr />
+
 
             <p>
-                New to impressle? <a href="{{ url_for('auth.signup') }}">Sign Up</a>
+                New to Impressle?
+                <a href="{{ url_for('auth.signup') }}">
+                    Sign Up
+                </a>
             </p>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

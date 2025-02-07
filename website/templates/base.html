@@ -3,22 +3,23 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{% block title %}{% endblock %}</title>
         <meta name="description" content="Unleash your creativity!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>{% block title %}{% endblock %}</title>
         <link
             rel = "icon"
-            href = "{{ url_for('static', filename='images/logo.svg') }}"
             type = "image/svg+xml"
+            href = "{{ url_for('static', filename='images/logo.svg') }}"
         />
         <link
             rel = "preconnect"
             href = "https://fonts.googleapis.com"
         />
         <link
+            crossorigin
             rel = "preconnect"
             href = "https://fonts.gstatic.com"
-            crossorigin
         />
         <link
             rel = "stylesheet"
@@ -26,9 +27,9 @@
         />
         <link
             rel = "stylesheet"
+            crossorigin = "anonymous"
             href = "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
             integrity = "sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
-            crossorigin = "anonymous"
         />
         <link
             rel = "stylesheet"
@@ -44,13 +45,16 @@
             <div class="pure-u-1 pure-u-md-1-4">
                 <div class="sidebar sidebar-left">
                     <img
-                        src = "/static/images/logo-full.svg"
-                        alt = "impressle"
                         height = "64"
+                        alt = "Impressle"
                         class = "logo pure-img"
+                        src = "/static/images/logo-full.svg"
                     />
 
-                    <p class="slogan" align="center">
+                    <p
+                        class = "slogan"
+                        align = "center"
+                    >
                         <b>
                             Unleash your creativity!
                         </b>
@@ -63,9 +67,9 @@
                                 class = "pure-menu-link pure-button button-main"
                             >
                                 <img
-                                    src = "/static/images/plus-square.svg"
                                     height = "32"
                                     class = "icon"
+                                    src = "/static/images/plus-square.svg"
                                 />
                                 Create Picture
                             </a>
@@ -76,9 +80,9 @@
                                 class = "pure-menu-link pure-button"
                             >
                                 <img
-                                    src = "/static/images/compass.svg"
                                     height = "32"
                                     class = "icon"
+                                    src = "/static/images/compass.svg"
                                 />
                                 Feed
                             </a>
@@ -86,26 +90,26 @@
                         {% if user.is_authenticated %}
                             <li class="pure-menu-item">
                                 <a
-                                    href = "{{ url_for('views.user_profile', username=user.username) }}"
                                     class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('views.user_profile', username=user.username) }}"
                                 >
                                     <img
-                                        src = "/static/images/user.svg"
                                         height = "32"
                                         class = "icon"
+                                        src = "/static/images/user.svg"
                                     />
                                     Profile (@{{ user.username }})
                                 </a>
                             </li>
                             <li class="pure-menu-item">
                                 <a
-                                    href = "{{ url_for('views.user_settings') }}"
                                     class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('views.user_settings') }}"
                                 >
                                     <img
-                                        src = "/static/images/settings.svg"
                                         height = "32"
                                         class = "icon"
+                                        src = "/static/images/settings.svg"
                                     />
                                     Settings
                                 </a>
@@ -117,22 +121,22 @@
                                     class = "pure-menu-link pure-button"
                                 >
                                     <img
-                                        src = "/static/images/log-in.svg"
                                         height = "32"
                                         class = "icon"
+                                        src = "/static/images/log-in.svg"
                                     />
                                     Log In
                                 </a>
                             </li>
                             <li class="pure-menu-item">
                                 <a
-                                    href = "{{ url_for('auth.signup') }}"
                                     class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('auth.signup') }}"
                                 >
                                     <img
-                                        src = "/static/images/user-plus.svg"
                                         height = "32"
                                         class = "icon"
+                                        src = "/static/images/user-plus.svg"
                                     />
                                     Sign Up
                                 </a>
@@ -140,13 +144,13 @@
                         {% endif %}
                         <li class="pure-menu-item">
                             <a
-                                href = "{{ url_for('views.about') }}"
                                 class = "pure-menu-link pure-button"
+                                href = "{{ url_for('views.about') }}"
                             >
                                 <img
-                                    src = "/static/images/info.svg"
                                     height = "32"
                                     class = "icon"
+                                    src = "/static/images/info.svg"
                                 />
                                 About
                             </a>
@@ -157,9 +161,9 @@
                                 class = "pure-menu-link pure-button"
                             >
                                 <img
-                                    src = "/static/images/info.svg"
                                     height = "32"
                                     class = "icon"
+                                    src = "/static/images/info.svg"
                                 />
                                 FAQ
                             </a>
@@ -167,13 +171,13 @@
                         {% if user.rank == "Admin" %}
                             <li class="pure-menu-item">
                                 <a
-                                    href = "{{ url_for('admin.panel') }}"
                                     class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('admin.panel') }}"
                                 >
                                     <img
-                                        src = "/static/images/database.svg"
                                         height = "32"
                                         class = "icon"
+                                        src = "/static/images/database.svg"
                                     />
                                     Admin Panel
                                 </a>
@@ -182,13 +186,13 @@
                         {% if user.is_authenticated %}
                             <li class="pure-menu-item">
                                 <a
-                                    href = "{{ url_for('auth.logout') }}"
                                     class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('auth.logout') }}"
                                 >
                                     <img
-                                        src = "/static/images/log-out.svg"
                                         height = "32"
                                         class = "icon"
+                                        src = "/static/images/log-out.svg"
                                     />
                                     Log Out
                                 </a>
@@ -207,9 +211,9 @@
                             </a>
                         </p>
                         <p>
-                            Copyright © 2025 impressle.
+                            Copyright © 2025 Impressle.
                             <br />
-                            All rights reserved.
+                            All rights reserved
                         </p>
                     </div>
                 </div>

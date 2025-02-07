@@ -46,7 +46,7 @@ def access_admin():
         if secret_key == config.FLASK_SECRET:
             if user.rank == "Admin":
                 flask.flash(
-                    message = "Successfully accessed the Admin Panel",
+                    message = "Successfully accessed the admin panel",
                     category = "success"
                 )
 
@@ -56,12 +56,12 @@ def access_admin():
                 return flask.redirect(flask.url_for("admin.panel"))
             else:
                 flask.flash(
-                    message = "You are not an Admin",
+                    message = "You are not an admin",
                     category = "error"
                 )
         else:
             flask.flash(
-                message = "Incorrect Secret Key",
+                message = "Incorrect secret key",
                 category = "error"
             )
 
@@ -243,7 +243,9 @@ def panel():
             user = flask_login.current_user,
             users = website.models.User.query.all(),
             pictures = website.models.Picture.query.all(),
+            followes = website.models.Follow.query.all(),
             likes = website.models.Like.query.all(),
+            dislikes = website.models.Dislike.query.all(),
             comments = website.models.Comment.query.all(),
             views = website.models.View.query.all()
         )

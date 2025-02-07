@@ -1,100 +1,189 @@
-<div class="picture pure-u-1" id="picture-{{ picture.uid }}">
+<div
+    class = "picture pure-u-1"
+    id = "picture-{{ picture.uid }}"
+>
     <div class="card">
-        <h2 class="picture-title">
-            {{ picture.title }}
-            {% if picture.status == "banned" %}
-                <span style="color: red;">[ BANNED ]</span>
-            {% endif %}
-        </h2>
+        <div class="picture-title">
+            <h2>
+                {% if picture.title %}
+                    {{ picture.title }}
+                {% else %}
+                    <i>
+                        Untitled #{{ picture.uid }}
+                    </i>
+                {% endif %}
 
-        <p class="picture-author">
-            Author:
-            <a href="{{ url_for('views.user_profile', username=picture.author_username) }}">
-                @{{ picture.author_username }}
-            </a>
-        </p>
+                {% if picture.status == "banned" %}
+                    <span style="color: red;">[ BANNED ]</span>
+                {% endif %}
+            </h2>
+        </div>
 
-        <p class="picture-date-created">
-            Published on {{ picture.date_created.day }}.{{ picture.date_created.month }}.{{ picture.date_created.year }}
-        </p>
+        <div class="picture-author">
+            <p>
+                Author:
+                <a href="{{ url_for('views.user_profile', username=picture.author_username) }}">
+                    @{{ picture.author_username }}
+                </a>
+            </p>
+        </div>
+
+        <div class="picture-date-created">
+            <p>
+                Published on {{ picture.date_created.day }}.{{ picture.date_created.month }}.{{ picture.date_created.year }}
+            </p>
+        </div>
 
         <hr />
 
-        <p align="center">
-            <img
-                src = "{{ url_for('api.get_picture_by_uid', picture_uid=picture.uid) }}"
-                alt = "Picture"
-                class = "picture-image pure-img"
-            />
-        </p>
+        <div class="picture-image">
+            <p align="center">
+                <img
+                    alt = "Picture"
+                    class = "picture-image pure-img"
+                    src = "{{ url_for('api.get_picture_by_uid', picture_uid=picture.uid) }}"
+                />
+            </p>
+        </div>
 
         <hr />
 
-        <div class="pure-g">
-            <div class="pure-u-1-8">
-                <p class="likes-icon">
-                    <span class="likes-count" id="likes-count-{{picture.uid}}">
-                        {{ picture.likes|length }}
-                    </span>
-
-                    {% if user.uid in picture.likes|map(attribute="author_uid")|list %}
-                        <button class="liked" id="like-button-{{ picture.uid }} " onclick="like({{ picture.uid }})">
-                            <img
-                                src = "/static/images/thumbs-up.svg"
-                                height = "24"
-                            />
-                        </button>
-                    {% else %}
-                        <button class="not-liked" id="like-button-{{ picture.uid }}" onclick="like({{ picture.uid }})">
-                            <img
-                                src = "/static/images/thumbs-up.svg"
-                                height = "24"
-                            />
-                        </button>
-                    {% endif %}
-                </p>
-            </div>
-
-            {% if models.User.query.filter_by(uid=picture.author_uid).first().allow_comments %}
+        <div class="picture-analytics">
+            <div class="pure-g">
                 <div class="pure-u-1-8">
-                    <p class="comments-icon">
-                        <span class="comments-count" id="comment-count-{{ picture.uid }}">
-                            {{ picture.comments|length }}
-                        </span>
+                    <p class="likes-icon">
+                        {% if user.uid in picture.likes|map(attribute="author_uid")|list %}
+                            <button
+                                class = "liked"
+                                id = "like-button-{{ picture.uid }}"
+                                onclick = "like({{ picture.uid }})"
+                            >
+                                <img
+                                    height = "24"
+                                    src = "/static/images/thumbs-up.svg"
+                                />
+                            </button>
+                        {% else %}
+                            <button
+                                class = "not-liked"
+                                id = "like-button-{{ picture.uid }}"
+                                onclick = "like({{ picture.uid }})"
+                            >
+                                <img
+                                    height = "24"
+                                    src = "/static/images/thumbs-up.svg"
+                                />
+                            </button>
+                        {% endif %}
 
-                        <button class="comment-button" id="comment-button-{{ picture.uid }} " onclick="comment({{ picture.uid }})">
-                            <img
-                                src = "/static/images/message-square.svg"
-                                height = "24"
-                            />
-                        </button>
+                        <span
+                            class = "likes-count"
+                            id = "likes-count-{{ picture.uid }}"
+                        >
+                            {{ picture.likes|length }}
+                        </span>
                     </p>
                 </div>
-            {% endif %}
 
-            <div class="pure-u-1-8">
-                <p class="views-icon">
-                    <span class="views-count" id="views-count-{{ picture.uid }}">
-                        {{ picture.views|length }}
-                    </span>
+                <div class="pure-u-1-8">
+                    <p class="dislikes-icon">
+                        {% if user.uid in picture.dislikes|map(attribute="author_uid")|list %}
+                            <button
+                                class = "disliked"
+                                onclick = "dislike({{ picture.uid }})"
+                                id = "dislike-button-{{ picture.uid }}"
+                            >
+                                <img
+                                    height = "24"
+                                    src = "/static/images/thumbs-down.svg"
+                                />
+                            </button>
+                        {% else %}
+                            <button
+                                class = "not-disliked"
+                                id = "dislike-button-{{ picture.uid }}"
+                                onclick = "dislike({{ picture.uid }})"
+                            >
+                                <img
+                                    height = "24"
+                                    src = "/static/images/thumbs-down.svg"
+                                />
+                            </button>
+                        {% endif %}
 
-                    <button class="view-button" id="view-button-{{ picture.uid }} " onclick="view_picture({{ picture.uid }})">
-                        <img
-                            src = "/static/images/eye.svg"
-                            height = "24"
-                        />
-                    </button>
-                </p>
+                        <span
+                            class = "dislikes-count"
+                            id = "dislikes-count-{{ picture.uid }}"
+                        >
+                            {{ picture.dislikes|length }}
+                        </span>
+                    </p>
+                </div>
+
+                {% if models.User.query.filter_by(uid=picture.author_uid).first().allow_comments %}
+                    <div class="pure-u-1-8">
+                        <p class="comments-icon">
+                            <button
+                                class = "comment-button"
+                                id = "comment-button-{{ picture.uid }}"
+                                onclick = "comment({{ picture.uid }})"
+                            >
+                                <img
+                                    height = "24"
+                                    src = "/static/images/message-square.svg"
+                                />
+                            </button>
+
+                            <span
+                                class = "comments-count"
+                                id = "comment-count-{{ picture.uid }}"
+                            >
+                                {{ picture.comments|length }}
+                            </span>
+                        </p>
+                    </div>
+                {% endif %}
+
+                <div class="pure-u-1-8">
+                    <p class="views-icon">
+                        <button
+                            class = "view-button"
+                            id = "view-button-{{ picture.uid }}"
+                            onclick = "view_picture({{ picture.uid }})"
+                        >
+                            <img
+                                height = "24"
+                                src = "/static/images/eye.svg"
+                            />
+                        </button>
+
+                        <span
+                            class = "views-count"
+                            id = "views-count-{{ picture.uid }}"
+                        >
+                            {{ picture.views|length }}
+                        </span>
+                    </p>
+                </div>
             </div>
         </div>
 
         {% if user.uid == picture.author_uid %}
             <hr />
 
-            <form id="delete-picture-form" method="POST" action="{{ url_for('views.delete_picture', picture_uid=picture.uid) }}">
-                <button class="pure-button button-main" type="submit">
-                    Delete Picture
-                </button>
-            </form>
+            <div class="picture-other">
+                <form
+                    method = "POST"
+                    id = "delete-picture-form"
+                    action = "{{ url_for('views.delete_picture', picture_uid=picture.uid) }}"
+                >
+                    <button
+                        type = "submit"
+                        class = "pure-button button-main"
+                    >
+                        Delete Picture
+                    </button>
+                </form>
+            </div>
         {% endif %}
 </div>

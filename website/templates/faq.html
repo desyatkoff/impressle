@@ -1,97 +1,153 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | FAQ{% endblock %}
+{% block title %}Impressle | FAQ{% endblock %}
 
 {% block content %}
-    <h1>Frequently Asked Questions (FAQ)</h1>
+    <h1 id="page-title">
+        FAQ (Frequently Asked Questions)
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            If you have a question, you can find the answer here
+        </b>
+    </p>
 
 
     <hr />
 
 
-    <div class="card" id="faq">
+    <div
+        id = "page-content"
+        class = "card"
+    >
         <div>
             <h2 class="question">
-                What is impressle?
+                1. What is Impressle?
             </h2>
 
             <p class="card answer">
-                <b>impressle</b> is a unique social network where you have to draw by hand,
-                not uploading image files. Follow your favorite artists, give likes to other users' pictures
-                and make your own ones!
+                <b>Impressle</b> is a unique social network where you have to draw by hand, not
+                uploading image files. Follow your favorite artists, give likes to other users'
+                pictures and make your own ones!
             </p>
         </div>
 
         <div>
             <h2 class="question">
-                How to become an artist on impressle?
+                2. How to Become an Artist on Impressle?
             </h2>
 
-            <p class="answer">
-                <ol class="card">
-                    <li>
-                        <a href="{{ url_for('auth.login') }}">Log in</a> to your account
-                        (or <a href="{{ url_for('auth.signup') }}">sign up</a> if you do not have one)
-                    </li>
-                    <li>
-                        Go to <a href="{{ url_for('views.create_picture') }}">Create a Picture</a> page
-                    </li>
-                    <li>
-                        Draw something impressive
-                    </li>
-                    <li>
-                        Click "Publish" button
-                    </li>
-                    <li>
-                        You are now officially a new artist!
-                    </li>
-                </ol>
+            <p class="card answer">
+                1.
+                <a href="{{ url_for('auth.login') }}">
+                    Log in
+                </a>
+                to your account (or
+                <a href="{{ url_for('auth.signup') }}">
+                    sign up
+                </a>
+                if you do not have one)
+
+                <br />
+
+                2.
+                Go to
+                <a href="{{ url_for('views.create_picture') }}">
+                    Create a Picture
+                </a>
+                page
+
+                <br />
+
+                3.
+                Draw something impressive
+
+                <br />
+
+                4.
+                Click "Publish" button
+
+                <br />
+
+                5.
+                You are now officially a new artist!
             </p>
         </div>
 
         <div>
             <h2 class="question">
-                What is "Karma"?
+                3. What is Karma?
             </h2>
 
             <p class="card answer">
-                More karma -> higher rank
+                Karma shows your reputation to others. Also, more karma -> higher rank. If your
+                karma goes negative, you will be banned for bad behavior (for example, you
+                published an inappropriate picture and it got lots of dislikes)
 
                 <br />
                 <br />
 
-                You get +1 karma for publishing a picture
-                <br />
-                You get +1 karma for every follower
-                <br />
-                You get +1 karma for every like on your picture
-                <br />
-                You get +1 karma for every comment on your picture
-                <br />
-                You get -1 karma for deleting a picture
-                <br />
-                You get -1 karma if your picture gets banned
-                <br />
-                You get -1 karma if your comment gets banned
-                <br />
-                You get -1 karma if someone deletes their comment on your picture
+                You get <b>+1</b> karma ...:
 
                 <br />
                 <br />
 
-                If your karma goes negative, you can get banned! You should get more karma because
-                it shows your reputation to others
+                1.
+                For publishing a picture
+
+                <br />
+
+                2.
+                For every new follower
+
+                <br />
+
+                3.
+                For every like on your picture
+
+                <br />
+
+                4.
+                For every comment on your picture
+
+                <br />
+                <br />
+
+                You get <b>-1</b> karma ...:
+
+                <br />
+                <br />
+
+                1.
+                For deleting a picture
+
+                <br />
+
+                2.
+                For every dislike on your picture
+
+                <br />
+
+                3.
+                If your picture gets banned
+
+                <br />
+
+                4.
+                If your comment gets banned
             </p>
         </div>
 
         <div>
             <h2 class="question">
-                What is "Rank"?
+                4. What is Rank?
             </h2>
 
             <p class="card answer">
-                Rank shows user's reputation and skills at drawing on impressle
+                Rank shows your skills at drawing on Impressle
 
                 <br />
 
@@ -100,17 +156,27 @@
                 <br />
                 <br />
 
-                0 karma = "Newbie" rank
+                0 karma -> "Newbie" rank
+
                 <br />
-                1-24 karma = "Artist" rank
+
+                1-24 karma -> "Artist" rank
+
                 <br />
-                25-49 karma = "Amateur Artist" rank
+
+                25-49 karma -> "Amateur Artist" rank
+
                 <br />
-                50-99 karma = "Cool Guy" rank
+
+                50-99 karma -> "Cool Guy" rank
+
                 <br />
-                100-999 karma = "Skilled" rank
+
+                100-999 karma -> "Skilled" rank
+
                 <br />
-                1000+ karma = "impressive" rank
+
+                1000+ karma -> "Impressive" rank
 
                 <br />
                 <br />
@@ -121,7 +187,7 @@
 
         <div>
             <h2 class="question">
-                Are there any limits on posting pictures?
+                5. Are There Any Limits On Posting Pictures?
             </h2>
 
             <p class="card answer">
@@ -132,13 +198,13 @@
 
         <div>
             <h2 class="question">
-                I saw an account marked with "[ INACTIVE ]". What does that mean?
+                6. What is [ INACTIVE ] Tag?
             </h2>
 
             <p class="card answer">
-                Every user should do some activity on impressle, otherwise the account may be
+                Every user should do some activity on Impressle, otherwise the account may be
                 deleted because of inactivity. If the account was inactive for last 30 days,
-                it will be marked with "[ INACTIVE ]" tag and the account owner (user) will
+                it will be marked with [ INACTIVE ] tag and the account owner (user) will
                 not be able to log in to their account
 
                 <br />
@@ -150,21 +216,24 @@
                 <br />
                 <br />
 
-                Also, if you want to leave the impressle community forever, you can delete
-                your account (<a href="{{ url_for('views.user_settings') }}">Settings</a>
-                > Delete Account) and it will be marked as inactive instantly so the other
+                Also, if you want to leave the Impressle community forever, you can delete
+                your account
+                (<a href="{{ url_for('views.user_settings') }}">
+                    Settings
+                </a>
+                -> Delete Account) and it will be marked as inactive instantly so the other
                 users could understand that this account is "dead"
             </p>
         </div>
 
         <div>
             <h2 class="question">
-                What if my account/picture/comment gets banned?
+                7. What If My Account/Picture/Comment Gets Banned?
             </h2>
 
             <p class="card answer">
                 If your account gets banned, you will not be able to log in to your account anymore
-                and other Users will see "[ BANNED ]" tag in your Profile
+                and other Users will see [ BANNED ] tag in your Profile
 
                 <br />
                 <br />
@@ -178,41 +247,47 @@
                 <br />
                 <br />
 
-                If your comment gets banned, its text will be replaced with "[ BANNED ]"
+                If your comment gets banned, its text will be replaced with [ BANNED ]
 
                 <br />
                 <br />
 
-                Just don't be a bad guy :)
+                Just don't be a bad guy and everything will be fine :)
             </p>
         </div>
 
         <div>
             <h2 class="question">
-                Can I trust this website?
+                8. Can I Trust This Website?
             </h2>
 
             <p class="card answer">
-                Absolutely. Source code of impressle is available on GitHub.
-                You can check it on <a href="https://github.com/desyatkoff/impressle">this repository</a>
-                and maybe become a contributor if you want
+                Absolutely. Source code of Impressle is available on GitHub. You can check it on
+                <a href="https://github.com/desyatkoff/impressle">
+                    this repository
+                </a>
             </p>
         </div>
 
         <div>
             <h2 class="question">
-                I didn't find answer to my question here. Where to ask?
+                9. I Didn't Find The Answer to My Question Here. Where to Ask?
             </h2>
 
             <p class="card answer">
-                If you have some questions, you can ask on official impressle Telegram
-                community group. Currently, there are available English and Russian channels and groups.
-                All of them are listed <a href="https://t.me/+B8xsRBp4wyBjYzIy">here</a>
+                If you have some questions, you can ask on official Impressle Telegram community
+                group. Currently, there are available English and Russian channels and groups.
+                All of them are listed
+                <a href="https://t.me/+B8xsRBp4wyBjYzIy">
+                    here
+                </a>
 
                 <br />
 
                 Also, you can ask on GitHub
-                (<a href="https://github.com/desyatkoff/impressle">impressle repository</a> > Issues > New issue)
+                (<a href="https://github.com/desyatkoff/impressle">
+                    Impressle repository
+                </a> -> Issues -> New issue)
             </p>
         </div>
     </div>

@@ -1,4 +1,7 @@
-<div class="comment card" id="comment-{{ comment.uid }}">
+<div
+    class = "comment card"
+    id = "comment-{{ comment.uid }}"
+>
     <div class="comment-info">
         <p class="comment-author">
             Author:
@@ -7,7 +10,7 @@
             </a>
         </p>
         <p class="comment-date-created">
-            Commented on {{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }}
+            Commented on {{ comment.date_created }}
         </p>
     </div>
 
@@ -24,11 +27,18 @@
     </div>
 
 
-    {% if user.uid == comment.author_uid %}
+    {% if user.uid == comment.author_uid and comment.status == "normal" %}
         <hr />
 
-        <form id="delete-comment-form" method="POST" action="{{ url_for('views.delete_comment', comment_uid=comment.uid) }}">
-            <button class="pure-button button-main" type="submit">
+        <form
+            method = "POST"
+            id = "delete-comment-form"
+            action = "{{ url_for('views.delete_comment', comment_uid=comment.uid) }}"
+        >
+            <button
+                type="submit"
+                class = "pure-button button-main"
+            >
                 Delete Comment
             </button>
         </form>

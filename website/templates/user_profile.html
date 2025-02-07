@@ -1,43 +1,62 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | @{{ user_profile.username }}{% endblock %}
+{% block title %}Impressle | @{{ user_profile.username }}{% endblock %}
 
 {% block content %}
-    <h1>
+    <h1 id="page-title">
         @{{ user_profile.username }}'s Profile
     </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            Just some info about this user
+        </b>
+    </p>
 
 
     <hr />
 
 
     <div id="profile">
-        <div class="card" id="profile-info">
+        <div
+            class = "card"
+            id = "profile-info"
+        >
             <div class="pure-g">
                 <div class="pure-u-1-2">
                     <h1 align="left">
                         <img
-                            src = "{{ url_for('static', filename='images/user.svg') }}"
-                            alt = "Profile Picture"
                             class = "pfp pure-img"
+                            alt = "Profile Picture"
+                            src = "{{ url_for('static', filename='images/user.svg') }}"
                         />
                         @{{ user_profile.username }}
 
 
                         {% if user_profile.rank == "Admin" %}
-                            <span style="color: #7f00ff">[ ADMIN ]</span>
+                            <span style="color: #7f00ff">
+                                [ ADMIN ]
+                            </span>
                         {% endif %}
 
                         {% if user_profile.status == "inactive" %}
-                            <span style="color: #ff7f00">[ INACTIVE ]</span>
+                            <span style="color: #ff7f00">
+                                [ INACTIVE ]
+                            </span>
                         {% elif user_profile.status == "banned" %}
-                            <span style="color: red;">[ BANNED ]</span>
+                            <span style="color: #ff0000;">
+                                [ BANNED ]
+                            </span>
                         {% endif %}
                     </h1>
                 </div>
                 <div class="pure-u-1-2" >
-                    <p class="followers" align="right">
+                    <p
+                        align = "right"
+                        class = "followers"
+                    >
                         {% if user_profile.show_followers %}
                             <span>
                                 <span class="followers-count" id="followers-count-{{ user_profile.uid }}">
@@ -49,11 +68,19 @@
 
                         {% if user.uid != user_profile.uid %}
                             {% if user.uid in user_profile.follows|map(attribute="follower_uid")|list %}
-                                <button class="button following pure-button button-main" id="follow-button-{{ user_profile.uid }}" onclick="follow({{ user_profile.uid }})">
+                                <button
+                                    onclick = "follow({{ user_profile.uid }})"
+                                    id = "follow-button-{{ user_profile.uid }}"
+                                    class = "button following pure-button button-main"
+                                >
                                     Unfollow
                                 </button>
                             {% else %}
-                                <button class="button not-following pure-button button-main" id="follow-button-{{ user_profile.uid }}" onclick="follow({{ user_profile.uid }})">
+                                <button
+                                    class = "button not-following pure-button button-main"
+                                    id = "follow-button-{{ user_profile.uid }}"
+                                    onclick = "follow({{ user_profile.uid }})"
+                                >
                                     Follow
                                 </button>
                             {% endif %}

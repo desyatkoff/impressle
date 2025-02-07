@@ -55,7 +55,7 @@ def signup():
                 message = "Password is too short",
                 category = "error"
             )
-        elif checkbox is (False or None):
+        elif checkbox != "on":
             flask.flash(
                 message = "You have to read Terms of Service and Privacy Policy",
                 category = "error"
@@ -95,7 +95,10 @@ def signup():
             )
 
 
-    return flask.render_template("signup.html", user=flask_login.current_user)
+    return flask.render_template(
+        "signup.html",
+        user = flask_login.current_user
+    )
 
 
 @auth.route("/login", methods=["GET", "POST"])
@@ -156,7 +159,10 @@ def login():
             )
 
 
-    return flask.render_template("login.html", user=flask_login.current_user)
+    return flask.render_template(
+        "login.html",
+        user = flask_login.current_user
+    )
 
 
 @auth.route("/logout")

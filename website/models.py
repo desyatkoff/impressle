@@ -28,7 +28,8 @@ import website
 class User(website.db.Model, flask_login.UserMixin):
     id = website.db.Column(
         website.db.Integer,
-        primary_key = True
+        primary_key = True,
+        nullable = False
     )
 
     uid = website.db.Column(
@@ -101,7 +102,8 @@ class User(website.db.Model, flask_login.UserMixin):
 class Picture(website.db.Model):
     id = website.db.Column(
         website.db.Integer,
-        primary_key = True
+        primary_key = True,
+        nullable = False
     )
 
     uid = website.db.Column(
@@ -123,6 +125,11 @@ class Picture(website.db.Model):
     )
     likes = website.db.relationship(
         "Like",
+        backref = "picture",
+        passive_deletes = True
+    )
+    dislikes = website.db.relationship(
+        "Dislike",
         backref = "picture",
         passive_deletes = True
     )
@@ -157,7 +164,8 @@ class Picture(website.db.Model):
 class Follow(website.db.Model):
     id = website.db.Column(
         website.db.Integer,
-        primary_key = True
+        primary_key = True,
+        nullable = False
     )
 
     uid = website.db.Column(
@@ -194,7 +202,46 @@ class Follow(website.db.Model):
 class Like(website.db.Model):
     id = website.db.Column(
         website.db.Integer,
-        primary_key = True
+        primary_key = True,
+        nullable = False
+    )
+
+    uid = website.db.Column(
+        website.db.Integer,
+        unique = True,
+        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+    )
+    date_created = website.db.Column(
+        website.db.DateTime(timezone=True),
+        default = datetime.datetime.now(datetime.UTC)
+    )
+    picture_uid = website.db.Column(
+        website.db.Integer,
+        website.db.ForeignKey(
+            "picture.uid",
+            ondelete = "CASCADE"
+        ),
+        nullable = False
+    )
+    author_uid = website.db.Column(
+        website.db.Integer,
+        website.db.ForeignKey(
+            "user.uid",
+            ondelete = "CASCADE"
+        ),
+        nullable = False
+    )
+    author_username = website.db.Column(
+        website.db.String,
+        nullable = False
+    )
+
+
+class Dislike(website.db.Model):
+    id = website.db.Column(
+        website.db.Integer,
+        primary_key = True,
+        nullable = False
     )
 
     uid = website.db.Column(
@@ -231,7 +278,8 @@ class Like(website.db.Model):
 class Comment(website.db.Model):
     id = website.db.Column(
         website.db.Integer,
-        primary_key = True
+        primary_key = True,
+        nullable = False
     )
 
     uid = website.db.Column(
@@ -276,7 +324,8 @@ class Comment(website.db.Model):
 class View(website.db.Model):
     id = website.db.Column(
         website.db.Integer,
-        primary_key = True
+        primary_key = True,
+        nullable = False
     )
 
     uid = website.db.Column(

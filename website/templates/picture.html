@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | {{ picture.title }}{% endblock %}
+{% block title %}Impressle | {{ picture.title }}{% endblock %}
 
 {% block content %}
-    <h1>
+    <h1 id="page-title">
         Picture
     </h1>
 
@@ -16,8 +16,15 @@
 
 
     {% if models.User.query.filter_by(uid=picture.author_uid).first().allow_comments %}
-        <div class="comments" id="comments-{{ picture.uid }}">
-            <form id="comment-form" method="POST" action="{{ url_for('views.create_comment', picture_uid=picture.uid) }}">
+        <div
+            class =  "comments"
+            id = "comments-{{ picture.uid }}"
+        >
+            <form
+                method = "POST"
+                id = "comment-form"
+                action = "{{ url_for('views.create_comment', picture_uid=picture.uid) }}"
+            >
                 <div class="card">
                     <input
                         type = "text"
@@ -28,8 +35,8 @@
 
 
                     <button
-                        class = "pure-button button-main"
                         type = "submit"
+                        class = "pure-button button-main"
                     >
                         Send
                     </button>

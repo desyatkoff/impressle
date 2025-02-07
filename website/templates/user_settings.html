@@ -1,38 +1,50 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | Settings{% endblock %}
+{% block title %}Impressle | Settings{% endblock %}
 
 {% block content %}
-    <h1>
+    <h1 id="page-title">
         Settings
     </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            Set the preferences for your account
+        </b>
+    </p>
 
 
     <hr />
 
 
-    <div id="settings">
-        <form id="form-settings" method="POST">
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <form
+            method = "POST"
+            id = "form-settings"
+        >
             <h1 id="profile-settings">
                 Profile Settings
             </h1>
 
 
             <div class="card">
-                <p>
-                    What can you say about yourself?
-                </p>
+                <label for="about-me">
+                    About Me
+                </label>
 
                 <input
                     type = "text"
                     id = "about-me"
+                    maxlength = "64"
                     name = "about-me"
-                    placeholder = "About Me"
                     {% if user.about_me %}
                         value = "{{ user.about_me }}"
                     {% endif %}
-                    maxlength = "64" 
                 />
 
 
@@ -40,8 +52,8 @@
 
 
                 <button
-                    class = "pure-button button-main"
                     type = "submit"
+                    class = "pure-button button-main"
                 >
                     Save
                 </button>
@@ -57,8 +69,8 @@
                 <label for="show-followers-checkbox">
                     <input
                         type = "checkbox"
-                        name = "show-followers-checkbox"
                         id = "show-followers-checkbox"
+                        name = "show-followers-checkbox"
                         {% if user.show_followers %}
                             checked
                         {% endif %}
@@ -71,8 +83,8 @@
                 <label for="allow-comments-checkbox">
                     <input
                         type = "checkbox"
-                        name = "allow-comments-checkbox"
                         id = "allow-comments-checkbox"
+                        name = "allow-comments-checkbox"
                         {% if user.allow_comments %}
                             checked
                         {% endif %}
@@ -85,8 +97,8 @@
 
 
                 <button
-                    class = "pure-button button-main"
                     type = "submit"
+                    class = "pure-button button-main"
                 >
                     Save
                 </button>
@@ -102,8 +114,8 @@
                 <label for="delete-account-checkbox">
                     <input
                         type = "checkbox"
-                        name = "delete-account-checkbox"
                         id = "delete-account-checkbox"
+                        name = "delete-account-checkbox"
                     >
                     I am totally sure I want to delete this account
                 </label>
@@ -113,8 +125,8 @@
 
 
                 <button
-                    class = "pure-button button-danger"
                     type = "submit"
+                    class = "pure-button button-danger"
                 >
                     Delete Account
                 </button>

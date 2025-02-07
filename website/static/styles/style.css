@@ -13,6 +13,20 @@ a {
     color: #a347ff;
 }
 
+input {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    background-color: #0d0d0d;
+    transition: border-color 0.25s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #7f00ff;
+}
+
 .pure-button a {
     color: #e6e6e6;
 }
@@ -26,8 +40,8 @@ a {
 }
 
 .sidebar-footer {
-    width: 16em;
     bottom: 0;
+    width: 16em;
     position: fixed;
 }
 
@@ -41,9 +55,9 @@ a {
 }
 
 .pure-menu-list {
+    padding: 0;
     margin-top: 8em;
     list-style: none;
-    padding: 0;
 }
 
 .pure-menu-item {
@@ -51,12 +65,12 @@ a {
 }
 
 .pure-menu-link {
-    background-color: #1a1a1a;
-    text-align: left;
-    text-decoration: none;
     display: block;
     padding: 0.5em;
-    border-radius: 4px;
+    text-align: left;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: #1a1a1a;
 }
 
 .pure-menu-link:hover {
@@ -73,7 +87,7 @@ a {
     overflow: hidden;
     border-radius: 8px;
     background: #1a1a1a;
-    border: 1px solid #a347ff;
+    border: 1px solid #7f00ff;
 }
 
 .picture-title .picture-author {
@@ -88,50 +102,50 @@ a {
 
 .picture-image {
     border-width: 1px;
-    border-radius: 4px;
-    border-color: #4c0099;
+    border-radius: 8px;
+    border-color: #7f00ff;
 }
 
 .button-main {
     color: #e6e6e6;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #a347ff;
 }
 
 .button-main:hover {
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #7f00ff;
 }
 
 .button-danger {
     color: #e6e6e6;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #ff4747;
 }
 
 .button-danger:hover {
-    border-radius: 4px;
-    background-color: #990000;
+    border-radius: 8px;
+    background-color: #ff0000;
 }
 
-.liked, .not-liked, .comment-button, .view-button, .icon {
+.liked, .not-liked, .disliked, .not-disliked, .comment-button, .view-button, .icon {
     margin: 0;
     padding: 0;
-    border-radius: 4px;
+    border-radius: 8px;
     vertical-align: middle;
 }
 
-.likes-icon, .comments-icon, .views-icon {
+.likes-icon, .dislikes-icon, .comments-icon, .views-icon {
     font-size: 1.5em;
 }
 
-.liked {
-    border: transparent;
+.liked, .disliked {
+    border: none;
     background-color: #7f00ff;
 }
 
-.not-liked, .comment-button, .view-button {
-    border: #7f00ff;
+.not-liked, .not-disliked, .comment-button, .view-button {
+    border: none;
     background-color: transparent;
 }
 
@@ -144,21 +158,6 @@ a {
     background-color: #0d0d0d;
 }
 
-input {
-    padding: 0.5em;
-    margin: 0.5em;
-    background-color: #0d0d0d;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
-    transition: border-color 0.25s ease;
-}
-
-input:focus {
-    border-color: #a347ff;
-    outline: none;
-    box-shadow: 4px #4c0099;
-}
-
 .following {
     border: 1px solid #7f00ff;
     background-color: transparent;
@@ -169,19 +168,29 @@ input:focus {
     background-color: #7f00ff;
 }
 
-#canvas-card {
-    text-align: center;
-    width: 800px;
-}
-
-#main-canvas {
-    display: inline-block;
-    border-radius: 8px;
+.pfp {
+    height: 64px;
+    overflow: hidden;
+    border-radius: 100%;
     border: 1px solid #7f00ff;
 }
 
 .large-label {
     font-size: 4em;
+}
+
+#canvas-card {
+    width: 800px;
+}
+
+#canvas-card input {
+    width: 750px;
+}
+
+#main-canvas {
+    border-radius: 8px;
+    display: inline-block;
+    border: 1px solid #7f00ff;
 }
 
 #landing-cards {
@@ -194,13 +203,6 @@ input:focus {
 
 #landing-cards .card:hover {
     background-color: #7f00ff;
-}
-
-.pfp {
-    height: 64px;
-    overflow: hidden;
-    border-radius: 100%;
-    border: 1px solid #7f00ff;
 }
 
 #details {

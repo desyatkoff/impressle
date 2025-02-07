@@ -1,4 +1,4 @@
-# impressle
+# Impressle
 
 <p align="center">
     <img
@@ -12,7 +12,7 @@
 
 **Unleash your creativity!**
 
-**impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just try it!
+**Impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just try it!
 
 
 ## Table of Contents
@@ -90,6 +90,7 @@
 * **Create Pictures**
 * **Interact With Pictures**
     + Like
+    + Dislike
     + Comment
 * **Delete Pictures and Comments**
 * **Ranking System**
@@ -213,4 +214,4 @@ Done! I'll review your code changes and *maybe* will accept them. Even just addi
     ```
     UQCsdH1ItNGo9RB8f8AoNfGTr9gdPAi_YkCV2hk7_MVOHydV
     ```
-* ...or just give a star to this repository and tell your friends about **impressle** :)
+* ...or just give a star to this repository and tell your friends about **Impressle** :)

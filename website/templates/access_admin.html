@@ -1,30 +1,35 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | Access the Admin Panel{% endblock %}
+{% block title %}Impressle | Access the Admin Panel{% endblock %}
 
 {% block content %}
-    <h1>
+    <h1 id="page-title">
         Welcome to the Admin Panel
     </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            You have to provide the secret key to prove that you are an admin
+        </b>
+    </p>
 
 
     <hr />
 
 
-    <p>
-        You have to provide the secret key to prove that you are an admin
-    </p>
-
-
-    <form method="POST">
-        <div class="card">
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <form method="POST">
             <label for="secret-key">
                 Secret Key
             </label>
             <input
-                type = "password"
                 id = "secret-key"
+                type = "password"
                 name = "secret-key"
                 placeholder = "Secret Key"
             />
@@ -32,9 +37,12 @@
             <br />
             <br />
 
-            <button type="submit" class="pure-button button-main">
+            <button
+                type = "submit"
+                class = "pure-button button-main"
+            >
                 Access the Admin Panel
             </button>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

@@ -56,7 +56,7 @@ def before_request():
             user.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
 
         if user.karma > 999:
-            user.rank = "impressive"
+            user.rank = "Impressive"
 
 
         for admin_uid in config.ADMIN_UIDS:
@@ -108,11 +108,6 @@ def landing():
 
 @views.route("/feed")
 def feed():
-    return flask.redirect(flask.url_for("views.feed_recent"))
-
-
-@views.route("/feed/recent")
-def feed_recent():
     pictures = website.models.Picture
 
 
@@ -120,32 +115,6 @@ def feed_recent():
         "feed.html",
         user = flask_login.current_user,
         pictures = pictures.query.order_by(pictures.date_created.desc()).all(),
-        models = website.models
-    )
-
-
-@views.route("/feed/popular")
-def feed_popular():
-    pictures = website.models.Picture
-
-
-    return flask.render_template(
-        "feed.html",
-        user = flask_login.current_user,
-        pictures = pictures.query.order_by(len(pictures.views).desc()).all(),
-        models = website.models
-    )
-
-
-@views.route("/feed/most-liked")
-def feed_most_liked():
-    pictures = website.models.Picture
-
-
-    return flask.render_template(
-        "feed.html",
-        user = flask_login.current_user,
-        pictures = pictures.query.order_by(len(pictures.likes).desc()).all(),
         models = website.models
     )
 
@@ -190,7 +159,6 @@ def user_settings():
         user.about_me = about_me_data
         user.show_followers = True if show_followers_data == "on" else False
         user.allow_comments = True if allow_comments_data == "on" else False
-
         user.status = "inactive" if delete_account_data == "on" else "normal"
 
 
@@ -401,7 +369,7 @@ def banned():
             checkbox = flask.request.form.get("checkbox")
 
 
-            if checkbox is (False or None):
+            if checkbox != "on":
                 flask.flash(
                     "Go away then",
                     category = "warning"
@@ -475,6 +443,11 @@ def like_picture(picture_uid):
         author_uid = flask_login.current_user.uid,
         author_username = flask_login.current_user.username
     ).first()
+    dislike = website.models.Dislike.query.filter_by(
+        picture_uid = picture_uid,
+        author_uid = flask_login.current_user.uid,
+        author_username = flask_login.current_user.username
+    ).first()
 
 
     if not picture:
@@ -504,13 +477,83 @@ def like_picture(picture_uid):
             picture_author.karma += 1
 
 
+            if dislike:
+                website.db.session.delete(dislike)
+
+                picture_author.karma += 1
+
+
         website.db.session.commit()
 
 
     return flask.jsonify(
         {
             "likes": len(picture.likes),
-            "liked": flask_login.current_user.uid in map(lambda x: x.author_uid, picture.likes)
+            "liked": flask_login.current_user.uid in map(lambda x: x.author_uid, picture.likes),
+            "dislikes": len(picture.dislikes),
+            "disliked": flask_login.current_user.uid in map(lambda x: x.author_uid, picture.dislikes)
+        }
+    )
+
+
+@views.route("/dislike-picture/<picture_uid>", methods=["POST"])
+@flask_login.login_required
+def dislike_picture(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+    like = website.models.Like.query.filter_by(
+        picture_uid = picture_uid,
+        author_uid = flask_login.current_user.uid,
+        author_username = flask_login.current_user.username
+    ).first()
+    dislike = website.models.Dislike.query.filter_by(
+        picture_uid = picture_uid,
+        author_uid = flask_login.current_user.uid,
+        author_username = flask_login.current_user.username
+    ).first()
+
+
+    if not picture:
+        flask.flash(
+            message = "Picture does not exist",
+            category = "error"
+        )
+    else:
+        picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+
+
+        if dislike:
+            website.db.session.delete(dislike)
+
+
+            picture_author.karma += 1
+        else:
+            dislike = website.models.Dislike(
+                picture_uid = picture_uid,
+                author_uid = flask_login.current_user.uid,
+                author_username = flask_login.current_user.username
+            )
+
+            website.db.session.add(dislike)
+
+
+            picture_author.karma -= 1
+
+
+            if like:
+                website.db.session.delete(like)
+
+                picture_author.karma -= 1
+
+
+        website.db.session.commit()
+
+
+    return flask.jsonify(
+        {
+            "likes": len(picture.likes),
+            "liked": flask_login.current_user.uid in map(lambda a: a.author_uid, picture.likes),
+            "dislikes": len(picture.dislikes),
+            "disliked": flask_login.current_user.uid in map(lambda b: b.author_uid, picture.dislikes)
         }
     )
 

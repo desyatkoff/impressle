@@ -1,32 +1,46 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | This Account is Deleted{% endblock %}
+{% block title %}Impressle | This Account is Inactive{% endblock %}
 
 {% block content %}
-    <h1>This account is deleted!</h1>
+    <h1 id="page-title">
+        This Account is Inactive!
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            Uh oh...
+        </b>
+    </p>
 
 
     <hr />
 
 
-    <p>
-        You can no longer log in to this account. Why did that happened? Actual reasons:
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <p>
+            You can no longer log in to this account. Why did that happened? Actual reasons:
 
-        <ul>
-            <li>
-                You deleted this account intentionally (Settings > Delete Account)
-            </li>
-            <li>
-                Your account may be deleted because of inactivity
-                (if you didn't visit impressle for the last 30 days)
-            </li>
-        </ul>
+            <ul>
+                <li>
+                    You deactivated this account intentionally (Settings -> Delete Account)
+                </li>
+                <li>
+                    Your account may be deactivated because of inactivity
+                    (if you didn't visit Impressle for the last 30 days)
+                </li>
+            </ul>
 
-        Try
-        <a href="{{ url_for('auth.signup') }}">
-            creating a new account
-        </a>
-        if you want to use impressle
-    </p>
+            Try
+            <a href="{{ url_for('auth.signup') }}">
+                creating a new account
+            </a>
+            if you want to use Impressle
+        </p>
+    </div>
 {% endblock %}

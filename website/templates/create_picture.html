@@ -1,50 +1,87 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | Create a Picture{% endblock %}
+{% block title %}Impressle | Create a Picture{% endblock %}
 
 {% block content %}
-    <h1>
+    <h1 id="page-title">
         Create a Picture
     </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            Let's draw your impressive picture!
+        </b>
+    </p>
 
 
     <hr />
 
 
-    <p>
-        Let's Draw!
-    </p>
-
-
-    <form id="canvas-form" method="POST">
-        <div class="card" id="canvas-card">
-            <canvas id="main-canvas" width="800" height="600"></canvas>
-
-            <hr />
-
-            <input
-                type = "hidden"
-                id = "image-data"
-                name = "image-data"
-            />
-            <input
-                type = "text"
-                id = "title"
-                name = "title"
-                placeholder = "Picture title"
-            />
-
-
-            <button
-                class = "pure-button button-main"
-                type = "submit"
+    <div id="page-content">
+        <div
+            class = "card"
+            id = "canvas-card"
+        >
+            <form
+                id = "canvas-form"
+                method = "POST"
             >
-                Publish
-            </button>
+                <p align="center">
+                    <input
+                        id = "title"
+                        type = "text"
+                        name = "title"
+                        placeholder = "Picture title"
+                    />
+                </p>
+
+                <canvas
+                    width = "800"
+                    height = "600"
+                    id = "main-canvas"
+                >
+                </canvas>
+
+
+                <hr />
+
+
+                <input
+                    type = "hidden"
+                    id = "image-data"
+                    name = "image-data"
+                />
+
+
+                <div class="pure-g">
+                    <div class="pure-u-1-8">
+                        <button
+                            type = "submit"
+                            class = "pure-button button-main"
+                        >
+                            Publish
+                        </button>
+                    </div>
+                    <div class="pure-u-1-8">
+                        <a
+                            onclick = "reset_canvas()"
+                            class = "pure-button button-danger"
+                        >
+                            Reset Canvas
+                        </a>
+                    </div>
+                </div>
+                
+            </form>
         </div>
-    </form>
+    </div>
 
 
-    <script type="text/javascript" src="/static/scripts/canvas.js"></script>
+    <script
+        type = "text/javascript"
+        src = "/static/scripts/canvas.js"
+    >
+    </script>
 {% endblock %}

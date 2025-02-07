@@ -1,38 +1,54 @@
 {% extends "base.html" %}
 
 
-{% block title %}impressle | Feed{% endblock %}
+{% block title %}Impressle | Feed{% endblock %}
 
 {% block content %}
-    <h1>Feed</h1>
+    <h1 id="page-title">
+        Feed
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            Find the newest and funny pictures made by other users
+        </b>
+    </p>
 
 
     <hr />
 
 
-    {% if pictures|length > 0 %}
-        <div class="pure-g" id="pictures">
-            {% for picture in pictures %}
-                {% if picture.status == "normal" %}
-                    {% include "div_picture.html" %}
+    <div id="page-content">
+        {% if pictures|length > 0 %}
+            <div
+                id = "pictures"
+                class = "pure-g"
+            >
+                {% for picture in pictures %}
+                    {% if picture.status == "normal" %}
+                        {% include "div_picture.html" %}
 
-                    <br />
-                {% endif %}
-            {% endfor %}
-        </div>
-    {% else %}
-        <h1>
-            It seems that there are no any Pictures... :(
-        </h1>
+                        <br />
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <h1>
+                It seems that there are no any Pictures... :(
+            </h1>
 
-        <br />
+            <br />
 
-        <span>
-            Let's fix this, click
-            <button class="pure-button button-main">
-                <a href="{{ url_for('views.create_picture') }}">Create a Picture</a>
-            </button>,
-            and impressle will not be empty
-        </span>
-    {% endif %}
+            <span>
+                Let's fix this, click
+                <button class="pure-button button-main">
+                    <a href="{{ url_for('views.create_picture') }}">
+                        Create a Picture
+                    </a>
+                </button>,
+                and Impressle will not be empty
+            </span>
+        {% endif %}
+    </div>
 {% endblock %}
