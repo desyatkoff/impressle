@@ -11,7 +11,7 @@
 
     <p id="page-subtitle">
         <b>
-            Find the newest and funny pictures made by other users
+            Find the newest and funniest pictures made by other users
         </b>
     </p>
 
@@ -34,21 +34,23 @@
                 {% endfor %}
             </div>
         {% else %}
-            <h1>
-                It seems that there are no any Pictures... :(
-            </h1>
+            <div class="card">
+                <h1>
+                    It seems that there are no any pictures... :(
+                </h1>
 
-            <br />
+                <br />
 
-            <span>
-                Let's fix this, click
-                <button class="pure-button button-main">
-                    <a href="{{ url_for('views.create_picture') }}">
-                        Create a Picture
-                    </a>
-                </button>,
-                and Impressle will not be empty
-            </span>
+                <span>
+                    Let's fix this, click
+                    <button class="pure-button button-main">
+                        <a href="{{ url_for('views.create_picture') }}">
+                            Create a Picture
+                        </a>
+                    </button>,
+                    and Impressle will not be empty
+                </span>
+            </div>
         {% endif %}
     </div>
 {% endblock %}

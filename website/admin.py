@@ -243,7 +243,7 @@ def panel():
             user = flask_login.current_user,
             users = website.models.User.query.all(),
             pictures = website.models.Picture.query.all(),
-            followes = website.models.Follow.query.all(),
+            follows = website.models.Follow.query.all(),
             likes = website.models.Like.query.all(),
             dislikes = website.models.Dislike.query.all(),
             comments = website.models.Comment.query.all(),
