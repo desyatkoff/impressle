@@ -21,8 +21,8 @@
 import flask
 import flask_login
 
-import config
 import website
+from config import Config
 
 
 admin = flask.Blueprint(
@@ -43,7 +43,7 @@ def access_admin():
         secret_key = flask.request.form.get("secret-key")
 
 
-        if secret_key == config.FLASK_SECRET:
+        if secret_key == Config.FLASK_SECRET:
             if user.rank == "Admin":
                 flask.flash(
                     message = "Successfully accessed the admin panel",

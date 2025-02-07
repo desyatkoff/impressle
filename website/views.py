@@ -24,7 +24,7 @@ import datetime
 import flask
 import flask_login
 
-import config
+from config import Config
 import website
 
 
@@ -59,7 +59,7 @@ def before_request():
             user.rank = "Impressive"
 
 
-        for admin_uid in config.ADMIN_UIDS:
+        for admin_uid in Config.ADMIN_UIDS:
             if user.uid == admin_uid:
                 user.rank = "Admin"
 
