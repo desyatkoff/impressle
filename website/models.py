@@ -35,11 +35,11 @@ class User(website.db.Model, flask_login.UserMixin):
     uid = website.db.Column(
         website.db.Integer,
         unique = True,
-        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = website.db.Column(
         website.db.DateTime,
-        default = datetime.datetime.now(datetime.UTC)
+        default = datetime.datetime.now(datetime.timezone.utc)
     )
     username = website.db.Column(
         website.db.String,
@@ -95,7 +95,7 @@ class User(website.db.Model, flask_login.UserMixin):
     )
     last_activity = website.db.Column(
         website.db.Integer,
-        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
 
 
@@ -109,11 +109,11 @@ class Picture(website.db.Model):
     uid = website.db.Column(
         website.db.Integer,
         unique = True,
-        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
-        default = datetime.datetime.now(datetime.UTC)
+        default = datetime.datetime.now(datetime.timezone.utc)
     )
     title = website.db.Column(
         website.db.String,
@@ -171,11 +171,11 @@ class Follow(website.db.Model):
     uid = website.db.Column(
         website.db.Integer,
         unique = True,
-        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
-        default = datetime.datetime.now(datetime.UTC)
+        default = datetime.datetime.now(datetime.timezone.utc)
     )
     followed_uid = website.db.Column(
         website.db.Integer,
@@ -209,11 +209,11 @@ class Like(website.db.Model):
     uid = website.db.Column(
         website.db.Integer,
         unique = True,
-        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
-        default = datetime.datetime.now(datetime.UTC)
+        default = datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = website.db.Column(
         website.db.Integer,
@@ -247,11 +247,11 @@ class Dislike(website.db.Model):
     uid = website.db.Column(
         website.db.Integer,
         unique = True,
-        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
-        default = datetime.datetime.now(datetime.UTC)
+        default = datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = website.db.Column(
         website.db.Integer,
@@ -285,11 +285,11 @@ class Comment(website.db.Model):
     uid = website.db.Column(
         website.db.Integer,
         unique = True,
-        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
-        default = datetime.datetime.now(datetime.UTC)
+        default = datetime.datetime.now(datetime.timezone.utc)
     )
     text = website.db.Column(
         website.db.String,
@@ -331,11 +331,11 @@ class View(website.db.Model):
     uid = website.db.Column(
         website.db.Integer,
         unique = True,
-        default = lambda: round(datetime.datetime.now(datetime.UTC).timestamp())
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = website.db.Column(
         website.db.DateTime(timezone=True),
-        default = datetime.datetime.now(datetime.UTC)
+        default = datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = website.db.Column(
         website.db.Integer,

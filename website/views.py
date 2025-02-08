@@ -61,7 +61,7 @@ def before_request():
 
 
         for user_ in website.models.User.query.all():
-            if round(datetime.datetime.now(datetime.UTC).timestamp()) - user_.last_activity > 2592000:
+            if round(datetime.datetime.now(datetime.timezone.utc).timestamp()) - user_.last_activity > 2592000:
                 user_.status = "inactive"
 
 
@@ -74,7 +74,7 @@ def before_request():
             flask.redirect(flask.url_for("views.banned"))
 
 
-        user.last_activity = round(datetime.datetime.now(datetime.UTC).timestamp())
+        user.last_activity = round(datetime.datetime.now(datetime.timezone.utc).timestamp())
 
 
         website.db.session.commit()
