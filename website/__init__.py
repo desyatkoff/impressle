@@ -46,7 +46,7 @@ def init_flask_app():
 
     app = flask.Flask(__name__)
     app.config["SECRET_KEY"] = config.FLASK_SECRET
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{config.DB_PATH}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = config.SQLALCHEMY_DATABASE_URI
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = config.SQLALCHEMY_TRACK_MODIFICATIONS
 
 

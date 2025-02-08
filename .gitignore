@@ -1,5 +1,8 @@
 __pycache__/
-website/__pycache__/
+*/__pycache__/
 
-.env
-database.db
+*.env
+*.pyc
+*.pyo
+*.pyd
+database/database.db
