@@ -28,7 +28,7 @@ app = website.init_flask_app()
 
 
 if __name__ == "__main__":
-    if not os.path.exists(f"{config.PROJECT_ROOT_PATH}/database.db"):
+    if not os.path.exists(config.DB_PATH):
         with app.app_context():
             website.db.create_all()
 
