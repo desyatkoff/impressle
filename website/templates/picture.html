@@ -45,9 +45,11 @@
 
 
             {% for comment in picture.comments %}
-                {% include "div_comment.html" %}
+                {% if comment.status != "deleted" %}
+                    {% include "div_comment.html" %}
 
-                <br />
+                    <br />
+                {% endif %}
             {% endfor %}
         </div>
     {% endif %}

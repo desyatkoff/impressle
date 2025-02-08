@@ -84,14 +84,13 @@ def panel():
 
             if form_type == "edit-data":
                 table_name = flask.request.form.get("table-name")
-                row_id = flask.request.form.get("row-id")
+                item_uid = flask.request.form.get("item-uid")
                 column_name = flask.request.form.get("column-name")
-
                 new_value = flask.request.form.get("new-value")
 
 
-                if table_name.lower() == "user":
-                    item = website.models.User.query.filter_by(id=row_id).first()
+                if table_name.lower() == ("user" or "users"):
+                    item = website.models.User.query.filter_by(uid=item_uid).first()
 
 
                     if column_name.lower() == "id":
@@ -116,8 +115,8 @@ def panel():
                         item.allow_comments = new_value
                     elif column_name.lower() == "status":
                         item.status = new_value
-                elif table_name.lower() == "picture":
-                    item = website.models.Picture.query.filter_by(id=row_id).first()
+                elif table_name.lower() == ("picture" or "pictures"):
+                    item = website.models.Picture.query.filter_by(uid=item_uid).first()
 
 
                     if column_name.lower() == "id":
@@ -136,8 +135,8 @@ def panel():
                         item.author_username = new_value
                     elif column_name.lower() == "status":
                         item.status = new_value
-                elif table_name.lower() == "follow":
-                    item = website.models.Follow.query.filter_by(id=row_id).first()
+                elif table_name.lower() == ("follow" or "follows"):
+                    item = website.models.Follow.query.filter_by(uid=item_uid).first()
 
 
                     if column_name.lower() == "id":
@@ -154,8 +153,8 @@ def panel():
                         item.follower_uid = new_value
                     elif column_name.lower() == ("follower_username" or "follower username"):
                         item.follower_username = new_value
-                elif table_name.lower() == "like":
-                    item = website.models.Like.query.filter_by(id=row_id).first()
+                elif table_name.lower() == ("like" or "likes"):
+                    item = website.models.Like.query.filter_by(uid=item_uid).first()
 
 
                     if column_name.lower() == "id":
@@ -170,8 +169,8 @@ def panel():
                         item.author_uid = new_value
                     elif column_name.lower() == ("author_username" or "author username"):
                         item.author_username = new_value
-                elif table_name.lower() == "comment":
-                    item = website.models.Comment.query.filter_by(id=row_id).first()
+                elif table_name.lower() == ("comment" or "comments"):
+                    item = website.models.Comment.query.filter_by(uid=item_uid).first()
 
 
                     if column_name.lower() == "id":
@@ -188,8 +187,8 @@ def panel():
                         item.author_username = new_value
                     elif column_name.lower() == "status":
                         item.status = new_value
-                elif table_name.lower() == "view":
-                    item = website.models.View.query.filter_by(id=row_id).first()
+                elif table_name.lower() == ("view" or "views"):
+                    item = website.models.View.query.filter_by(uid=item_uid).first()
 
 
                     if column_name.lower() == "id":

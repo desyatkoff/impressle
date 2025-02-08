@@ -187,9 +187,11 @@
 
         <div id="pictures">
             {% for picture in pictures %}
-                {% include "div_picture.html" %}
-        
-                <br />
+                {% if picture.status != "deleted" %}
+                    {% include "div_picture.html" %}
+            
+                    <br />
+                {% endif %}
             {% endfor %}
         </div>
     {% endif %}

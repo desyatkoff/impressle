@@ -40,28 +40,24 @@ def before_request():
         user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
 
 
-        if user.karma > 0:
-            user.rank = "Artist"
+        if user.rank != "Admin":
+            if user.karma > 0:
+                user.rank = "Artist"
 
-        if user.karma > 24:
-            user.rank = "Amateur Artist"
+            if user.karma > 24:
+                user.rank = "Amateur Artist"
 
-        if user.karma > 49:
-            user.rank = "Cool Guy"
+            if user.karma > 49:
+                user.rank = "Cool Guy"
 
-        if user.karma > 99:
-            user.rank = "Skilled"
+            if user.karma > 99:
+                user.rank = "Skilled"
 
-        if user.karma == 666:
-            user.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
+            if user.karma == 666:
+                user.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
 
-        if user.karma > 999:
-            user.rank = "Impressive"
-
-
-        for admin_uid in config.ADMIN_UIDS:
-            if user.uid == admin_uid:
-                user.rank = "Admin"
+            if user.karma > 999:
+                user.rank = "Impressive"
 
 
         for user_ in website.models.User.query.all():
@@ -130,7 +126,7 @@ def user_profile(username):
         )
 
 
-        return flask.redirect(flask.request.referrer)
+        return flask.redirect(flask.url_for("views.feed"))
 
 
     return flask.render_template(
@@ -259,10 +255,12 @@ def delete_picture(picture_uid):
             )
 
 
+            picture.status = "deleted"
+
+
             user.karma -= 1
 
 
-            website.db.session.delete(picture)
             website.db.session.commit()
         else:
             flask.flash(
@@ -271,7 +269,7 @@ def delete_picture(picture_uid):
             )
 
 
-    return flask.redirect("/")
+    return flask.redirect(flask.url_for("views.feed"))
 
 
 @views.route("/picture/<picture_uid>")
@@ -293,7 +291,7 @@ def view_picture(picture_uid):
         )
 
 
-        return flask.redirect(flask.request.referrer)
+        return flask.redirect(flask.url_for("views.feed"))
     else:
         if view is None:
             new_view = website.models.View(
@@ -603,7 +601,7 @@ def create_comment(picture_uid):
             )
 
 
-    return flask.redirect(flask.request.referrer)
+    return flask.redirect(flask.url_for("views.feed"))
 
 
 @views.route("/delete-comment/<comment_uid>", methods=["POST"])
@@ -629,7 +627,7 @@ def delete_comment(comment_uid):
             )
 
 
-            website.db.session.delete(comment)
+            comment.status = "deleted"
 
 
             picture_author.karma -= 1
@@ -643,4 +641,4 @@ def delete_comment(comment_uid):
             )
 
 
-    return flask.redirect(flask.request.referrer)
+    return flask.redirect(flask.url_for("views.feed"))
