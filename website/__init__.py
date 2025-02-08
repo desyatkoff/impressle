@@ -24,7 +24,7 @@ import flask
 import flask_login
 import flask_sqlalchemy
 
-from config import Config
+import config
 
 
 db = flask_sqlalchemy.SQLAlchemy()
@@ -45,7 +45,9 @@ def init_flask_app():
 
 
     app = flask.Flask(__name__)
-    app.config.from_object(Config)
+    app.config["SECRET_KEY"] = config.FLASK_SECRET
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{config.DB_PATH}"
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = config.SQLALCHEMY_TRACK_MODIFICATIONS
 
 
     db.init_app(app)

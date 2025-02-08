@@ -26,17 +26,17 @@ import dotenv
 dotenv.load_dotenv(".env")
 
 
-class Config:
-    PROJECT_ROOT_PATH = os.path.dirname(__file__)
+PROJECT_ROOT_PATH = os.path.dirname(__file__)
+DB_PATH = f"{PROJECT_ROOT_PATH}/database.db"
 
-    FLASK_SECRET = os.getenv("FLASK_SECRET")
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{PROJECT_ROOT_PATH}/database.db"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+FLASK_SECRET = os.getenv("FLASK_SECRET")
+SQLALCHEMY_DATABASE_URI = f"sqlite:///{PROJECT_ROOT_PATH}/database.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    HOST = "0.0.0.0"
-    PORT = 5000
-    DEBUG_MODE = False
+HOST = "0.0.0.0"
+PORT = 5000
+DEBUG_MODE = False
 
-    ADMIN_UIDS = [
-        -1
-    ]
+ADMIN_UIDS = [
+    -1
+]
