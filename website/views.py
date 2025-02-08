@@ -45,10 +45,10 @@ def before_request():
                 user.rank = "Artist"
 
             if user.karma > 24:
-                user.rank = "Amateur Artist"
+                user.rank = "Amateur"
 
             if user.karma > 49:
-                user.rank = "Cool Guy"
+                user.rank = "Cool"
 
             if user.karma > 99:
                 user.rank = "Skilled"
