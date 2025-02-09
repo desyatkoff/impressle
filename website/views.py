@@ -337,7 +337,10 @@ def view_picture(picture_uid):
 
 
     if not isinstance(user, flask_login.AnonymousUserMixin):
-        view = website.models.View.query.filter_by(author_uid=user.uid).first()
+        view = website.models.View.query.filter_by(
+            author_uid = user.uid,
+            picture_uid = picture_uid
+        ).first()
     else:
         view = ""
 
