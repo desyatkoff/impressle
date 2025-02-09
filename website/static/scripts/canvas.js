@@ -2,10 +2,9 @@ let canvas = document.getElementById("main-canvas");
 let context = canvas.getContext("2d");
 
 let brush_color = "#7f00ff";
-let brush_width = "4";
-
 let eraser_color = "#1a1a1a";
-let eraser_width = "8";
+
+let width = "8";
 
 let mode = "draw";
 
@@ -29,7 +28,7 @@ function draw(event) {
         if (mode == "draw") {
             context.lineTo(get_x(event), get_y(event));
             context.strokeStyle = brush_color;
-            context.lineWidth = brush_width;
+            context.lineWidth = width;
             context.lineCap = "round";
             context.lineJoin = "round";
             context.stroke();
@@ -37,7 +36,7 @@ function draw(event) {
         else if (mode == "erase") {
             context.lineTo(get_x(event), get_y(event));
             context.strokeStyle = eraser_color;
-            context.lineWidth = eraser_width;
+            context.lineWidth = width;
             context.lineCap = "round";
             context.lineJoin = "round";
             context.stroke();
@@ -98,6 +97,11 @@ document.addEventListener("keydown", function(event) {
         }
     }
 });
+
+setInterval(function() {
+    width = document.getElementById("width-input").value;
+    document.getElementById("width-span").textContent = width;
+}, 100)
 
 document.getElementById("canvas-form").addEventListener("submit", (element) => {
     element.preventDefault();

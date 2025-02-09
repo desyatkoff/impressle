@@ -187,6 +187,7 @@ input:focus {
 }
 
 #main-canvas {
+    cursor: crosshair;
     border-radius: 8px;
     display: inline-block;
     border: 1px solid #7f00ff;
@@ -206,4 +207,15 @@ input:focus {
 
 #details {
     text-align: center;
+}
+
+#width-input::-webkit-slider-thumb,
+#width-input::-moz-range-thumb {
+    appearance: none;
+    background-color: #7f00ff;
+}
+
+#width-input::-webkit-slider-runnable-track,
+#width-input::-moz-range-progress {
+    background-color: #7f00ff;
 }
