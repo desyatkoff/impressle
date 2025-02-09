@@ -150,25 +150,26 @@
         + Edit `config.py` using your code editor
 4. **Install `pipenv`**
     ```Shell
-    $ pipx install pipenv
+    $ pip install pipenv
     ```
 5. **Add `pipenv` to PATH**
+6. **Create the Virtual Environment**
     ```Shell
-    $ pipx ensurepath
+    $ pipenv install --python 3.9
     ```
-6. **Lock the `Pipfile`**
+7. **Lock the `Pipfile`**
     ```Shell
     $ pipenv lock
     ```
-7. **Install All the Dependencies**
+8. **Install All the Dependencies**
     ```Shell
     $ pipenv sync
     ```
-8. **Activate the Virtual Environment**
+9. **Activate the Virtual Environment**
     ```Shell
     $ pipenv shell
     ```
-9. **Launch the Web App**
+10. **Launch the Web App**
     * Using Python
         ```Shell
         $ python main.py
