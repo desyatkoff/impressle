@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2025 Desyatkov Sergey
 #
-# This file is part of impressle.
+# This file is part of Impressle.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -104,13 +104,71 @@ def landing():
 
 @views.route("/feed")
 def feed():
-    pictures = website.models.Picture
+    return flask.redirect(flask.url_for("views.feed_recent"))
+
+
+@views.route("/feed/recent")
+def feed_recent():
+    recent_pictures = website.models.Picture.query.order_by(
+        website.models.Picture.uid.desc()
+    ).order_by(
+        website.models.Picture.likes_count.desc()
+    ).order_by(
+        website.models.Picture.dislikes_count.asc()
+    ).order_by(
+        website.models.Picture.views_count.desc()
+    ).all()
 
 
     return flask.render_template(
         "feed.html",
         user = flask_login.current_user,
-        pictures = pictures.query.order_by(pictures.date_created.desc()).all(),
+        pictures = recent_pictures,
+        feed_type = "recent",
+        models = website.models
+    )
+
+
+@views.route("/feed/best")
+def feed_best():
+    best_pictures = website.models.Picture.query.order_by(
+        website.models.Picture.likes_count.desc()
+    ).order_by(
+        website.models.Picture.dislikes_count.asc()
+    ).order_by(
+        website.models.Picture.views_count.desc()
+    ).order_by(
+        website.models.Picture.uid.desc()
+    ).all()
+
+
+    return flask.render_template(
+        "feed.html",
+        user = flask_login.current_user,
+        pictures = best_pictures,
+        feed_type = "best",
+        models = website.models
+    )
+
+
+@views.route("/feed/popular")
+def feed_popular():
+    popular_pictures = website.models.Picture.query.order_by(
+        website.models.Picture.views_count.desc()
+    ).order_by(
+        website.models.Picture.likes_count.desc()
+    ).order_by(
+        website.models.Picture.dislikes_count.asc()
+    ).order_by(
+        website.models.Picture.uid.desc()
+    ).all()
+
+
+    return flask.render_template(
+        "feed.html",
+        user = flask_login.current_user,
+        pictures = popular_pictures,
+        feed_type = "popular",
         models = website.models
     )
 
@@ -300,6 +358,8 @@ def view_picture(picture_uid):
                 author_username = flask_login.current_user.username
             )
 
+            picture.views_count += 1
+
 
             website.db.session.add(new_view)
             website.db.session.commit()
@@ -460,6 +520,8 @@ def like_picture(picture_uid):
         if like:
             website.db.session.delete(like)
 
+            picture.likes_count -= 1
+
 
             picture_author.karma -= 1
         else:
@@ -471,12 +533,16 @@ def like_picture(picture_uid):
 
             website.db.session.add(like)
 
+            picture.likes_count += 1
+
 
             picture_author.karma += 1
 
 
             if dislike:
                 website.db.session.delete(dislike)
+
+                picture.dislikes_count -= 1
 
                 picture_author.karma += 1
 
@@ -522,6 +588,8 @@ def dislike_picture(picture_uid):
         if dislike:
             website.db.session.delete(dislike)
 
+            picture.dislikes_count -= 1
+
 
             picture_author.karma += 1
         else:
@@ -533,12 +601,16 @@ def dislike_picture(picture_uid):
 
             website.db.session.add(dislike)
 
+            picture.dislikes_count += 1
+
 
             picture_author.karma -= 1
 
 
             if like:
                 website.db.session.delete(like)
+
+                picture.likes_count -= 1
 
                 picture_author.karma -= 1
 

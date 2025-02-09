@@ -8,9 +8,14 @@
             <a href="{{ url_for('views.user_profile', username=comment.author_username) }}">
                 @{{comment.author_username}}
             </a>
+            {% if models.User.query.filter_by(uid=comment.author_uid).first().rank == "Admin" %}
+                <span style="color: #7f00ff">
+                    [ ADMIN ]
+                </span>
+            {% endif %}
         </p>
         <p class="comment-date-created">
-            Commented on {{ comment.date_created }}
+            Commented on {{ comment.date_created.strftime("%Y-%m-%d") }}
         </p>
     </div>
 

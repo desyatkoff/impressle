@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2025 Desyatkov Sergey
 #
-# This file is part of impressle.
+# This file is part of Impressle.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -128,10 +128,18 @@ class Picture(website.db.Model):
         backref = "picture",
         passive_deletes = True
     )
+    likes_count = website.db.Column(
+        website.db.Integer,
+        default = 0
+    )
     dislikes = website.db.relationship(
         "Dislike",
         backref = "picture",
         passive_deletes = True
+    )
+    dislikes_count = website.db.Column(
+        website.db.Integer,
+        default = 0
     )
     comments = website.db.relationship(
         "Comment",
@@ -142,6 +150,10 @@ class Picture(website.db.Model):
         "View",
         backref = "picture",
         passive_deletes = True
+    )
+    views_count = website.db.Column(
+        website.db.Integer,
+        default = 0
     )
     author_uid = website.db.Column(
         website.db.Integer,

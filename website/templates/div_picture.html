@@ -25,12 +25,17 @@
                 <a href="{{ url_for('views.user_profile', username=picture.author_username) }}">
                     @{{ picture.author_username }}
                 </a>
+                {% if models.User.query.filter_by(uid=picture.author_uid).first().rank == "Admin" %}
+                    <span style="color: #7f00ff">
+                        [ ADMIN ]
+                    </span>
+                {% endif %}
             </p>
         </div>
 
         <div class="picture-date-created">
             <p>
-                Published on {{ picture.date_created.day }}.{{ picture.date_created.month }}.{{ picture.date_created.year }}
+                Published on {{ picture.date_created.strftime("%Y-%m-%d") }}
             </p>
         </div>
 

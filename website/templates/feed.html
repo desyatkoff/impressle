@@ -11,7 +11,13 @@
 
     <p id="page-subtitle">
         <b>
-            Find the newest and funniest pictures made by other users
+            {% if feed_type == "recent" %}
+                Find the newest pictures
+            {% elif feed_type == "best" %}
+                Find the most liked pictures
+            {% elif feed_type == "popular" %}
+                Find the most viewed pictures
+            {% endif %}
         </b>
     </p>
 

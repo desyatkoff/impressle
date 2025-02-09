@@ -60,6 +60,8 @@
                         </b>
                     </p>
 
+                    <br />
+
                     <ul class="pure-menu-list">
                         <li class="pure-menu-item">
                             <a
@@ -76,7 +78,7 @@
                         </li>
                         <li class="pure-menu-item">
                             <a
-                                href = "{{ url_for('views.feed') }}"
+                                href = "{{ url_for('views.feed_recent') }}"
                                 class = "pure-menu-link pure-button"
                             >
                                 <img
@@ -84,7 +86,33 @@
                                     class = "icon"
                                     src = "/static/images/compass.svg"
                                 />
-                                Feed
+                                Recent Pictures
+                            </a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a
+                                href = "{{ url_for('views.feed_best') }}"
+                                class = "pure-menu-link pure-button"
+                            >
+                                <img
+                                    height = "32"
+                                    class = "icon"
+                                    src = "/static/images/heart.svg"
+                                />
+                                Best Pictures
+                            </a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a
+                                href = "{{ url_for('views.feed_popular') }}"
+                                class = "pure-menu-link pure-button"
+                            >
+                                <img
+                                    height = "32"
+                                    class = "icon"
+                                    src = "/static/images/trending-up.svg"
+                                />
+                                Popular Pictures
                             </a>
                         </li>
                         {% if user.is_authenticated %}
@@ -163,7 +191,7 @@
                                 <img
                                     height = "32"
                                     class = "icon"
-                                    src = "/static/images/info.svg"
+                                    src = "/static/images/help-circle.svg"
                                 />
                                 FAQ
                             </a>

@@ -87,7 +87,7 @@
                                     {{ user.uid }}
                                 </td>
                                 <td>
-                                    {{ user.date_created }}
+                                    {{ user.date_created.strftime("%Y-%m-%d") }}
                                 </td>
                                 <td>
                                     @{{ user.username }}
@@ -182,7 +182,7 @@
                                     {{ picture.uid }}
                                 </td>
                                 <td>
-                                    {{ picture.date_created }}
+                                    {{ picture.date_created.strftime("%Y-%m-%d") }}
                                 </td>
                                 <td>
                                     {{ picture.title }}
@@ -268,7 +268,7 @@
                                     {{ follow.uid }}
                                 </td>
                                 <td>
-                                    {{ follow.date_created }}
+                                    {{ follow.date_created.strftime("%Y-%m-%d") }}
                                 </td>
                                 <td>
                                     {{ follow.followed_uid }}
@@ -333,7 +333,7 @@
                                     {{ like.uid }}
                                 </td>
                                 <td>
-                                    {{ like.date_created }} ({{ like.date_created.day }}.{{ like.date_created.month }}.{{ like.date_created.year }})
+                                    {{ like.date_created.strftime("%Y-%m-%d") }}
                                 </td>
                                 <td>
                                     {{ like.picture_uid }}
@@ -395,7 +395,7 @@
                                     {{ dislike.uid }}
                                 </td>
                                 <td>
-                                    {{ dislike.date_created }}
+                                    {{ dislike.date_created.strftime("%Y-%m-%d") }}
                                 </td>
                                 <td>
                                     {{ dislike.picture_uid }}
@@ -460,7 +460,7 @@
                                     {{ comment.uid }}
                                 </td>
                                 <td>
-                                    {{ comment.date_created }} ({{ comment.date_created.day }}.{{ comment.date_created.month }}.{{ comment.date_created.year }})
+                                    {{ comment.date_created.strftime("%Y-%m-%d") }}
                                 </td>
                                 <td>
                                     {{ comment.text }}
@@ -525,7 +525,7 @@
                                     {{ view.uid }}
                                 </td>
                                 <td>
-                                    {{ view.date_created }} ({{ view.date_created.day }}.{{ view.date_created.month }}.{{ view.date_created.year }})
+                                    {{ view.date_created.strftime("%Y-%m-%d") }}
                                 </td>
                                 <td>
                                     {{ view.picture_uid }}
