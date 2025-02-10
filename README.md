@@ -25,6 +25,7 @@
 6. [Install and Setup](#install-and-setup)
     * [Easy Method](#easy-method)
     * [Normal Method](#normal-method)
+    * [Using Docker Method](#using-docker-method)
 7. [Contributing](#contributing)
 8. [Support the Project](#support-the-project)
 
@@ -182,6 +183,34 @@
         ```Shell
         $ gunicorn main:app
         ```
+
+### Using Docker Method
+
+1. **Clone the Repository**
+    ```Shell
+    $ git clone https://github.com/desyatkoff/impressle.git
+    ```
+2. **Go to the Repository Directory**
+    ```Shell
+    $ cd impressle/
+    ```
+3. **Edit Configuration Files**
+    * Environment variables (secret data)
+        + Rename `.env.example` to `.env`
+        ```Shell
+        $ mv .env.example .env
+        ```
+        + Edit `.env` using your code editor
+    * Other configs (public data)
+        + Edit `config.py` using your code editor
+4. **Build the Docker Image**
+    ```Shell
+    $ docker build -t impressle:latest
+    ```
+5. **Run Your New Docker Image**
+    ```Shell
+    $ docker run impressle:latest
+    ```
 
 
 ## Contributing
