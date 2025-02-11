@@ -293,6 +293,44 @@ def create_picture():
     )
 
 
+@views.route("/liked")
+@flask_login.login_required
+def liked():
+    pictures = website.models.Picture.query.order_by(
+        website.models.Picture.uid.desc()
+    ).order_by(
+        website.models.Picture.likes_count.desc()
+    ).order_by(
+        website.models.Picture.dislikes_count.asc()
+    ).order_by(
+        website.models.Picture.views_count.desc()
+    ).all()
+
+
+    return flask.render_template(
+        "liked.html",
+        user = flask_login.current_user,
+        pictures = pictures,
+        models = website.models
+    )
+
+
+@views.route("/following")
+@flask_login.login_required
+def following():
+    users = website.models.User.query.order_by(
+        website.models.User.uid.desc()
+    ).all()
+
+
+    return flask.render_template(
+        "following.html",
+        user = flask_login.current_user,
+        users = users,
+        models = website.models
+    )
+
+
 @views.route("/delete-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def delete_picture(picture_uid):
@@ -548,6 +586,25 @@ def like_picture(picture_uid):
                 picture.dislikes_count -= 1
 
                 picture_author.karma += 1
+
+
+        view = website.models.View.query.filter_by(
+            author_uid = flask_login.current_user.uid,
+            picture_uid = picture.uid
+        ).first()
+
+
+        if view is None:
+            new_view = website.models.View(
+                picture_uid = picture.uid,
+                author_uid = flask_login.current_user.uid,
+                author_username = flask_login.current_user.username
+            )
+
+            picture.views_count += 1
+
+
+            website.db.session.add(new_view)
 
 
         website.db.session.commit()

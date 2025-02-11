@@ -142,6 +142,32 @@
                                     Settings
                                 </a>
                             </li>
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('views.liked') }}"
+                                >
+                                    <img
+                                        height = "32"
+                                        class = "icon"
+                                        src = "/static/images/thumbs-up.svg"
+                                    />
+                                    You Liked
+                                </a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('views.following') }}"
+                                >
+                                    <img
+                                        height = "32"
+                                        class = "icon"
+                                        src = "/static/images/smile.svg"
+                                    />
+                                    You Following
+                                </a>
+                            </li>
                         {% else %}
                             <li class="pure-menu-item">
                                 <a

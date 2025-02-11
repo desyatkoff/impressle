@@ -1,0 +1,68 @@
+<div
+    class = "user_ pure-u-1"
+    id = "user_-{{ user_.uid }}"
+>
+    <div class="card">
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <h1 align="left">
+                    <a href="{{ url_for('views.user_profile', username=user_.username) }}">
+                        @{{ user_.username }}
+                    </a>
+
+
+                    {% if user_.rank == "Admin" %}
+                        <span style="color: #7f00ff">
+                            [ ADMIN ]
+                        </span>
+                    {% endif %}
+
+                    {% if user_.status == "inactive" %}
+                        <span style="color: #ff7f00">
+                            [ INACTIVE ]
+                        </span>
+                    {% elif user_.status == "banned" %}
+                        <span style="color: #ff0000;">
+                            [ BANNED ]
+                        </span>
+                    {% endif %}
+                </h1>
+            </div>
+            <div class="pure-u-1-2" >
+                <p
+                    align = "right"
+                    class = "followers"
+                >
+                    {% if user_.show_followers %}
+                        <span>
+                            <span class="followers-count" id="followers-count-{{ user_.uid }}">
+                                {{ user_.follows|length }}
+                            </span>
+                            Followers
+                        </span>
+                    {% endif %}
+
+                    {% if user.uid != user_.uid %}
+                        {% if user.uid in user_.follows|map(attribute="follower_uid")|list %}
+                            <button
+                                onclick = "follow({{ user_.uid }})"
+                                id = "follow-button-{{ user_.uid }}"
+                                class = "button following pure-button button-main"
+                            >
+                                Unfollow
+                            </button>
+                        {% else %}
+                            <button
+                                class = "button not-following pure-button button-main"
+                                id = "follow-button-{{ user_.uid }}"
+                                onclick = "follow({{ user_.uid }})"
+                            >
+                                Follow
+                            </button>
+                        {% endif %}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
