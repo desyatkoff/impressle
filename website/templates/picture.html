@@ -23,6 +23,7 @@
             <form
                 method = "POST"
                 id = "comment-form"
+                autocomplete = "off"
                 action = "{{ url_for('views.create_comment', picture_uid=picture.uid) }}"
             >
                 <div class="card">
