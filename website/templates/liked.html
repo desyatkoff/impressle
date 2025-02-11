@@ -20,33 +20,19 @@
 
 
     <div id="page-content">
-        {% if pictures|length > 0 %}
-            <div
-                id = "pictures"
-                class = "pure-g"
-            >
-                {% for picture in pictures %}
-                    {% if picture.status == ("normal" or "banned") %}
-                        {% if user.uid in picture.likes|map(attribute="author_uid")|list %}
-                            {% include "div_picture.html" %}
+        <div
+            id = "pictures"
+            class = "pure-g"
+        >
+            {% for picture in pictures %}
+                {% if picture.status == ("normal" or "banned") %}
+                    {% if user.uid in picture.likes|map(attribute="author_uid")|list %}
+                        {% include "div_picture.html" %}
 
-                            <br />
-                        {% endif %}
+                        <br />
                     {% endif %}
-                {% endfor %}
-            </div>
-        {% else %}
-            <div class="card">
-                <h1>
-                    It seems that there are no any pictures... :(
-                </h1>
-
-                <br />
-
-                <span>
-                    Let's fix this, <a href="{{ url_for('views.feed') }}">go find</a> some new pictures!
-                </span>
-            </div>
-        {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
