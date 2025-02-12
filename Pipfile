@@ -8,6 +8,7 @@ flask = "*"
 gunicorn = "*"
 werkzeug = "*"
 flask-login = "*"
+flask-babel = "*"
 python-dotenv = "*"
 flask-sqlalchemy = "*"
 

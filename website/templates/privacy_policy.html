@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | Privacy Policy{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("Privacy Policy") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        Privacy Policy
+        {{ gettext("Privacy Policy") }}
     </h1>
 
     <p id="page-subtitle">
         <b>
-            Effective Date: 22 February, 2025
+            {{ gettext("Effective Date:") }} 2025-02-22
         </b>
     </p>
 
@@ -23,55 +25,60 @@
         id = "page-content"
     >
         <h2 id="introduction">
-            1. Introduction
+            {{ gettext("1. Introduction") }}
         </h2>
 
         <p>
-            Welcome to <b>impressle.fun</b> ("we," "us," or "our"). This Privacy Policy explains
-            how we collect, use, and protect your personal information when you use our website.
-            By using our services, you agree to the practices described in this policy.
+            {{ gettext('Welcome to impressle.fun ("we," "us," or "our"). This Privacy Policy explains how we collect, use, and protect your personal information when you use our website. By using our services, you agree to the practices described in this policy.') }}
         </p>
 
         <hr />
 
         <h2 id="information-we-collect">
-            2. Information We Collect
+            {{ gettext("2. Information We Collect") }}
         </h2>
 
         <p>
-            We collect the following information:
+            {{ gettext("We collect the following information:") }}
 
             <h3>
-                2.1. Information You Provide
+                {{ gettext("2.1. Information You Provide") }}
             </h3>
 
             <p>
                 <ul>
                     <li>
-                        <b>Account Creation</b>:
-                        When you create an account, we collect your username and password.
+                        <b>
+                            {{ gettext("Account Creation") }}
+                        </b>:
+                        {{ gettext("When you create an account, we collect your username and password.") }}
                     </li>
                     <li>
-                        <b>User-Generated Content</b>:
-                        Any content (text, images, etc.) you create, post, or publish on our website.
+                        <b>
+                            {{ gettext("User-Generated Content") }}
+                        </b>:
+                        {{ gettext("Any content (text, images, etc.) you create, post, or publish on our website.") }}
                     </li>
                 </ul>
             </p>
 
             <h3>
-                2.2. Automatically Collected Information
+                {{ gettext("2.2. Automatically Collected Information") }}
             </h3>
 
             <p>
                 <ul>
                     <li>
-                        <b>Technical Data</b>:
-                        IP address, browser type, device information, and usage data
-                        (e.g., pages visited).
+                        <b>
+                            {{ gettext("Technical Data") }}
+                        </b>:
+                        {{ gettext("IP address, browser type, device information, and usage data (e.g., pages visited).") }}
                     </li>
                     <li>
-                        <b>Cookies</b>:
-                        We use cookies to improve your experience (see Section 7 for details).
+                        <b>
+                            {{ gettext("Cookies") }}
+                        </b>:
+                        {{ gettext("We use cookies to improve your experience (see Section 7 for details).") }}
                     </li>
                 </ul>
             </p>
@@ -80,25 +87,27 @@
         <hr />
 
         <h2 id="how-we-use-your-information">
-            3. How We Use Your Information
+            {{ gettext("3. How We Use Your Information") }}
         </h2>
 
         <p>
-            We use your information to:
+            {{ gettext("We use your information to:") }}
 
             <ul>
                 <li>
-                    Provide and maintain our services.
+                    {{ gettext("Provide and maintain our services.") }}
                 </li>
                 <li>
-                    Moderate user-generated content to ensure compliance with our
-                    <a href="url_for('views.terms_of_services')">Terms of Service</a>.
+                    {{ gettext("Moderate user-generated content to ensure compliance with our") }}
+                    <a href="url_for('routes.terms_of_services')">
+                        {{ gettext("Terms of Service") }}
+                    </a>.
                 </li>
                 <li>
-                    Communicate with you (e.g., account updates or security alerts).
+                    {{ gettext("Communicate with you (e.g., account updates or security alerts).") }}
                 </li>
                 <li>
-                    Analyze website performance and improve user experience.
+                    {{ gettext("Analyze website performance and improve user experience.") }}
                 </li>
             </ul>
         </p>
@@ -106,48 +115,54 @@
         <hr />
 
         <h2 id="sharing-your-information">
-            4. Sharing Your Information
+            {{ gettext("4. Sharing Your Information") }}
         </h2>
 
         <p>
-            We may share your information in the following cases:
+            {{ gettext("We may share your information in the following cases:") }}
 
             <ul>
                 <li>
-                    <b>Public Content</b>:
-                    Content you post is visible to all users.
+                    <b>
+                        {{ gettext("Public Content") }}
+                    </b>:
+                    {{ gettext("Content you post is visible to all users.") }}
                 </li>
                 <li>
-                    <b>Legal Compliance</b>:
-                    To comply with laws, regulations, or legal requests.
+                    <b>
+                        {{ gettext("Legal Compliance") }}
+                    </b>:
+                    {{ gettext("To comply with laws, regulations, or legal requests.") }}
                 </li>
                 <li>
-                    <b>Service Providers</b>:
-                    Third-party services may access data to help operate our website.
+                    <b>
+                        {{ gettext("Service Providers") }}
+                    </b>:
+                    {{ gettext("Third-party services may access data to help operate our website.") }}
                 </li>
             </ul>
 
-            We <b>do not sell</b> your personal information to third parties.
+            {{ gettext("We do not sell your personal information to third parties.") }}
         </p>
 
         <hr />
 
         <h2 id="your-rights">
-            5. Your Rights
+            {{ gettext("5. Your Rights") }}
         </h2>
 
         <p>
-            You have the right to:
+            {{ gettext("You have the right to:") }}
 
             <ul>
                 <li>
-                    Access, correct, or delete your account information.
+                    {{ gettext("Access, correct, or delete your account information.") }}
                 </li>
                 <li>
-                    Delete user-generated content you have posted.
+                    {{ gettext("Delete user-generated content you have posted.") }}
                 </li>
                 <li>
-                    Withdraw consent for data processing (where applicable).
+                    {{ gettext("Withdraw consent for data processing (where applicable).") }}
                 </li>
             </ul>
         </p>
@@ -155,29 +170,32 @@
         <hr />
 
         <h2 id="data-security">
-            6. Data Security
+            {{ gettext("6. Data Security") }}
         </h2>
 
         <p>
-            We implement security measures such as encryption and access controls to protect your
-            data. However, no system is 100% secure.
+            {{ gettext("We implement security measures such as encryption and access controls to protect your data. However, no system is 100% secure.") }}
         </p>
 
         <hr />
 
         <h2 id="cookies-and-tracking">
-            7. Cookies and Tracking
+            {{ gettext("7. Cookies and Tracking") }}
         </h2>
 
         <p>
             <ul>
                 <li>
-                    <b>What We Use</b>:
-                    Cookies for functionality (e.g., login sessions) and analytics (e.g., Google Analytics).
+                    <b>
+                        {{ gettext("What We Use") }}
+                    </b>:
+                    {{ gettext("Cookies for functionality (e.g., login sessions) and analytics (e.g., Google Analytics).") }}
                 </li>
                 <li>
-                    <b>How to Manage</b>:
-                    Adjust your browser settings to block or delete cookies.
+                    <b>
+                        {{ gettext("How to Manage") }}
+                    </b>:
+                    {{ gettext("Adjust your browser settings to block or delete cookies.") }}
                 </li>
             </ul>
         </p>
@@ -185,20 +203,19 @@
         <hr />
 
         <h2 id="childrens-privacy">
-            8. Children's Privacy
+            {{ gettext("8. Children's Privacy") }}
         </h2>
 
         <p>
             <ul>
                 <li>
-                    Our website is open to users aged <b>12 and older</b>.
+                    {{ gettext("Our website is open to users aged 12 and older.") }}
                 </li>
                 <li>
-                    If you are under <b>18</b>, you confirm that a parent
-                    or guardian has consented to your use of our services.
+                    {{ gettext("If you are under 18, you confirm that a parent or guardian has consented to your use of our services.") }}
                 </li>
                 <li>
-                    Parents/guardians may contact us to review or delete their child's data.
+                    {{ gettext("Parents/guardians may contact us to review or delete their child's data.") }}
                 </li>
             </ul>
         </p>
@@ -206,26 +223,25 @@
         <hr />
 
         <h2 id="changes-to-this-policy">
-            9. Changes to This Policy
+            {{ gettext("9. Changes to This Policy") }}
         </h2>
 
         <p>
-            We may update this Privacy Policy. Continued use of the website after changes
-            constitutes acceptance of the revised policy.
+            {{ gettext("We may update this Privacy Policy. Continued use of the website after changes constitutes acceptance of the revised policy.") }}
         </p>
 
         <hr />
 
         <h2 id="links-to-other-policies">
-            10. Links to Other Policies
+            {{ gettext("10. Links to Other Policies") }}
         </h2>
 
         <p>
-            Review our
-            <a href="{{ url_for('views.terms_of_service') }}">
-                Terms of Service
+            {{ gettext("Review our") }}
+            <a href="{{ url_for('routes.terms_of_service') }}">
+                {{ gettext("Terms of Service") }}
             </a>
-            for rules about using our website.
+            {{ gettext("for rules about using our website.") }}
         </p>
     </div>
 {% endblock %}

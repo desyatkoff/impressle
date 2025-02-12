@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | {{ picture.title }}{% endblock %}
+{% block title %}
+    Impressle | {{ picture.title }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        Picture
+        {{ gettext("Picture") }}
     </h1>
 
 
@@ -24,14 +26,14 @@
                 method = "POST"
                 id = "comment-form"
                 autocomplete = "off"
-                action = "{{ url_for('views.create_comment', picture_uid=picture.uid) }}"
+                action = "{{ url_for('routes.create_comment', picture_uid=picture.uid) }}"
             >
                 <div class="card">
                     <input
                         type = "text"
                         id = "comment-text"
                         name = "comment-text"
-                        placeholder = "Comment"
+                        placeholder = "{{ gettext('Comment') }}"
                     />
 
 
@@ -39,7 +41,7 @@
                         type = "submit"
                         class = "pure-button button-main"
                     >
-                        Send
+                        {{ gettext("Send") }}
                     </button>
                 </div>
             </form>

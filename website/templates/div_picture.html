@@ -9,12 +9,14 @@
                     {{ picture.title }}
                 {% else %}
                     <i>
-                        Untitled #{{ picture.uid }}
+                        {{ gettext("Untitled") }} #{{ picture.uid }}
                     </i>
                 {% endif %}
 
                 {% if picture.status == "banned" %}
-                    <span style="color: red;">[ BANNED ]</span>
+                    <span style="color: red;">
+                        {{ gettext("[ BANNED ]") }}
+                    </span>
                 {% endif %}
             </h2>
         </div>
@@ -22,12 +24,12 @@
         <div class="picture-author">
             <p>
                 Author:
-                <a href="{{ url_for('views.user_profile', username=picture.author_username) }}">
+                <a href="{{ url_for('routes.user_profile', username=picture.author_username) }}">
                     @{{ picture.author_username }}
                 </a>
                 {% if models.User.query.filter_by(uid=picture.author_uid).first().rank == "Admin" %}
                     <span style="color: #7f00ff">
-                        [ ADMIN ]
+                        {{ gettext("[ ADMIN ]") }}
                     </span>
                 {% endif %}
             </p>
@@ -35,7 +37,7 @@
 
         <div class="picture-date-created">
             <p>
-                Published on {{ picture.date_created.strftime("%Y-%m-%d") }}
+                {{ gettext("Published on") }} {{ picture.date_created.strftime("%Y-%m-%d") }}
             </p>
         </div>
 
@@ -181,13 +183,13 @@
                     method = "POST"
                     autocomplete = "off"
                     id = "delete-picture-form"
-                    action = "{{ url_for('views.delete_picture', picture_uid=picture.uid) }}"
+                    action = "{{ url_for('routes.delete_picture', picture_uid=picture.uid) }}"
                 >
                     <button
                         type = "submit"
                         class = "pure-button button-main"
                     >
-                        Delete Picture
+                        {{ gettext("Delete Picture") }}
                     </button>
                 </form>
             </div>

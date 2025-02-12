@@ -24,17 +24,17 @@ import datetime
 import flask
 import flask_login
 
-import config
 import website
+from . import extensions
 
 
-views = flask.Blueprint(
-    name = "views",
+routes = flask.Blueprint(
+    name = "routes",
     import_name = __name__
 )
 
 
-@views.before_request
+@routes.before_request
 def before_request():
     if not isinstance(flask_login.current_user, flask_login.AnonymousUserMixin):
         user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
@@ -61,31 +61,35 @@ def before_request():
 
 
         for user_ in website.models.User.query.all():
-            if round(datetime.datetime.now(datetime.timezone.utc).timestamp()) - user_.last_activity > 2592000:
+            if round(
+                    datetime.datetime.now(
+                        tz = datetime.timezone.utc
+                    ).timestamp()
+                ) - user_.last_activity > 2592000:
                 user_.status = "inactive"
 
 
         if user.status == "inactive":
             flask_login.logout_user()
-            flask.redirect(flask.url_for("views.inactive"))
+            flask.redirect(flask.url_for("routes.inactive"))
 
         if user.status == "banned":
             flask_login.logout_user()
-            flask.redirect(flask.url_for("views.banned"))
+            flask.redirect(flask.url_for("routes.banned"))
 
 
         user.last_activity = round(datetime.datetime.now(datetime.timezone.utc).timestamp())
 
 
-        website.db.session.commit()
+        extensions.db.session.commit()
 
 
-@views.route("/")
+@routes.route("/")
 def index():
-    return flask.redirect(flask.url_for("views.landing"))
+    return flask.redirect(flask.url_for("routes.landing"))
 
 
-@views.route("/landing")
+@routes.route("/landing")
 def landing():
     if isinstance(flask_login.current_user, flask_login.AnonymousUserMixin):
         return flask.render_template(
@@ -96,18 +100,18 @@ def landing():
     else:
         return flask.redirect(
             flask.url_for(
-                endpoint = "views.user_profile",
+                endpoint = "routes.user_profile",
                 username = flask_login.current_user.username
             )
         )
 
 
-@views.route("/feed")
+@routes.route("/feed")
 def feed():
-    return flask.redirect(flask.url_for("views.feed_recent"))
+    return flask.redirect(flask.url_for("routes.feed_recent"))
 
 
-@views.route("/feed/recent")
+@routes.route("/feed/recent")
 def feed_recent():
     recent_pictures = website.models.Picture.query.order_by(
         website.models.Picture.uid.desc()
@@ -129,7 +133,7 @@ def feed_recent():
     )
 
 
-@views.route("/feed/best")
+@routes.route("/feed/best")
 def feed_best():
     best_pictures = website.models.Picture.query.order_by(
         website.models.Picture.likes_count.desc()
@@ -151,7 +155,7 @@ def feed_best():
     )
 
 
-@views.route("/feed/popular")
+@routes.route("/feed/popular")
 def feed_popular():
     popular_pictures = website.models.Picture.query.order_by(
         website.models.Picture.views_count.desc()
@@ -173,7 +177,7 @@ def feed_popular():
     )
 
 
-@views.route("/user/@<username>")
+@routes.route("/user/@<username>")
 def user_profile(username):
     user = website.models.User.query.filter_by(username=username).first()
 
@@ -184,7 +188,7 @@ def user_profile(username):
         )
 
 
-        return flask.redirect(flask.url_for("views.feed"))
+        return flask.redirect(flask.url_for("routes.feed"))
 
 
     return flask.render_template(
@@ -198,7 +202,7 @@ def user_profile(username):
     )
 
 
-@views.route("/settings", methods=["GET", "POST"])
+@routes.route("/settings", methods=["GET", "POST"])
 @flask_login.login_required
 def user_settings():
     if flask.request.method == "POST":
@@ -222,12 +226,12 @@ def user_settings():
         )
 
 
-        website.db.session.commit()
+        extensions.db.session.commit()
 
 
         return flask.redirect(
             flask.url_for(
-                endpoint = "views.user_profile",
+                endpoint = "routes.user_profile",
                 username = user.username
             )
         )
@@ -240,7 +244,7 @@ def user_settings():
     )
 
 
-@views.route("/create-picture", methods=["GET", "POST"])
+@routes.route("/create-picture", methods=["GET", "POST"])
 @flask_login.login_required
 def create_picture():
     if flask.request.method == "POST":
@@ -266,13 +270,13 @@ def create_picture():
             user.karma += 1
 
 
-            website.db.session.add(picture)
-            website.db.session.commit()
+            extensions.db.session.add(picture)
+            extensions.db.session.commit()
 
 
             return flask.redirect(
                 flask.url_for(
-                    endpoint = "views.view_picture",
+                    endpoint = "routes.view_picture",
                     picture_uid = picture.uid
                 )
             )
@@ -283,7 +287,7 @@ def create_picture():
             )
 
 
-            return flask.redirect(flask.url_for("views.create_picture"))
+            return flask.redirect(flask.url_for("routes.create_picture"))
 
 
     return flask.render_template(
@@ -293,7 +297,7 @@ def create_picture():
     )
 
 
-@views.route("/liked")
+@routes.route("/liked")
 @flask_login.login_required
 def liked():
     pictures = website.models.Picture.query.order_by(
@@ -315,7 +319,7 @@ def liked():
     )
 
 
-@views.route("/following")
+@routes.route("/following")
 @flask_login.login_required
 def following():
     users = website.models.User.query.order_by(
@@ -331,7 +335,7 @@ def following():
     )
 
 
-@views.route("/delete-picture/<picture_uid>", methods=["POST"])
+@routes.route("/delete-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def delete_picture(picture_uid):
     user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
@@ -357,7 +361,7 @@ def delete_picture(picture_uid):
             user.karma -= 1
 
 
-            website.db.session.commit()
+            extensions.db.session.commit()
         else:
             flask.flash(
                 message = "You do not have enough permissions to delete this picture",
@@ -365,10 +369,10 @@ def delete_picture(picture_uid):
             )
 
 
-    return flask.redirect(flask.url_for("views.feed"))
+    return flask.redirect(flask.url_for("routes.feed"))
 
 
-@views.route("/picture/<picture_uid>")
+@routes.route("/picture/<picture_uid>")
 def view_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
     user = flask_login.current_user
@@ -390,7 +394,7 @@ def view_picture(picture_uid):
         )
 
 
-        return flask.redirect(flask.url_for("views.feed"))
+        return flask.redirect(flask.url_for("routes.feed"))
     else:
         if view is None:
             new_view = website.models.View(
@@ -402,8 +406,8 @@ def view_picture(picture_uid):
             picture.views_count += 1
 
 
-            website.db.session.add(new_view)
-            website.db.session.commit()
+            extensions.db.session.add(new_view)
+            extensions.db.session.commit()
 
 
     return flask.render_template(
@@ -414,7 +418,7 @@ def view_picture(picture_uid):
     )
 
 
-@views.route("/about")
+@routes.route("/about")
 def about():
     return flask.render_template(
         "about.html",
@@ -423,7 +427,7 @@ def about():
     )
 
 
-@views.route("/faq")
+@routes.route("/faq")
 def faq():
     return flask.render_template(
         "faq.html",
@@ -432,7 +436,7 @@ def faq():
     )
 
 
-@views.route("/terms-of-service")
+@routes.route("/terms-of-service")
 def terms_of_service():
     return flask.render_template(
         "terms_of_service.html",
@@ -441,7 +445,7 @@ def terms_of_service():
     )
 
 
-@views.route("/privacy-policy")
+@routes.route("/privacy-policy")
 def privacy_policy():
     return flask.render_template(
         "privacy_policy.html",
@@ -450,7 +454,7 @@ def privacy_policy():
     )
 
 
-@views.route("/inactive")
+@routes.route("/inactive")
 def inactive():
     try:
         return flask.render_template(
@@ -461,7 +465,7 @@ def inactive():
         pass
 
 
-@views.route("/banned", methods=["GET", "POST"])
+@routes.route("/banned", methods=["GET", "POST"])
 def banned():
     try:
         if flask.request.method == "POST":
@@ -485,7 +489,7 @@ def banned():
         pass
 
 
-@views.route("/follow-user/<user_uid>", methods=["POST"])
+@routes.route("/follow-user/<user_uid>", methods=["POST"])
 @flask_login.login_required
 def follow_user(user_uid):
     user = website.models.User.query.filter_by(uid=user_uid).first()
@@ -511,18 +515,18 @@ def follow_user(user_uid):
                 follower_username = flask_login.current_user.username
             )
 
-            website.db.session.add(new_follow)
+            extensions.db.session.add(new_follow)
 
 
             user.karma += 1
         else:
-            website.db.session.delete(follow)
+            extensions.db.session.delete(follow)
 
 
             user.karma -= 1
 
 
-        website.db.session.commit()
+        extensions.db.session.commit()
 
 
     return flask.jsonify(
@@ -533,7 +537,7 @@ def follow_user(user_uid):
     )
 
 
-@views.route("/like-picture/<picture_uid>", methods=["POST"])
+@routes.route("/like-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def like_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
@@ -559,7 +563,7 @@ def like_picture(picture_uid):
 
 
         if like:
-            website.db.session.delete(like)
+            extensions.db.session.delete(like)
 
             picture.likes_count -= 1
 
@@ -572,7 +576,7 @@ def like_picture(picture_uid):
                 author_username = flask_login.current_user.username
             )
 
-            website.db.session.add(like)
+            extensions.db.session.add(like)
 
             picture.likes_count += 1
 
@@ -581,7 +585,7 @@ def like_picture(picture_uid):
 
 
             if dislike:
-                website.db.session.delete(dislike)
+                extensions.db.session.delete(dislike)
 
                 picture.dislikes_count -= 1
 
@@ -604,10 +608,10 @@ def like_picture(picture_uid):
             picture.views_count += 1
 
 
-            website.db.session.add(new_view)
+            extensions.db.session.add(new_view)
 
 
-        website.db.session.commit()
+        extensions.db.session.commit()
 
 
     return flask.jsonify(
@@ -620,7 +624,7 @@ def like_picture(picture_uid):
     )
 
 
-@views.route("/dislike-picture/<picture_uid>", methods=["POST"])
+@routes.route("/dislike-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def dislike_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
@@ -646,7 +650,7 @@ def dislike_picture(picture_uid):
 
 
         if dislike:
-            website.db.session.delete(dislike)
+            extensions.db.session.delete(dislike)
 
             picture.dislikes_count -= 1
 
@@ -659,7 +663,7 @@ def dislike_picture(picture_uid):
                 author_username = flask_login.current_user.username
             )
 
-            website.db.session.add(dislike)
+            extensions.db.session.add(dislike)
 
             picture.dislikes_count += 1
 
@@ -668,14 +672,14 @@ def dislike_picture(picture_uid):
 
 
             if like:
-                website.db.session.delete(like)
+                extensions.db.session.delete(like)
 
                 picture.likes_count -= 1
 
                 picture_author.karma -= 1
 
 
-        website.db.session.commit()
+        extensions.db.session.commit()
 
 
     return flask.jsonify(
@@ -688,7 +692,7 @@ def dislike_picture(picture_uid):
     )
 
 
-@views.route("/create-comment/<picture_uid>", methods=["POST"])
+@routes.route("/create-comment/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def create_comment(picture_uid):
     comment_text = flask.request.form.get("comment-text")
@@ -719,13 +723,13 @@ def create_comment(picture_uid):
             )
 
 
-            website.db.session.add(comment)
+            extensions.db.session.add(comment)
 
 
             picture_author.karma += 1
 
 
-            website.db.session.commit()
+            extensions.db.session.commit()
         else:
             flask.flash(
                 message = "Picture does not exist",
@@ -733,10 +737,10 @@ def create_comment(picture_uid):
             )
 
 
-    return flask.redirect(flask.url_for("views.feed"))
+    return flask.redirect(flask.url_for("routes.feed"))
 
 
-@views.route("/delete-comment/<comment_uid>", methods=["POST"])
+@routes.route("/delete-comment/<comment_uid>", methods=["POST"])
 @flask_login.login_required
 def delete_comment(comment_uid):
     comment = website.models.Comment.query.filter_by(uid=comment_uid).first()
@@ -765,7 +769,7 @@ def delete_comment(comment_uid):
             picture_author.karma -= 1
 
 
-            website.db.session.commit()
+            extensions.db.session.commit()
         else:
             flask.flash(
                 message = "You do not have enough permissions to delete this comment",
@@ -773,4 +777,4 @@ def delete_comment(comment_uid):
             )
 
 
-    return flask.redirect(flask.url_for("views.feed"))
+    return flask.redirect(flask.url_for("routes.feed"))

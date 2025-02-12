@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | Feed{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("Feed") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        Feed
+        {{ gettext("Feed") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
             {% if feed_type == "recent" %}
-                Find the newest pictures
+                {{ gettext("Find the newest pictures") }}
             {% elif feed_type == "best" %}
-                Find the most liked pictures
+                {{ gettext("Find the most liked pictures") }}
             {% elif feed_type == "popular" %}
-                Find the most viewed pictures
+                {{ gettext("Find the most viewed pictures") }}
             {% endif %}
         </b>
     </p>
@@ -42,19 +44,19 @@
         {% else %}
             <div class="card">
                 <h1>
-                    It seems that there are no any pictures... :(
+                    {{ gettext("It seems that there are no any pictures... :(") }}
                 </h1>
 
                 <br />
 
                 <span>
-                    Let's fix this, click
+                    {{ gettext("Let's fix this, click") }}
                     <button class="pure-button button-main">
-                        <a href="{{ url_for('views.create_picture') }}">
-                            Create a Picture
+                        <a href="{{ url_for('routes.create_picture') }}">
+                            {{ gettext("Create a Picture") }}
                         </a>
                     </button>,
-                    and Impressle will not be empty
+                    {{ gettext("and Impressle will not be empty") }}
                 </span>
             </div>
         {% endif %}

@@ -4,18 +4,18 @@
 >
     <div class="comment-info">
         <p class="comment-author">
-            Author:
-            <a href="{{ url_for('views.user_profile', username=comment.author_username) }}">
+            {{ gettext("Author") }}:
+            <a href="{{ url_for('routes.user_profile', username=comment.author_username) }}">
                 @{{comment.author_username}}
             </a>
             {% if models.User.query.filter_by(uid=comment.author_uid).first().rank == "Admin" %}
                 <span style="color: #7f00ff">
-                    [ ADMIN ]
+                    {{ gettext("[ ADMIN ]") }}
                 </span>
             {% endif %}
         </p>
         <p class="comment-date-created">
-            Commented on {{ comment.date_created.strftime("%Y-%m-%d") }}
+            {{ gettext("Commented on") }} {{ comment.date_created.strftime("%Y-%m-%d") }}
         </p>
     </div>
 
@@ -24,7 +24,9 @@
     <div class="comment-text">
         <p class="comment-text">
             {% if comment.status == "banned" %}
-                <span style="color: red;">[ BANNED ]</span>
+                <span style="color: red;">
+                    {{ gettext("[ BANNED ]") }}
+                </span>
             {% else %}
                 {{ comment.text }}
             {% endif %}
@@ -39,13 +41,13 @@
             method = "POST"
             autocomplete = "off"
             id = "delete-comment-form"
-            action = "{{ url_for('views.delete_comment', comment_uid=comment.uid) }}"
+            action = "{{ url_for('routes.delete_comment', comment_uid=comment.uid) }}"
         >
             <button
                 type="submit"
                 class = "pure-button button-main"
             >
-                Delete Comment
+                {{ gettext("Delete Comment") }}
             </button>
         </form>
     {% endif %}

@@ -4,4 +4,4 @@
 rm -r __pycache__/
 rm -r */__pycache__/
 
-rm */database.db
+rm database/database.db

@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | This Account is Inactive{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("This Account is Inactive") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        This Account is Inactive!
+        {{ gettext("This Account is Inactive") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
-            Uh oh...
+            {{ gettext("Uh oh...") }}
         </b>
     </p>
 
@@ -24,23 +26,22 @@
         id = "page-content"
     >
         <p>
-            You can no longer log in to this account. Why did that happened? Actual reasons:
+            {{ gettext("You can no longer log in to this account. Why did that happened? Actual reasons:") }}
 
             <ul>
                 <li>
-                    You deactivated this account intentionally (Settings -> Delete Account)
+                    {{ gettext("You deactivated this account intentionally (Settings -> Delete Account)") }}
                 </li>
                 <li>
-                    Your account may be deactivated because of inactivity
-                    (if you didn't visit Impressle for the last 30 days)
+                    {{ gettext("Your account may be deactivated because of inactivity (if you didn't visit Impressle for the last 30 days)") }}
                 </li>
             </ul>
 
-            Try
+            {{ gettext("Try") }}
             <a href="{{ url_for('auth.signup') }}">
-                creating a new account
+                {{ gettext("creating a new account") }}
             </a>
-            if you want to use Impressle
+            {{ gettext("if you want to use Impressle") }}
         </p>
     </div>
 {% endblock %}

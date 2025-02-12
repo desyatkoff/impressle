@@ -22,350 +22,350 @@ import datetime
 
 import flask_login
 
-import website
+from . import extensions
 
 
-class User(website.db.Model, flask_login.UserMixin):
-    id = website.db.Column(
-        website.db.Integer,
+class User(extensions.db.Model, flask_login.UserMixin):
+    id = extensions.db.Column(
+        extensions.db.Integer,
         primary_key = True,
         nullable = False
     )
 
-    uid = website.db.Column(
-        website.db.Integer,
+    uid = extensions.db.Column(
+        extensions.db.Integer,
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
-    date_created = website.db.Column(
-        website.db.DateTime,
+    date_created = extensions.db.Column(
+        extensions.db.DateTime,
         default = datetime.datetime.now(datetime.timezone.utc)
     )
-    username = website.db.Column(
-        website.db.String,
+    username = extensions.db.Column(
+        extensions.db.String,
         unique = True,
         nullable = False
     )
-    password = website.db.Column(
-        website.db.String,
+    password = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
-    about_me = website.db.Column(
-        website.db.String
+    about_me = extensions.db.Column(
+        extensions.db.String
     )
-    karma = website.db.Column(
-        website.db.Integer,
+    karma = extensions.db.Column(
+        extensions.db.Integer,
         default = 0
     )
-    rank = website.db.Column(
-        website.db.String,
+    rank = extensions.db.Column(
+        extensions.db.String,
         default = "Newbie"
     )
-    pictures = website.db.relationship(
+    pictures = extensions.db.relationship(
         "Picture",
         backref = "user",
         passive_deletes = True
     )
-    follows = website.db.relationship(
+    follows = extensions.db.relationship(
         "Follow",
         backref = "user",
         passive_deletes = True
     )
-    likes = website.db.relationship(
+    likes = extensions.db.relationship(
         "Like",
         backref = "user",
         passive_deletes = True
     )
-    comments = website.db.relationship(
+    comments = extensions.db.relationship(
         "Comment",
         backref = "user",
         passive_deletes = True
     )
-    show_followers = website.db.Column(
-        website.db.Boolean,
+    show_followers = extensions.db.Column(
+        extensions.db.Boolean,
         default = True
     )
-    allow_comments = website.db.Column(
-        website.db.Boolean,
+    allow_comments = extensions.db.Column(
+        extensions.db.Boolean,
         default = True
     )
-    status = website.db.Column(
-        website.db.String,
+    status = extensions.db.Column(
+        extensions.db.String,
         default = "normal"
     )
-    last_activity = website.db.Column(
-        website.db.Integer,
+    last_activity = extensions.db.Column(
+        extensions.db.Integer,
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
 
 
-class Picture(website.db.Model):
-    id = website.db.Column(
-        website.db.Integer,
+class Picture(extensions.db.Model):
+    id = extensions.db.Column(
+        extensions.db.Integer,
         primary_key = True,
         nullable = False
     )
 
-    uid = website.db.Column(
-        website.db.Integer,
+    uid = extensions.db.Column(
+        extensions.db.Integer,
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
-    date_created = website.db.Column(
-        website.db.DateTime(timezone=True),
+    date_created = extensions.db.Column(
+        extensions.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.timezone.utc)
     )
-    title = website.db.Column(
-        website.db.String,
+    title = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
-    image_data = website.db.Column(
-        website.db.LargeBinary,
+    image_data = extensions.db.Column(
+        extensions.db.LargeBinary,
         nullable = False
     )
-    likes = website.db.relationship(
+    likes = extensions.db.relationship(
         "Like",
         backref = "picture",
         passive_deletes = True
     )
-    likes_count = website.db.Column(
-        website.db.Integer,
+    likes_count = extensions.db.Column(
+        extensions.db.Integer,
         default = 0
     )
-    dislikes = website.db.relationship(
+    dislikes = extensions.db.relationship(
         "Dislike",
         backref = "picture",
         passive_deletes = True
     )
-    dislikes_count = website.db.Column(
-        website.db.Integer,
+    dislikes_count = extensions.db.Column(
+        extensions.db.Integer,
         default = 0
     )
-    comments = website.db.relationship(
+    comments = extensions.db.relationship(
         "Comment",
         backref = "picture",
         passive_deletes = True
     )
-    views = website.db.relationship(
+    views = extensions.db.relationship(
         "View",
         backref = "picture",
         passive_deletes = True
     )
-    views_count = website.db.Column(
-        website.db.Integer,
+    views_count = extensions.db.Column(
+        extensions.db.Integer,
         default = 0
     )
-    author_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    author_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_username = website.db.Column(
-        website.db.String,
+    author_username = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
-    status = website.db.Column(
-        website.db.String,
+    status = extensions.db.Column(
+        extensions.db.String,
         default = "normal"
     )
 
 
-class Follow(website.db.Model):
-    id = website.db.Column(
-        website.db.Integer,
+class Follow(extensions.db.Model):
+    id = extensions.db.Column(
+        extensions.db.Integer,
         primary_key = True,
         nullable = False
     )
 
-    uid = website.db.Column(
-        website.db.Integer,
+    uid = extensions.db.Column(
+        extensions.db.Integer,
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
-    date_created = website.db.Column(
-        website.db.DateTime(timezone=True),
+    date_created = extensions.db.Column(
+        extensions.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.timezone.utc)
     )
-    followed_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    followed_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    followed_username = website.db.Column(
-        website.db.String,
+    followed_username = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
-    follower_uid = website.db.Column(
-        website.db.Integer,
+    follower_uid = extensions.db.Column(
+        extensions.db.Integer,
         nullable = False
     )
-    follower_username = website.db.Column(
-        website.db.String,
+    follower_username = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
 
 
-class Like(website.db.Model):
-    id = website.db.Column(
-        website.db.Integer,
+class Like(extensions.db.Model):
+    id = extensions.db.Column(
+        extensions.db.Integer,
         primary_key = True,
         nullable = False
     )
 
-    uid = website.db.Column(
-        website.db.Integer,
+    uid = extensions.db.Column(
+        extensions.db.Integer,
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
-    date_created = website.db.Column(
-        website.db.DateTime(timezone=True),
+    date_created = extensions.db.Column(
+        extensions.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.timezone.utc)
     )
-    picture_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    picture_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "picture.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    author_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_username = website.db.Column(
-        website.db.String,
+    author_username = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
 
 
-class Dislike(website.db.Model):
-    id = website.db.Column(
-        website.db.Integer,
+class Dislike(extensions.db.Model):
+    id = extensions.db.Column(
+        extensions.db.Integer,
         primary_key = True,
         nullable = False
     )
 
-    uid = website.db.Column(
-        website.db.Integer,
+    uid = extensions.db.Column(
+        extensions.db.Integer,
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
-    date_created = website.db.Column(
-        website.db.DateTime(timezone=True),
+    date_created = extensions.db.Column(
+        extensions.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.timezone.utc)
     )
-    picture_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    picture_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "picture.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    author_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_username = website.db.Column(
-        website.db.String,
+    author_username = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
 
 
-class Comment(website.db.Model):
-    id = website.db.Column(
-        website.db.Integer,
+class Comment(extensions.db.Model):
+    id = extensions.db.Column(
+        extensions.db.Integer,
         primary_key = True,
         nullable = False
     )
 
-    uid = website.db.Column(
-        website.db.Integer,
+    uid = extensions.db.Column(
+        extensions.db.Integer,
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
-    date_created = website.db.Column(
-        website.db.DateTime(timezone=True),
+    date_created = extensions.db.Column(
+        extensions.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.timezone.utc)
     )
-    text = website.db.Column(
-        website.db.String,
+    text = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
-    picture_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    picture_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "picture.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    author_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_username = website.db.Column(
-        website.db.String,
+    author_username = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )
-    status = website.db.Column(
-        website.db.String,
+    status = extensions.db.Column(
+        extensions.db.String,
         default = "normal"
     )
 
 
-class View(website.db.Model):
-    id = website.db.Column(
-        website.db.Integer,
+class View(extensions.db.Model):
+    id = extensions.db.Column(
+        extensions.db.Integer,
         primary_key = True,
         nullable = False
     )
 
-    uid = website.db.Column(
-        website.db.Integer,
+    uid = extensions.db.Column(
+        extensions.db.Integer,
         unique = True,
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
-    date_created = website.db.Column(
-        website.db.DateTime(timezone=True),
+    date_created = extensions.db.Column(
+        extensions.db.DateTime(timezone=True),
         default = datetime.datetime.now(datetime.timezone.utc)
     )
-    picture_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    picture_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "picture.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_uid = website.db.Column(
-        website.db.Integer,
-        website.db.ForeignKey(
+    author_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
             "user.uid",
             ondelete = "CASCADE"
         ),
         nullable = False
     )
-    author_username = website.db.Column(
-        website.db.String,
+    author_username = extensions.db.Column(
+        extensions.db.String,
         nullable = False
     )

@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | Settings{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("Settings") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        Settings
+        {{ gettext("Settings") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
-            Set the preferences for your account
+            {{ gettext("Set the preferences for your account") }}
         </b>
     </p>
 
@@ -29,13 +31,13 @@
             autocomplete = "off"
         >
             <h1 id="profile-settings">
-                Profile Settings
+                {{ gettext("Profile Settings") }}
             </h1>
 
 
             <div class="card">
                 <label for="about-me">
-                    About Me
+                    {{ gettext("About Me") }}
                 </label>
 
                 <input
@@ -56,13 +58,13 @@
                     type = "submit"
                     class = "pure-button button-main"
                 >
-                    Save
+                    {{ gettext("Save") }}
                 </button>
             </div>
 
 
             <h1 id="privacy-settings">
-                Privacy Settings
+                {{ gettext("Privacy Settings") }}
             </h1>
 
 
@@ -76,7 +78,7 @@
                             checked
                         {% endif %}
                     />
-                    Show followers count in my profile
+                    {{ gettext("Show followers count in my profile") }}
                 </label>
 
                 <br />
@@ -90,7 +92,7 @@
                             checked
                         {% endif %}
                     />
-                    Allow users to comment my pictures
+                    {{ gettext("Allow users to comment my pictures") }}
                 </label>
 
 
@@ -101,13 +103,13 @@
                     type = "submit"
                     class = "pure-button button-main"
                 >
-                    Save
+                    {{ gettext("Save") }}
                 </button>
             </div>
 
 
             <h1>
-                Delete Account
+                {{ gettext("Delete Account") }}
             </h1>
 
 
@@ -118,7 +120,7 @@
                         id = "delete-account-checkbox"
                         name = "delete-account-checkbox"
                     >
-                    I am totally sure I want to delete this account
+                    {{ gettext("I am totally sure I want to delete this account") }}
                 </label>
 
 
@@ -129,7 +131,7 @@
                     type = "submit"
                     class = "pure-button button-danger"
                 >
-                    Delete Account
+                    {{ gettext("Delete Account") }}
                 </button>
             </div>
         </form>

@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | Create a Picture{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("Create a Picture") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        Create a Picture
+        {{ gettext("Create a Picture") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
-            Let's draw your impressive picture!
+            {{ gettext("Let's draw your impressive picture!") }}
         </b>
     </p>
 
@@ -34,7 +36,7 @@
                         id = "title"
                         type = "text"
                         name = "title"
-                        placeholder = "Picture title"
+                        placeholder = "{{ gettext('Picture Title') }}"
                     />
                 </p>
 
@@ -47,14 +49,16 @@
 
 
                 <p>
-                    <b>Brush Width</b>:
+                    <b>
+                        {{ gettext("Brush Width") }}
+                    </b>:
                     <span id="width-span">
                         4
                     </span>
                     <input
                         min = "4"
                         step = "2"
-                        max = "200"
+                        max = "100"
                         value = "8"
                         type = "range"
                         id = "width-input"
@@ -78,7 +82,7 @@
                             type = "submit"
                             class = "pure-button button-main"
                         >
-                            Publish
+                            {{ gettext("Publish") }}
                         </button>
                     </div>
                     <div class="pure-u-1-8">
@@ -86,7 +90,7 @@
                             onclick = "reset_canvas()"
                             class = "pure-button button-danger"
                         >
-                            Reset Canvas
+                            {{ gettext("Reset Canvas") }}
                         </a>
                     </div>
                 </div>

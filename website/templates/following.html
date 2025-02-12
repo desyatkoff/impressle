@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | You Following{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("You Following") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        You Following
+        {{ gettext("You Following") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
-            All your favorite users are listed right here
+            {{ gettext("All your favorite users are listed right here") }}
         </b>
     </p>
 

@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle{% endblock %}
+{% block title %}
+    {{ gettext("Welcome to Impressle") }}
+{% endblock %}
 
 {% block content %}
     <div
@@ -9,7 +11,7 @@
         id = "landing-card"
     >
         <h1 align="center">
-            Welcome to the
+            {{ gettext("Welcome to the") }}
             <br />
             <span class="large-label">
                 impressle<span style="color: #7f00ff;">.fun</span>
@@ -21,12 +23,12 @@
 
 
         <h2 align="center">
-            Unleash your creativity!
+            {{ gettext("Unleash your creativity!") }}
         </h2>
 
         <p align="center">
             <b>
-                On this website, you can...:
+                {{ gettext("On this website, you can...:") }}
             </b>
         </p>
 
@@ -37,31 +39,31 @@
         >
             <div class="card pure-u-1-10">
                 <h3>
-                    Draw funny pictures
+                    {{ gettext("Draw funny pictures") }}
                 </h3>
             </div>
 
             <div class="card pure-u-1-10">
                 <h3>
-                    Like and comment others' pictures
+                    {{ gettext("Like and comment others' pictures") }}
                 </h3>
             </div>
 
             <div class="card pure-u-1-10">
                 <h3>
-                    Get the highest rank to become the best
+                    {{ gettext("Get the highest rank to become the best") }}
                 </h3>
             </div>
 
             <div class="card pure-u-1-10">
                 <h3>
-                    Get karma to show others your reputation and drawing skills
+                    {{ gettext("Get karma to show others your reputation and drawing skills") }}
                 </h3>
             </div>
 
             <div class="card pure-u-1-10">
                 <h3>
-                    Follow your favorite artists and get your own followers too
+                    {{ gettext("Follow your favorite artists and get your own followers too") }}
                 </h3>
             </div>
         </div>
@@ -71,12 +73,12 @@
 
 
         <h2 align="center">
-            Isn't It Impressive?
+            {{ gettext("Isn't it impressive?") }}
         </h2>
 
         <p align="center">
             <b>
-                Create an account and start drawing your funny pictures on Impressle!
+                {{ gettext("Create an account and start drawing your funny pictures on Impressle!") }}
             </b>
 
             <br />
@@ -87,15 +89,15 @@
                 align = "center"
             >
                 <span>
-                    Ready to join the community? Click
+                    {{ gettext("Ready to join the community? Click") }}
                 </span>
                 <button class="pure-button button-main">
                     <a href="{{ url_for('auth.signup') }}">
-                        Sign Up
+                        {{ gettext("Sign Up") }}
                     </a>
                 </button>
                 <span>
-                    to create your own account. Let's start!
+                    {{ gettext("to create your own account. Let's start!") }}
                 </span>
             </div>
         </p>

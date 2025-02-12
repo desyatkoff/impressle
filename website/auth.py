@@ -23,6 +23,7 @@ import flask_login
 import werkzeug
 
 import website
+from . import extensions
 
 
 auth = flask.Blueprint(
@@ -77,8 +78,8 @@ def signup():
             )
 
 
-            website.db.session.add(new_user)
-            website.db.session.commit()
+            extensions.db.session.add(new_user)
+            extensions.db.session.commit()
 
 
             flask_login.login_user(
@@ -89,7 +90,7 @@ def signup():
 
             return flask.redirect(
                 flask.url_for(
-                    endpoint = "views.user_profile",
+                    endpoint = "routes.user_profile",
                     username = new_user.username
                 )
             )
@@ -125,7 +126,7 @@ def login():
                     )
 
 
-                    return flask.redirect(flask.url_for("views.inactive"))
+                    return flask.redirect(flask.url_for("routes.inactive"))
                 elif user.status == "banned":
                     flask.flash(
                         message = "Account is banned",
@@ -133,7 +134,7 @@ def login():
                     )
 
 
-                    return flask.redirect(flask.url_for("views.banned"))
+                    return flask.redirect(flask.url_for("routes.banned"))
                 else:
                     flask.flash(
                         message = "Successfully logged in",
@@ -143,7 +144,7 @@ def login():
 
                     return flask.redirect(
                         flask.url_for(
-                            endpoint = "views.user_profile",
+                            endpoint = "routes.user_profile",
                             username = user.username
                         )
                     )

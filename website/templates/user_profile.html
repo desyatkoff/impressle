@@ -1,19 +1,14 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | @{{ user_profile.username }}{% endblock %}
+{% block title %}
+    Impressle | @{{ user_profile.username }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        @{{ user_profile.username }}'s Profile
+        @{{ user_profile.username }}
     </h1>
-
-
-    <p id="page-subtitle">
-        <b>
-            Just some info about this user
-        </b>
-    </p>
 
 
     <hr />
@@ -37,17 +32,17 @@
 
                         {% if user_profile.rank == "Admin" %}
                             <span style="color: #7f00ff">
-                                [ ADMIN ]
+                                {{ gettext("[ ADMIN ]") }}
                             </span>
                         {% endif %}
 
                         {% if user_profile.status == "inactive" %}
                             <span style="color: #ff7f00">
-                                [ INACTIVE ]
+                                {{ gettext("[ INACTIVE ]") }}
                             </span>
                         {% elif user_profile.status == "banned" %}
                             <span style="color: #ff0000;">
-                                [ BANNED ]
+                                {{ gettext("[ BANNED ]") }}
                             </span>
                         {% endif %}
                     </h1>
@@ -62,7 +57,7 @@
                                 <span class="followers-count" id="followers-count-{{ user_profile.uid }}">
                                     {{ user_profile.follows|length }}
                                 </span>
-                                Followers
+                                {{ gettext("Followers") }}
                             </span>
                         {% endif %}
 
@@ -73,7 +68,7 @@
                                     id = "follow-button-{{ user_profile.uid }}"
                                     class = "button following pure-button button-main"
                                 >
-                                    Unfollow
+                                    {{ gettext("Unfollow") }}
                                 </button>
                             {% else %}
                                 <button
@@ -81,7 +76,7 @@
                                     id = "follow-button-{{ user_profile.uid }}"
                                     onclick = "follow({{ user_profile.uid }})"
                                 >
-                                    Follow
+                                    {{ gettext("Follow") }}
                                 </button>
                             {% endif %}
                         {% endif %}
@@ -94,7 +89,7 @@
 
 
             <h2 id="about-me">
-                About Me
+                {{ gettext("About Me") }}
             </h2>
 
             <p>
@@ -102,7 +97,7 @@
                     {{ user_profile.about_me }}
                 {% else %}
                     <i>
-                        Nothing yet...
+                        {{ gettext("Nothing yet...") }}
                     </i>
                 {% endif %}
             </p>
@@ -112,14 +107,14 @@
 
 
             <h2>
-                Account Details
+                {{ gettext("Account Details") }}
             </h2>
 
             <div id="details">
                 <div class="pure-g">
                     <div class="pure-u-1-4">
                         <h3 id="user-id">
-                            User ID
+                            {{ gettext("User ID") }}
                         </h3>
 
                         <p>
@@ -129,7 +124,7 @@
 
                     <div class="pure-u-1-4">
                         <h3 id="account-created">
-                            Account Created
+                            {{ gettext("Account Created") }}
                         </h3>
 
                         <p>
@@ -139,17 +134,17 @@
 
                     <div class="pure-u-1-4">
                         <h3 id="rank">
-                            Rank
+                            {{ gettext("Rank") }}
                         </h3>
 
                         <p>
-                            {{ user_profile.rank }}
+                            {{ gettext(user_profile.rank) }}
                         </p>
                     </div>
 
                     <div class="pure-u-1-4">
                         <h3 id="">
-                            Karma
+                            {{ gettext("Karma") }}
                         </h3>
 
                         <p>
@@ -166,8 +161,8 @@
 
 
                     <button class="pure-button button-main">
-                        <a href="{{ url_for('views.user_settings') }}">
-                            Edit Profile
+                        <a href="{{ url_for('routes.user_settings') }}">
+                            {{ gettext("Edit Profile") }}
                         </a>
                     </button>
                 </div>
@@ -177,14 +172,6 @@
 
 
     {% if user_profile.pictures|count > 0 %}
-        <h1>
-            @{{ user_profile.username }}'s Pictures
-        </h1>
-
-
-        <hr />
-
-
         <div id="pictures">
             {% for picture in pictures %}
                 {% if picture.status != "deleted" %}

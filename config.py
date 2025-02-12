@@ -30,6 +30,7 @@ PROJECT_ROOT_PATH = os.path.dirname(__file__)
 DB_PATH = f"{PROJECT_ROOT_PATH}/database/database.db"
 
 FLASK_SECRET = os.getenv("FLASK_SECRET")
+BABEL_DIRS = f"{PROJECT_ROOT_PATH}/translations/"
 SQLALCHEMY_DATABASE_URI = f"sqlite:///{DB_PATH}"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 

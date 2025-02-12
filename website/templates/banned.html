@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | You are Banned{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("You are Banned") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        Unfortunately, This Account is Banned! :(
+        {{ gettext("Unfortunately, this account is banned! :(") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
-            Uh oh...
+            {{ gettext("Uh oh...") }}
         </b>
     </p>
 
@@ -24,9 +26,7 @@
         id = "page-content"
     >
         <p>
-            You can no longer log in to this account. Breaking the rules is bad, you know?
-            It's allowed to create another account, and if you want to do this, then
-            promise that you will not break the rules again
+            {{ gettext("You can no longer log in to this account. Breaking the rules is bad, you know? It's allowed to create another account, and if you want to do this, you promise that you will not break the rules again") }}
         </p>
 
         <hr />
@@ -41,7 +41,7 @@
                     name = "checkbox"
                     type = "checkbox"
                 />
-                I will not break the rules next time
+                {{ gettext("I will not break the rules next time") }}
             </label>
 
             <br />
@@ -51,7 +51,7 @@
                 type = "submit"
                 class = "pure-button button-main"
             >
-                Create New Account
+                {{ gettext("Create New Account") }}
             </button>
         </form>
     </div>

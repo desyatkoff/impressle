@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | About{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("About Impressle") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        About Impressle
+        {{ gettext("About Impressle") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
-            Here you can learn more about the Impressle website
+            {{ gettext("Here you can learn more about the Impressle website") }}
         </b>
     </p>
 
@@ -25,46 +27,43 @@
     >
         <p id="description">
             <b>
-                Unleash your creativity!
+                {{ gettext("Unleash your creativity!") }}
             </b>
 
             <br />
             <br />
 
-            <b>Impressle</b> is a unique social network where you have to draw by hand,
-            not uploading image files. Follow your favorite artists, give likes to other users'
-            pictures and make your own ones. It's fun, just try it!
+            {{ gettext("Impressle is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just try it!") }}
 
             <br />
             <br />
 
-            If you want to know how we collect, use, and protect your personal information, check the
-            <a href="{{ url_for('views.privacy_policy') }}">
-                Privacy Policy
+            {{ gettext("If you want to know how we collect, use, and protect your personal information, check the") }}
+            <a href="{{ url_for('routes.privacy_policy') }}">
+                {{ gettext("Privacy Policy") }}
             </a>
-            page
 
             <br />
             <br />
 
             <i>
-                Check the
-                <a href="{{ url_for('views.faq') }}">
-                    Frequently Asked Questions
+                {{ gettext("Check the") }}
+                <a href="{{ url_for('routes.faq') }}">
+                    {{ gettext("Frequently Asked Questions") }}
                 </a>
-                page for more details
+                {{ gettext("for more details") }}
             </i>
         </p>
 
         <p>
-            By the way, this is an open source project, you can check the source code on
+            {{ gettext("By the way, this is an open source project, you can check the source code on") }}
             <a href="https://github.com/desyatkoff/impressle">
-                this GitHub repository
+                {{ gettext("this GitHub repository") }}
             </a>.
 
             <br />
 
-            You can become a contributor if you want :)
+            {{ gettext("You can become a contributor if you want :)") }}
         </p>
     </div>
 {% endblock %}

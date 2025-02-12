@@ -18,23 +18,11 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
-import os
-
-import config
-import website
-
-
-app = website.init_flask_app()
+import flask_babel
+import flask_login
+import flask_sqlalchemy
 
 
-if __name__ == "__main__":
-    if not os.path.exists(config.DB_PATH):
-        with app.app_context():
-            website.extensions.db.create_all()
-
-
-    app.run(
-        host = config.HOST,
-        port = config.PORT,
-        debug = config.DEBUG_MODE
-    )
+babel = flask_babel.Babel()
+login_manager = flask_login.LoginManager()
+db = flask_sqlalchemy.SQLAlchemy()

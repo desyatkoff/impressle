@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | Log In{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("Log In") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        Welcome Back!
+        {{ gettext("Welcome Back!") }}
     </h1>
 
 
     <p id="page-subtitle">
-        Here you can log in to your account
+        {{ gettext("Here you can log in to your account") }}
     </p>
 
 
@@ -26,25 +28,25 @@
             autocomplete = "off"
         >
             <label for="username">
-                Username
+                {{ gettext("Username") }}
             </label>
             <input
                 type = "text"
                 id = "username"
                 name = "username"
-                placeholder = "Username"
+                placeholder = "{{ gettext('Username') }}"
             />
 
             <br />
 
             <label for="password">
-                Password
+                {{ gettext("Password") }}
             </label>
             <input
                 id = "password"
                 type = "password"
                 name = "password"
-                placeholder = "Password"
+                placeholder = "{{ gettext('Password') }}"
             />
 
             <br />
@@ -54,7 +56,7 @@
                 type = "submit"
                 class = "pure-button button-main"
             >
-                Log In
+                {{ gettext("Log In") }}
             </button>
 
 
@@ -62,9 +64,9 @@
 
 
             <p>
-                New to Impressle?
+                {{ gettext("New to Impressle?") }}
                 <a href="{{ url_for('auth.signup') }}">
-                    Sign Up
+                    {{ gettext("Sign Up") }}
                 </a>
             </p>
         </form>

@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | FAQ{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("FAQ") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        FAQ (Frequently Asked Questions)
+        {{ gettext("FAQ (Frequently Asked Questions)") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
-            If you have a question, you can find the answer here
+            {{ gettext("If you have a question, you can find the answer here") }}
         </b>
     </p>
 
@@ -28,13 +30,11 @@
                 class = "question"
                 id = "what-is-impressle"
             >
-                1. What is Impressle?
+                {{ gettext("1. What is Impressle?") }}
             </h2>
 
             <p class="answer">
-                <b>Impressle (impressle.fun)</b> is a unique social network where you have to draw
-                by hand, not uploading image files. Follow your favorite artists, give likes to
-                other users' pictures and make your own ones!
+                {{ gettext("Impressle (impressle.fun) is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones!") }}
             </p>
         </div>
 
@@ -45,36 +45,35 @@
                 class = "question"
                 id = "how-to-become-an-artist-on-impressle"
             >
-                2. How to Become an Artist on Impressle?
+                {{ gettext("2. How to Become an Artist on Impressle?") }}
             </h2>
 
             <p class="answer">
                 <ol>
                     <li>
                         <a href="{{ url_for('auth.login') }}">
-                            Log in
+                            {{ gettext("Log in") }}
                         </a>
-                        to your account (or
+                        {{ gettext("to your account, or") }}
                         <a href="{{ url_for('auth.signup') }}">
-                            sign up
+                            {{ gettext("sign up") }}
                         </a>
-                        if you do not have one)
+                        {{ gettext("if you do not have one") }}
                     </li>
                     <li>
-                        Go to
-                        <a href="{{ url_for('views.create_picture') }}">
-                            Create a Picture
+                        {{ gettext("Go to") }}
+                        <a href="{{ url_for('routes.create_picture') }}">
+                            {{ gettext("this page") }}
                         </a>
-                        page
                     </li>
                     <li>
-                        Draw something impressive
+                        {{ gettext("Draw something impressive") }}
                     </li>
                     <li>
-                        Click "Publish" button
+                        {{ gettext('Click "Publish" button') }}
                     </li>
                     <li>
-                        You are now officially a new artist!
+                        {{ gettext("You are now officially a new artist!") }}
                     </li>
                 </ol>
             </p>
@@ -87,48 +86,46 @@
                 class = "question"
                 id = "what-is-karma"
             >
-                3. What is Karma?
+                {{ gettext("3. What is Karma?") }}
             </h2>
 
             <p class="answer">
-                Karma shows your reputation to others. Also, more karma -> higher rank. If your
-                karma goes negative, you will be banned for bad behavior (for example, you
-                published an inappropriate picture and it got lots of dislikes)
+                {{ gettext("Karma shows your reputation to others. Also, more karma -> higher rank. If your karma goes negative, you will be banned") }}
 
                 <br />
                 <br />
 
-                You get <b>+1</b> karma ...:
+                {{ gettext("You get") }} <b>+1</b> {{ gettext("karma ...:") }}
 
                 <ul>
                     <li>
-                        For publishing a picture
+                        {{ gettext("For publishing a picture") }}
                     </li>
                     <li>
-                        For every new follower
+                        {{ gettext("For every new follower") }}
                     </li>
                     <li>
-                        For every like on your picture
+                        {{ gettext("For every like on your picture") }}
                     </li>
                     <li>
-                        For every comment on your picture
+                        {{ gettext("For every comment on your picture") }}
                     </li>
                 </ul>
 
-                You get <b>-1</b> karma ...:
+                {{ gettext("You get") }} <b>-1</b> {{ gettext("karma ...:") }}
 
                 <ul>
                     <li>
-                        For deleting a picture
+                        {{ gettext("For deleting a picture") }}
                     </li>
                     <li>
-                        For every dislike on your picture
+                        {{ gettext("For every dislike on your picture") }}
                     </li>
                     <li>
-                        If your picture gets banned
+                        {{ gettext("If your picture gets banned") }}
                     </li>
                     <li>
-                        If your comment gets banned
+                        {{ gettext("If your comment gets banned") }}
                     </li>
                 </ul>
             </p>
@@ -141,39 +138,39 @@
                 class = "question"
                 id = "what-is-rank"
             >
-                4. What is Rank?
+                {{ gettext("4. What is Rank?") }}
             </h2>
 
             <p class="answer">
-                Rank shows your skills at drawing on Impressle
+                {{ gettext("Rank shows your skills at drawing on Impressle") }}
 
                 <br />
                 <br />
 
-                Ranks list and how to get these ranks:
+                {{ gettext("Ranks list and how to get these ranks:") }}
 
                 <ol>
                     <li>
-                        Newbie - Given to all new users by default
+                        {{ gettext("Newbie") }} - {{ gettext("Given to all new users by default") }}
                     </li>
                     <li>
-                        Artist - Given for getting at least 1 karma
+                        {{ gettext("Artist") }} - {{ gettext("Given for getting at least 1 karma") }}
                     </li>
                     <li>
-                        Amateur - Given for getting 25 karma
+                        {{ gettext("Amateur") }} - {{ gettext("Given for getting 25 karma") }}
                     </li>
                     <li>
-                        Cool - Given for getting 50 karma
+                        {{ gettext("Cool") }} - {{ gettext("Given for getting 50 karma") }}
                     </li>
                     <li>
-                        Skilled - Given for getting 100 karma
+                        {{ gettext("Skilled") }} - {{ gettext("Given for getting 100 karma") }}
                     </li>
                     <li>
-                        Impressive - Given for getting 1000 karma
+                        {{ gettext("Impressive") }} - {{ gettext("Given for getting 1000 karma") }}
                     </li>
                 </ol>
 
-                Also, there are some secret ranks that aren't listed here...
+                {{ gettext("Also, there are some secret ranks that aren't listed here...") }}
             </p>
         </div>
 
@@ -184,12 +181,11 @@
                 class = "question"
                 id = "are-there-any-limits-on-posting-pictures"
             >
-                5. Are There Any Limits On Posting Pictures?
+                {{ gettext("5. Are There Any Limits On Posting Pictures?") }}
             </h2>
 
             <p class="answer">
-                No! You can post as many pictures as you want without any limits,
-                but if you will spam empty or strange pictures you will be banned
+                {{ gettext("No! You can post as many pictures as you want without any limits, but if you will spam empty or strange pictures you will be banned") }}
             </p>
         </div>
 
@@ -198,28 +194,25 @@
                 class = "question"
                 id = "what-is-inactive-tag"
             >
-                6. What is [ INACTIVE ] Tag?
+                {{ gettext("6. What is [ INACTIVE ] Tag?") }}
             </h2>
 
             <p class="answer">
-                Every user should do some activity on Impressle, otherwise the account may be
-                deleted because of inactivity. If the account was inactive for last 30 days,
-                it will be marked with [ INACTIVE ] tag and the account owner (user) will
-                not be able to log in to their account
+                {{ gettext("Every user should do some activity on Impressle, otherwise the account may be deleted because of inactivity. If the account was inactive for last 30 days, it will be marked with [ INACTIVE ] tag and the account owner (user) will not be able to log in to their account") }}
 
                 <br />
                 <br />
 
-                Just visit the website sometimes, it's not that hard. You don't have to post
-                every day if you don't want to
+                {{ gettext("Just visit the website sometimes, it's not that hard. You don't have to post every day if you don't want to") }}
 
                 <br />
                 <br />
 
-                Also, if you want to leave the Impressle community forever, you can delete
-                your account (<a href="{{ url_for('views.user_settings') }}">Settings</a>
-                -> Delete Account) and it will be marked as inactive instantly so the other
-                users could understand that this account is "dead"
+                {{ gettext("Also, if you want to leave the Impressle community forever, you can delete your account (") }}
+                <a href="{{ url_for('routes.user_settings') }}">
+                    {{ gettext("Settings") }}
+                </a>
+                {{ gettext('-> Delete Account) and it will be marked as inactive instantly so the other users could understand that this account is "dead"') }}
             </p>
         </div>
 
@@ -230,31 +223,26 @@
                 class = "question"
                 id = "what-if-my-account-or-picture-or-comment-gets-banned"
             >
-                7. What If My Account/Picture/Comment Gets Banned?
+                {{ gettext("7. What If My Account/Picture/Comment Gets Banned?") }}
             </h2>
 
             <p class="answer">
-                If your account gets banned, you will not be able to log in to your account anymore
-                and other Users will see [ BANNED ] tag in your Profile
+                {{ gettext("If your account gets banned, you will not be able to log in to your account anymore and other users will see [ BANNED ] tag in your profile") }}
 
                 <br />
                 <br />
 
-                If your picture gets banned, it will be not showing at the
-                <a href="{{ url_for('views.feed') }}">
-                    Feed
-                </a>
-                page, but users still can view the picture in your Profile
+                {{ gettext("If your picture gets banned, it will not be showed at the Feed page, but users still can view the picture in your profile") }}
 
                 <br />
                 <br />
 
-                If your comment gets banned, its text will be replaced with [ BANNED ]
+                {{ gettext("If your comment gets banned, its text will be replaced with [ BANNED ]") }}
 
                 <br />
                 <br />
 
-                Just don't be a bad guy and everything will be fine :)
+                {{ gettext("Just don't be a bad guy and everything will be fine :)") }}
             </p>
         </div>
 
@@ -265,13 +253,13 @@
                 class = "question"
                 id = "can-i-trust-this-website"
             >
-                8. Can I Trust This Website?
+                {{ gettext("8. Can I Trust This Website?") }}
             </h2>
 
             <p class="answer">
-                Absolutely. Source code of Impressle is available on GitHub. You can check it on
+                {{ gettext("Absolutely. Source code of Impressle is available on GitHub. You can check it on")}}
                 <a href="https://github.com/desyatkoff/impressle">
-                    this repository
+                    {{ gettext("this repository") }}
                 </a>
             </p>
         </div>
@@ -283,22 +271,22 @@
                 class = "question"
                 id = "i-didnt-find-the-answer-to-my-question-here-where-to-ask"
             >
-                9. I Didn't Find The Answer to My Question Here. Where to Ask?
+                {{ gettext("9. I Didn't Find The Answer to My Question Here. Where to Ask?") }}
             </h2>
 
             <p class="answer">
-                If you have some questions, you can ask on official Impressle Telegram community
-                group. Currently, there are available English and Russian channels and groups.
-                All of them are listed
+                {{ gettext("If you have some questions, you can ask on official Impressle Telegram community group. Currently, there are available English and Russian channels and groups. All of them are listed") }}
                 <a href="https://t.me/+B8xsRBp4wyBjYzIy">
-                    here
+                    {{ gettext("here") }}
                 </a>
 
                 <br />
 
-                Also, you can ask on GitHub
-                (<a href="https://github.com/desyatkoff/impressle">Impressle repository</a>
-                -> Issues -> New issue)
+                {{ gettext("Also, you can ask on GitHub") }}
+                (<a href="https://github.com/desyatkoff/impressle">
+                    {{ gettext("Impressle repository") }}
+                </a>
+                {{ gettext("-> Issues -> New issue") }})
             </p>
         </div>
     </div>

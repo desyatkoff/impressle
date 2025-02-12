@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}Impressle | You Liked{% endblock %}
+{% block title %}
+    Impressle | {{ gettext("You Liked") }}
+{% endblock %}
 
 {% block content %}
     <h1 id="page-title">
-        You Liked
+        {{ gettext("You Liked") }}
     </h1>
 
 
     <p id="page-subtitle">
         <b>
-            All the pictures you have liked
+            {{ gettext("All the pictures you have liked") }}
         </b>
     </p>
 

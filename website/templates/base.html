@@ -2,11 +2,25 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="Unleash your creativity!" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            content = "IE=edge"
+            http-equiv = "X-UA-Compatible"
+        />
+        <meta
+            name = "description"
+            content = "{{ gettext('Unleash your creativity!') }}"
+        />
+        <meta
+            name = "viewport"
+            content = "width=device-width, initial-scale=1.0"
+        />
 
-        <title>{% block title %}{% endblock %}</title>
+        <title>
+            {% block title %}
+                Impressle
+            {% endblock %}
+        </title>
+
         <link
             rel = "icon"
             type = "image/svg+xml"
@@ -56,7 +70,7 @@
                         align = "center"
                     >
                         <b>
-                            Unleash your creativity!
+                            {{ gettext("Unleash your creativity!") }}
                         </b>
                     </p>
 
@@ -65,7 +79,7 @@
                     <ul class="pure-menu-list">
                         <li class="pure-menu-item">
                             <a
-                                href = "{{ url_for('views.create_picture') }}"
+                                href = "{{ url_for('routes.create_picture') }}"
                                 class = "pure-menu-link pure-button button-main"
                             >
                                 <img
@@ -73,12 +87,12 @@
                                     class = "icon"
                                     src = "/static/images/plus-square.svg"
                                 />
-                                Create Picture
+                                {{ gettext("Create Picture") }}
                             </a>
                         </li>
                         <li class="pure-menu-item">
                             <a
-                                href = "{{ url_for('views.feed_recent') }}"
+                                href = "{{ url_for('routes.feed_recent') }}"
                                 class = "pure-menu-link pure-button"
                             >
                                 <img
@@ -86,12 +100,12 @@
                                     class = "icon"
                                     src = "/static/images/compass.svg"
                                 />
-                                Recent Pictures
+                                {{ gettext("Recent Pictures") }}
                             </a>
                         </li>
                         <li class="pure-menu-item">
                             <a
-                                href = "{{ url_for('views.feed_best') }}"
+                                href = "{{ url_for('routes.feed_best') }}"
                                 class = "pure-menu-link pure-button"
                             >
                                 <img
@@ -99,12 +113,12 @@
                                     class = "icon"
                                     src = "/static/images/heart.svg"
                                 />
-                                Best Pictures
+                                {{ gettext("Best Pictures") }}
                             </a>
                         </li>
                         <li class="pure-menu-item">
                             <a
-                                href = "{{ url_for('views.feed_popular') }}"
+                                href = "{{ url_for('routes.feed_popular') }}"
                                 class = "pure-menu-link pure-button"
                             >
                                 <img
@@ -112,60 +126,60 @@
                                     class = "icon"
                                     src = "/static/images/trending-up.svg"
                                 />
-                                Popular Pictures
+                                {{ gettext("Popular Pictures") }}
                             </a>
                         </li>
                         {% if user.is_authenticated %}
                             <li class="pure-menu-item">
                                 <a
                                     class = "pure-menu-link pure-button"
-                                    href = "{{ url_for('views.user_profile', username=user.username) }}"
+                                    href = "{{ url_for('routes.user_profile', username=user.username) }}"
                                 >
                                     <img
                                         height = "30"
                                         class = "icon"
                                         src = "/static/images/user.svg"
                                     />
-                                    Profile (@{{ user.username }})
+                                    {{ gettext("Profile") }} (@{{ user.username }})
                                 </a>
                             </li>
                             <li class="pure-menu-item">
                                 <a
                                     class = "pure-menu-link pure-button"
-                                    href = "{{ url_for('views.user_settings') }}"
+                                    href = "{{ url_for('routes.user_settings') }}"
                                 >
                                     <img
                                         height = "30"
                                         class = "icon"
                                         src = "/static/images/settings.svg"
                                     />
-                                    Settings
+                                    {{ gettext("Settings") }}
                                 </a>
                             </li>
                             <li class="pure-menu-item">
                                 <a
                                     class = "pure-menu-link pure-button"
-                                    href = "{{ url_for('views.liked') }}"
+                                    href = "{{ url_for('routes.liked') }}"
                                 >
                                     <img
                                         height = "30"
                                         class = "icon"
                                         src = "/static/images/thumbs-up.svg"
                                     />
-                                    You Liked
+                                    {{ gettext("You Liked") }}
                                 </a>
                             </li>
                             <li class="pure-menu-item">
                                 <a
                                     class = "pure-menu-link pure-button"
-                                    href = "{{ url_for('views.following') }}"
+                                    href = "{{ url_for('routes.following') }}"
                                 >
                                     <img
                                         height = "30"
                                         class = "icon"
                                         src = "/static/images/smile.svg"
                                     />
-                                    You Following
+                                    {{ gettext("You Following") }}
                                 </a>
                             </li>
                         {% else %}
@@ -179,7 +193,7 @@
                                         class = "icon"
                                         src = "/static/images/log-in.svg"
                                     />
-                                    Log In
+                                    {{ gettext("Log In") }}
                                 </a>
                             </li>
                             <li class="pure-menu-item">
@@ -192,26 +206,26 @@
                                         class = "icon"
                                         src = "/static/images/user-plus.svg"
                                     />
-                                    Sign Up
+                                    {{ gettext("Sign Up") }}
                                 </a>
                             </li>
                         {% endif %}
                         <li class="pure-menu-item">
                             <a
                                 class = "pure-menu-link pure-button"
-                                href = "{{ url_for('views.about') }}"
+                                href = "{{ url_for('routes.about') }}"
                             >
                                 <img
                                     height = "30"
                                     class = "icon"
                                     src = "/static/images/info.svg"
                                 />
-                                About
+                                {{ gettext("About") }}
                             </a>
                         </li>
                         <li class="pure-menu-item">
                             <a
-                                href = "{{ url_for('views.faq') }}"
+                                href = "{{ url_for('routes.faq') }}"
                                 class = "pure-menu-link pure-button"
                             >
                                 <img
@@ -219,7 +233,7 @@
                                     class = "icon"
                                     src = "/static/images/help-circle.svg"
                                 />
-                                FAQ
+                                {{ gettext("FAQ") }}
                             </a>
                         </li>
                         {% if user.rank == "Admin" %}
@@ -233,7 +247,7 @@
                                         class = "icon"
                                         src = "/static/images/database.svg"
                                     />
-                                    Admin Panel
+                                    {{ gettext("Admin Panel") }}
                                 </a>
                             </li>
                         {% endif %}
@@ -248,7 +262,7 @@
                                         class = "icon"
                                         src = "/static/images/log-out.svg"
                                     />
-                                    Log Out
+                                    {{ gettext("Log Out") }}
                                 </a>
                             </li>
                         {% endif %}
@@ -256,18 +270,20 @@
 
                     <div class="sidebar-footer">
                         <p>
-                            <a href="{{ url_for('views.terms_of_service') }}">
-                                Terms of Service
+                            <a href="{{ url_for('routes.terms_of_service') }}">
+                                {{ gettext("Terms of Service") }}
                             </a>
                             |
-                            <a href="{{ url_for('views.privacy_policy') }}">
-                                Privacy Policy
+                            <a href="{{ url_for('routes.privacy_policy') }}">
+                                {{ gettext("Privacy Policy") }}
                             </a>
                         </p>
                         <p>
                             Copyright © 2025 impressle.fun
+
                             <br />
-                            All rights reserved
+
+                            {{ gettext("All rights reserved") }}
                         </p>
                     </div>
                 </div>
