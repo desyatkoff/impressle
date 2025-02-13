@@ -6,3 +6,4 @@ __pycache__/
 *.pyo
 *.pyd
 database/database.db
+translations/ru/LC_MESSAGES/messages.mo
