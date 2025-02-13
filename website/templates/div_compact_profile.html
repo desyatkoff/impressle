@@ -12,17 +12,17 @@
 
 
                     {% if user_.rank == "Admin" %}
-                        <span style="color: #7f00ff">
+                        <span class="admin-label">
                             {{ gettext("[ ADMIN ]") }}
                         </span>
                     {% endif %}
 
                     {% if user_.status == "inactive" %}
-                        <span style="color: #ff7f00">
+                        <span class="inactive-label">
                             {{ gettext("[ INACTIVE ]") }}
                         </span>
                     {% elif user_.status == "banned" %}
-                        <span style="color: #ff0000;">
+                        <span class="banned-label">
                             {{ gettext("[ BANNED ]") }}
                         </span>
                     {% endif %}
@@ -38,7 +38,7 @@
                             <span class="followers-count" id="followers-count-{{ user_.uid }}">
                                 {{ user_.follows|length }}
                             </span>
-                            {{ gettext("Followers") }}
+                            {{ gettext("followers") }}
                         </span>
                     {% endif %}
 

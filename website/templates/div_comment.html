@@ -9,7 +9,7 @@
                 @{{comment.author_username}}
             </a>
             {% if models.User.query.filter_by(uid=comment.author_uid).first().rank == "Admin" %}
-                <span style="color: #7f00ff">
+                <span class="admin-label">
                     {{ gettext("[ ADMIN ]") }}
                 </span>
             {% endif %}
@@ -24,7 +24,7 @@
     <div class="comment-text">
         <p class="comment-text">
             {% if comment.status == "banned" %}
-                <span style="color: red;">
+                <span class="banned-label">
                     {{ gettext("[ BANNED ]") }}
                 </span>
             {% else %}

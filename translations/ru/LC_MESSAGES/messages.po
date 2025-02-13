@@ -1,6 +1,6 @@
 #: website/templates/about.html:5 website/templates/about.html:10
 msgid "About Impressle"
-msgstr "О Сайте Impressle"
+msgstr "О сайте Impressle"
 
 #: website/templates/about.html:16
 msgid "Here you can learn more about the Impressle website"
@@ -67,7 +67,7 @@ msgstr "Вы можете стать участником проекта есл�
 
 #: website/templates/banned.html:5
 msgid "You are Banned"
-msgstr "Вы Забанены"
+msgstr "Вы забанены"
 
 #: website/templates/banned.html:10
 msgid "Unfortunately, this account is banned! :("
@@ -93,23 +93,23 @@ msgstr "Я не нарушу правила в следующий раз"
 
 #: website/templates/banned.html:54
 msgid "Create New Account"
-msgstr "Создать Новый Аккаунт"
+msgstr "Создать новый аккаунт"
 
 #: website/templates/base.html:90
 msgid "Create Picture"
-msgstr "Создать Картинку"
+msgstr "Создать картинку"
 
 #: website/templates/base.html:103
 msgid "Recent Pictures"
-msgstr "Недавние Картинки"
+msgstr "Недавние картинки"
 
 #: website/templates/base.html:116
 msgid "Best Pictures"
-msgstr "Лучшие Картинки"
+msgstr "Лучшие картинки"
 
 #: website/templates/base.html:129
 msgid "Popular Pictures"
-msgstr "Популярные Картинки"
+msgstr "Популярные картинки"
 
 #: website/templates/base.html:143
 msgid "Profile"
@@ -124,12 +124,12 @@ msgstr "Настройки"
 #: website/templates/base.html:169 website/templates/liked.html:5
 #: website/templates/liked.html:10
 msgid "You Liked"
-msgstr "Вы Лайкнули"
+msgstr "Вы лайкнули"
 
 #: website/templates/base.html:182 website/templates/following.html:5
 #: website/templates/following.html:10
 msgid "You Following"
-msgstr "Вы Подписаны"
+msgstr "Вы подписаны"
 
 #: website/templates/base.html:196 website/templates/login.html:5
 #: website/templates/login.html:59 website/templates/signup.html:117
@@ -144,7 +144,7 @@ msgstr "Зарегистрироваться"
 
 #: website/templates/base.html:223
 msgid "About"
-msgstr "О Сайте"
+msgstr "О сайте"
 
 #: website/templates/base.html:236 website/templates/faq.html:5
 msgid "FAQ"
@@ -172,7 +172,7 @@ msgstr "Все права защищены"
 #: website/templates/create_picture.html:5
 #: website/templates/create_picture.html:10 website/templates/feed.html:56
 msgid "Create a Picture"
-msgstr "Создать Картинку"
+msgstr "Создать картинку"
 
 #: website/templates/create_picture.html:16
 msgid "Let's draw your impressive picture!"
@@ -180,11 +180,11 @@ msgstr "Давайте нарисуем вашу впечатляющую кар
 
 #: website/templates/create_picture.html:39
 msgid "Picture Title"
-msgstr "Название Картинки"
+msgstr "Название картинки"
 
 #: website/templates/create_picture.html:53
 msgid "Brush Width"
-msgstr "Толщина Кисти"
+msgstr "Толщина кисти"
 
 #: website/templates/create_picture.html:85
 msgid "Publish"
@@ -192,7 +192,7 @@ msgstr "Опубликовать"
 
 #: website/templates/create_picture.html:93
 msgid "Reset Canvas"
-msgstr "Очистить Холст"
+msgstr "Очистить"
 
 #: website/templates/div_comment.html:7
 msgid "Author"
@@ -216,7 +216,7 @@ msgstr "[ ЗАБАНЕН ]"
 
 #: website/templates/div_comment.html:50
 msgid "Delete Comment"
-msgstr "Удалить Комментарий"
+msgstr "Удалить комментарий"
 
 #: website/templates/div_compact_profile.html:22
 #: website/templates/user_profile.html:41
@@ -225,8 +225,8 @@ msgstr "[ НЕАКТИВНЫЙ ]"
 
 #: website/templates/div_compact_profile.html:41
 #: website/templates/user_profile.html:60
-msgid "Followers"
-msgstr "Подписчики"
+msgid "followers"
+msgstr "подписчиков"
 
 #: website/templates/div_compact_profile.html:52
 #: website/templates/user_profile.html:71
@@ -248,7 +248,7 @@ msgstr "Опубликовано"
 
 #: website/templates/div_picture.html:192
 msgid "Delete Picture"
-msgstr "Удалить Картинку"
+msgstr "Удалить картинку"
 
 #: website/templates/faq.html:10
 msgid "FAQ (Frequently Asked Questions)"
@@ -260,7 +260,7 @@ msgstr "Если у вас есть вопрос, вы можете найти �
 
 #: website/templates/faq.html:33
 msgid "1. What is Impressle?"
-msgstr "1. Что Такое Impressle?"
+msgstr "1. Что такое Impressle?"
 
 #: website/templates/faq.html:37
 msgid ""
@@ -275,7 +275,7 @@ msgstr ""
 
 #: website/templates/faq.html:48
 msgid "2. How to Become an Artist on Impressle?"
-msgstr "Как Стать Художником На Impressle?"
+msgstr "Как стать художником на Impressle?"
 
 #: website/templates/faq.html:55
 msgid "Log in"
@@ -315,7 +315,7 @@ msgstr "Теперь вы официально новый художник"
 
 #: website/templates/faq.html:89
 msgid "3. What is Karma?"
-msgstr "3. Что Такое Карма?"
+msgstr "3. Что такое карма?"
 
 #: website/templates/faq.html:93
 msgid ""
@@ -367,7 +367,7 @@ msgstr "Если ваш комментарий будет забанен"
 
 #: website/templates/faq.html:141
 msgid "4. What is Rank?"
-msgstr "4. Что Такое Ранг?"
+msgstr "4. Что такое ранг?"
 
 #: website/templates/faq.html:145
 msgid "Rank shows your skills at drawing on Impressle"
@@ -431,7 +431,7 @@ msgstr "Также, здесь есть несколько секретных р
 
 #: website/templates/faq.html:184
 msgid "5. Are There Any Limits On Posting Pictures?"
-msgstr "5. Есть Ли Здесь Какие-то Ограничения На Выкладывание Картинок?"
+msgstr "5. Есть ли здесь какие-то ограничения на выкладывание картинок?"
 
 #: website/templates/faq.html:188
 msgid ""
@@ -444,7 +444,7 @@ msgstr ""
 
 #: website/templates/faq.html:197
 msgid "6. What is [ INACTIVE ] Tag?"
-msgstr "6. Что Означает [ НЕАКТИВНЫЙ ]?"
+msgstr "6. Что означает [ НЕАКТИВНЫЙ ]?"
 
 #: website/templates/faq.html:201
 msgid ""
@@ -480,12 +480,12 @@ msgid ""
 "-> Delete Account) and it will be marked as inactive instantly so the "
 "other users could understand that this account is \"dead\""
 msgstr ""
-"-> Удалить Аккаунт) и он моментально будет помечен как неактивный, так "
+"-> Удалить аккаунт) и он моментально будет помечен как неактивный, так "
 "что другие пользователи поймут что аккаунт является \"мёртвым\""
 
 #: website/templates/faq.html:226
 msgid "7. What If My Account/Picture/Comment Gets Banned?"
-msgstr "7. Что Если Мой Аккаунт/Картинка/Комментарий Будет Забанен?"
+msgstr "7. Что если мой аккаунт/картинка/комментарий будет забанен?"
 
 #: website/templates/faq.html:230
 msgid ""
@@ -513,7 +513,7 @@ msgstr "Просто не будьте плохим и всё будет отл�
 
 #: website/templates/faq.html:256
 msgid "8. Can I Trust This Website?"
-msgstr "8. Могу Ли Я Доверять Этому Сайту?"
+msgstr "8. Могу ли я доверять этому сайту?"
 
 #: website/templates/faq.html:260
 msgid ""
@@ -529,7 +529,7 @@ msgstr "этом репозитории"
 
 #: website/templates/faq.html:274
 msgid "9. I Didn't Find The Answer to My Question Here. Where to Ask?"
-msgstr "9. Я Не Нашёл Ответ На Мой Вопрос Здесь. Где Спрашивать?"
+msgstr "9. Я не нашёл ответ на мой вопрос здесь. Где спросить?"
 
 #: website/templates/faq.html:278
 msgid ""
@@ -559,7 +559,7 @@ msgstr "-> Issues -> New issue"
 
 #: website/templates/feed.html:5 website/templates/feed.html:10
 msgid "Feed"
-msgstr "Лента Постов"
+msgstr "Лента постов"
 
 #: website/templates/feed.html:17
 msgid "Find the newest pictures"
@@ -591,7 +591,7 @@ msgstr "Все ваши любимые пользователи перечисл
 
 #: website/templates/inactive.html:5 website/templates/inactive.html:10
 msgid "This Account is Inactive"
-msgstr "Этот Аккаунт Неактивен"
+msgstr "Этот аккаунт неактивен"
 
 #: website/templates/inactive.html:29
 msgid ""
@@ -603,7 +603,7 @@ msgstr ""
 
 #: website/templates/inactive.html:33
 msgid "You deactivated this account intentionally (Settings -> Delete Account)"
-msgstr "Вы деактивировали этот аккаунт намеренно (Настройки -> Удалить Аккаунт)"
+msgstr "Вы деактивировали этот аккаунт намеренно (Настройки -> Удалить аккаунт)"
 
 #: website/templates/inactive.html:36
 msgid ""
@@ -681,7 +681,7 @@ msgstr "Все картинки которые вам понравились"
 
 #: website/templates/login.html:10
 msgid "Welcome Back!"
-msgstr "Доброе Пожаловать Обратно!"
+msgstr "С возвращением!"
 
 #: website/templates/login.html:15
 msgid "Here you can log in to your account"
@@ -690,7 +690,7 @@ msgstr "Здесь вы можете войти в свой аккаунт"
 #: website/templates/login.html:31 website/templates/login.html:37
 #: website/templates/signup.html:31 website/templates/signup.html:42
 msgid "Username"
-msgstr "Юзернейм"
+msgstr "Имя пользователя"
 
 #: website/templates/login.html:43 website/templates/login.html:49
 #: website/templates/signup.html:48 website/templates/signup.html:59
@@ -716,7 +716,7 @@ msgstr "Отправить"
 #: website/templates/privacy_policy.html:15
 #: website/templates/terms_of_service.html:15
 msgid "Effective Date:"
-msgstr "Дата Вступления В Силу:"
+msgstr "Дата вступления в силу:"
 
 #: website/templates/privacy_policy.html:28
 #: website/templates/terms_of_service.html:28
@@ -738,7 +738,7 @@ msgstr ""
 
 #: website/templates/privacy_policy.html:38
 msgid "2. Information We Collect"
-msgstr "2. Информация Которую Мы Собираем"
+msgstr "2. Информация, которую мы собираем"
 
 #: website/templates/privacy_policy.html:42
 msgid "We collect the following information:"
@@ -746,19 +746,19 @@ msgstr "Мы собираем следующую информацию:"
 
 #: website/templates/privacy_policy.html:45
 msgid "2.1. Information You Provide"
-msgstr "2.1. Информация Которую Вы Сами Предоставляете"
+msgstr "2.1. Информация которую вы предоставляете"
 
 #: website/templates/privacy_policy.html:52
 msgid "Account Creation"
-msgstr "Создание Аккаунтов"
+msgstr "Создание аккаунтов"
 
 #: website/templates/privacy_policy.html:54
 msgid "When you create an account, we collect your username and password."
-msgstr "Когда вы создаёте аккаунт, мы собираем ваш юзернейм и пароль."
+msgstr "Когда вы создаёте аккаунт, мы собираем ваше имя пользователя и пароль."
 
 #: website/templates/privacy_policy.html:58
 msgid "User-Generated Content"
-msgstr "Пользовательский Контент"
+msgstr "Пользовательский контент"
 
 #: website/templates/privacy_policy.html:60
 msgid ""
@@ -770,11 +770,11 @@ msgstr ""
 
 #: website/templates/privacy_policy.html:66
 msgid "2.2. Automatically Collected Information"
-msgstr "2.2. Автоматически Собранная Информация"
+msgstr "2.2. Автоматически собранная информация"
 
 #: website/templates/privacy_policy.html:73
 msgid "Technical Data"
-msgstr "Технические Данные"
+msgstr "Технические данные"
 
 #: website/templates/privacy_policy.html:75
 msgid ""
@@ -796,7 +796,7 @@ msgstr ""
 
 #: website/templates/privacy_policy.html:90
 msgid "3. How We Use Your Information"
-msgstr "3. Как Мы Используем Вашу Информацию"
+msgstr "3. Как мы используем вашу информацию"
 
 #: website/templates/privacy_policy.html:94
 msgid "We use your information to:"
@@ -822,7 +822,7 @@ msgstr "Анализировать производительность сайт
 
 #: website/templates/privacy_policy.html:118
 msgid "4. Sharing Your Information"
-msgstr "4. Распространение Вашей Информации"
+msgstr "4. Распространение вашей информации"
 
 #: website/templates/privacy_policy.html:122
 msgid "We may share your information in the following cases:"
@@ -830,7 +830,7 @@ msgstr "Мы можем поделиться вашей информацией �
 
 #: website/templates/privacy_policy.html:127
 msgid "Public Content"
-msgstr "Публичный Контент"
+msgstr "Публичный контент"
 
 #: website/templates/privacy_policy.html:129
 msgid "Content you post is visible to all users."
@@ -838,7 +838,7 @@ msgstr "Контент который вы публикуете виден вс�
 
 #: website/templates/privacy_policy.html:133
 msgid "Legal Compliance"
-msgstr "Соблюдение Законодательства"
+msgstr "Соблюдение законодательства"
 
 #: website/templates/privacy_policy.html:135
 msgid "To comply with laws, regulations, or legal requests."
@@ -846,7 +846,7 @@ msgstr "Для соблюдения законов, правил или юрид
 
 #: website/templates/privacy_policy.html:139
 msgid "Service Providers"
-msgstr "Поставщики Услуг"
+msgstr "Поставщики услуг"
 
 #: website/templates/privacy_policy.html:141
 msgid "Third-party services may access data to help operate our website."
@@ -860,7 +860,7 @@ msgstr "Мы не продаём вашу личную информацию ст
 
 #: website/templates/privacy_policy.html:151
 msgid "5. Your Rights"
-msgstr "5. Ваши Права"
+msgstr "5. Ваши права"
 
 #: website/templates/privacy_policy.html:155
 msgid "You have the right to:"
@@ -880,10 +880,9 @@ msgstr "Отзывать согласие на обработку данных (
 
 #: website/templates/privacy_policy.html:173
 msgid "6. Data Security"
-msgstr "6. Безопасность Данных"
+msgstr "6. Безопасность данных"
 
 #: website/templates/privacy_policy.html:177
-#, python-format
 msgid ""
 "We implement security measures such as encryption and access controls to "
 "protect your data. However, no system is 100% secure."
@@ -894,11 +893,11 @@ msgstr ""
 
 #: website/templates/privacy_policy.html:183
 msgid "7. Cookies and Tracking"
-msgstr "7. Куки и Отслеживание"
+msgstr "7. Куки и отслеживание"
 
 #: website/templates/privacy_policy.html:190
 msgid "What We Use"
-msgstr "Что Мы Используем"
+msgstr "Что мы используем"
 
 #: website/templates/privacy_policy.html:192
 msgid ""
@@ -910,7 +909,7 @@ msgstr ""
 
 #: website/templates/privacy_policy.html:196
 msgid "How to Manage"
-msgstr "Как Управлять"
+msgstr "Как управлять"
 
 #: website/templates/privacy_policy.html:198
 msgid "Adjust your browser settings to block or delete cookies."
@@ -918,7 +917,7 @@ msgstr "Настройте ваш браузер для блокировки и�
 
 #: website/templates/privacy_policy.html:206
 msgid "8. Children's Privacy"
-msgstr "8. Конфиденциальность Детей"
+msgstr "8. Конфиденциальность детей"
 
 #: website/templates/privacy_policy.html:212
 msgid "Our website is open to users aged 12 and older."
@@ -940,20 +939,20 @@ msgstr ""
 
 #: website/templates/privacy_policy.html:226
 msgid "9. Changes to This Policy"
-msgstr "9. Изменения Политики"
+msgstr "9. Изменения условий"
 
 #: website/templates/privacy_policy.html:230
 msgid ""
 "We may update this Privacy Policy. Continued use of the website after "
 "changes constitutes acceptance of the revised policy."
 msgstr ""
-"Мы можем обновлять эту Политику Конфиденциальности. Продолжение "
+"Мы можем обновлять Политику Конфиденциальности. Продолжение "
 "использования нашего сайта после внесения изменений означает согласие с "
-"пересмотренной политикой"
+"пересмотренными условиями"
 
 #: website/templates/privacy_policy.html:236
 msgid "10. Links to Other Policies"
-msgstr "10. Ссылки на Другие Правила"
+msgstr "10. Ссылки на другие правила"
 
 #: website/templates/privacy_policy.html:240
 msgid "Review our"
@@ -965,7 +964,7 @@ msgstr "для ознакомления с правилами использов
 
 #: website/templates/signup.html:10
 msgid "Hello, New User!"
-msgstr "Привет, Новый Пользователь!"
+msgstr "Привет, новый пользователь!"
 
 #: website/templates/signup.html:15
 msgid "Let's create a new account"
@@ -975,7 +974,7 @@ msgstr "Давайте создадим новый аккаунт"
 #: website/templates/user_profile.html:92
 #: website/templates/user_settings.html:40
 msgid "About Me"
-msgstr "Обо Мне"
+msgstr "Обо мне"
 
 #: website/templates/signup.html:87
 msgid "I have read the"
@@ -1002,11 +1001,11 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:38
 msgid "2. Eligibility"
-msgstr "2. Соответствие Требованиям"
+msgstr "2. Соответствие требованиям"
 
 #: website/templates/terms_of_service.html:45
 msgid "Age Requirement"
-msgstr "Возрастное Требование"
+msgstr "Возрастное требование"
 
 #: website/templates/terms_of_service.html:47
 msgid ""
@@ -1018,7 +1017,7 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:51
 msgid "Parental Consent"
-msgstr "Согласие Родителей"
+msgstr "Согласие родителей"
 
 #: website/templates/terms_of_service.html:53
 msgid ""
@@ -1030,11 +1029,11 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:61
 msgid "3. User Accounts"
-msgstr "3. Пользовательские Аккаунты"
+msgstr "3. Пользовательские аккаунты"
 
 #: website/templates/terms_of_service.html:68
 msgid "Account Security"
-msgstr "Безопасность Аккаунта"
+msgstr "Безопасность аккаунта"
 
 #: website/templates/terms_of_service.html:70
 msgid ""
@@ -1046,11 +1045,11 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:78
 msgid "4. User-Generated Content"
-msgstr "4. Пользовательский Контент"
+msgstr "4. Пользовательский контент"
 
 #: website/templates/terms_of_service.html:85
 msgid "Content Ownership"
-msgstr "Владение Контентом"
+msgstr "Владение контентом"
 
 #: website/templates/terms_of_service.html:87
 msgid ""
@@ -1062,7 +1061,7 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:91
 msgid "License to Us"
-msgstr "Лицензия Для Нас"
+msgstr "Лицензия для нас"
 
 #: website/templates/terms_of_service.html:93
 msgid ""
@@ -1077,7 +1076,7 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:97
 msgid "Prohibited Content"
-msgstr "Запрещённый Контент"
+msgstr "Запрещённый контент"
 
 #: website/templates/terms_of_service.html:99
 msgid "You agree not to post content that:"
@@ -1099,7 +1098,7 @@ msgstr "Содержит вирусы, вредоносные программы
 
 #: website/templates/terms_of_service.html:115
 msgid "Content Moderation"
-msgstr "Модерация Контента"
+msgstr "Модерация контента"
 
 #: website/templates/terms_of_service.html:117
 msgid ""
@@ -1111,7 +1110,7 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:125
 msgid "5. Your Responsibilities"
-msgstr "5. Ваша Ответственность"
+msgstr "5. Ваша ответственность"
 
 #: website/templates/terms_of_service.html:129
 msgid "You agree to:"
@@ -1119,21 +1118,21 @@ msgstr "Вы соглашаетесь:"
 
 #: website/templates/terms_of_service.html:133
 msgid "Use the website lawfully and respectfully."
-msgstr "Используйте сайт законно и уважительно."
+msgstr "Использовать сайт законно и уважительно."
 
 #: website/templates/terms_of_service.html:136
 msgid "Not impersonate others or engage in fraudulent activities."
 msgstr ""
-"Не выдавайте себя за других людей и не участвуйте в мошеннических "
+"Не выдавать себя за других людей и не участвовать в мошеннических "
 "действиях."
 
 #: website/templates/terms_of_service.html:139
 msgid "Not interfere with the website's security or functionality."
-msgstr "Не вмешивайтесь в безопасность или функциональность сайта."
+msgstr "Не вмешиваться в безопасность или функциональность сайта."
 
 #: website/templates/terms_of_service.html:147
 msgid "6. No Paid Services"
-msgstr "6. Нет Платных Услуг"
+msgstr "6. Нет платных услуг"
 
 #: website/templates/terms_of_service.html:151
 msgid ""
@@ -1157,7 +1156,7 @@ msgstr "в которой объясняется, как мы собираем, 
 
 #: website/templates/terms_of_service.html:171
 msgid "8. Limitation of Liability"
-msgstr "8. Ограничение Ответственности"
+msgstr "8. Ограничение ответственности"
 
 #: website/templates/terms_of_service.html:175
 msgid "Impressle is provided \"as is\". We are not liable for:"
@@ -1177,11 +1176,11 @@ msgstr "Несанкционированный доступ к вашему ак
 
 #: website/templates/terms_of_service.html:193
 msgid "9. Termination"
-msgstr "9. Расторжение Договора"
+msgstr "9. Расторжение договора"
 
 #: website/templates/terms_of_service.html:200
 msgid "By You"
-msgstr "По Вашей Инициативе"
+msgstr "По вашей инициативе"
 
 #: website/templates/terms_of_service.html:202
 msgid "You may delete your account at any time."
@@ -1189,7 +1188,7 @@ msgstr "Вы можете удалить ваш аккаунт в любое в�
 
 #: website/templates/terms_of_service.html:206
 msgid "By Us"
-msgstr "По Нашей Инициативе"
+msgstr "По нашей инициативе"
 
 #: website/templates/terms_of_service.html:208
 msgid ""
@@ -1201,7 +1200,7 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:216
 msgid "10. Change to These Terms"
-msgstr "10. Изменения Условий"
+msgstr "10. Изменения условий"
 
 #: website/templates/terms_of_service.html:220
 msgid ""
@@ -1213,7 +1212,7 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:226
 msgid "11. Governing Law"
-msgstr "11. Регулирующее Законодательство"
+msgstr "11. Регулирующее законодательство"
 
 #: website/templates/terms_of_service.html:230
 msgid ""
@@ -1225,7 +1224,7 @@ msgstr ""
 
 #: website/templates/terms_of_service.html:236
 msgid "12. Final Agreement"
-msgstr "12. Окончательное Соглашение"
+msgstr "12. Окончательное соглашение"
 
 #: website/templates/terms_of_service.html:240
 msgid "These Terms constitute the entire agreement between you and Impressle."
@@ -1237,15 +1236,15 @@ msgstr "Пока что ничего..."
 
 #: website/templates/user_profile.html:110
 msgid "Account Details"
-msgstr "Подробности об Аккаунте"
+msgstr "Подробности об аккаунте"
 
 #: website/templates/user_profile.html:117
 msgid "User ID"
-msgstr "ID Пользователя"
+msgstr "ID пользователя"
 
 #: website/templates/user_profile.html:127
 msgid "Account Created"
-msgstr "Аккаунт Создан"
+msgstr "Аккаунт создан"
 
 #: website/templates/user_profile.html:137
 msgid "Rank"
@@ -1257,7 +1256,7 @@ msgstr "Карма"
 
 #: website/templates/user_profile.html:165
 msgid "Edit Profile"
-msgstr "Настроить Профиль"
+msgstr "Настроить профиль"
 
 #: website/templates/user_settings.html:16
 msgid "Set the preferences for your account"
@@ -1265,7 +1264,7 @@ msgstr "Задать настройки для вашего аккаунта"
 
 #: website/templates/user_settings.html:34
 msgid "Profile Settings"
-msgstr "Настройки Профиля"
+msgstr "Настройки профиля"
 
 #: website/templates/user_settings.html:61
 #: website/templates/user_settings.html:106
@@ -1274,7 +1273,7 @@ msgstr "Сохранить"
 
 #: website/templates/user_settings.html:67
 msgid "Privacy Settings"
-msgstr "Настройки Приватности"
+msgstr "Настройки приватности"
 
 #: website/templates/user_settings.html:81
 msgid "Show followers count in my profile"
@@ -1287,7 +1286,7 @@ msgstr "Разрешить пользователям комментироват
 #: website/templates/user_settings.html:112
 #: website/templates/user_settings.html:134
 msgid "Delete Account"
-msgstr "Удалить Аккаунт"
+msgstr "Удалить аккаунт"
 
 #: website/templates/user_settings.html:123
 msgid "I am totally sure I want to delete this account"

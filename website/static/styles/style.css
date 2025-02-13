@@ -228,3 +228,15 @@ img {
     margin: 0;
     padding: 0;
 }
+
+.admin-label {
+    color: #7f00ff;
+}
+
+.inactive-label {
+    color: #ff7f00;
+}
+
+.banned-label {
+    color: #ff4747;
+}
