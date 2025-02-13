@@ -37,3 +37,21 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 HOST = "0.0.0.0"
 PORT = 5000
 DEBUG_MODE = False
+
+DISALLOWED_USERNAMES = [
+    "admin",
+    "administrator",
+    "root",
+    "system",
+    "superuser",
+    "moderator",
+    "support",
+    "contact",
+    "info",
+    "help",
+    "null",
+    "undefined",
+    "unknown",
+    "anonymous",
+    "impressle"
+]

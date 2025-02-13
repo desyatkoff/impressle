@@ -18,10 +18,14 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
+import re
+import difflib
+
 import flask
 import flask_login
 import werkzeug
 
+import config
 import website
 from . import extensions
 
@@ -61,7 +65,29 @@ def signup():
                 message = "You have to read Terms of Service and Privacy Policy",
                 category = "error"
             )
+        elif not re.match(
+                pattern = r"^[a-zA-Z0-9_]+$",
+                string = username
+            ):
+            flask.flash(
+                message = "Incorrect username",
+                category = "error"
+            )
         else:
+            for disallowed_username in config.DISALLOWED_USERNAMES:
+                if difflib.SequenceMatcher(
+                        a = username,
+                        b = disallowed_username
+                    ).ratio() > 0.75:
+                    flask.flash(
+                        message = "Username is not allowed",
+                        category = "error"
+                    )
+
+
+                    return flask.redirect(flask.url_for("auth.signup"))
+
+
             flask.flash(
                 message = "Successfully created new account",
                 category = "success"
@@ -121,7 +147,7 @@ def login():
 
                 if user.status == "inactive":
                     flask.flash(
-                        message = "Account is deleted",
+                        message = "Account is inactive",
                         category = "error"
                     )
 
