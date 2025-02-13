@@ -129,6 +129,7 @@
     ```Shell
     $ python main.py
     ```
+5. **Go to `http://127.0.0.1:5000`**
 
 ### Normal Method
 
@@ -166,11 +167,15 @@
     ```Shell
     $ pipenv sync
     ```
-9. **Activate the Virtual Environment**
+9. **Compile the Translations**
+    ```Shell
+    $ pybabel compile -f -d translations/
+    ```
+10. **Activate the Virtual Environment**
     ```Shell
     $ pipenv shell
     ```
-10. **Launch the Web App**
+11. **Launch the Web App**
     * Using Python
         ```Shell
         $ python main.py
@@ -183,6 +188,7 @@
         ```Shell
         $ gunicorn main:app
         ```
+12. **Go to `http://127.0.0.1:5000`**
 
 ### Using Docker Method
 
@@ -203,14 +209,19 @@
         + Edit `.env` using your code editor
     * Other configs (public data)
         + Edit `config.py` using your code editor
-4. **Build the Docker Image**
+4. **Compile the Translations**
+    ```Shell
+    $ pybabel compile -f -d translations/
+    ```
+5. **Build the Docker Image**
     ```Shell
     $ docker build -t impressle:latest
     ```
-5. **Run Your New Docker Image**
+6. **Run Your New Docker Image**
     ```Shell
     $ docker run impressle:latest
     ```
+7. **Go to `http://127.0.0.1:5000`**
 
 
 ## Contributing

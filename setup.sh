@@ -10,4 +10,7 @@ pipx ensurepath
 
 pipenv lock
 pipenv sync
+
+pybabel compile -f -d translations/
+
 pipenv shell
