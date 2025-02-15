@@ -146,6 +146,10 @@ class Picture(extensions.db.Model):
         backref = "picture",
         passive_deletes = True
     )
+    comments_count = extensions.db.Column(
+        extensions.db.Integer,
+        default = 0
+    )
     views = extensions.db.relationship(
         "View",
         backref = "picture",

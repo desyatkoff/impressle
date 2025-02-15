@@ -197,6 +197,14 @@ def user_profile(username):
         user_profile = user,
         pictures = website.models.Picture.query.filter_by(
             author_uid = user.uid
+        ).order_by(
+            website.models.Picture.uid.desc()
+        ).order_by(
+            website.models.Picture.likes_count.desc()
+        ).order_by(
+            website.models.Picture.dislikes_count.asc()
+        ).order_by(
+            website.models.Picture.views_count.desc()
         ).all(),
         models = website.models
     )
@@ -679,6 +687,25 @@ def dislike_picture(picture_uid):
                 picture_author.karma -= 1
 
 
+        view = website.models.View.query.filter_by(
+            author_uid = flask_login.current_user.uid,
+            picture_uid = picture.uid
+        ).first()
+
+
+        if view is None:
+            new_view = website.models.View(
+                picture_uid = picture.uid,
+                author_uid = flask_login.current_user.uid,
+                author_username = flask_login.current_user.username
+            )
+
+            picture.views_count += 1
+
+
+            extensions.db.session.add(new_view)
+
+
         extensions.db.session.commit()
 
 
@@ -722,6 +749,8 @@ def create_comment(picture_uid):
                 author_username = flask_login.current_user.username
             )
 
+            picture.comments_count += 1
+
 
             extensions.db.session.add(comment)
 
@@ -764,6 +793,8 @@ def delete_comment(comment_uid):
 
 
             comment.status = "deleted"
+
+            picture.comments_count -= 1
 
 
             picture_author.karma -= 1
