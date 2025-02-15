@@ -64,7 +64,8 @@
 * **Backend**
     + Python
         - [Flask](https://flask.palletsprojects.com/en/stable)
-        - [SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/stable)
+        - [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/stable)
+        - [Flask-Babel](https://python-babel.github.io/flask-babel)
     + SQLite Database
 * **Frontend**
     + HTML
