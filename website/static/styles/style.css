@@ -17,7 +17,7 @@ input {
     padding: 0.5em;
     margin: 0.5em;
     border-radius: 8px;
-    border: 1px solid #e6e6e6;
+    border: 2px solid #e6e6e6;
     background-color: #0d0d0d;
     transition: border-color 0.25s ease;
 }
@@ -90,7 +90,7 @@ input:focus {
     overflow: hidden;
     border-radius: 8px;
     background: #1a1a1a;
-    border: 1px solid #7f00ff;
+    border: 2px solid #7f00ff;
 }
 
 .picture-title .picture-author {
@@ -162,7 +162,7 @@ input:focus {
 }
 
 .following {
-    border: 1px solid #7f00ff;
+    border: 2px solid #7f00ff;
     background-color: transparent;
 }
 
@@ -175,7 +175,7 @@ input:focus {
     height: 64px;
     overflow: hidden;
     border-radius: 100%;
-    border: 1px solid #7f00ff;
+    border: 2px solid #7f00ff;
 }
 
 .large-label {
@@ -194,7 +194,7 @@ input:focus {
     cursor: crosshair;
     border-radius: 8px;
     display: inline-block;
-    border: 1px solid #7f00ff;
+    border: 2px solid #7f00ff;
 }
 
 #landing-cards {
@@ -253,4 +253,99 @@ img {
 
 .banned-label {
     color: #ff4747;
+}
+
+.color-button {
+    border-radius: 8px;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0.25em;
+}
+
+.selected-color-button {
+    border: 2px solid #d9d9d9;
+}
+
+#bright-red-button {
+    background-color: #ff4747;
+}
+
+#bright-orange-button {
+    background-color: #ffa347;
+}
+
+#bright-yellow-button {
+    background-color: #ffff47;
+}
+
+#bright-green-button {
+    background-color: #47ff47;
+}
+
+#bright-lightblue-button {
+    background-color: #47ffff;
+}
+
+#bright-blue-button {
+    background-color: #4747ff;
+}
+
+#bright-violet-button {
+    background-color: #a347ff;
+}
+
+#red-button {
+    background-color: #ff0000;
+}
+
+#orange-button {
+    background-color: #ff7f00;
+}
+
+#yellow-button {
+    background-color: #ffff00;
+}
+
+#green-button {
+    background-color: #00ff00;
+}
+
+#lightblue-button {
+    background-color: #00ffff;
+}
+
+#blue-button {
+    background-color: #0000ff;
+}
+
+#violet-button {
+    background-color: #7f00ff;
+}
+
+#dark-red-button {
+    background-color: #990000;
+}
+
+#dark-orange-button {
+    background-color: #994c00;
+}
+
+#dark-yellow-button {
+    background-color: #999900;
+}
+
+#dark-green-button {
+    background-color: #009900;
+}
+
+#dark-lightblue-button {
+    background-color: #009999;
+}
+
+#dark-blue-button {
+    background-color: #000099;
+}
+
+#dark-violet-button {
+    background-color: #4c0099;
 }
