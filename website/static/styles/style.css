@@ -227,8 +227,8 @@ input:focus {
     background: #7f00ff;
 }
 
-#width-input::-webkit-slider,
-#width-input::-webkit-slider-thumb {
+#width-input::-webkit-slider-thumb,
+#width-input::-webkit-slider-runnable-track {
     background: #7f00ff;
 }
 
