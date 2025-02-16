@@ -186,11 +186,15 @@ msgstr "Название картинки"
 msgid "Brush Width"
 msgstr "Толщина кисти"
 
-#: website/templates/create_picture.html:85
+#: website/templates/create_picture.html:71
+msgid "Brush Color"
+msgstr "Цвет кисти"
+
+#: website/templates/create_picture.html:270
 msgid "Publish"
 msgstr "Опубликовать"
 
-#: website/templates/create_picture.html:93
+#: website/templates/create_picture.html:278
 msgid "Reset Canvas"
 msgstr "Очистить"
 
@@ -883,6 +887,7 @@ msgid "6. Data Security"
 msgstr "6. Безопасность данных"
 
 #: website/templates/privacy_policy.html:177
+#, python-format
 msgid ""
 "We implement security measures such as encryption and access controls to "
 "protect your data. However, no system is 100% secure."
@@ -946,8 +951,8 @@ msgid ""
 "We may update this Privacy Policy. Continued use of the website after "
 "changes constitutes acceptance of the revised policy."
 msgstr ""
-"Мы можем обновлять Политику Конфиденциальности. Продолжение "
-"использования нашего сайта после внесения изменений означает согласие с "
+"Мы можем обновлять Политику Конфиденциальности. Продолжение использования"
+" нашего сайта после внесения изменений означает согласие с "
 "пересмотренными условиями"
 
 #: website/templates/privacy_policy.html:236

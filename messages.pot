@@ -175,11 +175,15 @@ msgstr ""
 msgid "Brush Width"
 msgstr ""
 
-#: website/templates/create_picture.html:85
+#: website/templates/create_picture.html:71
+msgid "Brush Color"
+msgstr ""
+
+#: website/templates/create_picture.html:270
 msgid "Publish"
 msgstr ""
 
-#: website/templates/create_picture.html:93
+#: website/templates/create_picture.html:278
 msgid "Reset Canvas"
 msgstr ""
 
@@ -214,7 +218,7 @@ msgstr ""
 
 #: website/templates/div_compact_profile.html:41
 #: website/templates/user_profile.html:60
-msgid "Followers"
+msgid "followers"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:52
