@@ -213,15 +213,29 @@ input:focus {
     text-align: center;
 }
 
-#width-input::-webkit-slider-thumb,
-#width-input::-moz-range-thumb {
+#width-input {
     appearance: none;
-    background-color: #7f00ff;
+    cursor: pointer;
+    color: transparent;
+    background: transparent;
+    -webkit-appearance: none;
 }
 
-#width-input::-webkit-slider-runnable-track,
+#width-input::-moz-range-thumb,
 #width-input::-moz-range-progress {
-    background-color: #7f00ff;
+    border: none;
+    background: #7f00ff;
+}
+
+#width-input::-webkit-slider,
+#width-input::-webkit-slider-thumb {
+    background: #7f00ff;
+}
+
+#width-input::-ms-thumb,
+#width-input::-ms-fill-lower {
+    border: none;
+    background: #7f00ff;
 }
 
 img {
