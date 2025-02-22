@@ -1,0 +1,1196 @@
+#: website/templates/about.html:5 website/templates/about.html:10
+msgid "About Impressle"
+msgstr ""
+
+#: website/templates/about.html:16
+msgid "Here you can learn more about the Impressle website"
+msgstr ""
+
+#: website/templates/about.html:30 website/templates/base.html:11
+#: website/templates/base.html:73 website/templates/index.html:26
+msgid "Unleash your creativity!"
+msgstr ""
+
+#: website/templates/about.html:36
+msgid ""
+"Impressle is a unique social network where you have to draw by hand, not "
+"uploading image files. Follow your favorite artists, give likes to other "
+"users' pictures and make your own ones. It's fun, just try it!"
+msgstr ""
+
+#: website/templates/about.html:41
+msgid ""
+"If you want to know how we collect, use, and protect your personal "
+"information, check the"
+msgstr ""
+
+#: website/templates/about.html:43 website/templates/base.html:278
+#: website/templates/privacy_policy.html:5
+#: website/templates/privacy_policy.html:10 website/templates/signup.html:93
+#: website/templates/terms_of_service.html:163
+msgid "Privacy Policy"
+msgstr ""
+
+#: website/templates/about.html:50
+msgid "Check the"
+msgstr ""
+
+#: website/templates/about.html:52
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: website/templates/about.html:54
+msgid "for more details"
+msgstr ""
+
+#: website/templates/about.html:59
+msgid ""
+"By the way, this is an open source project, you can check the source code"
+" on"
+msgstr ""
+
+#: website/templates/about.html:61
+msgid "this GitHub repository"
+msgstr ""
+
+#: website/templates/about.html:66
+msgid "You can become a contributor if you want :)"
+msgstr ""
+
+#: website/templates/banned.html:5
+msgid "You are Banned"
+msgstr ""
+
+#: website/templates/banned.html:10
+msgid "Unfortunately, this account is banned! :("
+msgstr ""
+
+#: website/templates/banned.html:16 website/templates/inactive.html:16
+msgid "Uh oh..."
+msgstr ""
+
+#: website/templates/banned.html:29
+msgid ""
+"You can no longer log in to this account. Breaking the rules is bad, you "
+"know? It's allowed to create another account, and if you want to do this,"
+" you promise that you will not break the rules again"
+msgstr ""
+
+#: website/templates/banned.html:44
+msgid "I will not break the rules next time"
+msgstr ""
+
+#: website/templates/banned.html:54
+msgid "Create New Account"
+msgstr ""
+
+#: website/templates/base.html:90
+msgid "Create Picture"
+msgstr ""
+
+#: website/templates/base.html:103
+msgid "Recent Pictures"
+msgstr ""
+
+#: website/templates/base.html:116
+msgid "Best Pictures"
+msgstr ""
+
+#: website/templates/base.html:129
+msgid "Popular Pictures"
+msgstr ""
+
+#: website/templates/base.html:143
+msgid "Profile"
+msgstr ""
+
+#: website/templates/base.html:156 website/templates/faq.html:213
+#: website/templates/user_settings.html:5
+#: website/templates/user_settings.html:10
+msgid "Settings"
+msgstr ""
+
+#: website/templates/base.html:169 website/templates/liked.html:5
+#: website/templates/liked.html:10
+msgid "You Liked"
+msgstr ""
+
+#: website/templates/base.html:182 website/templates/following.html:5
+#: website/templates/following.html:10
+msgid "You Following"
+msgstr ""
+
+#: website/templates/base.html:196 website/templates/login.html:5
+#: website/templates/login.html:59 website/templates/signup.html:117
+msgid "Log In"
+msgstr ""
+
+#: website/templates/base.html:209 website/templates/index.html:96
+#: website/templates/login.html:69 website/templates/signup.html:5
+#: website/templates/signup.html:107
+msgid "Sign Up"
+msgstr ""
+
+#: website/templates/base.html:223
+msgid "About"
+msgstr ""
+
+#: website/templates/base.html:236 website/templates/faq.html:5
+msgid "FAQ"
+msgstr ""
+
+#: website/templates/base.html:250
+msgid "Admin Panel"
+msgstr ""
+
+#: website/templates/base.html:265
+msgid "Log Out"
+msgstr ""
+
+#: website/templates/base.html:274 website/templates/privacy_policy.html:103
+#: website/templates/privacy_policy.html:242 website/templates/signup.html:89
+#: website/templates/terms_of_service.html:5
+#: website/templates/terms_of_service.html:10
+msgid "Terms of Service"
+msgstr ""
+
+#: website/templates/base.html:286
+msgid "All rights reserved"
+msgstr ""
+
+#: website/templates/create_picture.html:5
+#: website/templates/create_picture.html:10 website/templates/feed.html:56
+msgid "Create a Picture"
+msgstr ""
+
+#: website/templates/create_picture.html:16
+msgid "Let's draw your impressive picture!"
+msgstr ""
+
+#: website/templates/create_picture.html:39
+msgid "Picture Title"
+msgstr ""
+
+#: website/templates/create_picture.html:53
+msgid "Brush Width"
+msgstr ""
+
+#: website/templates/create_picture.html:71
+msgid "Brush Color"
+msgstr ""
+
+#: website/templates/create_picture.html:270
+msgid "Publish"
+msgstr ""
+
+#: website/templates/create_picture.html:278
+msgid "Reset Canvas"
+msgstr ""
+
+#: website/templates/div_comment.html:7
+msgid "Author"
+msgstr ""
+
+#: website/templates/div_comment.html:13
+#: website/templates/div_compact_profile.html:16
+#: website/templates/div_picture.html:32 website/templates/user_profile.html:35
+msgid "[ ADMIN ]"
+msgstr ""
+
+#: website/templates/div_comment.html:18
+msgid "Commented on"
+msgstr ""
+
+#: website/templates/div_comment.html:28
+#: website/templates/div_compact_profile.html:26
+#: website/templates/div_picture.html:18 website/templates/user_profile.html:45
+msgid "[ BANNED ]"
+msgstr ""
+
+#: website/templates/div_comment.html:50
+msgid "Delete Comment"
+msgstr ""
+
+#: website/templates/div_compact_profile.html:22
+#: website/templates/user_profile.html:41
+msgid "[ INACTIVE ]"
+msgstr ""
+
+#: website/templates/div_compact_profile.html:41
+#: website/templates/user_profile.html:60
+msgid "followers"
+msgstr ""
+
+#: website/templates/div_compact_profile.html:52
+#: website/templates/user_profile.html:71
+msgid "Unfollow"
+msgstr ""
+
+#: website/templates/div_compact_profile.html:60
+#: website/templates/user_profile.html:79
+msgid "Follow"
+msgstr ""
+
+#: website/templates/div_picture.html:12
+msgid "Untitled"
+msgstr ""
+
+#: website/templates/div_picture.html:40
+msgid "Published on"
+msgstr ""
+
+#: website/templates/div_picture.html:192
+msgid "Delete Picture"
+msgstr ""
+
+#: website/templates/faq.html:10
+msgid "FAQ (Frequently Asked Questions)"
+msgstr ""
+
+#: website/templates/faq.html:16
+msgid "If you have a question, you can find the answer here"
+msgstr ""
+
+#: website/templates/faq.html:33
+msgid "1. What is Impressle?"
+msgstr ""
+
+#: website/templates/faq.html:37
+msgid ""
+"Impressle (impressle.fun) is a unique social network where you have to "
+"draw by hand, not uploading image files. Follow your favorite artists, "
+"give likes to other users' pictures and make your own ones!"
+msgstr ""
+
+#: website/templates/faq.html:48
+msgid "2. How to Become an Artist on Impressle?"
+msgstr ""
+
+#: website/templates/faq.html:55
+msgid "Log in"
+msgstr ""
+
+#: website/templates/faq.html:57
+msgid "to your account, or"
+msgstr ""
+
+#: website/templates/faq.html:59
+msgid "sign up"
+msgstr ""
+
+#: website/templates/faq.html:61
+msgid "if you do not have one"
+msgstr ""
+
+#: website/templates/faq.html:64
+msgid "Go to"
+msgstr ""
+
+#: website/templates/faq.html:66
+msgid "this page"
+msgstr ""
+
+#: website/templates/faq.html:70
+msgid "Draw something impressive"
+msgstr ""
+
+#: website/templates/faq.html:73
+msgid "Click \"Publish\" button"
+msgstr ""
+
+#: website/templates/faq.html:76
+msgid "You are now officially a new artist!"
+msgstr ""
+
+#: website/templates/faq.html:89
+msgid "3. What is Karma?"
+msgstr ""
+
+#: website/templates/faq.html:93
+msgid ""
+"Karma shows your reputation to others. Also, more karma -> higher rank. "
+"If your karma goes negative, you will be banned"
+msgstr ""
+
+#: website/templates/faq.html:98 website/templates/faq.html:115
+msgid "You get"
+msgstr ""
+
+#: website/templates/faq.html:98 website/templates/faq.html:115
+msgid "karma ...:"
+msgstr ""
+
+#: website/templates/faq.html:102
+msgid "For publishing a picture"
+msgstr ""
+
+#: website/templates/faq.html:105
+msgid "For every new follower"
+msgstr ""
+
+#: website/templates/faq.html:108
+msgid "For every like on your picture"
+msgstr ""
+
+#: website/templates/faq.html:111
+msgid "For every comment on your picture"
+msgstr ""
+
+#: website/templates/faq.html:119
+msgid "For deleting a picture"
+msgstr ""
+
+#: website/templates/faq.html:122
+msgid "For every dislike on your picture"
+msgstr ""
+
+#: website/templates/faq.html:125
+msgid "If your picture gets banned"
+msgstr ""
+
+#: website/templates/faq.html:128
+msgid "If your comment gets banned"
+msgstr ""
+
+#: website/templates/faq.html:141
+msgid "4. What is Rank?"
+msgstr ""
+
+#: website/templates/faq.html:145
+msgid "Rank shows your skills at drawing on Impressle"
+msgstr ""
+
+#: website/templates/faq.html:150
+msgid "Ranks list and how to get these ranks:"
+msgstr ""
+
+#: website/templates/faq.html:154
+msgid "Newbie"
+msgstr ""
+
+#: website/templates/faq.html:154
+msgid "Given to all new users by default"
+msgstr ""
+
+#: website/templates/faq.html:157
+msgid "Artist"
+msgstr ""
+
+#: website/templates/faq.html:157
+msgid "Given for getting at least 1 karma"
+msgstr ""
+
+#: website/templates/faq.html:160
+msgid "Amateur"
+msgstr ""
+
+#: website/templates/faq.html:160
+msgid "Given for getting 25 karma"
+msgstr ""
+
+#: website/templates/faq.html:163
+msgid "Cool"
+msgstr ""
+
+#: website/templates/faq.html:163
+msgid "Given for getting 50 karma"
+msgstr ""
+
+#: website/templates/faq.html:166
+msgid "Skilled"
+msgstr ""
+
+#: website/templates/faq.html:166
+msgid "Given for getting 100 karma"
+msgstr ""
+
+#: website/templates/faq.html:169
+msgid "Impressive"
+msgstr ""
+
+#: website/templates/faq.html:169
+msgid "Given for getting 1000 karma"
+msgstr ""
+
+#: website/templates/faq.html:173
+msgid "Also, there are some secret ranks that aren't listed here..."
+msgstr ""
+
+#: website/templates/faq.html:184
+msgid "5. Are There Any Limits On Posting Pictures?"
+msgstr ""
+
+#: website/templates/faq.html:188
+msgid ""
+"No! You can post as many pictures as you want without any limits, but if "
+"you will spam empty or strange pictures you will be banned"
+msgstr ""
+
+#: website/templates/faq.html:197
+msgid "6. What is [ INACTIVE ] Tag?"
+msgstr ""
+
+#: website/templates/faq.html:201
+msgid ""
+"Every user should do some activity on Impressle, otherwise the account "
+"may be deleted because of inactivity. If the account was inactive for "
+"last 30 days, it will be marked with [ INACTIVE ] tag and the account "
+"owner (user) will not be able to log in to their account"
+msgstr ""
+
+#: website/templates/faq.html:206
+msgid ""
+"Just visit the website sometimes, it's not that hard. You don't have to "
+"post every day if you don't want to"
+msgstr ""
+
+#: website/templates/faq.html:211
+msgid ""
+"Also, if you want to leave the Impressle community forever, you can "
+"delete your account ("
+msgstr ""
+
+#: website/templates/faq.html:215
+msgid ""
+"-> Delete Account) and it will be marked as inactive instantly so the "
+"other users could understand that this account is \"dead\""
+msgstr ""
+
+#: website/templates/faq.html:226
+msgid "7. What If My Account/Picture/Comment Gets Banned?"
+msgstr ""
+
+#: website/templates/faq.html:230
+msgid ""
+"If your account gets banned, you will not be able to log in to your "
+"account anymore and other users will see [ BANNED ] tag in your profile"
+msgstr ""
+
+#: website/templates/faq.html:235
+msgid ""
+"If your picture gets banned, it will not be showed at the Feed page, but "
+"users still can view the picture in your profile"
+msgstr ""
+
+#: website/templates/faq.html:240
+msgid "If your comment gets banned, its text will be replaced with [ BANNED ]"
+msgstr ""
+
+#: website/templates/faq.html:245
+msgid "Just don't be a bad guy and everything will be fine :)"
+msgstr ""
+
+#: website/templates/faq.html:256
+msgid "8. Can I Trust This Website?"
+msgstr ""
+
+#: website/templates/faq.html:260
+msgid ""
+"Absolutely. Source code of Impressle is available on GitHub. You can "
+"check it on"
+msgstr ""
+
+#: website/templates/faq.html:262
+msgid "this repository"
+msgstr ""
+
+#: website/templates/faq.html:274
+msgid "9. I Didn't Find The Answer to My Question Here. Where to Ask?"
+msgstr ""
+
+#: website/templates/faq.html:278
+msgid ""
+"If you have some questions, you can ask on official Impressle Telegram "
+"community group. Currently, there are available English and Russian "
+"channels and groups. All of them are listed"
+msgstr ""
+
+#: website/templates/faq.html:280
+msgid "here"
+msgstr ""
+
+#: website/templates/faq.html:285
+msgid "Also, you can ask on GitHub"
+msgstr ""
+
+#: website/templates/faq.html:287
+msgid "Impressle repository"
+msgstr ""
+
+#: website/templates/faq.html:289
+msgid "-> Issues -> New issue"
+msgstr ""
+
+#: website/templates/feed.html:5 website/templates/feed.html:10
+msgid "Feed"
+msgstr ""
+
+#: website/templates/feed.html:17
+msgid "Find the newest pictures"
+msgstr ""
+
+#: website/templates/feed.html:19
+msgid "Find the most liked pictures"
+msgstr ""
+
+#: website/templates/feed.html:21
+msgid "Find the most viewed pictures"
+msgstr ""
+
+#: website/templates/feed.html:47
+msgid "It seems that there are no any pictures... :("
+msgstr ""
+
+#: website/templates/feed.html:53
+msgid "Let's fix this, click"
+msgstr ""
+
+#: website/templates/feed.html:59
+msgid "and Impressle will not be empty"
+msgstr ""
+
+#: website/templates/following.html:16
+msgid "All your favorite users are listed right here"
+msgstr ""
+
+#: website/templates/inactive.html:5 website/templates/inactive.html:10
+msgid "This Account is Inactive"
+msgstr ""
+
+#: website/templates/inactive.html:29
+msgid ""
+"You can no longer log in to this account. Why did that happened? Actual "
+"reasons:"
+msgstr ""
+
+#: website/templates/inactive.html:33
+msgid "You deactivated this account intentionally (Settings -> Delete Account)"
+msgstr ""
+
+#: website/templates/inactive.html:36
+msgid ""
+"Your account may be deactivated because of inactivity (if you didn't "
+"visit Impressle for the last 30 days)"
+msgstr ""
+
+#: website/templates/inactive.html:40
+msgid "Try"
+msgstr ""
+
+#: website/templates/inactive.html:42
+msgid "creating a new account"
+msgstr ""
+
+#: website/templates/inactive.html:44
+msgid "if you want to use Impressle"
+msgstr ""
+
+#: website/templates/index.html:5
+msgid "Welcome to Impressle"
+msgstr ""
+
+#: website/templates/index.html:14
+msgid "Welcome to the"
+msgstr ""
+
+#: website/templates/index.html:31
+msgid "On this website, you can...:"
+msgstr ""
+
+#: website/templates/index.html:42
+msgid "Draw funny pictures"
+msgstr ""
+
+#: website/templates/index.html:48
+msgid "Like and comment others' pictures"
+msgstr ""
+
+#: website/templates/index.html:54
+msgid "Get the highest rank to become the best"
+msgstr ""
+
+#: website/templates/index.html:60
+msgid "Get karma to show others your reputation and drawing skills"
+msgstr ""
+
+#: website/templates/index.html:66
+msgid "Follow your favorite artists and get your own followers too"
+msgstr ""
+
+#: website/templates/index.html:76
+msgid "Isn't it impressive?"
+msgstr ""
+
+#: website/templates/index.html:81
+msgid "Create an account and start drawing your funny pictures on Impressle!"
+msgstr ""
+
+#: website/templates/index.html:92
+msgid "Ready to join the community? Click"
+msgstr ""
+
+#: website/templates/index.html:100
+msgid "to create your own account. Let's start!"
+msgstr ""
+
+#: website/templates/liked.html:16
+msgid "All the pictures you have liked"
+msgstr ""
+
+#: website/templates/login.html:10
+msgid "Welcome Back!"
+msgstr ""
+
+#: website/templates/login.html:15
+msgid "Here you can log in to your account"
+msgstr ""
+
+#: website/templates/login.html:31 website/templates/login.html:37
+#: website/templates/signup.html:31 website/templates/signup.html:42
+msgid "Username"
+msgstr ""
+
+#: website/templates/login.html:43 website/templates/login.html:49
+#: website/templates/signup.html:48 website/templates/signup.html:59
+msgid "Password"
+msgstr ""
+
+#: website/templates/login.html:67
+msgid "New to Impressle?"
+msgstr ""
+
+#: website/templates/picture.html:10
+msgid "Picture"
+msgstr ""
+
+#: website/templates/picture.html:36
+msgid "Comment"
+msgstr ""
+
+#: website/templates/picture.html:44
+msgid "Send"
+msgstr ""
+
+#: website/templates/privacy_policy.html:15
+#: website/templates/terms_of_service.html:15
+msgid "Effective Date:"
+msgstr ""
+
+#: website/templates/privacy_policy.html:28
+#: website/templates/terms_of_service.html:28
+msgid "1. Introduction"
+msgstr ""
+
+#: website/templates/privacy_policy.html:32
+msgid ""
+"Welcome to impressle.fun (\"we,\" \"us,\" or \"our\"). This Privacy "
+"Policy explains how we collect, use, and protect your personal "
+"information when you use our website. By using our services, you agree to"
+" the practices described in this policy."
+msgstr ""
+
+#: website/templates/privacy_policy.html:38
+msgid "2. Information We Collect"
+msgstr ""
+
+#: website/templates/privacy_policy.html:42
+msgid "We collect the following information:"
+msgstr ""
+
+#: website/templates/privacy_policy.html:45
+msgid "2.1. Information You Provide"
+msgstr ""
+
+#: website/templates/privacy_policy.html:52
+msgid "Account Creation"
+msgstr ""
+
+#: website/templates/privacy_policy.html:54
+msgid "When you create an account, we collect your username and password."
+msgstr ""
+
+#: website/templates/privacy_policy.html:58
+msgid "User-Generated Content"
+msgstr ""
+
+#: website/templates/privacy_policy.html:60
+msgid ""
+"Any content (text, images, etc.) you create, post, or publish on our "
+"website."
+msgstr ""
+
+#: website/templates/privacy_policy.html:66
+msgid "2.2. Automatically Collected Information"
+msgstr ""
+
+#: website/templates/privacy_policy.html:73
+msgid "Technical Data"
+msgstr ""
+
+#: website/templates/privacy_policy.html:75
+msgid ""
+"IP address, browser type, device information, and usage data (e.g., pages"
+" visited)."
+msgstr ""
+
+#: website/templates/privacy_policy.html:79
+msgid "Cookies"
+msgstr ""
+
+#: website/templates/privacy_policy.html:81
+msgid "We use cookies to improve your experience (see Section 7 for details)."
+msgstr ""
+
+#: website/templates/privacy_policy.html:90
+msgid "3. How We Use Your Information"
+msgstr ""
+
+#: website/templates/privacy_policy.html:94
+msgid "We use your information to:"
+msgstr ""
+
+#: website/templates/privacy_policy.html:98
+msgid "Provide and maintain our services."
+msgstr ""
+
+#: website/templates/privacy_policy.html:101
+msgid "Moderate user-generated content to ensure compliance with our"
+msgstr ""
+
+#: website/templates/privacy_policy.html:107
+msgid "Communicate with you (e.g., account updates or security alerts)."
+msgstr ""
+
+#: website/templates/privacy_policy.html:110
+msgid "Analyze website performance and improve user experience."
+msgstr ""
+
+#: website/templates/privacy_policy.html:118
+msgid "4. Sharing Your Information"
+msgstr ""
+
+#: website/templates/privacy_policy.html:122
+msgid "We may share your information in the following cases:"
+msgstr ""
+
+#: website/templates/privacy_policy.html:127
+msgid "Public Content"
+msgstr ""
+
+#: website/templates/privacy_policy.html:129
+msgid "Content you post is visible to all users."
+msgstr ""
+
+#: website/templates/privacy_policy.html:133
+msgid "Legal Compliance"
+msgstr ""
+
+#: website/templates/privacy_policy.html:135
+msgid "To comply with laws, regulations, or legal requests."
+msgstr ""
+
+#: website/templates/privacy_policy.html:139
+msgid "Service Providers"
+msgstr ""
+
+#: website/templates/privacy_policy.html:141
+msgid "Third-party services may access data to help operate our website."
+msgstr ""
+
+#: website/templates/privacy_policy.html:145
+msgid "We do not sell your personal information to third parties."
+msgstr ""
+
+#: website/templates/privacy_policy.html:151
+msgid "5. Your Rights"
+msgstr ""
+
+#: website/templates/privacy_policy.html:155
+msgid "You have the right to:"
+msgstr ""
+
+#: website/templates/privacy_policy.html:159
+msgid "Access, correct, or delete your account information."
+msgstr ""
+
+#: website/templates/privacy_policy.html:162
+msgid "Delete user-generated content you have posted."
+msgstr ""
+
+#: website/templates/privacy_policy.html:165
+msgid "Withdraw consent for data processing (where applicable)."
+msgstr ""
+
+#: website/templates/privacy_policy.html:173
+msgid "6. Data Security"
+msgstr ""
+
+#: website/templates/privacy_policy.html:177
+#, python-format
+msgid ""
+"We implement security measures such as encryption and access controls to "
+"protect your data. However, no system is 100% secure."
+msgstr ""
+
+#: website/templates/privacy_policy.html:183
+msgid "7. Cookies and Tracking"
+msgstr ""
+
+#: website/templates/privacy_policy.html:190
+msgid "What We Use"
+msgstr ""
+
+#: website/templates/privacy_policy.html:192
+msgid ""
+"Cookies for functionality (e.g., login sessions) and analytics (e.g., "
+"Google Analytics)."
+msgstr ""
+
+#: website/templates/privacy_policy.html:196
+msgid "How to Manage"
+msgstr ""
+
+#: website/templates/privacy_policy.html:198
+msgid "Adjust your browser settings to block or delete cookies."
+msgstr ""
+
+#: website/templates/privacy_policy.html:206
+msgid "8. Children's Privacy"
+msgstr ""
+
+#: website/templates/privacy_policy.html:212
+msgid "Our website is open to users aged 12 and older."
+msgstr ""
+
+#: website/templates/privacy_policy.html:215
+msgid ""
+"If you are under 18, you confirm that a parent or guardian has consented "
+"to your use of our services."
+msgstr ""
+
+#: website/templates/privacy_policy.html:218
+msgid "Parents/guardians may contact us to review or delete their child's data."
+msgstr ""
+
+#: website/templates/privacy_policy.html:226
+msgid "9. Changes to This Policy"
+msgstr ""
+
+#: website/templates/privacy_policy.html:230
+msgid ""
+"We may update this Privacy Policy. Continued use of the website after "
+"changes constitutes acceptance of the revised policy."
+msgstr ""
+
+#: website/templates/privacy_policy.html:236
+msgid "10. Links to Other Policies"
+msgstr ""
+
+#: website/templates/privacy_policy.html:240
+msgid "Review our"
+msgstr ""
+
+#: website/templates/privacy_policy.html:244
+msgid "for rules about using our website."
+msgstr ""
+
+#: website/templates/signup.html:10
+msgid "Hello, New User!"
+msgstr ""
+
+#: website/templates/signup.html:15
+msgid "Let's create a new account"
+msgstr ""
+
+#: website/templates/signup.html:65 website/templates/signup.html:72
+#: website/templates/user_profile.html:92
+#: website/templates/user_settings.html:40
+msgid "About Me"
+msgstr ""
+
+#: website/templates/signup.html:87
+msgid "I have read the"
+msgstr ""
+
+#: website/templates/signup.html:91
+msgid "and"
+msgstr ""
+
+#: website/templates/signup.html:115
+msgid "Already have an account?"
+msgstr ""
+
+#: website/templates/terms_of_service.html:32
+msgid ""
+"Welcome to impressle.fun! By accessing or using our website, you agree to"
+" comply with and be bound by these Terms of Service (\"Terms\"). If you "
+"do not agree to these Terms, you may not use our services."
+msgstr ""
+
+#: website/templates/terms_of_service.html:38
+msgid "2. Eligibility"
+msgstr ""
+
+#: website/templates/terms_of_service.html:45
+msgid "Age Requirement"
+msgstr ""
+
+#: website/templates/terms_of_service.html:47
+msgid ""
+"You must be at least 12 years old to create an account or use our "
+"services."
+msgstr ""
+
+#: website/templates/terms_of_service.html:51
+msgid "Parental Consent"
+msgstr ""
+
+#: website/templates/terms_of_service.html:53
+msgid ""
+"If you are under the age of 18, you confirm that you have obtained "
+"consent from a parent or legal guardian to use this website."
+msgstr ""
+
+#: website/templates/terms_of_service.html:61
+msgid "3. User Accounts"
+msgstr ""
+
+#: website/templates/terms_of_service.html:68
+msgid "Account Security"
+msgstr ""
+
+#: website/templates/terms_of_service.html:70
+msgid ""
+"You are responsible for maintaining the confidentiality of your account "
+"credentials."
+msgstr ""
+
+#: website/templates/terms_of_service.html:78
+msgid "4. User-Generated Content"
+msgstr ""
+
+#: website/templates/terms_of_service.html:85
+msgid "Content Ownership"
+msgstr ""
+
+#: website/templates/terms_of_service.html:87
+msgid ""
+"You retain ownership of any content you create, post, or upload to "
+"Impressle."
+msgstr ""
+
+#: website/templates/terms_of_service.html:91
+msgid "License to Us"
+msgstr ""
+
+#: website/templates/terms_of_service.html:93
+msgid ""
+"By posting content, you grant Impressle a non-exclusive, royalty-free, "
+"worldwide license to use, display, reproduce, and distribute your content"
+" in connection with our services."
+msgstr ""
+
+#: website/templates/terms_of_service.html:97
+msgid "Prohibited Content"
+msgstr ""
+
+#: website/templates/terms_of_service.html:99
+msgid "You agree not to post content that:"
+msgstr ""
+
+#: website/templates/terms_of_service.html:103
+msgid "Violates any law or infringes intellectual property rights."
+msgstr ""
+
+#: website/templates/terms_of_service.html:106
+msgid "Is abusive, harassing, discriminatory, or harmful."
+msgstr ""
+
+#: website/templates/terms_of_service.html:109
+msgid "Contains viruses, malware, or spam."
+msgstr ""
+
+#: website/templates/terms_of_service.html:115
+msgid "Content Moderation"
+msgstr ""
+
+#: website/templates/terms_of_service.html:117
+msgid ""
+"We reserve the right to remove or disable access to any content that "
+"violates these Terms."
+msgstr ""
+
+#: website/templates/terms_of_service.html:125
+msgid "5. Your Responsibilities"
+msgstr ""
+
+#: website/templates/terms_of_service.html:129
+msgid "You agree to:"
+msgstr ""
+
+#: website/templates/terms_of_service.html:133
+msgid "Use the website lawfully and respectfully."
+msgstr ""
+
+#: website/templates/terms_of_service.html:136
+msgid "Not impersonate others or engage in fraudulent activities."
+msgstr ""
+
+#: website/templates/terms_of_service.html:139
+msgid "Not interfere with the website's security or functionality."
+msgstr ""
+
+#: website/templates/terms_of_service.html:147
+msgid "6. No Paid Services"
+msgstr ""
+
+#: website/templates/terms_of_service.html:151
+msgid ""
+"Impressle is free to use. We do not offer paid subscriptions, products, "
+"or services."
+msgstr ""
+
+#: website/templates/terms_of_service.html:157
+msgid "7. Privacy"
+msgstr ""
+
+#: website/templates/terms_of_service.html:161
+msgid "Your use of our services is governed by our"
+msgstr ""
+
+#: website/templates/terms_of_service.html:165
+msgid "which explains how we collect, use, and protect your data."
+msgstr ""
+
+#: website/templates/terms_of_service.html:171
+msgid "8. Limitation of Liability"
+msgstr ""
+
+#: website/templates/terms_of_service.html:175
+msgid "Impressle is provided \"as is\". We are not liable for:"
+msgstr ""
+
+#: website/templates/terms_of_service.html:179
+msgid "Any damages arising from your use of the website."
+msgstr ""
+
+#: website/templates/terms_of_service.html:182
+msgid "The accuracy, quality, or legality of user-generated content."
+msgstr ""
+
+#: website/templates/terms_of_service.html:185
+msgid "Unauthorized access to your account or data."
+msgstr ""
+
+#: website/templates/terms_of_service.html:193
+msgid "9. Termination"
+msgstr ""
+
+#: website/templates/terms_of_service.html:200
+msgid "By You"
+msgstr ""
+
+#: website/templates/terms_of_service.html:202
+msgid "You may delete your account at any time."
+msgstr ""
+
+#: website/templates/terms_of_service.html:206
+msgid "By Us"
+msgstr ""
+
+#: website/templates/terms_of_service.html:208
+msgid ""
+"We reserve the right to suspend or terminate your account if you violate "
+"these Terms."
+msgstr ""
+
+#: website/templates/terms_of_service.html:216
+msgid "10. Change to These Terms"
+msgstr ""
+
+#: website/templates/terms_of_service.html:220
+msgid ""
+"We may update these Terms at any time. Continued use of the website after"
+" changes constitutes acceptance of the revised Terms."
+msgstr ""
+
+#: website/templates/terms_of_service.html:226
+msgid "11. Governing Law"
+msgstr ""
+
+#: website/templates/terms_of_service.html:230
+msgid ""
+"These Terms are governed by the laws of Russian Federation. Any disputes "
+"will be resolved in the courts of Russian Federation."
+msgstr ""
+
+#: website/templates/terms_of_service.html:236
+msgid "12. Final Agreement"
+msgstr ""
+
+#: website/templates/terms_of_service.html:240
+msgid "These Terms constitute the entire agreement between you and Impressle."
+msgstr ""
+
+#: website/templates/user_profile.html:100
+msgid "Nothing yet..."
+msgstr ""
+
+#: website/templates/user_profile.html:110
+msgid "Account Details"
+msgstr ""
+
+#: website/templates/user_profile.html:117
+msgid "User ID"
+msgstr ""
+
+#: website/templates/user_profile.html:127
+msgid "Account Created"
+msgstr ""
+
+#: website/templates/user_profile.html:137
+msgid "Rank"
+msgstr ""
+
+#: website/templates/user_profile.html:147
+msgid "Karma"
+msgstr ""
+
+#: website/templates/user_profile.html:165
+msgid "Edit Profile"
+msgstr ""
+
+#: website/templates/user_settings.html:16
+msgid "Set the preferences for your account"
+msgstr ""
+
+#: website/templates/user_settings.html:34
+msgid "Profile Settings"
+msgstr ""
+
+#: website/templates/user_settings.html:61
+#: website/templates/user_settings.html:106
+msgid "Save"
+msgstr ""
+
+#: website/templates/user_settings.html:67
+msgid "Privacy Settings"
+msgstr ""
+
+#: website/templates/user_settings.html:81
+msgid "Show followers count in my profile"
+msgstr ""
+
+#: website/templates/user_settings.html:95
+msgid "Allow users to comment my pictures"
+msgstr ""
+
+#: website/templates/user_settings.html:112
+#: website/templates/user_settings.html:134
+msgid "Delete Account"
+msgstr ""
+
+#: website/templates/user_settings.html:123
+msgid "I am totally sure I want to delete this account"
+msgstr ""
+

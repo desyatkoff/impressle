@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("Log In") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Welcome Back!") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        {{ gettext("Here you can log in to your account") }}
+    </p>
+
+
+    <hr />
+
+
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <form
+            method = "POST"
+            autocomplete = "off"
+        >
+            <label for="username">
+                {{ gettext("Username") }}
+            </label>
+            <input
+                type = "text"
+                id = "username"
+                name = "username"
+                placeholder = "{{ gettext('Username') }}"
+            />
+
+            <br />
+
+            <label for="password">
+                {{ gettext("Password") }}
+            </label>
+            <input
+                id = "password"
+                type = "password"
+                name = "password"
+                placeholder = "{{ gettext('Password') }}"
+            />
+
+            <br />
+            <br />
+
+            <button
+                type = "submit"
+                class = "pure-button button-main"
+            >
+                {{ gettext("Log In") }}
+            </button>
+
+
+            <hr />
+
+
+            <p>
+                {{ gettext("New to Impressle?") }}
+                <a href="{{ url_for('auth.signup') }}">
+                    {{ gettext("Sign Up") }}
+                </a>
+            </p>
+        </form>
+    </div>
+{% endblock %}

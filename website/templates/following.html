@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("You Following") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("You Following") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("All your favorite users are listed right here") }}
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div id="page-content">
+        <div
+            id = "users"
+            class = "pure-g"
+        >
+            {% for user_ in users|list %}
+                {% if user.uid in user_.follows|map(attribute="follower_uid")|list %}
+                    {% include "div_compact_profile.html" %}
+
+                    <br />
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("Terms of Service") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Terms of Service") }}
+    </h1>
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("Effective Date:") }} 2025-02-22
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <h2 id="introduction">
+            {{ gettext("1. Introduction") }}
+        </h2>
+
+        <p>
+            {{ gettext("Welcome to impressle.fun! By accessing or using our website, you agree to comply with and be bound by these Terms of Service (\"Terms\"). If you do not agree to these Terms, you may not use our services.") }}
+        </p>
+
+        <hr />
+
+        <h2 id="eligibility">
+            {{ gettext("2. Eligibility") }}
+        </h2>
+
+        <p>
+            <ol>
+                <li>
+                    <b>
+                        {{ gettext("Age Requirement") }}
+                    </b>:
+                    {{ gettext("You must be at least 12 years old to create an account or use our services.") }}
+                </li>
+                <li>
+                    <b>
+                        {{ gettext("Parental Consent") }}
+                    </b>:
+                    {{ gettext("If you are under the age of 18, you confirm that you have obtained consent from a parent or legal guardian to use this website.") }}
+                </li>
+            </ol>
+        </p>
+
+        <hr />
+
+        <h2 id="user-accounts">
+            {{ gettext("3. User Accounts") }}
+        </h2>
+
+        <p>
+            <ol>
+                <li>
+                    <b>
+                        {{ gettext("Account Security") }}
+                    </b>:
+                    {{ gettext("You are responsible for maintaining the confidentiality of your account credentials.") }}
+                </li>
+            </ol>
+        </p>
+
+        <hr />
+
+        <h2 id="user-generated-content">
+            {{ gettext("4. User-Generated Content") }}
+        </h2>
+
+        <p>
+            <ol>
+                <li>
+                    <b>
+                        {{ gettext("Content Ownership") }}
+                    </b>:
+                    {{ gettext("You retain ownership of any content you create, post, or upload to Impressle.") }}
+                </li>
+                <li>
+                    <b>
+                        {{ gettext("License to Us") }}
+                    </b>:
+                    {{ gettext("By posting content, you grant Impressle a non-exclusive, royalty-free, worldwide license to use, display, reproduce, and distribute your content in connection with our services.") }}
+                </li>
+                <li>
+                    <b>
+                        {{ gettext("Prohibited Content") }}
+                    </b>:
+                    {{ gettext("You agree not to post content that:") }}
+
+                    <ul>
+                        <li>
+                            {{ gettext("Violates any law or infringes intellectual property rights.") }}
+                        </li>
+                        <li>
+                            {{ gettext("Is abusive, harassing, discriminatory, or harmful.") }}
+                        </li>
+                        <li>
+                            {{ gettext("Contains viruses, malware, or spam.") }}
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>
+                        {{ gettext("Content Moderation") }}
+                    </b>:
+                    {{ gettext("We reserve the right to remove or disable access to any content that violates these Terms.") }}
+                </li>
+            </ol>
+        </p>
+
+        <hr />
+
+        <h2 id="your-responsibilities">
+            {{ gettext("5. Your Responsibilities") }}
+        </h2>
+
+        <p>
+            {{ gettext("You agree to:") }}
+
+            <ul>
+                <li>
+                    {{ gettext("Use the website lawfully and respectfully.") }}
+                </li>
+                <li>
+                    {{ gettext("Not impersonate others or engage in fraudulent activities.") }}
+                </li>
+                <li>
+                    {{ gettext("Not interfere with the website's security or functionality.") }}
+                </li>
+            </ul>
+        </p>
+
+        <hr />
+
+        <h2 id="no-paid-services">
+            {{ gettext("6. No Paid Services") }}
+        </h2>
+
+        <p>
+            {{ gettext("Impressle is free to use. We do not offer paid subscriptions, products, or services.") }}
+        </p>
+
+        <hr />
+
+        <h2 id="privacy">
+            {{ gettext("7. Privacy") }}
+        </h2>
+
+        <p>
+            {{ gettext("Your use of our services is governed by our") }}
+            <a href="{{ url_for('routes.privacy_policy') }}">
+                {{ gettext("Privacy Policy") }}
+            </a>,
+            {{ gettext("which explains how we collect, use, and protect your data.") }}
+        </p>
+
+        <hr />
+
+        <h2 id="limitation-of-liability">
+            {{ gettext("8. Limitation of Liability") }}
+        </h2>
+
+        <p>
+            {{ gettext("Impressle is provided \"as is\". We are not liable for:") }}
+
+            <ul>
+                <li>
+                    {{ gettext("Any damages arising from your use of the website.") }}
+                </li>
+                <li>
+                    {{ gettext("The accuracy, quality, or legality of user-generated content.") }}
+                </li>
+                <li>
+                    {{ gettext("Unauthorized access to your account or data.") }}
+                </li>
+            </ul>
+        </p>
+
+        <hr />
+
+        <h2 id="termination">
+            {{ gettext("9. Termination") }}
+        </h2>
+
+        <p>
+            <ol>
+                <li>
+                    <b>
+                        {{ gettext("By You") }}
+                    </b>:
+                    {{ gettext("You may delete your account at any time.") }}
+                </li>
+                <li>
+                    <b>
+                        {{ gettext("By Us") }}
+                    </b>:
+                    {{ gettext("We reserve the right to suspend or terminate your account if you violate these Terms.") }}
+                </li>
+            </ol>
+        </p>
+
+        <hr />
+
+        <h2 id="changes-to-these-terms">
+            {{ gettext("10. Change to These Terms") }}
+        </h2>
+
+        <p>
+            {{ gettext("We may update these Terms at any time. Continued use of the website after changes constitutes acceptance of the revised Terms.") }}
+        </p>
+
+        <hr />
+
+        <h2 id="governing-law">
+            {{ gettext("11. Governing Law") }}
+        </h2>
+
+        <p>
+            {{ gettext("These Terms are governed by the laws of Russian Federation. Any disputes will be resolved in the courts of Russian Federation.") }}
+        </p>
+
+        <hr />
+
+        <h2 id="final-agreement">
+            {{ gettext("12. Final Agreement") }}
+        </h2>
+
+        <p>
+            {{ gettext("These Terms constitute the entire agreement between you and Impressle.") }}
+        </p>
+    </div>
+{% endblock %}

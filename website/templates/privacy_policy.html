@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("Privacy Policy") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Privacy Policy") }}
+    </h1>
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("Effective Date:") }} 2025-02-22
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <h2 id="introduction">
+            {{ gettext("1. Introduction") }}
+        </h2>
+
+        <p>
+            {{ gettext('Welcome to impressle.fun ("we," "us," or "our"). This Privacy Policy explains how we collect, use, and protect your personal information when you use our website. By using our services, you agree to the practices described in this policy.') }}
+        </p>
+
+        <hr />
+
+        <h2 id="information-we-collect">
+            {{ gettext("2. Information We Collect") }}
+        </h2>
+
+        <p>
+            {{ gettext("We collect the following information:") }}
+
+            <h3>
+                {{ gettext("2.1. Information You Provide") }}
+            </h3>
+
+            <p>
+                <ul>
+                    <li>
+                        <b>
+                            {{ gettext("Account Creation") }}
+                        </b>:
+                        {{ gettext("When you create an account, we collect your username and password.") }}
+                    </li>
+                    <li>
+                        <b>
+                            {{ gettext("User-Generated Content") }}
+                        </b>:
+                        {{ gettext("Any content (text, images, etc.) you create, post, or publish on our website.") }}
+                    </li>
+                </ul>
+            </p>
+
+            <h3>
+                {{ gettext("2.2. Automatically Collected Information") }}
+            </h3>
+
+            <p>
+                <ul>
+                    <li>
+                        <b>
+                            {{ gettext("Technical Data") }}
+                        </b>:
+                        {{ gettext("IP address, browser type, device information, and usage data (e.g., pages visited).") }}
+                    </li>
+                    <li>
+                        <b>
+                            {{ gettext("Cookies") }}
+                        </b>:
+                        {{ gettext("We use cookies to improve your experience (see Section 7 for details).") }}
+                    </li>
+                </ul>
+            </p>
+        </p>
+
+        <hr />
+
+        <h2 id="how-we-use-your-information">
+            {{ gettext("3. How We Use Your Information") }}
+        </h2>
+
+        <p>
+            {{ gettext("We use your information to:") }}
+
+            <ul>
+                <li>
+                    {{ gettext("Provide and maintain our services.") }}
+                </li>
+                <li>
+                    {{ gettext("Moderate user-generated content to ensure compliance with our") }}
+                    <a href="url_for('routes.terms_of_services')">
+                        {{ gettext("Terms of Service") }}
+                    </a>.
+                </li>
+                <li>
+                    {{ gettext("Communicate with you (e.g., account updates or security alerts).") }}
+                </li>
+                <li>
+                    {{ gettext("Analyze website performance and improve user experience.") }}
+                </li>
+            </ul>
+        </p>
+
+        <hr />
+
+        <h2 id="sharing-your-information">
+            {{ gettext("4. Sharing Your Information") }}
+        </h2>
+
+        <p>
+            {{ gettext("We may share your information in the following cases:") }}
+
+            <ul>
+                <li>
+                    <b>
+                        {{ gettext("Public Content") }}
+                    </b>:
+                    {{ gettext("Content you post is visible to all users.") }}
+                </li>
+                <li>
+                    <b>
+                        {{ gettext("Legal Compliance") }}
+                    </b>:
+                    {{ gettext("To comply with laws, regulations, or legal requests.") }}
+                </li>
+                <li>
+                    <b>
+                        {{ gettext("Service Providers") }}
+                    </b>:
+                    {{ gettext("Third-party services may access data to help operate our website.") }}
+                </li>
+            </ul>
+
+            {{ gettext("We do not sell your personal information to third parties.") }}
+        </p>
+
+        <hr />
+
+        <h2 id="your-rights">
+            {{ gettext("5. Your Rights") }}
+        </h2>
+
+        <p>
+            {{ gettext("You have the right to:") }}
+
+            <ul>
+                <li>
+                    {{ gettext("Access, correct, or delete your account information.") }}
+                </li>
+                <li>
+                    {{ gettext("Delete user-generated content you have posted.") }}
+                </li>
+                <li>
+                    {{ gettext("Withdraw consent for data processing (where applicable).") }}
+                </li>
+            </ul>
+        </p>
+
+        <hr />
+
+        <h2 id="data-security">
+            {{ gettext("6. Data Security") }}
+        </h2>
+
+        <p>
+            {{ gettext("We implement security measures such as encryption and access controls to protect your data. However, no system is 100% secure.") }}
+        </p>
+
+        <hr />
+
+        <h2 id="cookies-and-tracking">
+            {{ gettext("7. Cookies and Tracking") }}
+        </h2>
+
+        <p>
+            <ul>
+                <li>
+                    <b>
+                        {{ gettext("What We Use") }}
+                    </b>:
+                    {{ gettext("Cookies for functionality (e.g., login sessions) and analytics (e.g., Google Analytics).") }}
+                </li>
+                <li>
+                    <b>
+                        {{ gettext("How to Manage") }}
+                    </b>:
+                    {{ gettext("Adjust your browser settings to block or delete cookies.") }}
+                </li>
+            </ul>
+        </p>
+
+        <hr />
+
+        <h2 id="childrens-privacy">
+            {{ gettext("8. Children's Privacy") }}
+        </h2>
+
+        <p>
+            <ul>
+                <li>
+                    {{ gettext("Our website is open to users aged 12 and older.") }}
+                </li>
+                <li>
+                    {{ gettext("If you are under 18, you confirm that a parent or guardian has consented to your use of our services.") }}
+                </li>
+                <li>
+                    {{ gettext("Parents/guardians may contact us to review or delete their child's data.") }}
+                </li>
+            </ul>
+        </p>
+
+        <hr />
+
+        <h2 id="changes-to-this-policy">
+            {{ gettext("9. Changes to This Policy") }}
+        </h2>
+
+        <p>
+            {{ gettext("We may update this Privacy Policy. Continued use of the website after changes constitutes acceptance of the revised policy.") }}
+        </p>
+
+        <hr />
+
+        <h2 id="links-to-other-policies">
+            {{ gettext("10. Links to Other Policies") }}
+        </h2>
+
+        <p>
+            {{ gettext("Review our") }}
+            <a href="{{ url_for('routes.terms_of_service') }}">
+                {{ gettext("Terms of Service") }}
+            </a>
+            {{ gettext("for rules about using our website.") }}
+        </p>
+    </div>
+{% endblock %}

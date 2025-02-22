@@ -1,0 +1,54 @@
+<div
+    class = "comment card"
+    id = "comment-{{ comment.uid }}"
+>
+    <div class="comment-info">
+        <p class="comment-author">
+            {{ gettext("Author") }}:
+            <a href="{{ url_for('routes.user_profile', username=comment.author_username) }}">
+                @{{comment.author_username}}
+            </a>
+            {% if models.User.query.filter_by(uid=comment.author_uid).first().rank == "Admin" %}
+                <span class="admin-label">
+                    {{ gettext("[ ADMIN ]") }}
+                </span>
+            {% endif %}
+        </p>
+        <p class="comment-date-created">
+            {{ gettext("Commented on") }} {{ comment.date_created.strftime("%Y-%m-%d") }}
+        </p>
+    </div>
+
+    <hr />
+
+    <div class="comment-text">
+        <p class="comment-text">
+            {% if comment.status == "banned" %}
+                <span class="banned-label">
+                    {{ gettext("[ BANNED ]") }}
+                </span>
+            {% else %}
+                {{ comment.text }}
+            {% endif %}
+        </p>
+    </div>
+
+
+    {% if user.uid == comment.author_uid and comment.status == "normal" %}
+        <hr />
+
+        <form
+            method = "POST"
+            autocomplete = "off"
+            id = "delete-comment-form"
+            action = "{{ url_for('routes.delete_comment', comment_uid=comment.uid) }}"
+        >
+            <button
+                type="submit"
+                class = "pure-button button-main"
+            >
+                {{ gettext("Delete Comment") }}
+            </button>
+        </form>
+    {% endif %}
+</div>

@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("Settings") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Settings") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("Set the preferences for your account") }}
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <form
+            method = "POST"
+            id = "form-settings"
+            autocomplete = "off"
+        >
+            <h1 id="profile-settings">
+                {{ gettext("Profile Settings") }}
+            </h1>
+
+
+            <div class="card">
+                <label for="about-me">
+                    {{ gettext("About Me") }}
+                </label>
+
+                <input
+                    type = "text"
+                    id = "about-me"
+                    maxlength = "64"
+                    name = "about-me"
+                    {% if user.about_me %}
+                        value = "{{ user.about_me }}"
+                    {% endif %}
+                />
+
+
+                <hr />
+
+
+                <button
+                    type = "submit"
+                    class = "pure-button button-main"
+                >
+                    {{ gettext("Save") }}
+                </button>
+            </div>
+
+
+            <h1 id="privacy-settings">
+                {{ gettext("Privacy Settings") }}
+            </h1>
+
+
+            <div class="card">
+                <label for="show-followers-checkbox">
+                    <input
+                        type = "checkbox"
+                        id = "show-followers-checkbox"
+                        name = "show-followers-checkbox"
+                        {% if user.show_followers %}
+                            checked
+                        {% endif %}
+                    />
+                    {{ gettext("Show followers count in my profile") }}
+                </label>
+
+                <br />
+
+                <label for="allow-comments-checkbox">
+                    <input
+                        type = "checkbox"
+                        id = "allow-comments-checkbox"
+                        name = "allow-comments-checkbox"
+                        {% if user.allow_comments %}
+                            checked
+                        {% endif %}
+                    />
+                    {{ gettext("Allow users to comment my pictures") }}
+                </label>
+
+
+                <hr />
+
+
+                <button
+                    type = "submit"
+                    class = "pure-button button-main"
+                >
+                    {{ gettext("Save") }}
+                </button>
+            </div>
+
+
+            <h1>
+                {{ gettext("Delete Account") }}
+            </h1>
+
+
+            <div class="card">
+                <label for="delete-account-checkbox">
+                    <input
+                        type = "checkbox"
+                        id = "delete-account-checkbox"
+                        name = "delete-account-checkbox"
+                    >
+                    {{ gettext("I am totally sure I want to delete this account") }}
+                </label>
+
+
+                <hr />
+
+
+                <button
+                    type = "submit"
+                    class = "pure-button button-danger"
+                >
+                    {{ gettext("Delete Account") }}
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

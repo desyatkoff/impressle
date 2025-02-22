@@ -1,0 +1,351 @@
+* {
+    color: #e6e6e6;
+    text-decoration: none;
+    font-optical-sizing: auto;
+    font-family: "Nunito", serif;
+}
+
+body {
+    background-color: #262626;
+}
+
+a {
+    color: #a347ff;
+}
+
+input {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 8px;
+    border: 2px solid #e6e6e6;
+    background-color: #0d0d0d;
+    transition: border-color 0.25s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #7f00ff;
+}
+
+.pure-button a {
+    color: #e6e6e6;
+}
+
+.sidebar {
+    width: 16em;
+    padding: 1em;
+    height: 100vh;
+    position: fixed;
+    background-color: #0d0d0d;
+}
+
+.sidebar-footer {
+    bottom: 0;
+    width: 16em;
+    position: fixed;
+}
+
+.sidebar-footer p {
+    color: #cccccc;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.pure-menu-list {
+    padding: 0;
+    list-style: none;
+}
+
+.pure-menu-item {
+    margin: 0.5em 0;
+}
+
+.pure-menu-item .pure-button {
+    height: 44px;
+}
+
+.pure-menu-link {
+    display: block;
+    padding: 0.5em;
+    text-align: left;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: #1a1a1a;
+}
+
+.pure-menu-link:hover {
+    background-color: #cccccc;
+}
+
+.content {
+    padding: 2em;
+}
+
+.card {
+    margin: 1em;
+    padding: 1em;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #1a1a1a;
+    border: 2px solid #7f00ff;
+}
+
+.picture-title .picture-author {
+    font-size: 1.5em;
+    margin: 1em 0 0.5em;
+}
+
+.picture-date-created, .comment-date-created {
+    color: #cccccc;
+    font-style: italic;
+}
+
+.picture-image {
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: #7f00ff;
+}
+
+.button-main {
+    color: #e6e6e6;
+    border-radius: 8px;
+    background-color: #a347ff;
+}
+
+.button-main:hover {
+    border-radius: 8px;
+    background-color: #7f00ff;
+}
+
+.button-danger {
+    color: #e6e6e6;
+    border-radius: 8px;
+    background-color: #ff4747;
+}
+
+.button-danger:hover {
+    border-radius: 8px;
+    background-color: #ff0000;
+}
+
+.liked, .not-liked, .disliked, .not-disliked, .comment-button, .view-button, .icon {
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+    vertical-align: middle;
+}
+
+.likes-icon, .dislikes-icon, .comments-icon, .views-icon {
+    font-size: 1.5em;
+}
+
+.liked, .disliked {
+    border: none;
+    background-color: #7f00ff;
+}
+
+.not-liked, .not-disliked, .comment-button, .view-button {
+    border: none;
+    background-color: transparent;
+}
+
+.pure-table, .pure-table thead {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.pure-table thead {
+    background-color: #0d0d0d;
+}
+
+.following {
+    border: 2px solid #7f00ff;
+    background-color: transparent;
+}
+
+.not-following {
+    border: none;
+    background-color: #7f00ff;
+}
+
+.pfp {
+    height: 64px;
+    overflow: hidden;
+    border-radius: 100%;
+    border: 2px solid #7f00ff;
+}
+
+.large-label {
+    font-size: 4em;
+}
+
+#canvas-card {
+    width: 800px;
+}
+
+#canvas-card input {
+    width: 750px;
+}
+
+#main-canvas {
+    cursor: crosshair;
+    border-radius: 8px;
+    display: inline-block;
+    border: 2px solid #7f00ff;
+}
+
+#landing-cards {
+    justify-content: center;
+}
+
+#landing-cards .card {
+    transition: background-color 0.25s ease;
+}
+
+#landing-cards .card:hover {
+    background-color: #7f00ff;
+}
+
+#details {
+    text-align: center;
+}
+
+#width-input {
+    appearance: none;
+    cursor: pointer;
+    color: transparent;
+    background: transparent;
+    -webkit-appearance: none;
+}
+
+#width-input::-moz-range-thumb,
+#width-input::-moz-range-progress {
+    border: none;
+    background: #7f00ff;
+}
+
+#width-input::-webkit-slider-thumb,
+#width-input::-webkit-slider-runnable-track {
+    background: #7f00ff;
+}
+
+#width-input::-ms-thumb,
+#width-input::-ms-fill-lower {
+    border: none;
+    background: #7f00ff;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+}
+
+.admin-label {
+    color: #7f00ff;
+}
+
+.inactive-label {
+    color: #ff7f00;
+}
+
+.banned-label {
+    color: #ff4747;
+}
+
+.color-button {
+    border-radius: 8px;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0.25em;
+}
+
+.selected-color-button {
+    border: 2px solid #d9d9d9;
+}
+
+#bright-red-button {
+    background-color: #ff4747;
+}
+
+#bright-orange-button {
+    background-color: #ffa347;
+}
+
+#bright-yellow-button {
+    background-color: #ffff47;
+}
+
+#bright-green-button {
+    background-color: #47ff47;
+}
+
+#bright-lightblue-button {
+    background-color: #47ffff;
+}
+
+#bright-blue-button {
+    background-color: #4747ff;
+}
+
+#bright-violet-button {
+    background-color: #a347ff;
+}
+
+#red-button {
+    background-color: #ff0000;
+}
+
+#orange-button {
+    background-color: #ff7f00;
+}
+
+#yellow-button {
+    background-color: #ffff00;
+}
+
+#green-button {
+    background-color: #00ff00;
+}
+
+#lightblue-button {
+    background-color: #00ffff;
+}
+
+#blue-button {
+    background-color: #0000ff;
+}
+
+#violet-button {
+    background-color: #7f00ff;
+}
+
+#dark-red-button {
+    background-color: #990000;
+}
+
+#dark-orange-button {
+    background-color: #994c00;
+}
+
+#dark-yellow-button {
+    background-color: #999900;
+}
+
+#dark-green-button {
+    background-color: #009900;
+}
+
+#dark-lightblue-button {
+    background-color: #009999;
+}
+
+#dark-blue-button {
+    background-color: #000099;
+}
+
+#dark-violet-button {
+    background-color: #4c0099;
+}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("You are Banned") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Unfortunately, this account is banned! :(") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("Uh oh...") }}
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <p>
+            {{ gettext("You can no longer log in to this account. Breaking the rules is bad, you know? It's allowed to create another account, and if you want to do this, you promise that you will not break the rules again") }}
+        </p>
+
+        <hr />
+
+        <form method="POST">
+            <label
+                for = "checkbox"
+                class = "pure-checkbox"
+            >
+                <input
+                    id = "checkbox"
+                    name = "checkbox"
+                    type = "checkbox"
+                />
+                {{ gettext("I will not break the rules next time") }}
+            </label>
+
+            <br />
+            <br />
+
+            <button
+                type = "submit"
+                class = "pure-button button-main"
+            >
+                {{ gettext("Create New Account") }}
+            </button>
+        </form>
+    </div>
+{% endblock %}

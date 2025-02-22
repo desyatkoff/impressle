@@ -1,0 +1,696 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | Admin Panel
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        Admin Panel
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            Inspect the database and ban inappropriate users/pictures/comments
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <h1 id="db-panel">
+            Database Panel
+        </h1>
+
+
+        <div class="card">
+            <div id="users">
+                <h1>
+                    Users
+                </h1>
+
+
+                <table
+                    width = "100%"
+                    align = "center"
+                    class = "pure-table"
+                >
+                    <thead>
+                        <tr>
+                            <th>
+                                Row ID
+                            </th>
+                            <th>
+                                UID
+                            </th>
+                            <th>
+                                Date Created
+                            </th>
+                            <th>
+                                Username
+                            </th>
+                            <th>
+                                About Me
+                            </th>
+                            <th>
+                                Karma
+                            </th>
+                            <th>
+                                Rank
+                            </th>
+                            <th>
+                                Followers
+                            </th>
+                            <th>
+                                Show Followers?
+                            </th>
+                            <th>
+                                Allow Comments?
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>
+                                    {{ user.id }}
+                                </td>
+                                <td>
+                                    {{ user.uid }}
+                                </td>
+                                <td>
+                                    {{ user.date_created.strftime("%Y-%m-%d") }}
+                                </td>
+                                <td>
+                                    @{{ user.username }}
+                                </td>
+                                <td>
+                                    {{ user.about_me }}
+                                </td>
+                                <td>
+                                    {{ user.karma }}
+                                </td>
+                                <td>
+                                    {{ user.rank }}
+                                </td>
+                                <td>
+                                    {{ user.follows|length }}
+                                </td>
+                                <td>
+                                    {{ user.show_followers }}
+                                </td>
+                                <td>
+                                    {{ user.allow_comments }}
+                                </td>
+                                <td>
+                                    {{ user.status }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="pictures">
+                <h1>
+                    Pictures
+                </h1>
+
+
+                <table
+                    width = "100%"
+                    align = "center"
+                    class = "pure-table"
+                >
+                    <thead>
+                        <tr>
+                            <th>
+                                Row ID
+                            </th>
+                            <th>
+                                UID
+                            </th>
+                            <th>
+                                Date Created
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Likes
+                            </th>
+                            <th>
+                                Dislikes
+                            </th>
+                            <th>
+                                Comments
+                            </th>
+                            <th>
+                                Views
+                            </th>
+                            <th>
+                                Author UID
+                            </th>
+                            <th>
+                                Author Username
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for picture in pictures %}
+                            <tr>
+                                <td>
+                                    {{ picture.id }}
+                                </td>
+                                <td>
+                                    {{ picture.uid }}
+                                </td>
+                                <td>
+                                    {{ picture.date_created.strftime("%Y-%m-%d") }}
+                                </td>
+                                <td>
+                                    {{ picture.title }}
+                                </td>
+                                <td>
+                                    <img
+                                        src = "{{ url_for('api.get_picture_by_uid', picture_uid=picture.uid) }}"
+                                        height = "64"
+                                    />
+                                </td>
+                                <td>
+                                    {{ picture.likes|length }}
+                                </td>
+                                <td>
+                                    {{ picture.dislikes|length }}
+                                </td>
+                                <td>
+                                    {{ picture.comments|length }}
+                                </td>
+                                <td>
+                                    {{ picture.views|length }}
+                                </td>
+                                <td>
+                                    {{ picture.author_uid }}
+                                </td>
+                                <td>
+                                    @{{ picture.author_username }}
+                                </td>
+                                <td>
+                                    {{ picture.status }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="follows">
+                <h1>
+                    Follows
+                </h1>
+
+
+                <table
+                    width = "100%"
+                    align = "center"
+                    class = "pure-table"
+                >
+                    <thead>
+                        <tr>
+                            <th>
+                                Row ID
+                            </th>
+                            <th>
+                                UID
+                            </th>
+                            <th>
+                                Date Created
+                            </th>
+                            <th>
+                                Followed UID
+                            </th>
+                            <th>
+                                Followed Username
+                            </th>
+                            <th>
+                                Follower UID
+                            </th>
+                            <th>
+                                Follower Username
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for follow in follows %}
+                            <tr>
+                                <td>
+                                    {{ follow.id }}
+                                </td>
+                                <td>
+                                    {{ follow.uid }}
+                                </td>
+                                <td>
+                                    {{ follow.date_created.strftime("%Y-%m-%d") }}
+                                </td>
+                                <td>
+                                    {{ follow.followed_uid }}
+                                </td>
+                                <td>
+                                    @{{ follow.followed_username }}
+                                </td>
+                                <td>
+                                    {{ follow.follower_uid }}
+                                </td>
+                                <td>
+                                    @{{ follow.follower_username }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="likes">
+                <h1>
+                    Likes
+                </h1>
+
+
+                <table
+                    width = "100%"
+                    align = "center"
+                    class = "pure-table"
+                >
+                    <thead>
+                        <tr>
+                            <th>
+                                Row ID
+                            </th>
+                            <th>
+                                UID
+                            </th>
+                            <th>
+                                Date Created
+                            </th>
+                            <th>
+                                Picture UID
+                            </th>
+                            <th>
+                                Author UID
+                            </th>
+                            <th>
+                                Author Username
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for like in likes %}
+                            <tr>
+                                <td>
+                                    {{ like.id }}
+                                </td>
+                                <td>
+                                    {{ like.uid }}
+                                </td>
+                                <td>
+                                    {{ like.date_created.strftime("%Y-%m-%d") }}
+                                </td>
+                                <td>
+                                    {{ like.picture_uid }}
+                                </td>
+                                <td>
+                                    {{ like.author_uid }}
+                                </td>
+                                <td>
+                                    @{{ like.author_username }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="dislikes">
+                <h1>
+                    Dislikes
+                </h1>
+
+
+                <table
+                    width = "100%"
+                    align = "center"
+                    class = "pure-table"
+                >
+                    <thead>
+                        <tr>
+                            <th>
+                                Row ID
+                            </th>
+                            <th>
+                                UID
+                            </th>
+                            <th>
+                                Date Created
+                            </th>
+                            <th>
+                                Picture UID
+                            </th>
+                            <th>
+                                Author UID
+                            </th>
+                            <th>
+                                Author Username
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dislike in dislikes %}
+                            <tr>
+                                <td>
+                                    {{ dislike.id }}
+                                </td>
+                                <td>
+                                    {{ dislike.uid }}
+                                </td>
+                                <td>
+                                    {{ dislike.date_created.strftime("%Y-%m-%d") }}
+                                </td>
+                                <td>
+                                    {{ dislike.picture_uid }}
+                                </td>
+                                <td>
+                                    {{ dislike.author_uid }}
+                                </td>
+                                <td>
+                                    @{{ dislike.author_username }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="comments">
+                <h1>
+                    Comments
+                </h1>
+
+
+                <table
+                    width = "100%"
+                    align = "center"
+                    class = "pure-table"
+                >
+                    <thead>
+                        <tr>
+                            <th>
+                                Row ID
+                            </th>
+                            <th>
+                                UID
+                            </th>
+                            <th>
+                                Date Created
+                            </th>
+                            <th>
+                                Text
+                            </th>
+                            <th>
+                                Author UID
+                            </th>
+                            <th>
+                                Author Username
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comment in comments %}
+                            <tr>
+                                <td>
+                                    {{ comment.id }}
+                                </td>
+                                <td>
+                                    {{ comment.uid }}
+                                </td>
+                                <td>
+                                    {{ comment.date_created.strftime("%Y-%m-%d") }}
+                                </td>
+                                <td>
+                                    {{ comment.text }}
+                                </td>
+                                <td>
+                                    {{ comment.author_uid }}
+                                </td>
+                                <td>
+                                    @{{ comment.author_username }}
+                                </td>
+                                <td>
+                                    {{ comment.status }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="views">
+                <h1>
+                    Views
+                </h1>
+
+
+                <table
+                    width = "100%"
+                    align = "center"
+                    class = "pure-table"
+                >
+                    <thead>
+                        <tr>
+                            <th>
+                                Row ID
+                            </th>
+                            <th>
+                                UID
+                            </th>
+                            <th>
+                                Date Created
+                            </th>
+                            <th>
+                                Picture UID
+                            </th>
+                            <th>
+                                Author UID
+                            </th>
+                            <th>
+                                Author Username
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for view in views %}
+                            <tr>
+                                <td>
+                                    {{ view.id }}
+                                </td>
+                                <td>
+                                    {{ view.uid }}
+                                </td>
+                                <td>
+                                    {{ view.date_created.strftime("%Y-%m-%d") }}
+                                </td>
+                                <td>
+                                    {{ view.picture_uid }}
+                                </td>
+                                <td>
+                                    {{ view.author_uid }}
+                                </td>
+                                <td>
+                                    @{{ view.author_username }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <hr />
+
+
+        <h1 id="edit-data-panel">
+            Edit Data Panel
+        </h1>
+
+
+        <div class="card">
+            <form
+                id = "edit-data-form"
+                method = "POST"
+            >
+                <input
+                    type = "hidden"
+                    id = "form-type"
+                    name = "form-type"
+                    value = "edit-data"
+                />
+
+
+                <div
+                    width = "100%"
+                    align = "center"
+                    class = "pure-g"
+                >
+                    <div class="pure-u-1-4">
+                        <input
+                            type = "text"
+                            id = "table-name"
+                            name = "table-name"
+                            placeholder = "Table Name"
+                        />
+                    </div>
+
+                    <div class="pure-u-1-4">
+                        <input
+                            id = "row-id"
+                            type = "text"
+                            name = "item-uid"
+                            placeholder = "Item UID"
+                        />
+                    </div>
+
+                    <div class="pure-u-1-4">
+                        <input
+                            type = "text"
+                            id = "column-name"
+                            name = "column-name"
+                            placeholder = "Column Name"
+                        />
+                    </div>
+
+                    <div class="pure-u-1-4">
+                        <input
+                            type = "text"
+                            id = "new-value"
+                            name = "new-value"
+                            placeholder = "New Value"
+                        />
+                    </div>
+                </div>
+
+
+                <hr />
+
+
+                <button
+                    class = "pure-button button-main"
+                    type = "submit"
+                >
+                    Edit Value
+                </button>
+            </form>
+        </div>
+
+
+        <hr />
+
+
+        <h1 id="ban-panel">
+            Ban Panel
+        </h1>
+
+
+        <div class="card">
+            <form
+                id = "ban-form"
+                method = "POST"
+            >
+                <input
+                    type = "hidden"
+                    id = "form-type"
+                    name = "form-type"
+                    value = "ban-form"
+                />
+
+
+                <div
+                    width="100%"
+                    align = "center"
+                    class = "pure-g"
+                >
+                    <div class="pure-u-1-3">
+                        <input
+                            type = "text"
+                            id = "user-uid"
+                            name = "user-uid"
+                            class = "pure-input"
+                            placeholder = "User UID"
+                        />
+                    </div>
+
+                    <div class="pure-u-1-3">
+                        <input
+                            type = "text"
+                            id = "picture-uid"
+                            name = "picture-uid"
+                            class = "pure-input"
+                            placeholder = "Picture UID"
+                        >
+                    </div>
+
+                    <div class="pure-u-1-3">
+                        <input
+                            type = "text"
+                            id = "comment-uid"
+                            name = "comment-uid"
+                            class = "pure-input"
+                            placeholder = "Comment UID"
+                        >
+                    </div>
+                </div>
+
+
+                <hr />
+
+
+                <button
+                    class = "pure-button button-main"
+                    type = "submit"
+                >
+                    Ban
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

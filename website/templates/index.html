@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    {{ gettext("Welcome to Impressle") }}
+{% endblock %}
+
+{% block content %}
+    <div
+        class = "card"
+        id = "landing-card"
+    >
+        <h1 align="center">
+            {{ gettext("Welcome to the") }}
+            <br />
+            <span class="large-label">
+                impressle<span style="color: #7f00ff;">.fun</span>
+            </span>
+        </h1>
+
+
+        <hr />
+
+
+        <h2 align="center">
+            {{ gettext("Unleash your creativity!") }}
+        </h2>
+
+        <p align="center">
+            <b>
+                {{ gettext("On this website, you can...:") }}
+            </b>
+        </p>
+
+
+        <div
+            class = "pure-g"
+            id = "landing-cards"
+        >
+            <div class="card pure-u-1-10">
+                <h3>
+                    {{ gettext("Draw funny pictures") }}
+                </h3>
+            </div>
+
+            <div class="card pure-u-1-10">
+                <h3>
+                    {{ gettext("Like and comment others' pictures") }}
+                </h3>
+            </div>
+
+            <div class="card pure-u-1-10">
+                <h3>
+                    {{ gettext("Get the highest rank to become the best") }}
+                </h3>
+            </div>
+
+            <div class="card pure-u-1-10">
+                <h3>
+                    {{ gettext("Get karma to show others your reputation and drawing skills") }}
+                </h3>
+            </div>
+
+            <div class="card pure-u-1-10">
+                <h3>
+                    {{ gettext("Follow your favorite artists and get your own followers too") }}
+                </h3>
+            </div>
+        </div>
+
+
+        <hr />
+
+
+        <h2 align="center">
+            {{ gettext("Isn't it impressive?") }}
+        </h2>
+
+        <p align="center">
+            <b>
+                {{ gettext("Create an account and start drawing your funny pictures on Impressle!") }}
+            </b>
+
+            <br />
+            <br />
+
+            <div
+                class = "card"
+                align = "center"
+            >
+                <span>
+                    {{ gettext("Ready to join the community? Click") }}
+                </span>
+                <button class="pure-button button-main">
+                    <a href="{{ url_for('auth.signup') }}">
+                        {{ gettext("Sign Up") }}
+                    </a>
+                </button>
+                <span>
+                    {{ gettext("to create your own account. Let's start!") }}
+                </span>
+            </div>
+        </p>
+    </div>
+{% endblock %}

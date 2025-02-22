@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            content = "IE=edge"
+            http-equiv = "X-UA-Compatible"
+        />
+        <meta
+            name = "description"
+            content = "{{ gettext('Unleash your creativity!') }}"
+        />
+        <meta
+            name = "viewport"
+            content = "width=device-width, initial-scale=1.0"
+        />
+
+        <title>
+            {% block title %}
+                Impressle
+            {% endblock %}
+        </title>
+
+        <link
+            rel = "icon"
+            type = "image/svg+xml"
+            href = "{{ url_for('static', filename='images/logo.svg') }}"
+        />
+        <link
+            rel = "preconnect"
+            href = "https://fonts.googleapis.com"
+        />
+        <link
+            crossorigin
+            rel = "preconnect"
+            href = "https://fonts.gstatic.com"
+        />
+        <link
+            rel = "stylesheet"
+            href = "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        />
+        <link
+            rel = "stylesheet"
+            crossorigin = "anonymous"
+            href = "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+            integrity = "sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
+        />
+        <link
+            rel = "stylesheet"
+            href = "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css"
+        />
+        <link
+            rel = "stylesheet"
+            href = "/static/styles/style.css"
+        />
+    </head>
+    <body>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-4">
+                <div class="sidebar sidebar-left">
+                    <img
+                        height = "64"
+                        alt = "Impressle"
+                        class = "logo pure-img"
+                        src = "/static/images/logo-full.svg"
+                    />
+
+                    <p
+                        class = "slogan"
+                        align = "center"
+                    >
+                        <b>
+                            {{ gettext("Unleash your creativity!") }}
+                        </b>
+                    </p>
+
+                    <br />
+
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item">
+                            <a
+                                href = "{{ url_for('routes.create_picture') }}"
+                                class = "pure-menu-link pure-button button-main"
+                            >
+                                <img
+                                    height = "30"
+                                    class = "icon"
+                                    src = "/static/images/plus-square.svg"
+                                />
+                                {{ gettext("Create Picture") }}
+                            </a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a
+                                href = "{{ url_for('routes.feed_recent') }}"
+                                class = "pure-menu-link pure-button"
+                            >
+                                <img
+                                    height = "30"
+                                    class = "icon"
+                                    src = "/static/images/compass.svg"
+                                />
+                                {{ gettext("Recent Pictures") }}
+                            </a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a
+                                href = "{{ url_for('routes.feed_best') }}"
+                                class = "pure-menu-link pure-button"
+                            >
+                                <img
+                                    height = "30"
+                                    class = "icon"
+                                    src = "/static/images/heart.svg"
+                                />
+                                {{ gettext("Best Pictures") }}
+                            </a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a
+                                href = "{{ url_for('routes.feed_popular') }}"
+                                class = "pure-menu-link pure-button"
+                            >
+                                <img
+                                    height = "30"
+                                    class = "icon"
+                                    src = "/static/images/trending-up.svg"
+                                />
+                                {{ gettext("Popular Pictures") }}
+                            </a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('routes.user_profile', username=user.username) }}"
+                                >
+                                    <img
+                                        height = "30"
+                                        class = "icon"
+                                        src = "/static/images/user.svg"
+                                    />
+                                    {{ gettext("Profile") }} (@{{ user.username }})
+                                </a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('routes.user_settings') }}"
+                                >
+                                    <img
+                                        height = "30"
+                                        class = "icon"
+                                        src = "/static/images/settings.svg"
+                                    />
+                                    {{ gettext("Settings") }}
+                                </a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('routes.liked') }}"
+                                >
+                                    <img
+                                        height = "30"
+                                        class = "icon"
+                                        src = "/static/images/thumbs-up.svg"
+                                    />
+                                    {{ gettext("You Liked") }}
+                                </a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('routes.following') }}"
+                                >
+                                    <img
+                                        height = "30"
+                                        class = "icon"
+                                        src = "/static/images/smile.svg"
+                                    />
+                                    {{ gettext("You Following") }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="pure-menu-item">
+                                <a
+                                    href = "{{ url_for('auth.login') }}"
+                                    class = "pure-menu-link pure-button"
+                                >
+                                    <img
+                                        height = "30"
+                                        class = "icon"
+                                        src = "/static/images/log-in.svg"
+                                    />
+                                    {{ gettext("Log In") }}
+                                </a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('auth.signup') }}"
+                                >
+                                    <img
+                                        height = "30"
+                                        class = "icon"
+                                        src = "/static/images/user-plus.svg"
+                                    />
+                                    {{ gettext("Sign Up") }}
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li class="pure-menu-item">
+                            <a
+                                class = "pure-menu-link pure-button"
+                                href = "{{ url_for('routes.about') }}"
+                            >
+                                <img
+                                    height = "30"
+                                    class = "icon"
+                                    src = "/static/images/info.svg"
+                                />
+                                {{ gettext("About") }}
+                            </a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a
+                                href = "{{ url_for('routes.faq') }}"
+                                class = "pure-menu-link pure-button"
+                            >
+                                <img
+                                    height = "30"
+                                    class = "icon"
+                                    src = "/static/images/help-circle.svg"
+                                />
+                                {{ gettext("FAQ") }}
+                            </a>
+                        </li>
+                        {% if user.rank == "Admin" %}
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('admin.panel') }}"
+                                >
+                                    <img
+                                        height = "30"
+                                        class = "icon"
+                                        src = "/static/images/terminal.svg"
+                                    />
+                                    {{ gettext("Admin Panel") }}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="pure-menu-item">
+                                <a
+                                    class = "pure-menu-link pure-button"
+                                    href = "{{ url_for('auth.logout') }}"
+                                >
+                                    <img
+                                        height = "30"
+                                        class = "icon"
+                                        src = "/static/images/log-out.svg"
+                                    />
+                                    {{ gettext("Log Out") }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                    <div class="sidebar-footer">
+                        <p>
+                            <a href="{{ url_for('routes.terms_of_service') }}">
+                                {{ gettext("Terms of Service") }}
+                            </a>
+                            |
+                            <a href="{{ url_for('routes.privacy_policy') }}">
+                                {{ gettext("Privacy Policy") }}
+                            </a>
+                        </p>
+                        <p>
+                            Copyright © 2025 impressle.fun
+
+                            <br />
+
+                            {{ gettext("All rights reserved") }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-1 pure-u-md-3-4">
+                <div class="content">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+
+        <script
+            type = "text/javascript"
+            src = "/static/scripts/index.js"
+        >
+        </script>
+    </body>
+</html>

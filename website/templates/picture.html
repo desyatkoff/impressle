@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ picture.title }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Picture") }}
+    </h1>
+
+
+    <hr />
+
+
+    {% include "div_picture.html" %}
+
+
+    {% if models.User.query.filter_by(uid=picture.author_uid).first().allow_comments %}
+        <div
+            class =  "comments"
+            id = "comments-{{ picture.uid }}"
+        >
+            <form
+                method = "POST"
+                id = "comment-form"
+                autocomplete = "off"
+                action = "{{ url_for('routes.create_comment', picture_uid=picture.uid) }}"
+            >
+                <div class="card">
+                    <input
+                        type = "text"
+                        id = "comment-text"
+                        name = "comment-text"
+                        placeholder = "{{ gettext('Comment') }}"
+                    />
+
+
+                    <button
+                        type = "submit"
+                        class = "pure-button button-main"
+                    >
+                        {{ gettext("Send") }}
+                    </button>
+                </div>
+            </form>
+
+
+            {% for comment in picture.comments %}
+                {% if comment.status != "deleted" %}
+                    {% include "div_comment.html" %}
+
+                    <br />
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

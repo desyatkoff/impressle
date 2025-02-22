@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("About Impressle") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("About Impressle") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("Here you can learn more about the Impressle website") }}
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <p id="description">
+            <b>
+                {{ gettext("Unleash your creativity!") }}
+            </b>
+
+            <br />
+            <br />
+
+            {{ gettext("Impressle is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just try it!") }}
+
+            <br />
+            <br />
+
+            {{ gettext("If you want to know how we collect, use, and protect your personal information, check the") }}
+            <a href="{{ url_for('routes.privacy_policy') }}">
+                {{ gettext("Privacy Policy") }}
+            </a>
+
+            <br />
+            <br />
+
+            <i>
+                {{ gettext("Check the") }}
+                <a href="{{ url_for('routes.faq') }}">
+                    {{ gettext("Frequently Asked Questions") }}
+                </a>
+                {{ gettext("for more details") }}
+            </i>
+        </p>
+
+        <p>
+            {{ gettext("By the way, this is an open source project, you can check the source code on") }}
+            <a href="https://github.com/desyatkoff/impressle">
+                {{ gettext("this GitHub repository") }}
+            </a>.
+
+            <br />
+
+            {{ gettext("You can become a contributor if you want :)") }}
+        </p>
+    </div>
+{% endblock %}

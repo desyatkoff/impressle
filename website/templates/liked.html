@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("You Liked") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("You Liked") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("All the pictures you have liked") }}
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div id="page-content">
+        <div
+            id = "pictures"
+            class = "pure-g"
+        >
+            {% for picture in pictures %}
+                {% if picture.status == ("normal" or "banned") %}
+                    {% if user.uid in picture.likes|map(attribute="author_uid")|list %}
+                        {% include "div_picture.html" %}
+
+                        <br />
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

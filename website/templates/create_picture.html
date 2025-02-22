@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("Create a Picture") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Create a Picture") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("Let's draw your impressive picture!") }}
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div id="page-content">
+        <div
+            class = "card"
+            id = "canvas-card"
+        >
+            <form
+                method = "POST"
+                id = "canvas-form"
+                autocomplete = "off"
+            >
+                <p align="center">
+                    <input
+                        id = "title"
+                        type = "text"
+                        name = "title"
+                        placeholder = "{{ gettext('Picture Title') }}"
+                    />
+                </p>
+
+                <canvas
+                    width = "800"
+                    height = "600"
+                    id = "main-canvas"
+                >
+                </canvas>
+
+
+                <p>
+                    <b>
+                        {{ gettext("Brush Width") }}
+                    </b>
+                    :
+                    <span id="width-span">
+                        4
+                    </span>
+                    <input
+                        min = "4"
+                        step = "2"
+                        max = "100"
+                        value = "8"
+                        type = "range"
+                        id = "width-input"
+                    />
+                </p>
+
+                <p>
+                    <b>
+                        {{ gettext("Brush Color") }}
+                    </b>
+                    :
+                </p>
+
+                <div class="pure-g">
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "bright-red-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('bright-red')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "bright-orange-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('bright-orange')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "bright-yellow-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('bright-yellow')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "bright-green-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('bright-green')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "bright-lightblue-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('bright-lightblue')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "bright-blue-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('bright-blue')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "bright-violet-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('bright-violet')"
+                        >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pure-g">
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "red-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('red')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "orange-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('orange')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "yellow-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('yellow')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "green-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('green')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "lightblue-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('lightblue')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "blue-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('blue')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "violet-button"
+                            class = "pure-button color-button selected-color-button"
+                            onclick = "change_color('violet')"
+                        >
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pure-g">
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "dark-red-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark-red')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "dark-orange-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark-orange')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "dark-yellow-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark-yellow')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "dark-green-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark-green')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "dark-lightblue-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark-lightblue')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "dark-blue-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark-blue')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-7">
+                        <a
+                            id = "dark-violet-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark-violet')"
+                        >
+                        </a>
+                    </div>
+                </div>
+
+
+                <hr />
+
+
+                <input
+                    type = "hidden"
+                    id = "image-data"
+                    name = "image-data"
+                />
+
+
+                <div class="pure-g">
+                    <div class="pure-u">
+                        <button
+                            type = "submit"
+                            class = "pure-button button-main"
+                        >
+                            {{ gettext("Publish") }}
+                        </button>
+                    </div>
+                    <div class="pure-u">
+                        <a
+                            onclick = "reset_canvas()"
+                            class = "pure-button button-danger"
+                        >
+                            {{ gettext("Reset Canvas") }}
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script
+        type = "text/javascript"
+        src = "/static/scripts/canvas.js"
+    >
+    </script>
+{% endblock %}

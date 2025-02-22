@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Impressle | {{ gettext("Sign Up") }}
+{% endblock %}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Hello, New User!") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        {{ gettext("Let's create a new account") }}
+    </p>
+
+
+    <hr />
+
+
+    <div
+        class = "card"
+        id = "page-content"
+    >
+        <form
+            method = "POST"
+            autocomplete = "off"
+        >
+            <label for="username">
+                {{ gettext("Username") }}
+                <span style="color: #ff4747;">
+                    *
+                </span>
+            </label>
+            <input
+                type = "text"
+                id = "username"
+                minlength = "4"
+                maxlength = "16"
+                name = "username"
+                placeholder = "{{ gettext('Username') }}"
+            />
+
+            <br />
+
+            <label for="password">
+                {{ gettext("Password") }}
+                <span style="color: #ff4747;">
+                    *
+                </span>
+            </label>
+            <input
+                id = "password"
+                minlength = "8"
+                maxlength = "32"
+                type = "password"
+                name = "password"
+                placeholder = "{{ gettext('Password') }}"
+            />
+
+            <br />
+
+            <label for="about-me">
+                {{ gettext("About Me") }}
+            </label>
+            <input
+                type = "text"
+                id = "about-me"
+                maxlength = "64"
+                name = "about-me"
+                placeholder = "{{ gettext('About Me') }}"
+            />
+
+            <br />
+            <br />
+
+            <label
+                for = "checkbox"
+                class = "pure-checkbox"
+            >
+                <input
+                    id = "checkbox"
+                    type = "checkbox"
+                    name = "checkbox"
+                />
+                {{ gettext("I have read the") }}
+                <a href="{{ url_for('routes.terms_of_service') }}">
+                    {{ gettext("Terms of Service") }}
+                </a>
+                {{ gettext("and") }}
+                <a href="{{ url_for('routes.privacy_policy') }}">
+                    {{ gettext("Privacy Policy") }}
+                </a>
+                <span style="color: #ff4747;">
+                    *
+                </span>
+            </label>
+
+            <br />
+            <br />
+
+            <button
+                type = "submit"
+                class = "pure-button button-main"
+            >
+                {{ gettext("Sign Up") }}
+            </button>
+
+
+            <hr />
+
+
+            <p>
+                {{ gettext("Already have an account?") }}
+                <a href="{{ url_for('auth.login') }}">
+                    {{ gettext("Log In") }}
+                </a>
+            </p>
+        </form>
+    </div>
+{% endblock %}
