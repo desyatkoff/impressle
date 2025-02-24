@@ -1,3 +1,6 @@
+// I'm very sorry for this shit, I don't know javascript ._.
+
+
 function view_picture(picture_uid) {
     window.location.replace(`/picture/${picture_uid}`)
 }

@@ -1,3 +1,6 @@
+// I'm very sorry for this shit, I don't know javascript ._.
+
+
 let canvas = document.getElementById("main-canvas");
 let context = canvas.getContext("2d");
 
