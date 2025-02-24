@@ -33,6 +33,9 @@ app: flask.Flask
 
 
 def get_locale():
+    """A function that returns user locale to Flask-Babel"""
+
+
     return flask.request.accept_languages.best_match(
         matches = [
             "en",
@@ -42,6 +45,9 @@ def get_locale():
 
 
 def init_flask_app():
+    """A function that creates and sets the configuration for the Flask app"""
+
+
     global app
 
 
@@ -52,6 +58,8 @@ def init_flask_app():
     from . import routes
 
 
+    # Flask settings
+
     app = flask.Flask(
         import_name = __name__
     )
@@ -61,8 +69,9 @@ def init_flask_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = config.SQLALCHEMY_TRACK_MODIFICATIONS
 
 
-    extensions.login_manager.login_view = "auth.login"
+    # Flask extensions settings
 
+    extensions.login_manager.login_view = "auth.login"
 
     extensions.babel.init_app(
         app = app,
@@ -75,6 +84,8 @@ def init_flask_app():
         app = app
     )
 
+
+    # Register Flask Blueprints
 
     app.register_blueprint(
         blueprint = api.api,
@@ -93,6 +104,8 @@ def init_flask_app():
         url_prefix = "/"
     )
 
+
+    # Load users
 
     @extensions.login_manager.user_loader
     def load_user(id):

@@ -28,6 +28,9 @@ app = website.init_flask_app()
 
 
 if __name__ == "__main__":
+    """Launch the Flask app"""
+
+
     if not os.path.exists(config.DB_PATH):
         with app.app_context():
             website.extensions.db.create_all()

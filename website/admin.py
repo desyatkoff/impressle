@@ -21,8 +21,9 @@
 import flask
 import flask_login
 
-import website
 import config
+import website
+from . import extensions
 
 
 admin = flask.Blueprint(
@@ -66,7 +67,7 @@ def access_admin():
             )
 
 
-            return flask.redirect(flask.request.referrer)
+            return flask.redirect(flask.request.referrer)    # Return to previous page
 
 
     return flask.render_template(
@@ -234,7 +235,7 @@ def panel():
                     pass
 
 
-            website.db.session.commit()
+            extensions.db.session.commit()
 
 
         return flask.render_template(

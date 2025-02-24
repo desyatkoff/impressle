@@ -65,7 +65,7 @@ def before_request():
                     datetime.datetime.now(
                         tz = datetime.timezone.utc
                     ).timestamp()
-                ) - user_.last_activity > 2592000:
+                ) - user_.last_activity > 2592000:    # 259200 seconds = 30 days
                 user_.status = "inactive"
 
 
