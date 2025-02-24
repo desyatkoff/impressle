@@ -26,6 +26,9 @@ from . import extensions
 
 
 class User(extensions.db.Model, flask_login.UserMixin):
+    """User account database model"""
+
+
     id = extensions.db.Column(
         extensions.db.Integer,
         primary_key = True,
@@ -100,6 +103,9 @@ class User(extensions.db.Model, flask_login.UserMixin):
 
 
 class Picture(extensions.db.Model):
+    """Picture (user's post) database model"""
+
+
     id = extensions.db.Column(
         extensions.db.Integer,
         primary_key = True,
@@ -178,6 +184,9 @@ class Picture(extensions.db.Model):
 
 
 class Follow(extensions.db.Model):
+    """Follow database model"""
+
+
     id = extensions.db.Column(
         extensions.db.Integer,
         primary_key = True,
@@ -216,6 +225,9 @@ class Follow(extensions.db.Model):
 
 
 class Like(extensions.db.Model):
+    """Like database model"""
+
+
     id = extensions.db.Column(
         extensions.db.Integer,
         primary_key = True,
@@ -254,6 +266,9 @@ class Like(extensions.db.Model):
 
 
 class Dislike(extensions.db.Model):
+    """Dislike database model"""
+
+
     id = extensions.db.Column(
         extensions.db.Integer,
         primary_key = True,
@@ -292,6 +307,9 @@ class Dislike(extensions.db.Model):
 
 
 class Comment(extensions.db.Model):
+    """Comment database model"""
+
+
     id = extensions.db.Column(
         extensions.db.Integer,
         primary_key = True,
@@ -338,6 +356,9 @@ class Comment(extensions.db.Model):
 
 
 class View(extensions.db.Model):
+    """View (for picture) database model"""
+
+
     id = extensions.db.Column(
         extensions.db.Integer,
         primary_key = True,

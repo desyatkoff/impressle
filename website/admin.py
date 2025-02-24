@@ -67,7 +67,7 @@ def access_admin():
             )
 
 
-            return flask.redirect(flask.request.referrer)
+            return flask.redirect(flask.request.referrer)    # Return to previous page
 
 
     return flask.render_template(
