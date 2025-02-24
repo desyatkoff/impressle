@@ -21,8 +21,9 @@
 import flask
 import flask_login
 
-import website
 import config
+import website
+from . import extensions
 
 
 admin = flask.Blueprint(
@@ -234,7 +235,7 @@ def panel():
                     pass
 
 
-            website.db.session.commit()
+            extensions.db.session.commit()
 
 
         return flask.render_template(
