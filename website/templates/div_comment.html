@@ -34,21 +34,24 @@
     </div>
 
 
-    {% if user.uid == comment.author_uid and comment.status == "normal" %}
-        <hr />
+    {% if user.uid == comment.author_uid or user.rank == "Admin" %}
+        {% if comment.status == "normal" %}
+            <hr />
 
-        <form
-            method = "POST"
-            autocomplete = "off"
-            id = "delete-comment-form"
-            action = "{{ url_for('routes.delete_comment', comment_uid=comment.uid) }}"
-        >
-            <button
-                type="submit"
-                class = "pure-button button-main"
+
+            <form
+                method = "POST"
+                autocomplete = "off"
+                id = "delete-comment-form"
+                action = "{{ url_for('routes.delete_comment', comment_uid=comment.uid) }}"
             >
-                {{ gettext("Delete Comment") }}
-            </button>
-        </form>
+                <button
+                    type="submit"
+                    class = "pure-button button-danger"
+                >
+                    {{ gettext("Delete Comment") }}
+                </button>
+            </form>
+        {% endif %}
     {% endif %}
 </div>

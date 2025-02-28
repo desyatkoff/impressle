@@ -23,7 +23,7 @@
 
         <div class="picture-author">
             <p>
-                Author:
+                {{ gettext("Author") }}:
                 <a href="{{ url_for('routes.user_profile', username=picture.author_username) }}">
                     @{{ picture.author_username }}
                 </a>
@@ -87,7 +87,7 @@
                             class = "likes-count"
                             id = "likes-count-{{ picture.uid }}"
                         >
-                            {{ picture.likes|length }}
+                            {{ picture.likes_count }}
                         </span>
                     </p>
                 </div>
@@ -122,7 +122,7 @@
                             class = "dislikes-count"
                             id = "dislikes-count-{{ picture.uid }}"
                         >
-                            {{ picture.dislikes|length }}
+                            {{ picture.dislikes_count }}
                         </span>
                     </p>
                 </div>
@@ -145,7 +145,7 @@
                                 class = "comments-count"
                                 id = "comment-count-{{ picture.uid }}"
                             >
-                                {{ picture.comments|length }}
+                                {{ picture.comments_count }}
                             </span>
                         </p>
                     </div>
@@ -168,17 +168,19 @@
                             class = "views-count"
                             id = "views-count-{{ picture.uid }}"
                         >
-                            {{ picture.views|length }}
+                            {{ picture.views_count }}
                         </span>
                     </p>
                 </div>
             </div>
         </div>
 
-        {% if user.uid == picture.author_uid %}
-            <hr />
 
-            <div class="picture-other">
+        {% if user.uid == picture.author_uid or user.rank == "Admin" %}
+            {% if picture.status == "normal" %}
+                <hr />
+
+
                 <form
                     method = "POST"
                     autocomplete = "off"
@@ -187,12 +189,12 @@
                 >
                     <button
                         type = "submit"
-                        class = "pure-button button-main"
+                        class = "pure-button button-danger"
                     >
                         {{ gettext("Delete Picture") }}
                     </button>
                 </form>
-            </div>
+            {% endif %}
         {% endif %}
     </div>
 </div>
