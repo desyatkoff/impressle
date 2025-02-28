@@ -214,27 +214,14 @@ input:focus {
 }
 
 #width-input {
-    appearance: none;
     cursor: pointer;
-    color: transparent;
-    background: transparent;
-    -webkit-appearance: none;
 }
 
 #width-input::-moz-range-thumb,
 #width-input::-moz-range-progress {
     border: none;
-    background: #7f00ff;
-}
-
-#width-input::-webkit-slider-thumb,
-#width-input::-webkit-slider-runnable-track {
-    background: #7f00ff;
-}
-
-#width-input::-ms-thumb,
-#width-input::-ms-fill-lower {
-    border: none;
+    appearance: none;
+    color: transparent;
     background: #7f00ff;
 }
 
