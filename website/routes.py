@@ -66,7 +66,8 @@ def before_request():
                         tz = datetime.timezone.utc
                     ).timestamp()
                 ) - user_.last_activity > 2592000:    # 259200 seconds = 30 days
-                user_.status = "inactive"
+                if user_.status != "banned":
+                    user_.status = "inactive"
 
 
         if user.status == "inactive":
@@ -78,7 +79,11 @@ def before_request():
             flask.redirect(flask.url_for("routes.banned"))
 
 
-        user.last_activity = round(datetime.datetime.now(datetime.timezone.utc).timestamp())
+        user.last_activity = round(
+            datetime.datetime.now(
+                tz = datetime.timezone.utc
+            ).timestamp()
+        )
 
 
         extensions.db.session.commit()
@@ -174,6 +179,17 @@ def feed_popular():
         pictures = popular_pictures,
         feed_type = "popular",
         models = website.models
+    )
+
+
+@routes.route("/user")
+@flask_login.login_required
+def current_user_profile():
+    return flask.redirect(
+        flask.url_for(
+            endpoint = "routes.user_profile",
+            username = flask_login.current_user.username
+        )
     )
 
 
@@ -346,7 +362,7 @@ def following():
 @routes.route("/delete-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def delete_picture(picture_uid):
-    user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
+    user = flask_login.current_user
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
 
 
@@ -356,7 +372,7 @@ def delete_picture(picture_uid):
             category = "error"
         )
     else:
-        if flask_login.current_user.uid == picture.author_uid:
+        if user.uid == picture.author_uid or user.rank == "Admin":
             flask.flash(
                 message = "Successfully deleted your picture",
                 category = "success"
@@ -777,6 +793,7 @@ def create_comment(picture_uid):
 @routes.route("/delete-comment/<comment_uid>", methods=["POST"])
 @flask_login.login_required
 def delete_comment(comment_uid):
+    user = flask_login.current_user
     comment = website.models.Comment.query.filter_by(uid=comment_uid).first()
     picture = website.models.Picture.query.filter_by(uid=comment.picture_uid).first()
 
@@ -787,7 +804,7 @@ def delete_comment(comment_uid):
             category = "error"
         )
     else:
-        if flask_login.current_user.uid == comment.author_uid:
+        if user.uid == comment.author_uid or user.rank == "Admin":
             picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
 
 
