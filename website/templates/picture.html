@@ -2,7 +2,13 @@
 
 
 {% block title %}
-    Impressle | {{ picture.title }}
+    Impressle
+    |
+    {% if picture.title %}
+        {{ picture.title }}
+    {% else %}
+        {{ gettext("Untitled") }} #{{ picture.uid }}
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -47,11 +53,12 @@
             </form>
 
 
+            <br />
+
+
             {% for comment in picture.comments %}
                 {% if comment.status != "deleted" %}
                     {% include "div_comment.html" %}
-
-                    <br />
                 {% endif %}
             {% endfor %}
         </div>

@@ -57,6 +57,80 @@ msgstr ""
 msgid "You can become a contributor if you want :)"
 msgstr ""
 
+#: website/templates/access_admin.html:5 website/templates/access_admin.html:49
+msgid "Access the Admin Panel"
+msgstr ""
+
+#: website/templates/access_admin.html:10
+msgid "Welcome to the Admin Panel"
+msgstr ""
+
+#: website/templates/access_admin.html:16
+msgid "You have to provide the secret key to prove that you are an admin"
+msgstr ""
+
+#: website/templates/access_admin.html:33
+#: website/templates/access_admin.html:39
+msgid "Secret Key"
+msgstr ""
+
+#: website/templates/admin.html:5 website/templates/admin.html:10
+#: website/templates/base.html:250
+msgid "Admin Panel"
+msgstr ""
+
+#: website/templates/admin.html:16
+msgid "Inspect the database and ban inappropriate users/pictures/comments"
+msgstr ""
+
+#: website/templates/admin.html:29
+msgid "Edit Data Panel"
+msgstr ""
+
+#: website/templates/admin.html:56
+msgid "Table Name"
+msgstr ""
+
+#: website/templates/admin.html:65
+msgid "Item UID"
+msgstr ""
+
+#: website/templates/admin.html:74
+msgid "Column Name"
+msgstr ""
+
+#: website/templates/admin.html:83
+msgid "New Value"
+msgstr ""
+
+#: website/templates/admin.html:96
+msgid "Edit Value"
+msgstr ""
+
+#: website/templates/admin.html:106
+msgid "Ban Panel"
+msgstr ""
+
+#: website/templates/admin.html:134
+msgid "User UID"
+msgstr ""
+
+#: website/templates/admin.html:144
+msgid "Picture UID"
+msgstr ""
+
+#: website/templates/admin.html:154
+msgid "Comment UID"
+msgstr ""
+
+#: website/templates/admin.html:167
+msgid "Ban"
+msgstr ""
+
+#: website/templates/admin.html:177
+msgid "Database Panel"
+msgstr ""
+
 #: website/templates/banned.html:5
 msgid "You are Banned"
 msgstr ""
@@ -137,10 +211,6 @@ msgstr ""
 
 #: website/templates/base.html:236 website/templates/faq.html:5
 msgid "FAQ"
-msgstr ""
-
-#: website/templates/base.html:250
-msgid "Admin Panel"
 msgstr ""
 
 #: website/templates/base.html:265
@@ -829,7 +899,7 @@ msgstr ""
 #, python-format
 msgid ""
 "We implement security measures such as encryption and access controls to "
-"protect your data. However, no system is 100% secure."
+"protect your data."
 msgstr ""
 
 #: website/templates/privacy_policy.html:183

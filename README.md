@@ -12,7 +12,7 @@
 
 **Unleash your creativity!**
 
-**Impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just try it!
+**Impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just [try it](https://impressle.fun/)!
 
 
 ## Table of Contents

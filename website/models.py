@@ -38,7 +38,11 @@ class User(extensions.db.Model, flask_login.UserMixin):
     uid = extensions.db.Column(
         extensions.db.Integer,
         unique = True,
-        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
+        default = lambda: round(
+            datetime.datetime.now(
+                tz = datetime.timezone.utc
+            ).timestamp()
+        )
     )
     date_created = extensions.db.Column(
         extensions.db.DateTime,
@@ -118,7 +122,7 @@ class Picture(extensions.db.Model):
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = extensions.db.Column(
-        extensions.db.DateTime(timezone=True),
+        extensions.db.DateTime,
         default = datetime.datetime.now(datetime.timezone.utc)
     )
     title = extensions.db.Column(
@@ -199,7 +203,7 @@ class Follow(extensions.db.Model):
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = extensions.db.Column(
-        extensions.db.DateTime(timezone=True),
+        extensions.db.DateTime,
         default = datetime.datetime.now(datetime.timezone.utc)
     )
     followed_uid = extensions.db.Column(
@@ -240,7 +244,7 @@ class Like(extensions.db.Model):
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = extensions.db.Column(
-        extensions.db.DateTime(timezone=True),
+        extensions.db.DateTime,
         default = datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = extensions.db.Column(
@@ -281,7 +285,7 @@ class Dislike(extensions.db.Model):
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = extensions.db.Column(
-        extensions.db.DateTime(timezone=True),
+        extensions.db.DateTime,
         default = datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = extensions.db.Column(
@@ -322,7 +326,7 @@ class Comment(extensions.db.Model):
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = extensions.db.Column(
-        extensions.db.DateTime(timezone=True),
+        extensions.db.DateTime,
         default = datetime.datetime.now(datetime.timezone.utc)
     )
     text = extensions.db.Column(
@@ -371,7 +375,7 @@ class View(extensions.db.Model):
         default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
     )
     date_created = extensions.db.Column(
-        extensions.db.DateTime(timezone=True),
+        extensions.db.DateTime,
         default = datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = extensions.db.Column(

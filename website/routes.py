@@ -188,7 +188,7 @@ def user_profile(username):
         )
 
 
-        return flask.redirect(flask.url_for("routes.feed"))
+        return flask.redirect(flask.request.referrer)
 
 
     return flask.render_template(
@@ -395,14 +395,14 @@ def view_picture(picture_uid):
         view = ""
 
 
-    if not picture:
+    if not picture or picture.status == "deleted":
         flask.flash(
             message = "Picture does not exist",
             category = "error"
         )
 
 
-        return flask.redirect(flask.url_for("routes.feed"))
+        return flask.redirect(flask.request.referrer)
     else:
         if view is None:
             new_view = website.models.View(
@@ -766,7 +766,12 @@ def create_comment(picture_uid):
             )
 
 
-    return flask.redirect(flask.url_for("routes.feed"))
+    return flask.redirect(
+        flask.url_for(
+            endpoint = "routes.view_picture",
+            picture_uid = picture_uid
+        )
+    )
 
 
 @routes.route("/delete-comment/<comment_uid>", methods=["POST"])
@@ -808,4 +813,9 @@ def delete_comment(comment_uid):
             )
 
 
-    return flask.redirect(flask.url_for("routes.feed"))
+    return flask.redirect(
+        flask.url_for(
+            endpoint = "routes.view_picture",
+            picture_uid = picture.uid
+        )
+    )

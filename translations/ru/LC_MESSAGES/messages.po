@@ -65,6 +65,81 @@ msgstr "этом репозитории GitHub"
 msgid "You can become a contributor if you want :)"
 msgstr "Вы можете стать участником проекта если хотите :)"
 
+#: website/templates/access_admin.html:5 website/templates/access_admin.html:49
+msgid "Access the Admin Panel"
+msgstr "Доступ к админ панели"
+
+#: website/templates/access_admin.html:10
+#, fuzzy
+msgid "Welcome to the Admin Panel"
+msgstr "Добро пожаловать на админ панель"
+
+#: website/templates/access_admin.html:16
+msgid "You have to provide the secret key to prove that you are an admin"
+msgstr "Вы должны предоставить секретный ключ чтобы мы могли удостовериться что вы админ"
+
+#: website/templates/access_admin.html:33
+#: website/templates/access_admin.html:39
+msgid "Secret Key"
+msgstr "Секретный ключ"
+
+#: website/templates/admin.html:5 website/templates/admin.html:10
+#: website/templates/base.html:250
+msgid "Admin Panel"
+msgstr "Админ панель"
+
+#: website/templates/admin.html:16
+msgid "Inspect the database and ban inappropriate users/pictures/comments"
+msgstr "Просматривайте базу данных и баньте недопустимых пользователей/картинок/комментариев"
+
+#: website/templates/admin.html:29
+msgid "Edit Data Panel"
+msgstr "Изменение данных"
+
+#: website/templates/admin.html:56
+msgid "Table Name"
+msgstr "Название таблицы"
+
+#: website/templates/admin.html:65
+msgid "Item UID"
+msgstr "UID"
+
+#: website/templates/admin.html:74
+msgid "Column Name"
+msgstr "Название столбца"
+
+#: website/templates/admin.html:83
+msgid "New Value"
+msgstr "Новое значение"
+
+#: website/templates/admin.html:96
+msgid "Edit Value"
+msgstr "Изменить значение"
+
+#: website/templates/admin.html:106
+msgid "Ban Panel"
+msgstr "Бан-панель"
+
+#: website/templates/admin.html:134
+msgid "User UID"
+msgstr "UID пользователя"
+
+#: website/templates/admin.html:144
+msgid "Picture UID"
+msgstr "UID картинки"
+
+#: website/templates/admin.html:154
+msgid "Comment UID"
+msgstr "UID комментария"
+
+#: website/templates/admin.html:167
+msgid "Ban"
+msgstr "Забанить"
+
+#: website/templates/admin.html:177
+msgid "Database Panel"
+msgstr "База данных"
+
 #: website/templates/banned.html:5
 msgid "You are Banned"
 msgstr "Вы забанены"
@@ -149,10 +224,6 @@ msgstr "О сайте"
 #: website/templates/base.html:236 website/templates/faq.html:5
 msgid "FAQ"
 msgstr "ЧаВо"
-
-#: website/templates/base.html:250
-msgid "Admin Panel"
-msgstr "Админка"
 
 #: website/templates/base.html:265
 msgid "Log Out"
@@ -890,11 +961,10 @@ msgstr "6. Безопасность данных"
 #, python-format
 msgid ""
 "We implement security measures such as encryption and access controls to "
-"protect your data. However, no system is 100% secure."
+"protect your data."
 msgstr ""
 "Мы применяем такие меры безопасности, как шифрование и контроль доступа, "
-"чтобы защитить ваши данные. Однако ни одна система не является на 100% "
-"безопасной."
+"чтобы защитить ваши данные."
 
 #: website/templates/privacy_policy.html:183
 msgid "7. Cookies and Tracking"
