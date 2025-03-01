@@ -255,10 +255,6 @@ msgstr "Выйти"
 msgid "Terms of Service"
 msgstr "Пользовательское Соглашение"
 
-#: website/templates/base.html:286
-msgid "All rights reserved"
-msgstr "Все права защищены"
-
 #: website/templates/create_picture.html:5
 #: website/templates/create_picture.html:10 website/templates/feed.html:56
 msgid "Create a Picture"

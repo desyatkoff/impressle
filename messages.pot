@@ -240,10 +240,6 @@ msgstr ""
 msgid "Terms of Service"
 msgstr ""
 
-#: website/templates/base.html:286
-msgid "All rights reserved"
-msgstr ""
-
 #: website/templates/create_picture.html:5
 #: website/templates/create_picture.html:10 website/templates/feed.html:56
 msgid "Create a Picture"
