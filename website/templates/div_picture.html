@@ -23,7 +23,8 @@
 
         <div class="picture-author">
             <p>
-                {{ gettext("Author") }}:
+                {{ gettext("Author") }}
+                :
                 <a href="{{ url_for('routes.user_profile', username=picture.author_username) }}">
                     @{{ picture.author_username }}
                 </a>
