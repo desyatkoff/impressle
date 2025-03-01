@@ -291,8 +291,8 @@ msgstr "Автор"
 #: website/templates/div_comment.html:13
 #: website/templates/div_compact_profile.html:16
 #: website/templates/div_picture.html:32 website/templates/user_profile.html:35
-msgid "[ ADMIN ]"
-msgstr "[ АДМИН ]"
+msgid "ADMIN"
+msgstr "АДМИН"
 
 #: website/templates/div_comment.html:18
 msgid "Commented on"
@@ -301,8 +301,8 @@ msgstr "Прокомментировано"
 #: website/templates/div_comment.html:28
 #: website/templates/div_compact_profile.html:26
 #: website/templates/div_picture.html:18 website/templates/user_profile.html:45
-msgid "[ BANNED ]"
-msgstr "[ ЗАБАНЕН ]"
+msgid "BANNED"
+msgstr "ЗАБАНЕН"
 
 #: website/templates/div_comment.html:52
 msgid "Delete Comment"
@@ -310,8 +310,8 @@ msgstr "Удалить комментарий"
 
 #: website/templates/div_compact_profile.html:22
 #: website/templates/user_profile.html:41
-msgid "[ INACTIVE ]"
-msgstr "[ НЕАКТИВНЫЙ ]"
+msgid "INACTIVE"
+msgstr "НЕАКТИВНЫЙ"
 
 #: website/templates/div_compact_profile.html:41
 #: website/templates/user_profile.html:60

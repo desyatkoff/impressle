@@ -276,7 +276,7 @@ msgstr ""
 #: website/templates/div_comment.html:13
 #: website/templates/div_compact_profile.html:16
 #: website/templates/div_picture.html:32 website/templates/user_profile.html:35
-msgid "[ ADMIN ]"
+msgid "ADMIN"
 msgstr ""
 
 #: website/templates/div_comment.html:18
@@ -286,7 +286,7 @@ msgstr ""
 #: website/templates/div_comment.html:28
 #: website/templates/div_compact_profile.html:26
 #: website/templates/div_picture.html:18 website/templates/user_profile.html:45
-msgid "[ BANNED ]"
+msgid "BANNED"
 msgstr ""
 
 #: website/templates/div_comment.html:52
@@ -295,7 +295,7 @@ msgstr ""
 
 #: website/templates/div_compact_profile.html:22
 #: website/templates/user_profile.html:41
-msgid "[ INACTIVE ]"
+msgid "INACTIVE"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:41
