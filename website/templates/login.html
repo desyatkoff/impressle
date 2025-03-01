@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 
-{% block title %}
+{%- block title -%}
     Impressle | {{ gettext("Log In") }}
-{% endblock %}
+{%- endblock -%}
 
 {% block content %}
     <h1 id="page-title">
@@ -29,6 +29,9 @@
         >
             <label for="username">
                 {{ gettext("Username") }}
+                <span style="color: #ff4747;">
+                    *
+                </span>
             </label>
             <input
                 type = "text"
@@ -41,6 +44,9 @@
 
             <label for="password">
                 {{ gettext("Password") }}
+                <span style="color: #ff4747;">
+                    *
+                </span>
             </label>
             <input
                 id = "password"

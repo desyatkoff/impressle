@@ -70,13 +70,14 @@ msgid "Access the Admin Panel"
 msgstr "Доступ к админ панели"
 
 #: website/templates/access_admin.html:10
-#, fuzzy
 msgid "Welcome to the Admin Panel"
 msgstr "Добро пожаловать на админ панель"
 
 #: website/templates/access_admin.html:16
 msgid "You have to provide the secret key to prove that you are an admin"
-msgstr "Вы должны предоставить секретный ключ чтобы мы могли удостовериться что вы админ"
+msgstr ""
+"Вы должны предоставить секретный ключ чтобы мы могли удостовериться что "
+"вы админ"
 
 #: website/templates/access_admin.html:33
 #: website/templates/access_admin.html:39
@@ -90,17 +91,19 @@ msgstr "Админ панель"
 
 #: website/templates/admin.html:16
 msgid "Inspect the database and ban inappropriate users/pictures/comments"
-msgstr "Просматривайте базу данных и баньте недопустимых пользователей/картинок/комментариев"
+msgstr ""
+"Просматривайте базу данных и баньте недопустимых "
+"пользователей/картинок/комментариев"
 
 #: website/templates/admin.html:29
 msgid "Edit Data Panel"
 msgstr "Изменение данных"
 
-#: website/templates/admin.html:56
+#: website/templates/admin.html:56 website/templates/admin.html:204
 msgid "Table Name"
 msgstr "Название таблицы"
 
-#: website/templates/admin.html:65
+#: website/templates/admin.html:65 website/templates/admin.html:213
 msgid "Item UID"
 msgstr "UID"
 
@@ -117,26 +120,42 @@ msgid "Edit Value"
 msgstr "Изменить значение"
 
 #: website/templates/admin.html:106
-msgid "Ban Panel"
-msgstr "Бан-панель"
+msgid "Mark Data As \"Deleted\" Panel"
+msgstr "Помечение данных как \"удалённые\""
 
-#: website/templates/admin.html:134
+#: website/templates/admin.html:134 website/templates/admin.html:264
 msgid "User UID"
 msgstr "UID пользователя"
 
-#: website/templates/admin.html:144
+#: website/templates/admin.html:144 website/templates/admin.html:274
 msgid "Picture UID"
 msgstr "UID картинки"
 
-#: website/templates/admin.html:154
+#: website/templates/admin.html:154 website/templates/admin.html:284
 msgid "Comment UID"
 msgstr "UID комментария"
 
 #: website/templates/admin.html:167
+msgid "Mark As Deleted"
+msgstr "Пометить как удалённое"
+
+#: website/templates/admin.html:177
+msgid "Delete Data From DB Panel"
+msgstr "Панель удаления данных из БД"
+
+#: website/templates/admin.html:226
+msgid "Delete"
+msgstr "Удалить"
+
+#: website/templates/admin.html:236
+msgid "Ban Panel"
+msgstr "Бан-панель"
+
+#: website/templates/admin.html:297
 msgid "Ban"
 msgstr "Забанить"
 
-#: website/templates/admin.html:177
+#: website/templates/admin.html:307
 msgid "Database Panel"
 msgstr "База данных"
 
@@ -207,12 +226,12 @@ msgid "You Following"
 msgstr "Вы подписаны"
 
 #: website/templates/base.html:196 website/templates/login.html:5
-#: website/templates/login.html:59 website/templates/signup.html:117
+#: website/templates/login.html:65 website/templates/signup.html:117
 msgid "Log In"
 msgstr "Войти"
 
 #: website/templates/base.html:209 website/templates/index.html:96
-#: website/templates/login.html:69 website/templates/signup.html:5
+#: website/templates/login.html:75 website/templates/signup.html:5
 #: website/templates/signup.html:107
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
@@ -269,7 +288,7 @@ msgstr "Опубликовать"
 msgid "Reset Canvas"
 msgstr "Очистить"
 
-#: website/templates/div_comment.html:7
+#: website/templates/div_comment.html:7 website/templates/div_picture.html:26
 msgid "Author"
 msgstr "Автор"
 
@@ -289,7 +308,7 @@ msgstr "Прокомментировано"
 msgid "[ BANNED ]"
 msgstr "[ ЗАБАНЕН ]"
 
-#: website/templates/div_comment.html:50
+#: website/templates/div_comment.html:52
 msgid "Delete Comment"
 msgstr "Удалить комментарий"
 
@@ -300,8 +319,8 @@ msgstr "[ НЕАКТИВНЫЙ ]"
 
 #: website/templates/div_compact_profile.html:41
 #: website/templates/user_profile.html:60
-msgid "followers"
-msgstr "подписчиков"
+msgid "follower(s)"
+msgstr "подписчика(ов)"
 
 #: website/templates/div_compact_profile.html:52
 #: website/templates/user_profile.html:71
@@ -313,7 +332,7 @@ msgstr "Отписаться"
 msgid "Follow"
 msgstr "Подписаться"
 
-#: website/templates/div_picture.html:12
+#: website/templates/div_picture.html:12 website/templates/picture.html:9
 msgid "Untitled"
 msgstr "Без названия"
 
@@ -321,7 +340,7 @@ msgstr "Без названия"
 msgid "Published on"
 msgstr "Опубликовано"
 
-#: website/templates/div_picture.html:192
+#: website/templates/div_picture.html:194
 msgid "Delete Picture"
 msgstr "Удалить картинку"
 
@@ -762,29 +781,29 @@ msgstr "С возвращением!"
 msgid "Here you can log in to your account"
 msgstr "Здесь вы можете войти в свой аккаунт"
 
-#: website/templates/login.html:31 website/templates/login.html:37
+#: website/templates/login.html:31 website/templates/login.html:40
 #: website/templates/signup.html:31 website/templates/signup.html:42
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: website/templates/login.html:43 website/templates/login.html:49
+#: website/templates/login.html:46 website/templates/login.html:55
 #: website/templates/signup.html:48 website/templates/signup.html:59
 msgid "Password"
 msgstr "Пароль"
 
-#: website/templates/login.html:67
+#: website/templates/login.html:73
 msgid "New to Impressle?"
 msgstr "Новенький в Impressle?"
 
-#: website/templates/picture.html:10
+#: website/templates/picture.html:15
 msgid "Picture"
 msgstr "Картинка"
 
-#: website/templates/picture.html:36
+#: website/templates/picture.html:41
 msgid "Comment"
 msgstr "Комментарий"
 
-#: website/templates/picture.html:44
+#: website/templates/picture.html:49
 msgid "Send"
 msgstr "Отправить"
 
@@ -958,7 +977,6 @@ msgid "6. Data Security"
 msgstr "6. Безопасность данных"
 
 #: website/templates/privacy_policy.html:177
-#, python-format
 msgid ""
 "We implement security measures such as encryption and access controls to "
 "protect your data."
@@ -1367,3 +1385,6 @@ msgstr "Удалить аккаунт"
 msgid "I am totally sure I want to delete this account"
 msgstr "Я точно уверен что я хочу удалить этот аккаунт"
 
+#:
+msgid "Admin"
+msgstr "Админ"

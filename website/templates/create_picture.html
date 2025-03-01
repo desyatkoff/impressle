@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 
-{% block title %}
+{%- block title -%}
     Impressle | {{ gettext("Create a Picture") }}
-{% endblock %}
+{%- endblock -%}
 
 {% block content %}
     <h1 id="page-title">
@@ -74,66 +74,82 @@
                 </p>
 
                 <div class="pure-g">
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
-                            id = "bright-red-button"
+                            id = "pastel-red-button"
                             class = "pure-button color-button"
-                            onclick = "change_color('bright-red')"
+                            onclick = "change_color('pastel-red')"
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
-                            id = "bright-orange-button"
+                            id = "pastel-orange-button"
                             class = "pure-button color-button"
-                            onclick = "change_color('bright-orange')"
+                            onclick = "change_color('pastel-orange')"
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
-                            id = "bright-yellow-button"
+                            id = "pastel-yellow-button"
                             class = "pure-button color-button"
-                            onclick = "change_color('bright-yellow')"
+                            onclick = "change_color('pastel-yellow')"
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
-                            id = "bright-green-button"
+                            id = "pastel-green-button"
                             class = "pure-button color-button"
-                            onclick = "change_color('bright-green')"
+                            onclick = "change_color('pastel-green')"
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
-                            id = "bright-lightblue-button"
+                            id = "pastel-lightblue-button"
                             class = "pure-button color-button"
-                            onclick = "change_color('bright-lightblue')"
+                            onclick = "change_color('pastel-lightblue')"
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
-                            id = "bright-blue-button"
+                            id = "pastel-blue-button"
                             class = "pure-button color-button"
-                            onclick = "change_color('bright-blue')"
+                            onclick = "change_color('pastel-blue')"
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
-                            id = "bright-violet-button"
+                            id = "pastel-violet-button"
                             class = "pure-button color-button"
-                            onclick = "change_color('bright-violet')"
+                            onclick = "change_color('pastel-violet')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-9">
+                        <a
+                            id = "light1-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('light1')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-9">
+                        <a
+                            id = "dark1-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark1')"
                         >
                         </a>
                     </div>
                 </div>
 
                 <div class="pure-g">
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "red-button"
                             class = "pure-button color-button"
@@ -141,7 +157,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "orange-button"
                             class = "pure-button color-button"
@@ -149,7 +165,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "yellow-button"
                             class = "pure-button color-button"
@@ -157,7 +173,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "green-button"
                             class = "pure-button color-button"
@@ -165,7 +181,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "lightblue-button"
                             class = "pure-button color-button"
@@ -173,7 +189,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "blue-button"
                             class = "pure-button color-button"
@@ -181,7 +197,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "violet-button"
                             class = "pure-button color-button selected-color-button"
@@ -189,10 +205,26 @@
                         >
                         </a>
                     </div>
+                    <div class="pure-u-1-9">
+                        <a
+                            id = "light2-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('light2')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-9">
+                        <a
+                            id = "dark2-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark2')"
+                        >
+                        </a>
+                    </div>
                 </div>
 
                 <div class="pure-g">
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "dark-red-button"
                             class = "pure-button color-button"
@@ -200,7 +232,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "dark-orange-button"
                             class = "pure-button color-button"
@@ -208,7 +240,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "dark-yellow-button"
                             class = "pure-button color-button"
@@ -216,7 +248,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "dark-green-button"
                             class = "pure-button color-button"
@@ -224,7 +256,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "dark-lightblue-button"
                             class = "pure-button color-button"
@@ -232,7 +264,7 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "dark-blue-button"
                             class = "pure-button color-button"
@@ -240,11 +272,27 @@
                         >
                         </a>
                     </div>
-                    <div class="pure-u-1-7">
+                    <div class="pure-u-1-9">
                         <a
                             id = "dark-violet-button"
                             class = "pure-button color-button"
                             onclick = "change_color('dark-violet')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-9">
+                        <a
+                            id = "light3-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('light3')"
+                        >
+                        </a>
+                    </div>
+                    <div class="pure-u-1-9">
+                        <a
+                            id = "dark3-button"
+                            class = "pure-button color-button"
+                            onclick = "change_color('dark3')"
                         >
                         </a>
                     </div>

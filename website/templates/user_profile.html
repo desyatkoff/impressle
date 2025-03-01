@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 
-{% block title %}
+{%- block title -%}
     Impressle | @{{ user_profile.username }}
-{% endblock %}
+{%- endblock -%}
 
 {% block content %}
     <h1 id="page-title">
@@ -57,7 +57,7 @@
                                 <span class="followers-count" id="followers-count-{{ user_profile.uid }}">
                                     {{ user_profile.follows|length }}
                                 </span>
-                                {{ gettext("followers") }}
+                                {{ gettext("follower(s)") }}
                             </span>
                         {% endif %}
 

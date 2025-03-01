@@ -1,15 +1,9 @@
 {% extends "base.html" %}
 
 
-{% block title %}
-    Impressle
-    |
-    {% if picture.title %}
-        {{ picture.title }}
-    {% else %}
-        {{ gettext("Untitled") }} #{{ picture.uid }}
-    {% endif %}
-{% endblock %}
+{%- block title -%}
+    Impressle | {% if picture.title %}{{ picture.title }}{% else %}{{ gettext("Untitled") }} #{{ picture.uid }}{% endif %}
+{%- endblock -%}
 
 {% block content %}
     <h1 id="page-title">

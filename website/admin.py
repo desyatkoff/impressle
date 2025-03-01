@@ -35,6 +35,7 @@ access = False
 
 
 @admin.route("/", methods=["GET", "POST"])
+@flask_login.login_required
 def access_admin():
     global access
 
@@ -77,6 +78,7 @@ def access_admin():
 
 
 @admin.route("/panel", methods=["GET", "POST"])
+@flask_login.login_required
 def panel():
     if access:
         if flask.request.method == "POST":
@@ -130,6 +132,14 @@ def panel():
                         item.title = new_value
                     elif column_name.lower() == ("image_data" or "image data"):
                         item.image_data = new_value
+                    elif column_name.lower() == ("likes_count" or "likes count"):
+                        item.likes_count = new_value
+                    elif column_name.lower() == ("dislikes_count" or "dislikes count"):
+                        item.dislikes_count = new_value
+                    elif column_name.lower() == ("comments_count" or "comments count"):
+                        item.comments_count = new_value
+                    elif column_name.lower() == ("views_count" or "views count"):
+                        item.views_count = new_value
                     elif column_name.lower() == ("author_uid" or "author uid"):
                         item.author_uid = new_value
                     elif column_name.lower() == ("author_username" or "author username"):
@@ -156,6 +166,22 @@ def panel():
                         item.follower_username = new_value
                 elif table_name.lower() == ("like" or "likes"):
                     item = website.models.Like.query.filter_by(uid=item_uid).first()
+
+
+                    if column_name.lower() == "id":
+                        item.id = new_value
+                    elif column_name.lower() == "uid":
+                        item.uid = new_value
+                    elif column_name.lower() == ("date_created" or "date created"):
+                        item.date_created = new_value
+                    elif column_name.lower() == ("picture_uid" or "picture uid"):
+                        item.picture_uid = new_value
+                    elif column_name.lower() == ("author_uid" or "author uid"):
+                        item.author_uid = new_value
+                    elif column_name.lower() == ("author_username" or "author username"):
+                        item.author_username = new_value
+                elif table_name.lower() == ("dislike" or "dislikes"):
+                    item = website.models.Dislike.query.filter_by(uid=item_uid).first()
 
 
                     if column_name.lower() == "id":
@@ -204,6 +230,73 @@ def panel():
                         item.author_uid = new_value
                     elif column_name.lower() == ("author_username" or "author username"):
                         item.author_username = new_value
+            elif form_type == "delete-form":
+                user_uid = flask.request.form.get("user-uid")
+                picture_uid = flask.request.form.get("picture-uid")
+                comment_uid = flask.request.form.get("comment-uid")
+
+
+                try:
+                    user = website.models.User.query.filter_by(uid=int(user_uid)).first()
+                    user.status = "deleted"
+                except:
+                    pass
+
+                try:
+                    picture = website.models.Picture.query.filter_by(uid=int(picture_uid)).first()
+                    picture.status = "deleted"
+
+                    picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+                    picture_author.karma -= 1
+                except:
+                    pass
+
+                try:
+                    comment = website.models.Comment.query.filter_by(uid=int(comment_uid)).first()
+                    comment.status = "deleted"
+
+                    comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
+                    comment_author.karma -= 1
+                except:
+                    pass
+            elif form_type == "real-delete-form":
+                table_name = flask.request.form.get("table-name")
+                item_uid = flask.request.form.get("item-uid")
+
+
+                if table_name.lower() == ("user" or "users"):
+                    item = website.models.User.query.filter_by(uid=item_uid).first()
+                elif table_name.lower() == ("picture" or "pictures"):
+                    item = website.models.Picture.query.filter_by(uid=item_uid).first()
+                elif table_name.lower() == ("follow" or "follows"):
+                    item = website.models.Follow.query.filter_by(uid=item_uid).first()
+                elif table_name.lower() == ("like" or "likes"):
+                    item = website.models.Like.query.filter_by(uid=item_uid).first()
+                    picture = website.models.Picture.query.filter_by(uid=item.picture_uid).first()
+
+
+                    picture.likes_count -= 1
+                elif table_name.lower() == ("dislike" or "dislikes"):
+                    item = website.models.Dislike.query.filter_by(uid=item_uid).first()
+                    picture = website.models.Picture.query.filter_by(uid=item.picture_uid).first()
+
+
+                    picture.dislikes_count -= 1
+                elif table_name.lower() == ("comment" or "comments"):
+                    item = website.models.Comment.query.filter_by(uid=item_uid).first()
+                    picture = website.models.Picture.query.filter_by(uid=item.picture_uid).first()
+
+
+                    picture.comments_count -= 1
+                elif table_name.lower() == ("view" or "views"):
+                    item = website.models.View.query.filter_by(uid=item_uid).first()
+                    picture = website.models.Picture.query.filter_by(uid=item.picture_uid).first()
+
+
+                    picture.views_count -= 1
+
+
+                extensions.db.session.delete(item)
             elif form_type == "ban-form":
                 user_uid = flask.request.form.get("user-uid")
                 picture_uid = flask.request.form.get("picture-uid")
@@ -251,3 +344,51 @@ def panel():
         )
     else:
         return flask.redirect(flask.url_for("admin.access_admin"))
+
+
+@admin.route("/ban-user/<user_uid>", methods=["POST"])
+@flask_login.login_required
+def ban_user(user_uid):
+    if access is True:
+        try:
+            user = website.models.User.query.filter_by(uid=int(user_uid)).first()
+            user.status = "banned"
+        except:
+            pass
+
+
+    return flask.redirect(flask.request.referrer)
+
+
+@admin.route("/ban-picture/<picture_uid>", methods=["POST"])
+@flask_login.login_required
+def ban_picture(picture_uid):
+    if access is True:
+        try:
+            picture = website.models.Picture.query.filter_by(uid=int(picture_uid)).first()
+            picture.status = "banned"
+
+            picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+            picture_author.karma -= 1
+        except:
+            pass
+
+
+    return flask.redirect(flask.request.referrer)
+
+
+@admin.route("/ban-comment/<comment_uid>", methods=["POST"])
+@flask_login.login_required
+def ban_comment(comment_uid):
+    if access is True:
+        try:
+            comment = website.models.Comment.query.filter_by(uid=int(comment_uid)).first()
+            comment.status = "banned"
+
+            comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
+            comment_author.karma -= 1
+        except:
+            pass
+
+
+    return flask.redirect(flask.request.referrer)

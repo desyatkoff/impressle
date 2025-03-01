@@ -87,11 +87,11 @@ msgstr ""
 msgid "Edit Data Panel"
 msgstr ""
 
-#: website/templates/admin.html:56
+#: website/templates/admin.html:56 website/templates/admin.html:204
 msgid "Table Name"
 msgstr ""
 
-#: website/templates/admin.html:65
+#: website/templates/admin.html:65 website/templates/admin.html:213
 msgid "Item UID"
 msgstr ""
 
@@ -108,26 +108,42 @@ msgid "Edit Value"
 msgstr ""
 
 #: website/templates/admin.html:106
-msgid "Ban Panel"
+msgid "Mark Data As \"Deleted\" Panel"
 msgstr ""
 
-#: website/templates/admin.html:134
+#: website/templates/admin.html:134 website/templates/admin.html:264
 msgid "User UID"
 msgstr ""
 
-#: website/templates/admin.html:144
+#: website/templates/admin.html:144 website/templates/admin.html:274
 msgid "Picture UID"
 msgstr ""
 
-#: website/templates/admin.html:154
+#: website/templates/admin.html:154 website/templates/admin.html:284
 msgid "Comment UID"
 msgstr ""
 
 #: website/templates/admin.html:167
-msgid "Ban"
+msgid "Mark As Deleted"
 msgstr ""
 
 #: website/templates/admin.html:177
+msgid "Delete Data From DB Panel"
+msgstr ""
+
+#: website/templates/admin.html:226
+msgid "Delete"
+msgstr ""
+
+#: website/templates/admin.html:236
+msgid "Ban Panel"
+msgstr ""
+
+#: website/templates/admin.html:297
+msgid "Ban"
+msgstr ""
+
+#: website/templates/admin.html:307
 msgid "Database Panel"
 msgstr ""
 
@@ -195,12 +211,12 @@ msgid "You Following"
 msgstr ""
 
 #: website/templates/base.html:196 website/templates/login.html:5
-#: website/templates/login.html:59 website/templates/signup.html:117
+#: website/templates/login.html:65 website/templates/signup.html:117
 msgid "Log In"
 msgstr ""
 
 #: website/templates/base.html:209 website/templates/index.html:96
-#: website/templates/login.html:69 website/templates/signup.html:5
+#: website/templates/login.html:75 website/templates/signup.html:5
 #: website/templates/signup.html:107
 msgid "Sign Up"
 msgstr ""
@@ -257,7 +273,7 @@ msgstr ""
 msgid "Reset Canvas"
 msgstr ""
 
-#: website/templates/div_comment.html:7
+#: website/templates/div_comment.html:7 website/templates/div_picture.html:26
 msgid "Author"
 msgstr ""
 
@@ -277,7 +293,7 @@ msgstr ""
 msgid "[ BANNED ]"
 msgstr ""
 
-#: website/templates/div_comment.html:50
+#: website/templates/div_comment.html:52
 msgid "Delete Comment"
 msgstr ""
 
@@ -288,7 +304,7 @@ msgstr ""
 
 #: website/templates/div_compact_profile.html:41
 #: website/templates/user_profile.html:60
-msgid "followers"
+msgid "follower(s)"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:52
@@ -301,7 +317,7 @@ msgstr ""
 msgid "Follow"
 msgstr ""
 
-#: website/templates/div_picture.html:12
+#: website/templates/div_picture.html:12 website/templates/picture.html:9
 msgid "Untitled"
 msgstr ""
 
@@ -309,7 +325,7 @@ msgstr ""
 msgid "Published on"
 msgstr ""
 
-#: website/templates/div_picture.html:192
+#: website/templates/div_picture.html:194
 msgid "Delete Picture"
 msgstr ""
 
@@ -715,29 +731,29 @@ msgstr ""
 msgid "Here you can log in to your account"
 msgstr ""
 
-#: website/templates/login.html:31 website/templates/login.html:37
+#: website/templates/login.html:31 website/templates/login.html:40
 #: website/templates/signup.html:31 website/templates/signup.html:42
 msgid "Username"
 msgstr ""
 
-#: website/templates/login.html:43 website/templates/login.html:49
+#: website/templates/login.html:46 website/templates/login.html:55
 #: website/templates/signup.html:48 website/templates/signup.html:59
 msgid "Password"
 msgstr ""
 
-#: website/templates/login.html:67
+#: website/templates/login.html:73
 msgid "New to Impressle?"
 msgstr ""
 
-#: website/templates/picture.html:10
+#: website/templates/picture.html:15
 msgid "Picture"
 msgstr ""
 
-#: website/templates/picture.html:36
+#: website/templates/picture.html:41
 msgid "Comment"
 msgstr ""
 
-#: website/templates/picture.html:44
+#: website/templates/picture.html:49
 msgid "Send"
 msgstr ""
 
@@ -896,7 +912,6 @@ msgid "6. Data Security"
 msgstr ""
 
 #: website/templates/privacy_policy.html:177
-#, python-format
 msgid ""
 "We implement security measures such as encryption and access controls to "
 "protect your data."
