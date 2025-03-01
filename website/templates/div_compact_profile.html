@@ -13,17 +13,17 @@
 
                     {% if user_.rank == "Admin" %}
                         <span class="admin-label">
-                            {{ gettext("[ ADMIN ]") }}
+                            {{ gettext("ADMIN") }}
                         </span>
                     {% endif %}
 
                     {% if user_.status == "inactive" %}
                         <span class="inactive-label">
-                            {{ gettext("[ INACTIVE ]") }}
+                            {{ gettext("INACTIVE") }}
                         </span>
                     {% elif user_.status == "banned" %}
                         <span class="banned-label">
-                            {{ gettext("[ BANNED ]") }}
+                            {{ gettext("BANNED") }}
                         </span>
                     {% endif %}
                 </h1>
