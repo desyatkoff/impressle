@@ -272,7 +272,9 @@ def user_settings():
 @flask_login.login_required
 def create_picture():
     if flask.request.method == "POST":
-        user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
+        user = flask_login.current_user
+        title = flask.request.form.get("title")
+        description = flask.request.form.get("description")
         image_data = flask.request.form.get("image-data")
 
         if image_data is not None:
@@ -285,10 +287,11 @@ def create_picture():
             image_binary = base64.b64decode(image_data.split(",")[1])
 
             picture = website.models.Picture(
-                title = flask.request.form.get("title"),
+                title = title,
+                description = description,
                 image_data = image_binary,
-                author_uid = flask_login.current_user.uid,
-                author_username = flask_login.current_user.username
+                author_uid = user.uid,
+                author_username = user.username
             )
 
             user.karma += 1

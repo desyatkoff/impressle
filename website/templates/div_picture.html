@@ -42,7 +42,9 @@
             </p>
         </div>
 
+
         <hr />
+
 
         <div class="picture-image">
             <p align="center">
@@ -54,7 +56,29 @@
             </p>
         </div>
 
+
+        {% if picture.description %}
+            <hr />
+
+
+            <div class="picture-description">
+                <p>
+                    <b>
+                        {{ gettext("Description") }}
+                        :
+                    </b>
+                </p>
+                <p>
+                    <i>
+                        {{ picture.description }}
+                    </i>
+                </p>
+            </div>
+        {% endif %}
+
+
         <hr />
+
 
         <div class="picture-analytics">
             <div class="pure-g">

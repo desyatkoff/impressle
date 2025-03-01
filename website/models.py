@@ -126,8 +126,10 @@ class Picture(extensions.db.Model):
         default = lambda: datetime.datetime.now(datetime.timezone.utc)
     )
     title = extensions.db.Column(
-        extensions.db.String,
-        nullable = False
+        extensions.db.String
+    )
+    description = extensions.db.Column(
+        extensions.db.String
     )
     image_data = extensions.db.Column(
         extensions.db.LargeBinary,
