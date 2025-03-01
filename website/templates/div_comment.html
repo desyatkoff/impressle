@@ -4,7 +4,8 @@
 >
     <div class="comment-info">
         <p class="comment-author">
-            {{ gettext("Author") }}:
+            {{ gettext("Author") }}
+            :
             <a href="{{ url_for('routes.user_profile', username=comment.author_username) }}">
                 @{{comment.author_username}}
             </a>
