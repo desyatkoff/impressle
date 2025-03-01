@@ -30,7 +30,7 @@ msgstr ""
 "Если вы хотите знать как мы собираем, используем и защищаем вашу "
 "персональную информацию, проверьте"
 
-#: website/templates/about.html:43 website/templates/base.html:278
+#: website/templates/about.html:43 website/templates/base.html:280
 #: website/templates/privacy_policy.html:5
 #: website/templates/privacy_policy.html:10 website/templates/signup.html:93
 #: website/templates/terms_of_service.html:163
@@ -264,23 +264,27 @@ msgstr "Создать картинку"
 msgid "Let's draw your impressive picture!"
 msgstr "Давайте нарисуем вашу впечатляющую картинку!"
 
-#: website/templates/create_picture.html:39
+#: website/templates/create_picture.html:40
 msgid "Picture Title"
 msgstr "Название картинки"
 
-#: website/templates/create_picture.html:53
+#: website/templates/create_picture.html:49
+msgid "Picture Description"
+msgstr "Описание картинки"
+
+#: website/templates/create_picture.html:63
 msgid "Brush Width"
 msgstr "Толщина кисти"
 
-#: website/templates/create_picture.html:71
+#: website/templates/create_picture.html:81
 msgid "Brush Color"
 msgstr "Цвет кисти"
 
-#: website/templates/create_picture.html:270
+#: website/templates/create_picture.html:328
 msgid "Publish"
 msgstr "Опубликовать"
 
-#: website/templates/create_picture.html:278
+#: website/templates/create_picture.html:336
 msgid "Reset Canvas"
 msgstr "Очистить"
 
@@ -288,55 +292,59 @@ msgstr "Очистить"
 msgid "Author"
 msgstr "Автор"
 
-#: website/templates/div_comment.html:13
+#: website/templates/div_comment.html:14
 #: website/templates/div_compact_profile.html:16
-#: website/templates/div_picture.html:32 website/templates/user_profile.html:35
+#: website/templates/div_picture.html:33 website/templates/user_profile.html:27
 msgid "ADMIN"
 msgstr "АДМИН"
 
-#: website/templates/div_comment.html:18
+#: website/templates/div_comment.html:19
 msgid "Commented on"
 msgstr "Прокомментировано"
 
-#: website/templates/div_comment.html:28
+#: website/templates/div_comment.html:29
 #: website/templates/div_compact_profile.html:26
-#: website/templates/div_picture.html:18 website/templates/user_profile.html:45
+#: website/templates/div_picture.html:18 website/templates/user_profile.html:37
 msgid "BANNED"
 msgstr "ЗАБАНЕН"
 
-#: website/templates/div_comment.html:52
+#: website/templates/div_comment.html:53
 msgid "Delete Comment"
 msgstr "Удалить комментарий"
 
 #: website/templates/div_compact_profile.html:22
-#: website/templates/user_profile.html:41
+#: website/templates/user_profile.html:33
 msgid "INACTIVE"
 msgstr "НЕАКТИВНЫЙ"
 
 #: website/templates/div_compact_profile.html:41
-#: website/templates/user_profile.html:60
+#: website/templates/user_profile.html:52
 msgid "follower(s)"
 msgstr "подписчика(ов)"
 
 #: website/templates/div_compact_profile.html:52
-#: website/templates/user_profile.html:71
+#: website/templates/user_profile.html:63
 msgid "Unfollow"
 msgstr "Отписаться"
 
 #: website/templates/div_compact_profile.html:60
-#: website/templates/user_profile.html:79
+#: website/templates/user_profile.html:71
 msgid "Follow"
 msgstr "Подписаться"
 
-#: website/templates/div_picture.html:12 website/templates/picture.html:9
+#: website/templates/div_picture.html:12 website/templates/picture.html:5
 msgid "Untitled"
 msgstr "Без названия"
 
-#: website/templates/div_picture.html:40
+#: website/templates/div_picture.html:41
 msgid "Published on"
 msgstr "Опубликовано"
 
-#: website/templates/div_picture.html:194
+#: website/templates/div_picture.html:67
+msgid "Description"
+msgstr ""
+
+#: website/templates/div_picture.html:219
 msgid "Delete Picture"
 msgstr "Удалить картинку"
 
@@ -791,15 +799,15 @@ msgstr "Пароль"
 msgid "New to Impressle?"
 msgstr "Новенький в Impressle?"
 
-#: website/templates/picture.html:15
+#: website/templates/picture.html:10
 msgid "Picture"
 msgstr "Картинка"
 
-#: website/templates/picture.html:41
+#: website/templates/picture.html:36
 msgid "Comment"
 msgstr "Комментарий"
 
-#: website/templates/picture.html:49
+#: website/templates/picture.html:44
 msgid "Send"
 msgstr "Отправить"
 
@@ -1060,7 +1068,7 @@ msgid "Let's create a new account"
 msgstr "Давайте создадим новый аккаунт"
 
 #: website/templates/signup.html:65 website/templates/signup.html:72
-#: website/templates/user_profile.html:92
+#: website/templates/user_profile.html:84
 #: website/templates/user_settings.html:40
 msgid "About Me"
 msgstr "Обо мне"
@@ -1319,31 +1327,31 @@ msgstr "12. Окончательное соглашение"
 msgid "These Terms constitute the entire agreement between you and Impressle."
 msgstr "Эти Условия представляют собой полное соглашение между вами и Impressle."
 
-#: website/templates/user_profile.html:100
+#: website/templates/user_profile.html:92
 msgid "Nothing yet..."
 msgstr "Пока что ничего..."
 
-#: website/templates/user_profile.html:110
+#: website/templates/user_profile.html:102
 msgid "Account Details"
 msgstr "Подробности об аккаунте"
 
-#: website/templates/user_profile.html:117
+#: website/templates/user_profile.html:109
 msgid "User ID"
 msgstr "ID пользователя"
 
-#: website/templates/user_profile.html:127
+#: website/templates/user_profile.html:119
 msgid "Account Created"
 msgstr "Аккаунт создан"
 
-#: website/templates/user_profile.html:137
+#: website/templates/user_profile.html:129
 msgid "Rank"
 msgstr "Ранг"
 
-#: website/templates/user_profile.html:147
+#: website/templates/user_profile.html:139
 msgid "Karma"
 msgstr "Карма"
 
-#: website/templates/user_profile.html:165
+#: website/templates/user_profile.html:157
 msgid "Edit Profile"
 msgstr "Настроить профиль"
 
