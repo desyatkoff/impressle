@@ -78,13 +78,13 @@ function get_y(event) {
 }
 
 function change_color(color) {
-    const BRIGHT_RED_BUTTON = document.getElementById("bright-red-button");
-    const BRIGHT_ORANGE_BUTTON = document.getElementById("bright-orange-button");
-    const BRIGHT_YELLOW_BUTTON = document.getElementById("bright-yellow-button");
-    const BRIGHT_GREEN_BUTTON = document.getElementById("bright-green-button");
-    const BRIGHT_LIGHTBLUE_BUTTON = document.getElementById("bright-lightblue-button");
-    const BRIGHT_BLUE_BUTTON = document.getElementById("bright-blue-button");
-    const BRIGHT_VIOLET_BUTTON = document.getElementById("bright-violet-button");
+    const PASTEL_RED_BUTTON = document.getElementById("pastel-red-button");
+    const PASTEL_ORANGE_BUTTON = document.getElementById("pastel-orange-button");
+    const PASTEL_YELLOW_BUTTON = document.getElementById("pastel-yellow-button");
+    const PASTEL_GREEN_BUTTON = document.getElementById("pastel-green-button");
+    const PASTEL_LIGHTBLUE_BUTTON = document.getElementById("pastel-lightblue-button");
+    const PASTEL_BLUE_BUTTON = document.getElementById("pastel-blue-button");
+    const PASTEL_VIOLET_BUTTON = document.getElementById("pastel-violet-button");
     const RED_BUTTON = document.getElementById("red-button");
     const ORANGE_BUTTON = document.getElementById("orange-button");
     const YELLOW_BUTTON = document.getElementById("yellow-button");
@@ -99,21 +99,27 @@ function change_color(color) {
     const DARK_LIGHTBLUE_BUTTON = document.getElementById("dark-lightblue-button");
     const DARK_BLUE_BUTTON = document.getElementById("dark-blue-button");
     const DARK_VIOLET_BUTTON = document.getElementById("dark-violet-button");
+    const LIGHT1_BUTTON = document.getElementById("light1-button");
+    const LIGHT2_BUTTON = document.getElementById("light2-button");
+    const LIGHT3_BUTTON = document.getElementById("light3-button");
+    const DARK1_BUTTON = document.getElementById ("dark1-button");
+    const DARK2_BUTTON = document.getElementById("dark2-button");
+    const DARK3_BUTTON = document.getElementById("dark3-button");
 
     let hex;
 
-    if (color == "bright-red") {
+    if (color == "pastel-red") {
         hex = "ff4747";
 
 
-        BRIGHT_RED_BUTTON.classList.add("selected-color-button");
+        PASTEL_RED_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -128,18 +134,24 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "red") {
         hex = "ff0000";
 
         RED_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
         GREEN_BUTTON.classList.remove("selected-color-button");
@@ -153,18 +165,24 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "dark-red") {
         hex = "990000";
 
         DARK_RED_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -178,20 +196,26 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     }
 
-    if (color == "bright-orange") {
+    if (color == "pastel-orange") {
         hex = "ffa347";
 
 
-        BRIGHT_ORANGE_BUTTON.classList.add("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -206,19 +230,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "orange") {
         hex = "ff7f00";
 
 
         ORANGE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
         GREEN_BUTTON.classList.remove("selected-color-button");
@@ -232,19 +262,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "dark-orange") {
         hex = "994c00";
 
 
         DARK_ORANGE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -258,20 +294,26 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     }
 
-    if (color == "bright-yellow") {
+    if (color == "pastel-yellow") {
         hex = "ffff47";
 
 
-        BRIGHT_YELLOW_BUTTON.classList.add("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -286,19 +328,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "yellow") {
         hex = "ffff00";
 
 
         YELLOW_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         GREEN_BUTTON.classList.remove("selected-color-button");
@@ -312,19 +360,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "dark-yellow") {
         hex = "999900";
 
 
         DARK_YELLOW_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -338,20 +392,26 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     }
 
-    if (color == "bright-green") {
+    if (color == "pastel-green") {
         hex = "47ff47";
 
 
-        BRIGHT_GREEN_BUTTON.classList.add("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -366,19 +426,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "green") {
         hex = "00ff00";
 
 
         GREEN_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -392,19 +458,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "dark-green") {
         hex = "009900";
 
 
         DARK_GREEN_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -418,20 +490,26 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     }
 
-    if (color == "bright-lightblue") {
+    if (color == "pastel-lightblue") {
         hex = "47ffff";
 
 
-        BRIGHT_LIGHTBLUE_BUTTON.classList.add("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -446,19 +524,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "lightblue") {
         hex = "00ffff";
 
 
         LIGHTBLUE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -472,19 +556,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "dark-lightblue") {
         hex = "009999";
 
 
         DARK_LIGHTBLUE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -498,20 +588,26 @@ function change_color(color) {
         DARK_GREEN_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     }
 
-    if (color == "bright-blue") {
+    if (color == "pastel-blue") {
         hex = "4747ff";
 
 
-        BRIGHT_BLUE_BUTTON.classList.add("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -526,19 +622,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "blue") {
         hex = "0000ff";
 
 
         BLUE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -552,19 +654,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "dark-blue") {
         hex = "000099";
 
 
         DARK_BLUE_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -578,20 +686,26 @@ function change_color(color) {
         DARK_GREEN_BUTTON.classList.remove("selected-color-button");
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     }
 
-    if (color == "bright-violet") {
+    if (color == "pastel-violet") {
         hex = "a347ff";
 
 
-        BRIGHT_VIOLET_BUTTON.classList.add("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -606,19 +720,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "violet") {
         hex = "7f00ff";
 
 
         VIOLET_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -632,19 +752,25 @@ function change_color(color) {
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
         DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
     } else if (color == "dark-violet") {
         hex = "4c0099";
 
 
         DARK_VIOLET_BUTTON.classList.add("selected-color-button");
 
-        BRIGHT_RED_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_ORANGE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_YELLOW_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_GREEN_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_BLUE_BUTTON.classList.remove("selected-color-button");
-        BRIGHT_VIOLET_BUTTON.classList.remove("selected-color-button");
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
         RED_BUTTON.classList.remove("selected-color-button");
         ORANGE_BUTTON.classList.remove("selected-color-button");
         YELLOW_BUTTON.classList.remove("selected-color-button");
@@ -658,6 +784,204 @@ function change_color(color) {
         DARK_GREEN_BUTTON.classList.remove("selected-color-button");
         DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
         DARK_BLUE_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
+    } else if (color == "light1") {
+        hex = "e6e6e6";
+
+
+        LIGHT1_BUTTON.classList.add("selected-color-button");
+
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
+        RED_BUTTON.classList.remove("selected-color-button");
+        ORANGE_BUTTON.classList.remove("selected-color-button");
+        YELLOW_BUTTON.classList.remove("selected-color-button");
+        GREEN_BUTTON.classList.remove("selected-color-button");
+        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        BLUE_BUTTON.classList.remove("selected-color-button");
+        VIOLET_BUTTON.classList.remove("selected-color-button");
+        DARK_RED_BUTTON.classList.remove("selected-color-button");
+        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
+        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
+        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
+        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
+    } else if (color == "light2") {
+        hex = "d9d9d9";
+
+
+        LIGHT2_BUTTON.classList.add("selected-color-button");
+
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
+        RED_BUTTON.classList.remove("selected-color-button");
+        ORANGE_BUTTON.classList.remove("selected-color-button");
+        YELLOW_BUTTON.classList.remove("selected-color-button");
+        GREEN_BUTTON.classList.remove("selected-color-button");
+        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        BLUE_BUTTON.classList.remove("selected-color-button");
+        VIOLET_BUTTON.classList.remove("selected-color-button");
+        DARK_RED_BUTTON.classList.remove("selected-color-button");
+        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
+        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
+        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
+        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
+    } else if (color == "light3") {
+        hex = "cccccc";
+
+
+        LIGHT3_BUTTON.classList.add("selected-color-button");
+
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
+        RED_BUTTON.classList.remove("selected-color-button");
+        ORANGE_BUTTON.classList.remove("selected-color-button");
+        YELLOW_BUTTON.classList.remove("selected-color-button");
+        GREEN_BUTTON.classList.remove("selected-color-button");
+        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        BLUE_BUTTON.classList.remove("selected-color-button");
+        VIOLET_BUTTON.classList.remove("selected-color-button");
+        DARK_RED_BUTTON.classList.remove("selected-color-button");
+        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
+        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
+        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
+        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
+    } else if (color == "dark1") {
+        hex = "262626";
+
+
+        DARK1_BUTTON.classList.add("selected-color-button");
+
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
+        RED_BUTTON.classList.remove("selected-color-button");
+        ORANGE_BUTTON.classList.remove("selected-color-button");
+        YELLOW_BUTTON.classList.remove("selected-color-button");
+        GREEN_BUTTON.classList.remove("selected-color-button");
+        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        BLUE_BUTTON.classList.remove("selected-color-button");
+        VIOLET_BUTTON.classList.remove("selected-color-button");
+        DARK_RED_BUTTON.classList.remove("selected-color-button");
+        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
+        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
+        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
+        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
+    } else if (color == "dark2") {
+        hex = "1a1a1a";
+
+
+        DARK2_BUTTON.classList.add("selected-color-button");
+
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
+        RED_BUTTON.classList.remove("selected-color-button");
+        ORANGE_BUTTON.classList.remove("selected-color-button");
+        YELLOW_BUTTON.classList.remove("selected-color-button");
+        GREEN_BUTTON.classList.remove("selected-color-button");
+        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        BLUE_BUTTON.classList.remove("selected-color-button");
+        VIOLET_BUTTON.classList.remove("selected-color-button");
+        DARK_RED_BUTTON.classList.remove("selected-color-button");
+        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
+        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
+        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
+        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK3_BUTTON.classList.remove("selected-color-button");
+    } else if (color == "dark3") {
+        hex = "0d0d0d";
+
+
+        DARK3_BUTTON.classList.add("selected-color-button");
+
+        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
+        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
+        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
+        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
+        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
+        RED_BUTTON.classList.remove("selected-color-button");
+        ORANGE_BUTTON.classList.remove("selected-color-button");
+        YELLOW_BUTTON.classList.remove("selected-color-button");
+        GREEN_BUTTON.classList.remove("selected-color-button");
+        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        BLUE_BUTTON.classList.remove("selected-color-button");
+        VIOLET_BUTTON.classList.remove("selected-color-button");
+        DARK_RED_BUTTON.classList.remove("selected-color-button");
+        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
+        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
+        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
+        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
+        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
+        LIGHT1_BUTTON.classList.remove("selected-color-button");
+        LIGHT2_BUTTON.classList.remove("selected-color-button");
+        LIGHT3_BUTTON.classList.remove("selected-color-button");
+        DARK1_BUTTON.classList.remove("selected-color-button");
+        DARK2_BUTTON.classList.remove("selected-color-button");
     }
 
 

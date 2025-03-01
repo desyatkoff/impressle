@@ -253,31 +253,31 @@ img {
     border: 2px solid #d9d9d9;
 }
 
-#bright-red-button {
+#pastel-red-button {
     background-color: #ff4747;
 }
 
-#bright-orange-button {
+#pastel-orange-button {
     background-color: #ffa347;
 }
 
-#bright-yellow-button {
+#pastel-yellow-button {
     background-color: #ffff47;
 }
 
-#bright-green-button {
+#pastel-green-button {
     background-color: #47ff47;
 }
 
-#bright-lightblue-button {
+#pastel-lightblue-button {
     background-color: #47ffff;
 }
 
-#bright-blue-button {
+#pastel-blue-button {
     background-color: #4747ff;
 }
 
-#bright-violet-button {
+#pastel-violet-button {
     background-color: #a347ff;
 }
 
@@ -335,4 +335,28 @@ img {
 
 #dark-violet-button {
     background-color: #4c0099;
+}
+
+#light1-button {
+    background-color: #e6e6e6;
+}
+
+#light2-button {
+    background-color: #d9d9d9;
+}
+
+#light3-button {
+    background-color: #cccccc;
+}
+
+#dark1-button {
+    background-color: #262626;
+}
+
+#dark2-button {
+    background-color: #1a1a1a;
+}
+
+#dark3-button {
+    background-color: #0d0d0d;
 }
