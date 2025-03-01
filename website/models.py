@@ -46,7 +46,7 @@ class User(extensions.db.Model, flask_login.UserMixin):
     )
     date_created = extensions.db.Column(
         extensions.db.DateTime,
-        default = datetime.datetime.now(datetime.timezone.utc)
+        default = lambda: datetime.datetime.now(datetime.timezone.utc)
     )
     username = extensions.db.Column(
         extensions.db.String,
@@ -123,7 +123,7 @@ class Picture(extensions.db.Model):
     )
     date_created = extensions.db.Column(
         extensions.db.DateTime,
-        default = datetime.datetime.now(datetime.timezone.utc)
+        default = lambda: datetime.datetime.now(datetime.timezone.utc)
     )
     title = extensions.db.Column(
         extensions.db.String,
@@ -204,7 +204,7 @@ class Follow(extensions.db.Model):
     )
     date_created = extensions.db.Column(
         extensions.db.DateTime,
-        default = datetime.datetime.now(datetime.timezone.utc)
+        default = lambda: datetime.datetime.now(datetime.timezone.utc)
     )
     followed_uid = extensions.db.Column(
         extensions.db.Integer,
@@ -245,7 +245,7 @@ class Like(extensions.db.Model):
     )
     date_created = extensions.db.Column(
         extensions.db.DateTime,
-        default = datetime.datetime.now(datetime.timezone.utc)
+        default = lambda: datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = extensions.db.Column(
         extensions.db.Integer,
@@ -286,7 +286,7 @@ class Dislike(extensions.db.Model):
     )
     date_created = extensions.db.Column(
         extensions.db.DateTime,
-        default = datetime.datetime.now(datetime.timezone.utc)
+        default = lambda: datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = extensions.db.Column(
         extensions.db.Integer,
@@ -327,7 +327,7 @@ class Comment(extensions.db.Model):
     )
     date_created = extensions.db.Column(
         extensions.db.DateTime,
-        default = datetime.datetime.now(datetime.timezone.utc)
+        default = lambda: datetime.datetime.now(datetime.timezone.utc)
     )
     text = extensions.db.Column(
         extensions.db.String,
@@ -376,7 +376,7 @@ class View(extensions.db.Model):
     )
     date_created = extensions.db.Column(
         extensions.db.DateTime,
-        default = datetime.datetime.now(datetime.timezone.utc)
+        default = lambda: datetime.datetime.now(datetime.timezone.utc)
     )
     picture_uid = extensions.db.Column(
         extensions.db.Integer,
