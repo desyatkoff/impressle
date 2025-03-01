@@ -15,7 +15,7 @@
 
                 {% if picture.status == "banned" %}
                     <span class="banned-label">
-                        {{ gettext("[ BANNED ]") }}
+                        {{ gettext("BANNED") }}
                     </span>
                 {% endif %}
             </h2>
@@ -30,7 +30,7 @@
                 </a>
                 {% if models.User.query.filter_by(uid=picture.author_uid).first().rank == "Admin" %}
                     <span class="admin-label">
-                        {{ gettext("[ ADMIN ]") }}
+                        {{ gettext("ADMIN") }}
                     </span>
                 {% endif %}
             </p>

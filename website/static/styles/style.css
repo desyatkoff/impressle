@@ -231,15 +231,27 @@ img {
 }
 
 .admin-label {
-    color: #7f00ff;
+    color: #e6e6e6;
+    border-radius: 8px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    background-color: #7f00ff;
 }
 
 .inactive-label {
-    color: #ff7f00;
+    color: #e6e6e6;
+    border-radius: 8px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    background-color: #ff7f00;
 }
 
 .banned-label {
-    color: #ff4747;
+    color: #e6e6e6;
+    border-radius: 8px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    background-color: #ff4747;
 }
 
 .color-button {

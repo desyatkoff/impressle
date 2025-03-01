@@ -6,14 +6,6 @@
 {%- endblock -%}
 
 {% block content %}
-    <h1 id="page-title">
-        @{{ user_profile.username }}
-    </h1>
-
-
-    <hr />
-
-
     <div id="profile">
         <div
             class = "card"
@@ -32,17 +24,17 @@
 
                         {% if user_profile.rank == "Admin" %}
                             <span class="admin-label">
-                                {{ gettext("[ ADMIN ]") }}
+                                {{ gettext("ADMIN") }}
                             </span>
                         {% endif %}
 
                         {% if user_profile.status == "inactive" %}
                             <span class="inactive-label">
-                                {{ gettext("[ INACTIVE ]") }}
+                                {{ gettext("INACTIVE") }}
                             </span>
                         {% elif user_profile.status == "banned" %}
                             <span class="banned-label">
-                                {{ gettext("[ BANNED ]") }}
+                                {{ gettext("BANNED") }}
                             </span>
                         {% endif %}
                     </h1>
