@@ -15,7 +15,7 @@
 
                 {% if picture.status == "banned" %}
                     <span class="banned-label">
-                        {{ gettext("[ BANNED ]") }}
+                        {{ gettext("BANNED") }}
                     </span>
                 {% endif %}
             </h2>
@@ -23,13 +23,14 @@
 
         <div class="picture-author">
             <p>
-                {{ gettext("Author") }}:
+                {{ gettext("Author") }}
+                :
                 <a href="{{ url_for('routes.user_profile', username=picture.author_username) }}">
                     @{{ picture.author_username }}
                 </a>
                 {% if models.User.query.filter_by(uid=picture.author_uid).first().rank == "Admin" %}
                     <span class="admin-label">
-                        {{ gettext("[ ADMIN ]") }}
+                        {{ gettext("ADMIN") }}
                     </span>
                 {% endif %}
             </p>
@@ -41,7 +42,9 @@
             </p>
         </div>
 
+
         <hr />
+
 
         <div class="picture-image">
             <p align="center">
@@ -53,7 +56,29 @@
             </p>
         </div>
 
+
+        {% if picture.description %}
+            <hr />
+
+
+            <div class="picture-description">
+                <p>
+                    <b>
+                        {{ gettext("Description") }}
+                        :
+                    </b>
+                </p>
+                <p>
+                    <i>
+                        {{ picture.description }}
+                    </i>
+                </p>
+            </div>
+        {% endif %}
+
+
         <hr />
+
 
         <div class="picture-analytics">
             <div class="pure-g">
