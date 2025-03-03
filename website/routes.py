@@ -402,6 +402,11 @@ def delete_picture(picture_uid):
 @routes.route("/picture/<picture_uid>")
 def view_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+    comments = website.models.Comment.query.filter_by(
+        picture_uid = picture_uid
+    ).order_by(
+        website.models.Comment.uid.desc()
+    ).all()
     user = flask_login.current_user
 
 
@@ -441,6 +446,7 @@ def view_picture(picture_uid):
         "picture.html",
         user = flask_login.current_user,
         picture = picture,
+        comments = comments,
         models = website.models
     )
 
@@ -597,26 +603,27 @@ def like_picture(picture_uid):
 
             picture_author.karma -= 1
         else:
-            like = website.models.Like(
-                picture_uid = picture_uid,
-                author_uid = flask_login.current_user.uid,
-                author_username = flask_login.current_user.username
-            )
+            if flask_login.current_user != picture_author:
+                like = website.models.Like(
+                    picture_uid = picture_uid,
+                    author_uid = flask_login.current_user.uid,
+                    author_username = flask_login.current_user.username
+                )
 
-            extensions.db.session.add(like)
+                extensions.db.session.add(like)
 
-            picture.likes_count += 1
+                picture.likes_count += 1
 
-
-            picture_author.karma += 1
-
-
-            if dislike:
-                extensions.db.session.delete(dislike)
-
-                picture.dislikes_count -= 1
 
                 picture_author.karma += 1
+
+
+                if dislike:
+                    extensions.db.session.delete(dislike)
+
+                    picture.dislikes_count -= 1
+
+                    picture_author.karma += 1
 
 
         view = website.models.View.query.filter_by(
@@ -684,26 +691,27 @@ def dislike_picture(picture_uid):
 
             picture_author.karma += 1
         else:
-            dislike = website.models.Dislike(
-                picture_uid = picture_uid,
-                author_uid = flask_login.current_user.uid,
-                author_username = flask_login.current_user.username
-            )
+            if flask_login.current_user != picture_author:
+                dislike = website.models.Dislike(
+                    picture_uid = picture_uid,
+                    author_uid = flask_login.current_user.uid,
+                    author_username = flask_login.current_user.username
+                )
 
-            extensions.db.session.add(dislike)
+                extensions.db.session.add(dislike)
 
-            picture.dislikes_count += 1
+                picture.dislikes_count += 1
 
-
-            picture_author.karma -= 1
-
-
-            if like:
-                extensions.db.session.delete(like)
-
-                picture.likes_count -= 1
 
                 picture_author.karma -= 1
+
+
+                if like:
+                    extensions.db.session.delete(like)
+
+                    picture.likes_count -= 1
+
+                    picture_author.karma -= 1
 
 
         view = website.models.View.query.filter_by(
