@@ -303,7 +303,7 @@ def create_picture():
 
             return flask.redirect(
                 flask.url_for(
-                    endpoint = "routes.view_picture",
+                    endpoint = "routes.full_view_picture",
                     picture_uid = picture.uid
                 )
             )
@@ -400,7 +400,7 @@ def delete_picture(picture_uid):
 
 
 @routes.route("/picture/<picture_uid>")
-def view_picture(picture_uid):
+def full_view_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
     comments = website.models.Comment.query.filter_by(
         picture_uid = picture_uid
@@ -566,6 +566,47 @@ def follow_user(user_uid):
         {
             "followed": flask_login.current_user.uid in map(lambda x: x.follower_uid, user.follows),
             "followers": len(user.follows)
+        }
+    )
+
+
+@routes.route("/view-picture/<picture_uid>", methods=["POST"])
+@flask_login.login_required
+def view_picture(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+    picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+    view = website.models.View.query.filter_by(
+        author_uid = flask_login.current_user.uid,
+        picture_uid = picture.uid
+    ).first()
+
+
+    if not picture:
+        flask.flash(
+            message = "Picture does not exist",
+            category = "error"
+        )
+    else:
+        if view is None:
+            new_view = website.models.View(
+                picture_uid = picture.uid,
+                author_uid = flask_login.current_user.uid,
+                author_username = flask_login.current_user.username
+            )
+
+            picture.views_count += 1
+
+
+            extensions.db.session.add(new_view)
+
+
+        extensions.db.session.commit()
+
+
+    return flask.jsonify(
+        {
+            "views": picture.views_count,
+            "viewed": flask_login.current_user.uid in map(lambda x: x.author_uid, picture.views)
         }
     )
 
@@ -795,7 +836,7 @@ def create_comment(picture_uid):
 
     return flask.redirect(
         flask.url_for(
-            endpoint = "routes.view_picture",
+            endpoint = "routes.full_view_picture",
             picture_uid = picture_uid
         )
     )
@@ -843,7 +884,7 @@ def delete_comment(comment_uid):
 
     return flask.redirect(
         flask.url_for(
-            endpoint = "routes.view_picture",
+            endpoint = "routes.full_view_picture",
             picture_uid = picture.uid
         )
     )

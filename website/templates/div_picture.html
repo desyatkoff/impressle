@@ -1,6 +1,7 @@
 <div
     class = "picture pure-u-1"
     id = "picture-{{ picture.uid }}"
+    onpointerenter = "view_picture({{ picture.uid }})"
 >
     <div class="card">
         <div class="picture-title">
@@ -181,7 +182,7 @@
                         <button
                             class = "view-button"
                             id = "view-button-{{ picture.uid }}"
-                            onclick = "view_picture({{ picture.uid }})"
+                            onclick = "full_view_picture({{ picture.uid }})"
                         >
                             <img
                                 height = "24"
