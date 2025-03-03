@@ -303,7 +303,7 @@ def create_picture():
 
             return flask.redirect(
                 flask.url_for(
-                    endpoint = "routes.view_picture",
+                    endpoint = "routes.full_view_picture",
                     picture_uid = picture.uid
                 )
             )
@@ -400,8 +400,13 @@ def delete_picture(picture_uid):
 
 
 @routes.route("/picture/<picture_uid>")
-def view_picture(picture_uid):
+def full_view_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+    comments = website.models.Comment.query.filter_by(
+        picture_uid = picture_uid
+    ).order_by(
+        website.models.Comment.uid.desc()
+    ).all()
     user = flask_login.current_user
 
 
@@ -441,6 +446,7 @@ def view_picture(picture_uid):
         "picture.html",
         user = flask_login.current_user,
         picture = picture,
+        comments = comments,
         models = website.models
     )
 
@@ -564,6 +570,47 @@ def follow_user(user_uid):
     )
 
 
+@routes.route("/view-picture/<picture_uid>", methods=["POST"])
+@flask_login.login_required
+def view_picture(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+    picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+    view = website.models.View.query.filter_by(
+        author_uid = flask_login.current_user.uid,
+        picture_uid = picture.uid
+    ).first()
+
+
+    if not picture:
+        flask.flash(
+            message = "Picture does not exist",
+            category = "error"
+        )
+    else:
+        if view is None:
+            new_view = website.models.View(
+                picture_uid = picture.uid,
+                author_uid = flask_login.current_user.uid,
+                author_username = flask_login.current_user.username
+            )
+
+            picture.views_count += 1
+
+
+            extensions.db.session.add(new_view)
+
+
+        extensions.db.session.commit()
+
+
+    return flask.jsonify(
+        {
+            "views": picture.views_count,
+            "viewed": flask_login.current_user.uid in map(lambda x: x.author_uid, picture.views)
+        }
+    )
+
+
 @routes.route("/like-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def like_picture(picture_uid):
@@ -597,26 +644,27 @@ def like_picture(picture_uid):
 
             picture_author.karma -= 1
         else:
-            like = website.models.Like(
-                picture_uid = picture_uid,
-                author_uid = flask_login.current_user.uid,
-                author_username = flask_login.current_user.username
-            )
+            if flask_login.current_user != picture_author:
+                like = website.models.Like(
+                    picture_uid = picture_uid,
+                    author_uid = flask_login.current_user.uid,
+                    author_username = flask_login.current_user.username
+                )
 
-            extensions.db.session.add(like)
+                extensions.db.session.add(like)
 
-            picture.likes_count += 1
+                picture.likes_count += 1
 
-
-            picture_author.karma += 1
-
-
-            if dislike:
-                extensions.db.session.delete(dislike)
-
-                picture.dislikes_count -= 1
 
                 picture_author.karma += 1
+
+
+                if dislike:
+                    extensions.db.session.delete(dislike)
+
+                    picture.dislikes_count -= 1
+
+                    picture_author.karma += 1
 
 
         view = website.models.View.query.filter_by(
@@ -684,26 +732,27 @@ def dislike_picture(picture_uid):
 
             picture_author.karma += 1
         else:
-            dislike = website.models.Dislike(
-                picture_uid = picture_uid,
-                author_uid = flask_login.current_user.uid,
-                author_username = flask_login.current_user.username
-            )
+            if flask_login.current_user != picture_author:
+                dislike = website.models.Dislike(
+                    picture_uid = picture_uid,
+                    author_uid = flask_login.current_user.uid,
+                    author_username = flask_login.current_user.username
+                )
 
-            extensions.db.session.add(dislike)
+                extensions.db.session.add(dislike)
 
-            picture.dislikes_count += 1
+                picture.dislikes_count += 1
 
-
-            picture_author.karma -= 1
-
-
-            if like:
-                extensions.db.session.delete(like)
-
-                picture.likes_count -= 1
 
                 picture_author.karma -= 1
+
+
+                if like:
+                    extensions.db.session.delete(like)
+
+                    picture.likes_count -= 1
+
+                    picture_author.karma -= 1
 
 
         view = website.models.View.query.filter_by(
@@ -787,7 +836,7 @@ def create_comment(picture_uid):
 
     return flask.redirect(
         flask.url_for(
-            endpoint = "routes.view_picture",
+            endpoint = "routes.full_view_picture",
             picture_uid = picture_uid
         )
     )
@@ -835,7 +884,7 @@ def delete_comment(comment_uid):
 
     return flask.redirect(
         flask.url_for(
-            endpoint = "routes.view_picture",
+            endpoint = "routes.full_view_picture",
             picture_uid = picture.uid
         )
     )

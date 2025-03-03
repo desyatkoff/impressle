@@ -50,7 +50,7 @@
             <br />
 
 
-            {% for comment in picture.comments %}
+            {% for comment in comments %}
                 {% if comment.status != "deleted" %}
                     {% include "div_comment.html" %}
                 {% endif %}

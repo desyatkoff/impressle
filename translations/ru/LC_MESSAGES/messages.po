@@ -342,7 +342,7 @@ msgstr "Опубликовано"
 
 #: website/templates/div_picture.html:67
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: website/templates/div_picture.html:219
 msgid "Delete Picture"

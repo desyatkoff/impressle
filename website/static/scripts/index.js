@@ -2,6 +2,18 @@
 
 
 function view_picture(picture_uid) {
+    const VIEWS_COUNT = document.getElementById(`views-count-${picture_uid}`);
+
+
+    fetch(`/view-picture/${picture_uid}`, {method: "POST"})
+        .then((res) => res.json())
+        .then((data) => {
+            VIEWS_COUNT.innerHTML = data["views"];
+        })
+}
+
+
+function full_view_picture(picture_uid) {
     window.location.replace(`/picture/${picture_uid}`)
 }
 
