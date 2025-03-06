@@ -10,7 +10,6 @@ RUN pip install pipenv
 COPY . .
 
 RUN mv .env.example .env
-RUN echo "$(cat .env)FLASK_SECRET" > .env
 RUN pipenv install --python 3.9
 RUN pipenv lock
 RUN pipenv sync
