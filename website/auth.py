@@ -55,9 +55,24 @@ def signup():
                 message = "Username is too short",
                 category = "error"
             )
+        elif len(username) > 16:
+            flask.flash(
+                message = "Username is too long",
+                category = "error"
+            )
         elif len(password) < 8:
             flask.flash(
                 message = "Password is too short",
+                category = "error"
+            )
+        elif len(password) > 32:
+            flask.flash(
+                message = "Password is too long",
+                category = "error"
+            )
+        elif len(about_me) > 64:
+            flask.flash(
+                message = "\"About Me\" is too long",
                 category = "error"
             )
         elif checkbox != "on":
