@@ -238,10 +238,28 @@ def user_settings():
         delete_account_data = flask.request.form.get("delete-account-checkbox")
 
 
-        user.about_me = about_me_data
-        user.show_followers = True if show_followers_data == "on" else False
-        user.allow_comments = True if allow_comments_data == "on" else False
-        user.status = "inactive" if delete_account_data == "on" else "normal"
+        if about_me_data > 64:
+            flask.flash(
+                message = "\"About Me\" is too long",
+                category = "error"
+            )
+        else:
+            user.about_me = about_me_data
+
+        if show_followers_data == "on":
+            user.show_followers = True
+        else:
+            user.show_followers = False
+
+        if allow_comments_data == "on":
+            user.allow_comments = True
+        else:
+            user.allow_comments = False
+
+        if delete_account_data == "on":
+            user.status = "inactive"
+        else:
+            user.status = "normal"
 
 
         flask.flash(
@@ -278,35 +296,52 @@ def create_picture():
         image_data = flask.request.form.get("image-data")
 
         if image_data is not None:
-            flask.flash(
-                message = "Successfully published your picture",
-                category = "success"
-            )
-
-
-            image_binary = base64.b64decode(image_data.split(",")[1])
-
-            picture = website.models.Picture(
-                title = title,
-                description = description,
-                image_data = image_binary,
-                author_uid = user.uid,
-                author_username = user.username
-            )
-
-            user.karma += 1
-
-
-            extensions.db.session.add(picture)
-            extensions.db.session.commit()
-
-
-            return flask.redirect(
-                flask.url_for(
-                    endpoint = "routes.full_view_picture",
-                    picture_uid = picture.uid
+            if len(title) > 100:
+                flask.flash(
+                    message = "Picture title is too long",
+                    category = "error"
                 )
-            )
+
+
+                return flask.redirect(flask.url_for("routes.create_picture"))
+            elif len(description) > 100:
+                flask.flash(
+                    message = "Picture description is too long",
+                    category = "error"
+                )
+
+
+                return flask.redirect(flask.url_for("routes.create_picture"))
+            else:
+                flask.flash(
+                    message = "Successfully published your picture",
+                    category = "success"
+                )
+
+
+                image_binary = base64.b64decode(image_data.split(",")[1])
+
+                picture = website.models.Picture(
+                    title = title,
+                    description = description,
+                    image_data = image_binary,
+                    author_uid = user.uid,
+                    author_username = user.username
+                )
+
+                user.karma += 1
+
+
+                extensions.db.session.add(picture)
+                extensions.db.session.commit()
+
+
+                return flask.redirect(
+                    flask.url_for(
+                        endpoint = "routes.full_view_picture",
+                        picture_uid = picture.uid
+                    )
+                )
         else:
             flask.flash(
                 message = "No image data",

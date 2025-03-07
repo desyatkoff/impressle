@@ -77,911 +77,214 @@ function get_y(event) {
     }
 }
 
-function change_color(color) {
-    const PASTEL_RED_BUTTON = document.getElementById("pastel-red-button");
-    const PASTEL_ORANGE_BUTTON = document.getElementById("pastel-orange-button");
-    const PASTEL_YELLOW_BUTTON = document.getElementById("pastel-yellow-button");
-    const PASTEL_GREEN_BUTTON = document.getElementById("pastel-green-button");
-    const PASTEL_LIGHTBLUE_BUTTON = document.getElementById("pastel-lightblue-button");
-    const PASTEL_BLUE_BUTTON = document.getElementById("pastel-blue-button");
-    const PASTEL_VIOLET_BUTTON = document.getElementById("pastel-violet-button");
-    const RED_BUTTON = document.getElementById("red-button");
-    const ORANGE_BUTTON = document.getElementById("orange-button");
-    const YELLOW_BUTTON = document.getElementById("yellow-button");
-    const GREEN_BUTTON = document.getElementById("green-button");
-    const LIGHTBLUE_BUTTON = document.getElementById("lightblue-button");
-    const BLUE_BUTTON = document.getElementById("blue-button");
-    const VIOLET_BUTTON = document.getElementById("violet-button");
-    const DARK_RED_BUTTON = document.getElementById("dark-red-button");
-    const DARK_ORANGE_BUTTON = document.getElementById("dark-orange-button");
-    const DARK_YELLOW_BUTTON = document.getElementById("dark-yellow-button");
-    const DARK_GREEN_BUTTON = document.getElementById("dark-green-button");
-    const DARK_LIGHTBLUE_BUTTON = document.getElementById("dark-lightblue-button");
-    const DARK_BLUE_BUTTON = document.getElementById("dark-blue-button");
-    const DARK_VIOLET_BUTTON = document.getElementById("dark-violet-button");
-    const LIGHT1_BUTTON = document.getElementById("light1-button");
-    const LIGHT2_BUTTON = document.getElementById("light2-button");
-    const LIGHT3_BUTTON = document.getElementById("light3-button");
-    const DARK1_BUTTON = document.getElementById ("dark1-button");
-    const DARK2_BUTTON = document.getElementById("dark2-button");
-    const DARK3_BUTTON = document.getElementById("dark3-button");
 
+function reset_selected_color() {
+    document.getElementById("pastel-red-button").classList.remove("selected-color-button");
+    document.getElementById("pastel-orange-button").classList.remove("selected-color-button");
+    document.getElementById("pastel-yellow-button").classList.remove("selected-color-button");
+    document.getElementById("pastel-green-button").classList.remove("selected-color-button");
+    document.getElementById("pastel-lightblue-button").classList.remove("selected-color-button");
+    document.getElementById("pastel-blue-button").classList.remove("selected-color-button");
+    document.getElementById("pastel-violet-button").classList.remove("selected-color-button");
+    document.getElementById("red-button").classList.remove("selected-color-button");
+    document.getElementById("orange-button").classList.remove("selected-color-button");
+    document.getElementById("yellow-button").classList.remove("selected-color-button");
+    document.getElementById("green-button").classList.remove("selected-color-button");
+    document.getElementById("lightblue-button").classList.remove("selected-color-button");
+    document.getElementById("blue-button").classList.remove("selected-color-button");
+    document.getElementById("violet-button").classList.remove("selected-color-button");
+    document.getElementById("dark-red-button").classList.remove("selected-color-button");
+    document.getElementById("dark-orange-button").classList.remove("selected-color-button");
+    document.getElementById("dark-yellow-button").classList.remove("selected-color-button");
+    document.getElementById("dark-green-button").classList.remove("selected-color-button");
+    document.getElementById("dark-lightblue-button").classList.remove("selected-color-button");
+    document.getElementById("dark-blue-button").classList.remove("selected-color-button");
+    document.getElementById("dark-violet-button").classList.remove("selected-color-button");
+    document.getElementById("light1-button").classList.remove("selected-color-button");
+    document.getElementById("light2-button").classList.remove("selected-color-button");
+    document.getElementById("light3-button").classList.remove("selected-color-button");
+    document.getElementById ("dark1-button").classList.remove("selected-color-button");
+    document.getElementById("dark2-button").classList.remove("selected-color-button");
+    document.getElementById("dark3-button").classList.remove("selected-color-button");
+}
+
+function change_color(color) {
     let hex;
 
     if (color == "pastel-red") {
         hex = "ff4747";
 
+        reset_selected_color();
 
-        PASTEL_RED_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("pastel-red-button").classList.add("selected-color-button");
     } else if (color == "red") {
         hex = "ff0000";
 
-        RED_BUTTON.classList.add("selected-color-button");
+        reset_selected_color();
 
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("red-button").classList.add("selected-color-button");
     } else if (color == "dark-red") {
         hex = "990000";
 
-        DARK_RED_BUTTON.classList.add("selected-color-button");
+        reset_selected_color();
 
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark-red-button").classList.add("selected-color-button");
     }
 
     if (color == "pastel-orange") {
         hex = "ffa347";
 
+        reset_selected_color();
 
-        PASTEL_ORANGE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("pastel-orange-button").classList.add("selected-color-button");
     } else if (color == "orange") {
         hex = "ff7f00";
 
+        reset_selected_color();
 
-        ORANGE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("orange-button").classList.add("selected-color-button");
     } else if (color == "dark-orange") {
         hex = "994c00";
 
+        reset_selected_color();
 
-        DARK_ORANGE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark-orange-button").classList.add("selected-color-button");
     }
 
     if (color == "pastel-yellow") {
         hex = "ffff47";
 
+        reset_selected_color();
 
-        PASTEL_YELLOW_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("pastel-yellow-button").classList.add("selected-color-button");
     } else if (color == "yellow") {
         hex = "ffff00";
 
+        reset_selected_color();
 
-        YELLOW_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("yellow-button").classList.add("selected-color-button");
     } else if (color == "dark-yellow") {
         hex = "999900";
 
+        reset_selected_color();
 
-        DARK_YELLOW_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark-yellow-button").classList.add("selected-color-button");
     }
 
     if (color == "pastel-green") {
         hex = "47ff47";
 
+        reset_selected_color();
 
-        PASTEL_GREEN_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("pastel-green-button").classList.add("selected-color-button");
     } else if (color == "green") {
         hex = "00ff00";
 
+        reset_selected_color();
 
-        GREEN_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("green-button").classList.add("selected-color-button");
     } else if (color == "dark-green") {
         hex = "009900";
 
+        reset_selected_color();
 
-        DARK_GREEN_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark-green-button").classList.add("selected-color-button");
     }
 
     if (color == "pastel-lightblue") {
         hex = "47ffff";
 
+        reset_selected_color();
 
-        PASTEL_LIGHTBLUE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("pastel-lightblue-button").classList.add("selected-color-button");
     } else if (color == "lightblue") {
         hex = "00ffff";
 
+        reset_selected_color();
 
-        LIGHTBLUE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("lightblue-button").classList.add("selected-color-button");
     } else if (color == "dark-lightblue") {
         hex = "009999";
 
+        reset_selected_color();
 
-        DARK_LIGHTBLUE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark-lightblue-button").classList.add("selected-color-button");
     }
 
     if (color == "pastel-blue") {
         hex = "4747ff";
 
+        reset_selected_color();
 
-        PASTEL_BLUE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("pastel-blue-button").classList.add("selected-color-button");
     } else if (color == "blue") {
         hex = "0000ff";
 
+        reset_selected_color();
 
-        BLUE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("blue-button").classList.add("selected-color-button");
     } else if (color == "dark-blue") {
         hex = "000099";
 
+        reset_selected_color();
 
-        DARK_BLUE_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark-blue-button").classList.add("selected-color-button");
     }
 
     if (color == "pastel-violet") {
         hex = "a347ff";
 
+        reset_selected_color();
 
-        PASTEL_VIOLET_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("pastel-violet-button").classList.add("selected-color-button");
     } else if (color == "violet") {
         hex = "7f00ff";
 
+        reset_selected_color();
 
-        VIOLET_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("violet-button").classList.add("selected-color-button");
     } else if (color == "dark-violet") {
         hex = "4c0099";
 
+        reset_selected_color();
 
-        DARK_VIOLET_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark-violet-button").classList.add("selected-color-button");
     } else if (color == "light1") {
         hex = "e6e6e6";
 
+        reset_selected_color();
 
-        LIGHT1_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("light1-button").classList.add("selected-color-button");
     } else if (color == "light2") {
         hex = "d9d9d9";
 
+        reset_selected_color();
 
-        LIGHT2_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("light2-button").classList.add("selected-color-button");
     } else if (color == "light3") {
         hex = "cccccc";
 
+        reset_selected_color();
 
-        LIGHT3_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("light3-button").classList.add("selected-color-button");
     } else if (color == "dark1") {
         hex = "262626";
 
+        reset_selected_color();
 
-        DARK1_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark-button").classList.add("selected-color-button");
     } else if (color == "dark2") {
         hex = "1a1a1a";
 
+        reset_selected_color();
 
-        DARK2_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK3_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark2-button").classList.add("selected-color-button");
     } else if (color == "dark3") {
         hex = "0d0d0d";
 
+        reset_selected_color();
 
-        DARK3_BUTTON.classList.add("selected-color-button");
-
-        PASTEL_RED_BUTTON.classList.remove("selected-color-button");
-        PASTEL_ORANGE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_YELLOW_BUTTON.classList.remove("selected-color-button");
-        PASTEL_GREEN_BUTTON.classList.remove("selected-color-button");
-        PASTEL_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_BLUE_BUTTON.classList.remove("selected-color-button");
-        PASTEL_VIOLET_BUTTON.classList.remove("selected-color-button");
-        RED_BUTTON.classList.remove("selected-color-button");
-        ORANGE_BUTTON.classList.remove("selected-color-button");
-        YELLOW_BUTTON.classList.remove("selected-color-button");
-        GREEN_BUTTON.classList.remove("selected-color-button");
-        LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        BLUE_BUTTON.classList.remove("selected-color-button");
-        VIOLET_BUTTON.classList.remove("selected-color-button");
-        DARK_RED_BUTTON.classList.remove("selected-color-button");
-        DARK_ORANGE_BUTTON.classList.remove("selected-color-button");
-        DARK_YELLOW_BUTTON.classList.remove("selected-color-button");
-        DARK_GREEN_BUTTON.classList.remove("selected-color-button");
-        DARK_LIGHTBLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_BLUE_BUTTON.classList.remove("selected-color-button");
-        DARK_VIOLET_BUTTON.classList.remove("selected-color-button");
-        LIGHT1_BUTTON.classList.remove("selected-color-button");
-        LIGHT2_BUTTON.classList.remove("selected-color-button");
-        LIGHT3_BUTTON.classList.remove("selected-color-button");
-        DARK1_BUTTON.classList.remove("selected-color-button");
-        DARK2_BUTTON.classList.remove("selected-color-button");
+        document.getElementById("dark3-button").classList.add("selected-color-button");
     }
 
 
