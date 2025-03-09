@@ -65,6 +65,9 @@ function get_y(event) {
 
 
 function reset_selected_color() {
+    // A function that removes selected color white border for all color buttons
+
+
     document.getElementById("pastel-red-button").classList.remove("selected-color-button");
     document.getElementById("pastel-orange-button").classList.remove("selected-color-button");
     document.getElementById("pastel-yellow-button").classList.remove("selected-color-button");
@@ -95,6 +98,9 @@ function reset_selected_color() {
 }
 
 function change_color(color) {
+    // A function that updates `brush_color` variable and gives a white border for selected color button
+
+
     let hex;
 
     if (color == "pastel-red") {
