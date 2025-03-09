@@ -96,6 +96,10 @@ class User(extensions.db.Model, flask_login.UserMixin):
         extensions.db.Boolean,
         default = True
     )
+    show_status = extensions.db.Column(
+        extensions.db.Boolean,
+        default = True
+    )
     status = extensions.db.Column(
         extensions.db.String,
         default = "offline"

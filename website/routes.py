@@ -251,10 +251,11 @@ def user_settings():
         about_me_data = flask.request.form.get("about-me")
         show_followers_data = flask.request.form.get("show-followers-checkbox")
         allow_comments_data = flask.request.form.get("allow-comments-checkbox")
+        show_status_data = flask.request.form.get("show-status-checkbox")
         delete_account_data = flask.request.form.get("delete-account-checkbox")
 
 
-        if about_me_data > 64:
+        if len(about_me_data) > 64:
             flask.flash(
                 message = "\"About Me\" is too long",
                 category = "error"
@@ -271,6 +272,11 @@ def user_settings():
             user.allow_comments = True
         else:
             user.allow_comments = False
+
+        if show_status_data == "on":
+            user.show_status = True
+        else:
+            user.show_status = False
 
         if delete_account_data == "on":
             user.status = "inactive"

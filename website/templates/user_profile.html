@@ -21,11 +21,11 @@
                         />
                         @{{ user_profile.username }}
 
-                        {% if user_profile.status == "online" %}
+                        {% if user_profile.status == "online" and user_profile.show_status %}
                             <span class="online-label">
                                 {{ gettext("ONLINE") }}
                             </span>
-                        {% elif user_profile.status == "offline" %}
+                        {% elif user_profile.status == "offline" or user_profile.show_status != True %}
                             <span class="offline-label">
                                 {{ gettext("OFFLINE") }}
                             </span>
