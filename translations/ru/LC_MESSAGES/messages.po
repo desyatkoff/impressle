@@ -1397,6 +1397,7 @@ msgstr "Удалить аккаунт"
 msgid "I am totally sure I want to delete this account"
 msgstr "Я точно уверен что я хочу удалить этот аккаунт"
 
-#~ msgid "Admin"
-#~ msgstr "Админ"
+#:
+msgid "Admin"
+msgstr "Админ"
 
