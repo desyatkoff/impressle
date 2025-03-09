@@ -23,6 +23,7 @@ import flask_login
 import flask_sqlalchemy
 
 
-babel = flask_babel.Babel()
-login_manager = flask_login.LoginManager()
-db = flask_sqlalchemy.SQLAlchemy()
+babel = flask_babel.Babel()    # Localization extension
+login_manager = flask_login.LoginManager()    # Load users extension
+db = flask_sqlalchemy.SQLAlchemy()    # Database interactions extension (ORM)
+

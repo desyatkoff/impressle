@@ -39,6 +39,13 @@ auth = flask.Blueprint(
 @auth.route("/signup", methods=["GET", "POST"])
 def signup():
     if flask.request.method == "POST":
+        # Check if user enters correct data:
+        # - Username (must be at least 4 symbols and not longer than 16 symbols)
+        # - Password (must be at least 8 symbols and not longer than 32 symbols)
+        # - About Me (must be at least 0 symbols and not longer than 64 symbols)
+        # - Checks the "Terms of Service" and "Privacy Policy" checkbox
+
+
         username = flask.request.form.get("username")
         password = flask.request.form.get("password")
         about_me = flask.request.form.get("about-me")
@@ -146,6 +153,13 @@ def signup():
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     if flask.request.method == "POST":
+        # Check if user enters correct data:
+        # - Username
+        # - Password
+        #
+        # Also, user cannot log in if their account is inactive or banned
+
+
         username = flask.request.form.get("username")
         password = flask.request.form.get("password")
 
@@ -220,3 +234,4 @@ def logout():
 
 
     return flask.redirect(flask.url_for("auth.login"))
+

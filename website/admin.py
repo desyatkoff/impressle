@@ -41,6 +41,9 @@ def access_admin():
 
 
     if flask.request.method == "POST":
+        # Check if user is an actual admin and the secret key is correct
+
+
         user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
         secret_key = flask.request.form.get("secret-key")
 
@@ -392,3 +395,4 @@ def ban_comment(comment_uid):
 
 
     return flask.redirect(flask.request.referrer)
+
