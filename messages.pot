@@ -1266,7 +1266,7 @@ msgid "Profile Settings"
 msgstr ""
 
 #: website/templates/user_settings.html:61
-#: website/templates/user_settings.html:106
+#: website/templates/user_settings.html:120
 msgid "Save"
 msgstr ""
 
@@ -1282,12 +1282,16 @@ msgstr ""
 msgid "Allow users to comment my pictures"
 msgstr ""
 
-#: website/templates/user_settings.html:112
-#: website/templates/user_settings.html:134
+#: website/templates/user_settings.html:109
+msgid "Show \"online\" status in my profile"
+msgstr ""
+
+#: website/templates/user_settings.html:126
+#: website/templates/user_settings.html:148
 msgid "Delete Account"
 msgstr ""
 
-#: website/templates/user_settings.html:123
+#: website/templates/user_settings.html:137
 msgid "I am totally sure I want to delete this account"
 msgstr ""
 
