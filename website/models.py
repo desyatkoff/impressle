@@ -98,7 +98,7 @@ class User(extensions.db.Model, flask_login.UserMixin):
     )
     status = extensions.db.Column(
         extensions.db.String,
-        default = "normal"
+        default = "offline"
     )
     last_activity = extensions.db.Column(
         extensions.db.Integer,

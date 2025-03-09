@@ -21,6 +21,15 @@
                         />
                         @{{ user_profile.username }}
 
+                        {% if user_profile.status == "online" %}
+                            <span class="online-label">
+                                {{ gettext("ONLINE") }}
+                            </span>
+                        {% elif user_profile.status == "offline" %}
+                            <span class="offline-label">
+                                {{ gettext("OFFLINE") }}
+                            </span>
+                        {% endif %}
 
                         {% if user_profile.rank == "Admin" %}
                             <span class="admin-label">

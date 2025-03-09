@@ -61,6 +61,7 @@ def before_request():
 
 
         for user_ in website.models.User.query.all():
+            # If user's last activity was more than a month ago, set their status to "inactive"
             if round(
                     datetime.datetime.now(
                         tz = datetime.timezone.utc
@@ -68,6 +69,21 @@ def before_request():
                 ) - user_.last_activity > 2592000:    # 259200 seconds = 30 days
                 if user_.status != "banned":
                     user_.status = "inactive"
+
+
+            # If user's last activity was
+            # - [0-10] seconds ago -> set their status to "online"
+            # - More than 10 seconds ago -> set their status to "offline"
+            if round(
+                    datetime.datetime.now(
+                        tz = datetime.timezone.utc
+                    ).timestamp()
+                ) - user_.last_activity <= 10:
+                if user_.status == "offline":
+                    user_.status = "online"
+            else:
+                if user_.status == "online":
+                    user_.status = "offline"
 
 
         if user.status == "inactive":
@@ -258,8 +274,6 @@ def user_settings():
 
         if delete_account_data == "on":
             user.status = "inactive"
-        else:
-            user.status = "normal"
 
 
         flask.flash(

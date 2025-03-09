@@ -273,13 +273,13 @@ msgstr ""
 msgid "Reset Canvas"
 msgstr ""
 
-#: website/templates/div_comment.html:7 website/templates/div_picture.html:26
+#: website/templates/div_comment.html:7 website/templates/div_picture.html:27
 msgid "Author"
 msgstr ""
 
 #: website/templates/div_comment.html:14
 #: website/templates/div_compact_profile.html:16
-#: website/templates/div_picture.html:33 website/templates/user_profile.html:27
+#: website/templates/div_picture.html:34 website/templates/user_profile.html:36
 msgid "ADMIN"
 msgstr ""
 
@@ -289,7 +289,7 @@ msgstr ""
 
 #: website/templates/div_comment.html:29
 #: website/templates/div_compact_profile.html:26
-#: website/templates/div_picture.html:18 website/templates/user_profile.html:37
+#: website/templates/div_picture.html:19 website/templates/user_profile.html:46
 msgid "BANNED"
 msgstr ""
 
@@ -298,38 +298,38 @@ msgid "Delete Comment"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:22
-#: website/templates/user_profile.html:33
+#: website/templates/user_profile.html:42
 msgid "INACTIVE"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:41
-#: website/templates/user_profile.html:52
+#: website/templates/user_profile.html:61
 msgid "follower(s)"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:52
-#: website/templates/user_profile.html:63
+#: website/templates/user_profile.html:72
 msgid "Unfollow"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:60
-#: website/templates/user_profile.html:71
+#: website/templates/user_profile.html:80
 msgid "Follow"
 msgstr ""
 
-#: website/templates/div_picture.html:12 website/templates/picture.html:5
+#: website/templates/div_picture.html:13 website/templates/picture.html:5
 msgid "Untitled"
 msgstr ""
 
-#: website/templates/div_picture.html:41
+#: website/templates/div_picture.html:42
 msgid "Published on"
 msgstr ""
 
-#: website/templates/div_picture.html:67
+#: website/templates/div_picture.html:68
 msgid "Description"
 msgstr ""
 
-#: website/templates/div_picture.html:219
+#: website/templates/div_picture.html:220
 msgid "Delete Picture"
 msgstr ""
 
@@ -992,7 +992,7 @@ msgid "Let's create a new account"
 msgstr ""
 
 #: website/templates/signup.html:65 website/templates/signup.html:72
-#: website/templates/user_profile.html:84
+#: website/templates/user_profile.html:93
 #: website/templates/user_settings.html:40
 msgid "About Me"
 msgstr ""
@@ -1221,31 +1221,39 @@ msgstr ""
 msgid "These Terms constitute the entire agreement between you and Impressle."
 msgstr ""
 
-#: website/templates/user_profile.html:92
+#: website/templates/user_profile.html:26
+msgid "ONLINE"
+msgstr ""
+
+#: website/templates/user_profile.html:30
+msgid "OFFLINE"
+msgstr ""
+
+#: website/templates/user_profile.html:101
 msgid "Nothing yet..."
 msgstr ""
 
-#: website/templates/user_profile.html:102
+#: website/templates/user_profile.html:111
 msgid "Account Details"
 msgstr ""
 
-#: website/templates/user_profile.html:109
+#: website/templates/user_profile.html:118
 msgid "User ID"
 msgstr ""
 
-#: website/templates/user_profile.html:119
+#: website/templates/user_profile.html:128
 msgid "Account Created"
 msgstr ""
 
-#: website/templates/user_profile.html:129
+#: website/templates/user_profile.html:138
 msgid "Rank"
 msgstr ""
 
-#: website/templates/user_profile.html:139
+#: website/templates/user_profile.html:148
 msgid "Karma"
 msgstr ""
 
-#: website/templates/user_profile.html:157
+#: website/templates/user_profile.html:166
 msgid "Edit Profile"
 msgstr ""
 
