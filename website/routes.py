@@ -18,6 +18,7 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
+import io
 import base64
 import datetime
 
@@ -840,6 +841,30 @@ def dislike_picture(picture_uid):
             "disliked": flask_login.current_user.uid in map(lambda b: b.author_uid, picture.dislikes)
         }
     )
+
+
+@routes.route("/download-picture/<picture_uid>")
+def download_picture(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+
+
+    if picture:
+        flask.flash(
+            message = f"Successfully downloaded the picture #{picture_uid}",
+            category = "success"
+        )
+
+
+        return flask.send_file(
+            path_or_file = io.BytesIO(picture.image_data), 
+            as_attachment = True,
+            download_name = f"{picture_uid}.png"
+        )
+    else:
+        flask.flash(
+            message = "Picture does not exist",
+            category = "error"
+        )
 
 
 @routes.route("/create-comment/<picture_uid>", methods=["POST"])

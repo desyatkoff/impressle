@@ -131,14 +131,20 @@ input:focus {
     background-color: #ff0000;
 }
 
-.liked, .not-liked, .disliked, .not-disliked, .comment-button, .view-button, .icon {
+.pic-icon {
+    padding: 0.5em;
+    border-radius: 8px;
+    border: 2px solid #7f00ff;
+    background-color: transparent;
+}
+
+.liked, .not-liked, .disliked, .not-disliked, .comment-button, .view-button, .download-button {
     margin: 0;
     padding: 0;
-    border-radius: 8px;
     vertical-align: middle;
 }
 
-.likes-icon, .dislikes-icon, .comments-icon, .views-icon {
+.likes-icon, .dislikes-icon, .comments-icon, .views-icon, .download-icon {
     font-size: 1.5em;
 }
 
@@ -147,7 +153,7 @@ input:focus {
     background-color: #7f00ff;
 }
 
-.not-liked, .not-disliked, .comment-button, .view-button {
+.not-liked, .not-disliked, .comment-button, .view-button, .download-button {
     border: none;
     background-color: transparent;
 }

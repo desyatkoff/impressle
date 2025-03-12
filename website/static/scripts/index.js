@@ -92,6 +92,15 @@ function comment(picture_uid) {
 }
 
 
+function download_picture(picture_uid) {
+    // A function for downloading a picture as .png by it's UID
+
+
+    window.location.replace(`/download-picture/${picture_uid}`);
+    
+}
+
+
 function follow(user_uid) {
     // A function that gives a new +1 follower for the user
     
