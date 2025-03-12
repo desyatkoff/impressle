@@ -138,7 +138,7 @@ input:focus {
     background-color: transparent;
 }
 
-.liked, .not-liked, .disliked, .not-disliked, .comment-button, .view-button, .download-button {
+.liked, .not-liked, .disliked, .not-disliked, .comment-button, .view-button, .download-button, .icon {
     margin: 0;
     padding: 0;
     vertical-align: middle;
