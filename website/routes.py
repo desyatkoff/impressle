@@ -846,25 +846,57 @@ def dislike_picture(picture_uid):
 @routes.route("/download-picture/<picture_uid>")
 def download_picture(picture_uid):
     picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+    picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+
+    if not isinstance(flask_login.current_user, flask_login.AnonymousUserMixin):
+        dl_author = flask_login.current_user
+        download = website.models.Download.query.filter_by(
+            author_uid = flask_login.current_user.uid,
+            picture_uid = picture.uid
+        ).first()
+    else:
+        dl_author = None 
+        download = None
 
 
-    if picture:
+    if not picture:
+        flask.flash(
+            message = "Picture does not exist",
+            category = "error"
+        )
+    else:
         flask.flash(
             message = f"Successfully downloaded the picture #{picture_uid}",
             category = "success"
-        )
+        ) 
+
+
+        if dl_author is not None and download is None:
+            new_download = website.models.Download(
+                picture_uid = picture.uid,
+                author_uid = flask_login.current_user.uid,
+                author_username = flask_login.current_user.username
+            )
+
+            picture.downloads_count += 1
+
+
+            extensions.db.session.add(new_download)
+            extensions.db.session.commit()
 
 
         return flask.send_file(
             path_or_file = io.BytesIO(picture.image_data), 
             as_attachment = True,
             download_name = f"{picture_uid}.png"
-        )
-    else:
-        flask.flash(
-            message = "Picture does not exist",
-            category = "error"
-        )
+        ) 
+
+    
+    return flask.jsonify(
+        {
+            "downloads": picture.downloads_count
+        }
+    )
 
 
 @routes.route("/create-comment/<picture_uid>", methods=["POST"])

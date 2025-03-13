@@ -175,6 +175,15 @@ class Picture(extensions.db.Model):
         extensions.db.Integer,
         default = 0
     )
+    downloads = extensions.db.relationship(
+        "Download",
+        backref = "picture",
+        passive_deletes = True
+    )
+    downloads_count = extensions.db.Column(
+        extensions.db.Integer,
+        default = 0
+    )
     author_uid = extensions.db.Column(
         extensions.db.Integer,
         extensions.db.ForeignKey(
@@ -404,3 +413,45 @@ class View(extensions.db.Model):
         extensions.db.String,
         nullable = False
     )
+
+
+class Download(extensions.db.Model):
+    """Picture downloads database model"""
+
+
+    id = extensions.db.Column(
+        extensions.db.Integer,
+        primary_key = True,
+        nullable = False
+    )
+
+    uid = extensions.db.Column(
+        extensions.db.Integer,
+        unique = True,
+        default = lambda: round(datetime.datetime.now(datetime.timezone.utc).timestamp())
+    )
+    date_created = extensions.db.Column(
+        extensions.db.DateTime,
+        default = lambda: datetime.datetime.now(datetime.timezone.utc)
+    )
+    picture_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
+            "picture.uid",
+            ondelete = "CASCADE"
+        ),
+        nullable = False
+    )
+    author_uid = extensions.db.Column(
+        extensions.db.Integer,
+        extensions.db.ForeignKey(
+            "user.uid",
+            ondelete = "CASCADE"
+        ),
+        nullable = False
+    )
+    author_username = extensions.db.Column(
+        extensions.db.String,
+        nullable = False
+    )
+

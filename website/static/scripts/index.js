@@ -96,8 +96,16 @@ function download_picture(picture_uid) {
     // A function for downloading a picture as .png by it's UID
 
 
+    const DOWNLOADS_COUNT = document.getElementById(`downloads-count-${picture_uid}`);
+
+    fetch(`/download-picture/${picture_uid}`, {method: "POST"})
+        .then((res) => res.json())
+        .then((data) => {
+            DOWNLOADS_COUNT.innerHTML = data["downloads"];
+        })
+
+
     window.location.replace(`/download-picture/${picture_uid}`);
-    
 }
 
 
