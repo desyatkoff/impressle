@@ -93,6 +93,14 @@ input:focus {
     border: 2px solid #7f00ff;
 }
 
+.card-success {
+    border: 2px solid #00ff00;
+}
+
+.card-error {
+    border: 2px solid #ff0000;
+}
+
 .picture-title .picture-author {
     font-size: 1.5em;
     margin: 1em 0 0.5em;
@@ -118,6 +126,17 @@ input:focus {
 .button-main:hover {
     border-radius: 8px;
     background-color: #7f00ff;
+}
+
+.button-success {
+    color: #e6e6e6;
+    border-radius: 8px;
+    background-color: #47ff47;
+}
+
+.button-success:hover {
+    border-radius: 8px;
+    background-color: #009900;
 }
 
 .button-danger {
@@ -275,6 +294,12 @@ img {
     padding-left: 0.25em;
     padding-right: 0.25em;
     background-color: #ff4747;
+}
+
+.alert-close {
+    float: right;
+    /*font-size: 2em;*/
+    font-weight: bold;
 }
 
 .color-button {

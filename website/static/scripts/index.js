@@ -127,3 +127,14 @@ function follow(user_uid) {
         })
 }
 
+
+window.onclick = function(event) {
+    let alert_card = document.getElementById("alert");
+    let alert_close_button = document.getElementById("alert-close");
+
+
+    if (event.target == alert_close_button) {
+        alert_card.style.display = "none";
+    }
+} 
+
