@@ -32,7 +32,7 @@ if __name__ == "__main__":
     """Create the database backup every day"""
 
 
-    if not os.path.exists(BACKUP_FILE):
+    if not os.path.exists(BACKUP_FILE_PATH):
         shutil.copy2(
             src = config.DB_PATH,
             dst = BACKUP_FILE_PATH
