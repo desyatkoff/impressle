@@ -27,6 +27,7 @@ dotenv.load_dotenv(".env")
 
 
 PROJECT_ROOT_PATH = os.path.dirname(__file__)
+DB_BACKUP_PATH = f"{PROJECT_ROOT_PATH}/backup/"
 DB_PATH = f"{PROJECT_ROOT_PATH}/database/database.db"
 
 FLASK_SECRET = os.getenv("FLASK_SECRET")
