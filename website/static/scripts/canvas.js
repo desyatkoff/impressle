@@ -92,7 +92,7 @@ function reset_selected_color() {
     document.getElementById("light1-button").classList.remove("selected-color-button");
     document.getElementById("light2-button").classList.remove("selected-color-button");
     document.getElementById("light3-button").classList.remove("selected-color-button");
-    document.getElementById ("dark1-button").classList.remove("selected-color-button");
+    document.getElementById("dark1-button").classList.remove("selected-color-button");
     document.getElementById("dark2-button").classList.remove("selected-color-button");
     document.getElementById("dark3-button").classList.remove("selected-color-button");
 }
@@ -264,7 +264,7 @@ function change_color(color) {
 
         reset_selected_color();
 
-        document.getElementById("dark-button").classList.add("selected-color-button");
+        document.getElementById("dark1-button").classList.add("selected-color-button");
     } else if (color == "dark2") {
         hex = "1a1a1a";
 
