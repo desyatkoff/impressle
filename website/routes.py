@@ -20,6 +20,7 @@
 
 import io
 import base64
+import difflib
 import datetime
 
 import flask
@@ -126,6 +127,36 @@ def landing():
                 username = flask_login.current_user.username
             )
         )
+
+
+@routes.route("/search-picture/<query>")
+def search_picture(query):
+    pictures = website.models.Picture.query.order_by(
+        website.models.Picture.uid.desc()
+    ).order_by(
+        website.models.Picture.likes_count.desc()
+    ).order_by(
+        website.models.Picture.dislikes_count.asc()
+    ).order_by(
+        website.models.Picture.views_count.desc()
+    ).all()
+    relevant_pictures = []
+
+
+    for picture in pictures:
+        if difflib.SequenceMatcher(
+            a = str(query).lower(),
+            b = str(picture.title).lower()
+        ).ratio() > 0.5 or query == picture.uid:
+            relevant_pictures.append(picture)
+
+
+    return flask.render_template(
+        "search.html",
+        user = flask_login.current_user,
+        pictures = relevant_pictures,
+        models = website.models
+    )
 
 
 @routes.route("/feed")

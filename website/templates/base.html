@@ -91,6 +91,21 @@
                             </a>
                         </li>
                         <li class="pure-menu-item">
+                            <form
+                                method = "POST"
+                                autocomplete = "off"
+                                action = "javascript:search_picture()"
+                            >
+                                <input
+                                    type = "text"
+                                    name = "search"
+                                    id = "search-input"
+                                    class = "pure-input"
+                                    placeholder = "{{ gettext('Search') }}"
+                                />
+                            </form>
+                        </li>
+                        <li class="pure-menu-item">
                             <a
                                 href = "{{ url_for('routes.feed_recent') }}"
                                 class = "pure-menu-link pure-button"

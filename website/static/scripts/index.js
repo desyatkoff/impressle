@@ -1,6 +1,17 @@
 // I'm very sorry for this shit, I don't know javascript ._.
 
 
+function search_picture() {
+    // A function that redirects user to relevant pictures by query
+
+
+    const QUERY = document.getElementById("search-input").value;
+
+
+    window.location.replace(`/search-picture/${QUERY}`);
+}
+
+
 function view_picture(picture_uid) {
     // A function that gives a new +1 view for the picture without opening full view
 

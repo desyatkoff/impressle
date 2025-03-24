@@ -30,7 +30,7 @@ msgstr ""
 "Если вы хотите знать как мы собираем, используем и защищаем вашу "
 "персональную информацию, проверьте"
 
-#: website/templates/about.html:43 website/templates/base.html:280
+#: website/templates/about.html:43 website/templates/base.html:313
 #: website/templates/privacy_policy.html:5
 #: website/templates/privacy_policy.html:10 website/templates/signup.html:93
 #: website/templates/terms_of_service.html:163
@@ -85,7 +85,7 @@ msgid "Secret Key"
 msgstr "Секретный ключ"
 
 #: website/templates/admin.html:5 website/templates/admin.html:10
-#: website/templates/base.html:250
+#: website/templates/base.html:283
 msgid "Admin Panel"
 msgstr "Админ панель"
 
@@ -193,62 +193,66 @@ msgstr "Создать новый аккаунт"
 msgid "Create Picture"
 msgstr "Создать картинку"
 
-#: website/templates/base.html:103
+#: website/templates/base.html:106
+msgid "Search"
+msgstr "Поиск"
+
+#: website/templates/base.html:136
 msgid "Recent Pictures"
 msgstr "Недавние картинки"
 
-#: website/templates/base.html:116
+#: website/templates/base.html:149
 msgid "Best Pictures"
 msgstr "Лучшие картинки"
 
-#: website/templates/base.html:129
+#: website/templates/base.html:162
 msgid "Popular Pictures"
 msgstr "Популярные картинки"
 
-#: website/templates/base.html:143
+#: website/templates/base.html:176
 msgid "Profile"
 msgstr "Профиль"
 
-#: website/templates/base.html:156 website/templates/faq.html:213
+#: website/templates/base.html:189 website/templates/faq.html:213
 #: website/templates/user_settings.html:5
 #: website/templates/user_settings.html:10
 msgid "Settings"
 msgstr "Настройки"
 
-#: website/templates/base.html:169 website/templates/liked.html:5
+#: website/templates/base.html:202 website/templates/liked.html:5
 #: website/templates/liked.html:10
 msgid "You Liked"
 msgstr "Вы лайкнули"
 
-#: website/templates/base.html:182 website/templates/following.html:5
+#: website/templates/base.html:215 website/templates/following.html:5
 #: website/templates/following.html:10
 msgid "You Following"
 msgstr "Вы подписаны"
 
-#: website/templates/base.html:196 website/templates/login.html:5
+#: website/templates/base.html:229 website/templates/login.html:5
 #: website/templates/login.html:65 website/templates/signup.html:117
 msgid "Log In"
 msgstr "Войти"
 
-#: website/templates/base.html:209 website/templates/index.html:96
+#: website/templates/base.html:242 website/templates/index.html:96
 #: website/templates/login.html:75 website/templates/signup.html:5
 #: website/templates/signup.html:107
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
-#: website/templates/base.html:223
+#: website/templates/base.html:256
 msgid "About"
 msgstr "О сайте"
 
-#: website/templates/base.html:236 website/templates/faq.html:5
+#: website/templates/base.html:269 website/templates/faq.html:5
 msgid "FAQ"
 msgstr "ЧаВо"
 
-#: website/templates/base.html:265
+#: website/templates/base.html:298
 msgid "Log Out"
 msgstr "Выйти"
 
-#: website/templates/base.html:274 website/templates/privacy_policy.html:103
+#: website/templates/base.html:307 website/templates/privacy_policy.html:103
 #: website/templates/privacy_policy.html:242 website/templates/signup.html:89
 #: website/templates/terms_of_service.html:5
 #: website/templates/terms_of_service.html:10
@@ -257,6 +261,7 @@ msgstr "Пользовательское Соглашение"
 
 #: website/templates/create_picture.html:5
 #: website/templates/create_picture.html:10 website/templates/feed.html:56
+#: website/templates/search.html:50
 msgid "Create a Picture"
 msgstr "Создать картинку"
 
@@ -344,7 +349,7 @@ msgstr "Опубликовано"
 msgid "Description"
 msgstr "Описание"
 
-#: website/templates/div_picture.html:220
+#: website/templates/div_picture.html:248
 msgid "Delete Picture"
 msgstr "Удалить картинку"
 
@@ -675,11 +680,11 @@ msgstr "Найдите самые просматриваемые картинк�
 msgid "It seems that there are no any pictures... :("
 msgstr "Кажется, здесь нет ни одной картинки... :("
 
-#: website/templates/feed.html:53
+#: website/templates/feed.html:53 website/templates/search.html:47
 msgid "Let's fix this, click"
 msgstr "Давайте исправим это, кликните"
 
-#: website/templates/feed.html:59
+#: website/templates/feed.html:59 website/templates/search.html:53
 msgid "and Impressle will not be empty"
 msgstr "и Impressle не будет пустым"
 
@@ -1059,6 +1064,18 @@ msgstr "Посмотрите наше"
 msgid "for rules about using our website."
 msgstr "для ознакомления с правилами использования нашего сайта."
 
+#: website/templates/search.html:5 website/templates/search.html:10
+msgid "Picture Search"
+msgstr "Поиск картинки"
+
+#: website/templates/search.html:16
+msgid "Find some pictures by your search query"
+msgstr "Найдите несколько картинок по вашему поисковому запросу"
+
+#: website/templates/search.html:41
+msgid "Could not find pictures for you... :("
+msgstr "Не смогли подобрать картинки для вас... :("
+
 #: website/templates/signup.html:10
 msgid "Hello, New User!"
 msgstr "Привет, новый пользователь!"
@@ -1401,7 +1418,6 @@ msgstr "Удалить аккаунт"
 msgid "I am totally sure I want to delete this account"
 msgstr "Я точно уверен что я хочу удалить этот аккаунт"
 
-#:
 msgid "Admin"
 msgstr "Админ"
 
