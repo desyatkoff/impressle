@@ -5,6 +5,10 @@
     font-family: "Nunito", serif;
 }
 
+html {
+    zoom: 0.9;
+}
+
 body {
     background-color: #262626;
 }
@@ -34,7 +38,7 @@ input:focus {
 .sidebar {
     width: 16em;
     padding: 1em;
-    height: 100vh;
+    height: 150vh;
     position: fixed;
     background-color: #0d0d0d;
 }
