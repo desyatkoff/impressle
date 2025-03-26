@@ -30,7 +30,7 @@ msgstr ""
 "Если вы хотите знать как мы собираем, используем и защищаем вашу "
 "персональную информацию, проверьте"
 
-#: website/templates/about.html:43 website/templates/base.html:313
+#: website/templates/about.html:43 website/templates/base.html:295
 #: website/templates/privacy_policy.html:5
 #: website/templates/privacy_policy.html:10 website/templates/signup.html:93
 #: website/templates/terms_of_service.html:163
@@ -85,7 +85,7 @@ msgid "Secret Key"
 msgstr "Секретный ключ"
 
 #: website/templates/admin.html:5 website/templates/admin.html:10
-#: website/templates/base.html:283
+#: website/templates/base.html:265
 msgid "Admin Panel"
 msgstr "Админ панель"
 
@@ -193,66 +193,66 @@ msgstr "Создать новый аккаунт"
 msgid "Create Picture"
 msgstr "Создать картинку"
 
-#: website/templates/base.html:106
+#: website/templates/base.html:104
 msgid "Search"
 msgstr "Поиск"
 
-#: website/templates/base.html:136
+#: website/templates/base.html:118
 msgid "Recent Pictures"
 msgstr "Недавние картинки"
 
-#: website/templates/base.html:149
+#: website/templates/base.html:131
 msgid "Best Pictures"
 msgstr "Лучшие картинки"
 
-#: website/templates/base.html:162
+#: website/templates/base.html:144
 msgid "Popular Pictures"
 msgstr "Популярные картинки"
 
-#: website/templates/base.html:176
+#: website/templates/base.html:158
 msgid "Profile"
 msgstr "Профиль"
 
-#: website/templates/base.html:189 website/templates/faq.html:213
+#: website/templates/base.html:171 website/templates/faq.html:213
 #: website/templates/user_settings.html:5
 #: website/templates/user_settings.html:10
 msgid "Settings"
 msgstr "Настройки"
 
-#: website/templates/base.html:202 website/templates/liked.html:5
+#: website/templates/base.html:184 website/templates/liked.html:5
 #: website/templates/liked.html:10
 msgid "You Liked"
 msgstr "Вы лайкнули"
 
-#: website/templates/base.html:215 website/templates/following.html:5
+#: website/templates/base.html:197 website/templates/following.html:5
 #: website/templates/following.html:10
 msgid "You Following"
 msgstr "Вы подписаны"
 
-#: website/templates/base.html:229 website/templates/login.html:5
+#: website/templates/base.html:211 website/templates/login.html:5
 #: website/templates/login.html:65 website/templates/signup.html:117
 msgid "Log In"
 msgstr "Войти"
 
-#: website/templates/base.html:242 website/templates/index.html:96
+#: website/templates/base.html:224 website/templates/index.html:96
 #: website/templates/login.html:75 website/templates/signup.html:5
 #: website/templates/signup.html:107
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
-#: website/templates/base.html:256
+#: website/templates/base.html:238
 msgid "About"
 msgstr "О сайте"
 
-#: website/templates/base.html:269 website/templates/faq.html:5
+#: website/templates/base.html:251 website/templates/faq.html:5
 msgid "FAQ"
 msgstr "ЧаВо"
 
-#: website/templates/base.html:298
+#: website/templates/base.html:280
 msgid "Log Out"
 msgstr "Выйти"
 
-#: website/templates/base.html:307 website/templates/privacy_policy.html:103
+#: website/templates/base.html:289 website/templates/privacy_policy.html:103
 #: website/templates/privacy_policy.html:242 website/templates/signup.html:89
 #: website/templates/terms_of_service.html:5
 #: website/templates/terms_of_service.html:10
@@ -349,9 +349,14 @@ msgstr "Опубликовано"
 msgid "Description"
 msgstr "Описание"
 
-#: website/templates/div_picture.html:248
+#: website/templates/div_picture.html:251
 msgid "Delete Picture"
 msgstr "Удалить картинку"
+
+#: website/templates/div_picture.html:270
+#, fuzzy
+msgid "Ban Picture"
+msgstr "Картинка"
 
 #: website/templates/faq.html:10
 msgid "FAQ (Frequently Asked Questions)"
@@ -1376,9 +1381,17 @@ msgstr "Ранг"
 msgid "Karma"
 msgstr "Карма"
 
-#: website/templates/user_profile.html:166
+#: website/templates/user_profile.html:168
 msgid "Edit Profile"
 msgstr "Настроить профиль"
+
+#: website/templates/user_profile.html:187
+msgid "Delete User"
+msgstr "Удалить пользователя"
+
+#: website/templates/user_profile.html:206
+msgid "Ban User"
+msgstr "Забанить пользователя"
 
 #: website/templates/user_settings.html:16
 msgid "Set the preferences for your account"
