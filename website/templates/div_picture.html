@@ -231,24 +231,49 @@
 
 
         {% if user.uid == picture.author_uid or user.rank == "Admin" %}
-            {% if picture.status == "normal" %}
-                <hr />
+            <hr />
 
 
-                <form
-                    method = "POST"
-                    autocomplete = "off"
-                    id = "delete-picture-form"
-                    action = "{{ url_for('routes.delete_picture', picture_uid=picture.uid) }}"
-                >
-                    <button
-                        type = "submit"
-                        class = "pure-button button-danger"
-                    >
-                        {{ gettext("Delete Picture") }}
-                    </button>
-                </form>
-            {% endif %}
+            <div class="pure-g">
+                {% if user.uid == picture.author_uid or user.rank == "Admin" %}
+                    {% if picture.status == "normal" %}
+                        <div class="pure-u">
+                            <form
+                                method = "POST"
+                                autocomplete = "off"
+                                id = "delete-picture-form"
+                                action = "{{ url_for('routes.delete_picture', picture_uid=picture.uid) }}"
+                            >
+                                <button
+                                    type = "submit"
+                                    class = "pure-button button-danger"
+                                >
+                                    {{ gettext("Delete Picture") }}
+                                </button>
+                            </form>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {% if user.rank == "Admin" %}
+                    <div class=pure-u>
+                        <form
+                            method = "POST"
+                            autocomplete = "off"
+                            id = "ban-picture-form"
+                            action = "{{ url_for('admin.ban_picture', picture_uid=picture.uid) }}"
+                        >
+                            <button
+                                type = "submit"
+                                class = "pure-button button-danger"
+                            >
+                                {{ gettext("Ban Picture") }}
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
         {% endif %}
     </div>
 </div>
+
