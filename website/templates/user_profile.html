@@ -156,16 +156,56 @@
             </div>
 
 
-            {% if user.uid == user_profile.uid %}
-                <div id="edit-profile">
-                    <hr />
+            {% if user.uid == user_profile.uid or user.rank == "Admin" %}
+                <hr />
 
 
-                    <button class="pure-button button-main">
-                        <a href="{{ url_for('routes.user_settings') }}">
-                            {{ gettext("Edit Profile") }}
-                        </a>
-                    </button>
+                <div class="pure-g">
+                    {% if user.uid == user_profile.uid %}
+                        <div class="pure-u">
+                            <button class="pure-button button-main">
+                                <a href="{{ url_for('routes.user_settings') }}">
+                                    {{ gettext("Edit Profile") }}
+                                </a>
+                            </button>
+                        </div>
+                    {% endif %}
+
+                    {% if user.rank == "Admin" %}
+                        <div class="pure-u">
+                            <form
+                                method = "POST"
+                                autocomplete = "off"
+                                id = "delete-user-form"
+                                action = "{{ url_for('admin.deactivate_user', user_uid=user_profile.uid) }}"
+                            >
+                                <button
+                                    type = "submit"
+                                    class = "pure-button button-danger"
+                                >
+                                    {{ gettext("Delete User") }}
+                                </button>
+                            </form>
+                        </div>
+                    {% endif %}
+
+                    {% if user.rank == "Admin" %}
+                        <div class=pure-u>
+                            <form
+                                method = "POST"
+                                autocomplete = "off"
+                                id = "ban-user-form"
+                                action = "{{ url_for('admin.ban_user', user_uid=user_profile.uid) }}"
+                            >
+                                <button
+                                    type = "submit"
+                                    class = "pure-button button-danger"
+                                >
+                                    {{ gettext("Ban User") }}
+                                </button>
+                            </form>
+                        </div>
+                    {% endif %}
                 </div>
             {% endif %}
         </div>
@@ -184,3 +224,4 @@
         </div>
     {% endif %}
 {% endblock %}
+
