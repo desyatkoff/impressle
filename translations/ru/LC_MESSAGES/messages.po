@@ -354,9 +354,8 @@ msgid "Delete Picture"
 msgstr "Удалить картинку"
 
 #: website/templates/div_picture.html:270
-#, fuzzy
 msgid "Ban Picture"
-msgstr "Картинка"
+msgstr "Забанить картинку"
 
 #: website/templates/faq.html:10
 msgid "FAQ (Frequently Asked Questions)"
