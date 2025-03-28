@@ -95,6 +95,20 @@
                     {{ gettext("Allow users to comment my pictures") }}
                 </label>
 
+                <br />
+
+                <label for="show-status-checkbox">
+                    <input
+                        type = "checkbox"
+                        id = "show-status-checkbox"
+                        name = "show-status-checkbox"
+                        {% if user.show_status %}
+                            checked
+                        {% endif %}
+                    />
+                    {{ gettext('Show "online" status in my profile') }}
+                </label>
+
 
                 <hr />
 

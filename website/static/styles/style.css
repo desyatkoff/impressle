@@ -5,6 +5,10 @@
     font-family: "Nunito", serif;
 }
 
+html {
+    zoom: 0.9;
+}
+
 body {
     background-color: #262626;
 }
@@ -34,7 +38,7 @@ input:focus {
 .sidebar {
     width: 16em;
     padding: 1em;
-    height: 100vh;
+    height: 150vh;
     position: fixed;
     background-color: #0d0d0d;
 }
@@ -93,6 +97,14 @@ input:focus {
     border: 2px solid #7f00ff;
 }
 
+.card-success {
+    border: 2px solid #00ff00;
+}
+
+.card-error {
+    border: 2px solid #ff0000;
+}
+
 .picture-title .picture-author {
     font-size: 1.5em;
     margin: 1em 0 0.5em;
@@ -120,6 +132,17 @@ input:focus {
     background-color: #7f00ff;
 }
 
+.button-success {
+    color: #e6e6e6;
+    border-radius: 8px;
+    background-color: #47ff47;
+}
+
+.button-success:hover {
+    border-radius: 8px;
+    background-color: #009900;
+}
+
 .button-danger {
     color: #e6e6e6;
     border-radius: 8px;
@@ -131,14 +154,20 @@ input:focus {
     background-color: #ff0000;
 }
 
-.liked, .not-liked, .disliked, .not-disliked, .comment-button, .view-button, .icon {
+.pic-icon {
+    padding: 0.5em;
+    border-radius: 8px;
+    border: 2px solid #7f00ff;
+    background-color: transparent;
+}
+
+.liked, .not-liked, .disliked, .not-disliked, .comment-button, .view-button, .download-button, .icon {
     margin: 0;
     padding: 0;
-    border-radius: 8px;
     vertical-align: middle;
 }
 
-.likes-icon, .dislikes-icon, .comments-icon, .views-icon {
+.likes-icon, .dislikes-icon, .comments-icon, .views-icon, .download-icon {
     font-size: 1.5em;
 }
 
@@ -147,7 +176,7 @@ input:focus {
     background-color: #7f00ff;
 }
 
-.not-liked, .not-disliked, .comment-button, .view-button {
+.not-liked, .not-disliked, .comment-button, .view-button, .download-button {
     border: none;
     background-color: transparent;
 }
@@ -230,6 +259,23 @@ img {
     padding: 0;
 }
 
+.online-label {
+    color: #e6e6e6;
+    border-radius: 8px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    background-color: #a347ff;
+}
+
+.offline-label {
+    color: #a347ff;
+    border-radius: 8px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    border: 2px solid #a347ff;
+    background-color: transparent;
+}
+
 .admin-label {
     color: #e6e6e6;
     border-radius: 8px;
@@ -252,6 +298,12 @@ img {
     padding-left: 0.25em;
     padding-right: 0.25em;
     background-color: #ff4747;
+}
+
+.alert-close {
+    float: right;
+    /*font-size: 2em;*/
+    font-weight: bold;
 }
 
 .color-button {

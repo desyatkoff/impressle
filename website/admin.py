@@ -41,6 +41,9 @@ def access_admin():
 
 
     if flask.request.method == "POST":
+        # Check if user is an actual admin and the secret key is correct
+
+
         user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
         secret_key = flask.request.form.get("secret-key")
 
@@ -346,13 +349,31 @@ def panel():
         return flask.redirect(flask.url_for("admin.access_admin"))
 
 
+@admin.route("/deactivate-user/<user_uid>", methods=["POST"])
+@flask_login.login_required
+def deactivate_user(user_uid):
+    if flask_login.current_user.rank == "Admin":
+        try:
+            user = website.models.User.query.filter_by(uid=int(user_uid)).first()
+            user.status = "inactive"
+
+            extensions.db.session.commit()
+        except:
+            pass
+
+
+    return flask.redirect(flask.request.referrer)
+
+
 @admin.route("/ban-user/<user_uid>", methods=["POST"])
 @flask_login.login_required
 def ban_user(user_uid):
-    if access is True:
+    if flask_login.current_user.rank == "Admin":
         try:
             user = website.models.User.query.filter_by(uid=int(user_uid)).first()
             user.status = "banned"
+
+            extensions.db.session.commit()
         except:
             pass
 
@@ -363,13 +384,15 @@ def ban_user(user_uid):
 @admin.route("/ban-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def ban_picture(picture_uid):
-    if access is True:
+    if flask_login.comment_author.rank == "Admin":
         try:
             picture = website.models.Picture.query.filter_by(uid=int(picture_uid)).first()
             picture.status = "banned"
 
             picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
             picture_author.karma -= 1
+
+            extensions.db.session.commit()
         except:
             pass
 
@@ -380,15 +403,18 @@ def ban_picture(picture_uid):
 @admin.route("/ban-comment/<comment_uid>", methods=["POST"])
 @flask_login.login_required
 def ban_comment(comment_uid):
-    if access is True:
+    if flask_login.comment_author.rank == "Admin":
         try:
             comment = website.models.Comment.query.filter_by(uid=int(comment_uid)).first()
             comment.status = "banned"
 
             comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
             comment_author.karma -= 1
+
+            extensions.db.session.commit()
         except:
             pass
 
 
     return flask.redirect(flask.request.referrer)
+

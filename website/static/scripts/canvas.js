@@ -5,11 +5,7 @@ let canvas = document.getElementById("main-canvas");
 let context = canvas.getContext("2d");
 
 let brush_color = "#7f00ff";
-let eraser_color = "#1a1a1a";
-
-let width = "8";
-
-let mode = "draw";
+let brush_width = "8";
 
 let is_mousedown = false;
 
@@ -28,22 +24,12 @@ function start(event) {
 
 function draw(event) {
     if (is_mousedown == true) {
-        if (mode == "draw") {
-            context.lineTo(get_x(event), get_y(event));
-            context.strokeStyle = brush_color;
-            context.lineWidth = width;
-            context.lineCap = "round";
-            context.lineJoin = "round";
-            context.stroke();
-        }
-        else if (mode == "erase") {
-            context.lineTo(get_x(event), get_y(event));
-            context.strokeStyle = eraser_color;
-            context.lineWidth = width;
-            context.lineCap = "round";
-            context.lineJoin = "round";
-            context.stroke();
-        }
+        context.lineTo(get_x(event), get_y(event));
+        context.strokeStyle = brush_color;
+        context.lineWidth = brush_width;
+        context.lineCap = "round";
+        context.lineJoin = "round";
+        context.stroke();
     }
 
     event.preventDefault();
@@ -79,6 +65,9 @@ function get_y(event) {
 
 
 function reset_selected_color() {
+    // A function that removes selected color white border for all color buttons
+
+
     document.getElementById("pastel-red-button").classList.remove("selected-color-button");
     document.getElementById("pastel-orange-button").classList.remove("selected-color-button");
     document.getElementById("pastel-yellow-button").classList.remove("selected-color-button");
@@ -103,12 +92,15 @@ function reset_selected_color() {
     document.getElementById("light1-button").classList.remove("selected-color-button");
     document.getElementById("light2-button").classList.remove("selected-color-button");
     document.getElementById("light3-button").classList.remove("selected-color-button");
-    document.getElementById ("dark1-button").classList.remove("selected-color-button");
+    document.getElementById("dark1-button").classList.remove("selected-color-button");
     document.getElementById("dark2-button").classList.remove("selected-color-button");
     document.getElementById("dark3-button").classList.remove("selected-color-button");
 }
 
 function change_color(color) {
+    // A function that updates `brush_color` variable and gives a white border for selected color button
+
+
     let hex;
 
     if (color == "pastel-red") {
@@ -272,7 +264,7 @@ function change_color(color) {
 
         reset_selected_color();
 
-        document.getElementById("dark-button").classList.add("selected-color-button");
+        document.getElementById("dark1-button").classList.add("selected-color-button");
     } else if (color == "dark2") {
         hex = "1a1a1a";
 
@@ -304,20 +296,9 @@ canvas.addEventListener("mousemove", draw, false);
 canvas.addEventListener("mouseup", stop, false);
 canvas.addEventListener("mouseout", stop, false);
 
-document.addEventListener("keydown", function(event) {
-    if (event.shiftKey) {
-        if (mode == "draw") {
-            mode = "erase";
-        }
-        else {
-            mode = "draw";
-        }
-    }
-});
-
 setInterval(function() {
-    width = document.getElementById("width-input").value;
-    document.getElementById("width-span").textContent = width;
+    brush_width = document.getElementById("width-input").value;
+    document.getElementById("width-span").textContent = brush_width;
 }, 100)
 
 document.getElementById("canvas-form").addEventListener("submit", (element) => {
@@ -328,3 +309,4 @@ document.getElementById("canvas-form").addEventListener("submit", (element) => {
 
     element.target.submit();
 });
+

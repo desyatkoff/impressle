@@ -18,12 +18,23 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
-import flask_babel
-import flask_login
-import flask_sqlalchemy
+import os
+import shutil
+import datetime
+
+import config
 
 
-babel = flask_babel.Babel()    # Localization extension
-login_manager = flask_login.LoginManager()    # Load users extension
-db = flask_sqlalchemy.SQLAlchemy()    # Database interactions extension (ORM)
+BACKUP_FILE_PATH = f"{config.DB_BACKUP_PATH}/{datetime.datetime.now(datetime.timezone.utc).strftime("&Y-%m-%d")}-database~"
+
+
+if __name__ == "__main__":
+    """Create the database backup every day"""
+
+
+    if not os.path.exists(BACKUP_FILE_PATH):
+        shutil.copy2(
+            src = config.DB_PATH,
+            dst = BACKUP_FILE_PATH
+        )
 

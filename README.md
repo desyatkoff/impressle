@@ -12,7 +12,7 @@
 
 **Unleash your creativity!**
 
-**Impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just [try it](https://impressle.fun/)!
+**Impressle** is a unique social network where you have to draw by hand, not uploading image files. Follow your favorite artists, give likes to other users' pictures and make your own ones. It's fun, just [try it](https://impressle.fun)!
 
 
 ## Table of Contents
@@ -84,10 +84,11 @@
         - Profile
             - Edit "About Me"
         - Privacy
-            - Show followers count in your profile?
-            - Allow users to comment your pictures?
+            - Show followers count in my profile?
+            - Allow users to comment my pictures?
+            - Show "online" status my profile?
         - Danger Zone
-            - Delete account
+            - Delete Account
     + Follow/Unfollow other users
     + Log out
 * **Create Pictures**
@@ -106,9 +107,9 @@
     + Inspect the database
     + Edit the database (not recommended though)
     + Ban users/pictures/comments
-        - Banned user will lost the access to their account and will be marked with `[ BANNED ]` tag in their profile
+        - Banned user will lost the access to their account and will be marked with `BANNED` tag in their profile
         - Banned picture will not be shown in Feed page, but still can be accessed by visiting URL ("/picture/{picture_uid}") and author's profile
-        - Banned comment's text will be changed to `[ BANNED ]`
+        - Banned comment's text will be changed to `BANNED`
 
 
 ## Install and Setup

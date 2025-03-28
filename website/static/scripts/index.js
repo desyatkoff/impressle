@@ -1,7 +1,21 @@
 // I'm very sorry for this shit, I don't know javascript ._.
 
 
+function search_picture() {
+    // A function that redirects user to relevant pictures by query
+
+
+    const QUERY = document.getElementById("search-input").value;
+
+
+    window.location.replace(`/search-picture/${QUERY}`);
+}
+
+
 function view_picture(picture_uid) {
+    // A function that gives a new +1 view for the picture without opening full view
+
+
     const VIEWS_COUNT = document.getElementById(`views-count-${picture_uid}`);
 
 
@@ -14,11 +28,17 @@ function view_picture(picture_uid) {
 
 
 function full_view_picture(picture_uid) {
+    // A function that redirects to picture's full view
+
+
     window.location.replace(`/picture/${picture_uid}`)
 }
 
 
 function like(picture_uid) {
+    // A function that gives a new +1 like for the picture
+    
+
     const LIKE_COUNT = document.getElementById(`likes-count-${picture_uid}`);
     const LIKE_BUTTON = document.getElementById(`like-button-${picture_uid}`);
     const DISLIKE_COUNT = document.getElementById(`dislikes-count-${picture_uid}`);
@@ -46,6 +66,9 @@ function like(picture_uid) {
 
 
 function dislike(picture_uid) {
+    // A function that gives a new +1 dislike for the picture
+
+
     const LIKE_COUNT = document.getElementById(`likes-count-${picture_uid}`);
     const LIKE_BUTTON = document.getElementById(`like-button-${picture_uid}`);
     const DISLIKE_COUNT = document.getElementById(`dislikes-count-${picture_uid}`);
@@ -73,11 +96,34 @@ function dislike(picture_uid) {
 
 
 function comment(picture_uid) {
+    // A function that redirects to picture's full view and automatically focuses on comment input
+
+
     window.location.replace(`/picture/${picture_uid}#comment-text`)
 }
 
 
+function download_picture(picture_uid) {
+    // A function for downloading a picture as .png by it's UID
+
+
+    const DOWNLOADS_COUNT = document.getElementById(`downloads-count-${picture_uid}`);
+
+    fetch(`/download-picture/${picture_uid}`, {method: "POST"})
+        .then((res) => res.json())
+        .then((data) => {
+            DOWNLOADS_COUNT.innerHTML = data["downloads"];
+        })
+
+
+    window.location.replace(`/download-picture/${picture_uid}`);
+}
+
+
 function follow(user_uid) {
+    // A function that gives a new +1 follower for the user
+    
+
     const FOLLOWERS_COUNT = document.getElementById(`followers-count-${user_uid}`);
     const FOLLOW_BUTTON = document.getElementById(`follow-button-${user_uid}`);
 
@@ -99,3 +145,15 @@ function follow(user_uid) {
             }
         })
 }
+
+
+window.onclick = function(event) {
+    let alert_card = document.getElementById("alert");
+    let alert_close_button = document.getElementById("alert-close");
+
+
+    if (event.target == alert_close_button) {
+        alert_card.style.display = "none";
+    }
+} 
+

@@ -18,7 +18,9 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
+import io
 import base64
+import difflib
 import datetime
 
 import flask
@@ -61,6 +63,7 @@ def before_request():
 
 
         for user_ in website.models.User.query.all():
+            # If user's last activity was more than a month ago, set their status to "inactive"
             if round(
                     datetime.datetime.now(
                         tz = datetime.timezone.utc
@@ -68,6 +71,21 @@ def before_request():
                 ) - user_.last_activity > 2592000:    # 259200 seconds = 30 days
                 if user_.status != "banned":
                     user_.status = "inactive"
+
+
+            # If user's last activity was
+            # - [0-10] seconds ago -> set their status to "online"
+            # - More than 10 seconds ago -> set their status to "offline"
+            if round(
+                    datetime.datetime.now(
+                        tz = datetime.timezone.utc
+                    ).timestamp()
+                ) - user_.last_activity <= 10:
+                if user_.status == "offline":
+                    user_.status = "online"
+            else:
+                if user_.status == "online":
+                    user_.status = "offline"
 
 
         if user.status == "inactive":
@@ -109,6 +127,36 @@ def landing():
                 username = flask_login.current_user.username
             )
         )
+
+
+@routes.route("/search-picture/<query>")
+def search_picture(query):
+    pictures = website.models.Picture.query.order_by(
+        website.models.Picture.uid.desc()
+    ).order_by(
+        website.models.Picture.likes_count.desc()
+    ).order_by(
+        website.models.Picture.dislikes_count.asc()
+    ).order_by(
+        website.models.Picture.views_count.desc()
+    ).all()
+    relevant_pictures = []
+
+
+    for picture in pictures:
+        if difflib.SequenceMatcher(
+            a = str(query).lower(),
+            b = str(picture.title).lower()
+        ).ratio() > 0.5 or query == picture.uid:
+            relevant_pictures.append(picture)
+
+
+    return flask.render_template(
+        "search.html",
+        user = flask_login.current_user,
+        pictures = relevant_pictures,
+        models = website.models
+    )
 
 
 @routes.route("/feed")
@@ -235,10 +283,11 @@ def user_settings():
         about_me_data = flask.request.form.get("about-me")
         show_followers_data = flask.request.form.get("show-followers-checkbox")
         allow_comments_data = flask.request.form.get("allow-comments-checkbox")
+        show_status_data = flask.request.form.get("show-status-checkbox")
         delete_account_data = flask.request.form.get("delete-account-checkbox")
 
 
-        if about_me_data > 64:
+        if len(about_me_data) > 64:
             flask.flash(
                 message = "\"About Me\" is too long",
                 category = "error"
@@ -256,10 +305,13 @@ def user_settings():
         else:
             user.allow_comments = False
 
+        if show_status_data == "on":
+            user.show_status = True
+        else:
+            user.show_status = False
+
         if delete_account_data == "on":
             user.status = "inactive"
-        else:
-            user.status = "normal"
 
 
         flask.flash(
@@ -818,6 +870,62 @@ def dislike_picture(picture_uid):
             "liked": flask_login.current_user.uid in map(lambda a: a.author_uid, picture.likes),
             "dislikes": len(picture.dislikes),
             "disliked": flask_login.current_user.uid in map(lambda b: b.author_uid, picture.dislikes)
+        }
+    )
+
+
+@routes.route("/download-picture/<picture_uid>")
+def download_picture(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+    picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+
+    if not isinstance(flask_login.current_user, flask_login.AnonymousUserMixin):
+        dl_author = flask_login.current_user
+        download = website.models.Download.query.filter_by(
+            author_uid = flask_login.current_user.uid,
+            picture_uid = picture.uid
+        ).first()
+    else:
+        dl_author = None 
+        download = None
+
+
+    if not picture:
+        flask.flash(
+            message = "Picture does not exist",
+            category = "error"
+        )
+    else:
+        flask.flash(
+            message = f"Successfully downloaded the picture #{picture_uid}",
+            category = "success"
+        ) 
+
+
+        if dl_author is not None and download is None:
+            new_download = website.models.Download(
+                picture_uid = picture.uid,
+                author_uid = flask_login.current_user.uid,
+                author_username = flask_login.current_user.username
+            )
+
+            picture.downloads_count += 1
+
+
+            extensions.db.session.add(new_download)
+            extensions.db.session.commit()
+
+
+        return flask.send_file(
+            path_or_file = io.BytesIO(picture.image_data), 
+            as_attachment = True,
+            download_name = f"{picture_uid}.png"
+        ) 
+
+    
+    return flask.jsonify(
+        {
+            "downloads": picture.downloads_count
         }
     )
 

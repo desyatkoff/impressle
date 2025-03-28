@@ -91,6 +91,21 @@
                             </a>
                         </li>
                         <li class="pure-menu-item">
+                            <form
+                                method = "POST"
+                                autocomplete = "off"
+                                action = "javascript:search_picture()"
+                            >
+                                <input
+                                    type = "text"
+                                    name = "search"
+                                    id = "search-input"
+                                    class = "pure-input"
+                                    placeholder = "{{ gettext('Search') }}"
+                                />
+                            </form>
+                        </li>
+                        <li class="pure-menu-item">
                             <a
                                 href = "{{ url_for('routes.feed_recent') }}"
                                 class = "pure-menu-link pure-button"
@@ -288,6 +303,65 @@
             </div>
             <div class="pure-u-1 pure-u-md-3-4">
                 <div class="content">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                {% if category == "success" %}
+                                    <div
+                                        id = "alert"
+                                        class = "card card-success alert alert-success"
+                                    >
+                                        <div class="alert-content">
+                                            <button
+                                                type = "button"
+                                                id = "alert-close"
+                                                class = "pure-button button-success alert-close"
+                                            >
+                                                <span>
+                                                    ×
+                                                </span>
+                                            </button>
+
+                                            <h2>
+                                                Success!
+                                            </h2>
+
+                                            <i>
+                                                {{ message }}
+                                            </i>
+                                        </div>
+                                    </div>
+                                {% elif category == "error" %}                                    
+                                    <div
+                                        id = "alert"
+                                        class = "card card-error alert alert-error"
+                                    >
+                                        <div class="alert-content">
+                                            <button
+                                                type = "button"
+                                                id = "alert-close"
+                                                class = "pure-button button-danger alert-close"
+                                            >
+                                                <span>
+                                                    ×
+                                                </span>
+                                            </button>
+
+                                            <h2>
+                                                Error!
+                                            </h2>
+
+                                            <i>
+                                                {{ message }}
+                                            </i>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+
                     {% block content %}{% endblock %}
                 </div>
             </div>
