@@ -171,8 +171,9 @@ input:focus {
     font-size: 1.5em;
 }
 
-.liked, .disliked {
-    border: none;
+.liked, .disliked, .not-liked, .not-disliked { 
+    border-radius: 8px;
+    border: 2px solid #7f00ff;
     background-color: #7f00ff;
 }
 
