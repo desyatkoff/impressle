@@ -46,21 +46,11 @@ function stop(event) {
 }
 
 function get_x(event) {
-    if (event.pageX == undefined) {
-        return event.targetTouches[0].pageX - canvas.offsetLeft;
-    }
-    else {
-        return event.pageX - canvas.offsetLeft;
-    }
+    return (event.clientX - canvas.getBoundingClientRect().left) * (1 / 0.9);
 }
 
 function get_y(event) {
-    if (event.pageY == undefined) {
-        return event.targetTouches[0].pageY - canvas.offsetTop;
-    }
-    else {
-        return event.pageY - canvas.offsetTop;
-    }
+    return (event.clientY - canvas.getBoundingClientRect().top) * (1 / 0.9);
 }
 
 
