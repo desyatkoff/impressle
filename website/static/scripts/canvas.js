@@ -15,6 +15,12 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 
 
 function start(event) {
+    if (event.type === "touchstart") {
+        const touch = event.touches[0];
+        event.clientX = touch.clientX;
+        event.clientY = touch.clientY;
+    }
+
     is_mousedown = true;
     context.beginPath();
     context.moveTo(get_x(event), get_y(event));
@@ -23,6 +29,12 @@ function start(event) {
 }
 
 function draw(event) {
+    if (event.type === "touchmove") {
+        const touch = event.touches[0];
+        event.clientX = touch.clientX;
+        event.clientY = touch.clientY;
+    }
+
     if (is_mousedown == true) {
         context.lineTo(get_x(event), get_y(event));
         context.strokeStyle = brush_color;
