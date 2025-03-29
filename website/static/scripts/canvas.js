@@ -16,7 +16,8 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 
 function start(event) {
     if (event.type === "touchstart") {
-        const touch = event.touches[0];
+        let touch = event.touches[0];
+
         event.clientX = touch.clientX;
         event.clientY = touch.clientY;
     }
@@ -30,7 +31,8 @@ function start(event) {
 
 function draw(event) {
     if (event.type === "touchmove") {
-        const touch = event.touches[0];
+        let touch = event.touches[0];
+
         event.clientX = touch.clientX;
         event.clientY = touch.clientY;
     }
@@ -290,9 +292,9 @@ function reset_canvas() {
 }
 
 
-canvas.addEventListener("touchstart", start, false);
-canvas.addEventListener("touchmove", draw, false);
-canvas.addEventListener("touchend", stop, false);
+canvas.addEventListener("touchstart", start, { passive: false });
+canvas.addEventListener("touchmove", draw, { passive: false });
+canvas.addEventListener("touchend", stop, { passive: false });
 canvas.addEventListener("mousedown", start, false);
 canvas.addEventListener("mousemove", draw, false);
 canvas.addEventListener("mouseup", stop, false);
