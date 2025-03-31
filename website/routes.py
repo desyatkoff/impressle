@@ -39,31 +39,34 @@ routes = flask.Blueprint(
 @routes.before_request
 def before_request():
     if not isinstance(flask_login.current_user, flask_login.AnonymousUserMixin):
-        user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
-
-
-        if user.rank != ("Admin" or "Moderator"):
-            if user.karma > 0:
-                user.rank = "Artist"
-
-            if user.karma > 24:
-                user.rank = "Amateur"
-
-            if user.karma > 49:
-                user.rank = "Cool"
-
-            if user.karma > 99:
-                user.rank = "Skilled"
-
-            if user.karma == 666:
-                user.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
-
-            if user.karma > 999:
-                user.rank = "Impressive"
+        user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first() 
 
 
         for user_ in website.models.User.query.all():
-            # If user's last activity was more than a month ago, set their status to "inactive"
+            # If user is not an admin or a moderator,
+            # set their rank to something
+            if user_.rank != ("Admin" or "Moderator"):
+                if user_.karma > 0:
+                    user_.rank = "Artist"
+
+                if user_.karma > 24:
+                    user_.rank = "Amateur"
+
+                if user_.karma > 49:
+                    user_.rank = "Cool"
+
+                if user_.karma > 99:
+                    user_.rank = "Skilled"
+
+                if user_.karma == 666:
+                    user_.rank = "F̷̞́r̴̳͝o̷̥͗m̵̥̚ ̷̧͆t̴͈̍h̷̫͐ȩ̷̂ ̸̰̌H̵̹̆ḙ̶̃l̶̡͝l̸̯̓"
+
+                if user_.karma > 999:
+                    user_.rank = "Impressive"
+
+
+            # If user's last activity was more than a month ago,
+            # set their status to "inactive"
             if round(
                     datetime.datetime.now(
                         tz = datetime.timezone.utc

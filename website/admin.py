@@ -315,7 +315,8 @@ def panel():
             likes = website.models.Like.query.all(),
             dislikes = website.models.Dislike.query.all(),
             comments = website.models.Comment.query.all(),
-            views = website.models.View.query.all()
+            views = website.models.View.query.all(),
+            downloads = website.models.Download.query.all()
         )
     else:
         return flask.redirect(flask.url_for("admin.access_admin"))
