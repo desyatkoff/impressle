@@ -384,7 +384,7 @@ def ban_user(user_uid):
 @admin.route("/ban-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def ban_picture(picture_uid):
-    if flask_login.comment_author.rank == "Admin":
+    if flask_login.current_user.rank == "Admin":
         try:
             picture = website.models.Picture.query.filter_by(uid=int(picture_uid)).first()
             picture.status = "banned"
@@ -403,7 +403,7 @@ def ban_picture(picture_uid):
 @admin.route("/ban-comment/<comment_uid>", methods=["POST"])
 @flask_login.login_required
 def ban_comment(comment_uid):
-    if flask_login.comment_author.rank == "Admin":
+    if flask_login.current_user.rank == "Admin":
         try:
             comment = website.models.Comment.query.filter_by(uid=int(comment_uid)).first()
             comment.status = "banned"
