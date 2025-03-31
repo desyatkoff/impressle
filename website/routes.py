@@ -45,7 +45,9 @@ def before_request():
         for user_ in website.models.User.query.all():
             # If user is not an admin or a moderator,
             # set their rank to something
-            if user_.rank != ("Admin" or "Moderator"):
+            if user_.rank == "Admin" or user_.rank == "Moderator":
+                user_.rank = user_.rank
+            else:
                 if user_.karma > 0:
                     user_.rank = "Artist"
 
