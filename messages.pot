@@ -57,23 +57,6 @@ msgstr ""
 msgid "You can become a contributor if you want :)"
 msgstr ""
 
-#: website/templates/access_admin.html:5 website/templates/access_admin.html:49
-msgid "Access the Admin Panel"
-msgstr ""
-
-#: website/templates/access_admin.html:10
-msgid "Welcome to the Admin Panel"
-msgstr ""
-
-#: website/templates/access_admin.html:16
-msgid "You have to provide the secret key to prove that you are an admin"
-msgstr ""
-
-#: website/templates/access_admin.html:33
-#: website/templates/access_admin.html:39
-msgid "Secret Key"
-msgstr ""
-
 #: website/templates/admin.html:5 website/templates/admin.html:10
 #: website/templates/base.html:265
 msgid "Admin Panel"
@@ -283,42 +266,45 @@ msgid "Author"
 msgstr ""
 
 #: website/templates/div_comment.html:14
-#: website/templates/div_compact_profile.html:16
-#: website/templates/div_picture.html:34 website/templates/user_profile.html:36
-msgid "ADMIN"
-msgstr ""
-
-#: website/templates/div_comment.html:19
 msgid "Commented on"
 msgstr ""
 
-#: website/templates/div_comment.html:29
+#: website/templates/div_comment.html:24
 #: website/templates/div_compact_profile.html:26
-#: website/templates/div_picture.html:19 website/templates/user_profile.html:46
+#: website/templates/div_picture.html:19 website/templates/user_profile.html:50
 msgid "BANNED"
 msgstr ""
 
-#: website/templates/div_comment.html:53
+#: website/templates/div_comment.html:51
 msgid "Delete Comment"
 msgstr ""
 
+#: website/templates/div_comment.html:70
+msgid "Ban Comment"
+msgstr ""
+
+#: website/templates/div_compact_profile.html:16
+#: website/templates/user_profile.html:36
+msgid "ADMIN"
+msgstr ""
+
 #: website/templates/div_compact_profile.html:22
-#: website/templates/user_profile.html:42
+#: website/templates/user_profile.html:46
 msgid "INACTIVE"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:41
-#: website/templates/user_profile.html:61
+#: website/templates/user_profile.html:65
 msgid "follower(s)"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:52
-#: website/templates/user_profile.html:72
+#: website/templates/user_profile.html:76
 msgid "Unfollow"
 msgstr ""
 
 #: website/templates/div_compact_profile.html:60
-#: website/templates/user_profile.html:80
+#: website/templates/user_profile.html:84
 msgid "Follow"
 msgstr ""
 
@@ -326,19 +312,19 @@ msgstr ""
 msgid "Untitled"
 msgstr ""
 
-#: website/templates/div_picture.html:42
+#: website/templates/div_picture.html:37
 msgid "Published on"
 msgstr ""
 
-#: website/templates/div_picture.html:68
+#: website/templates/div_picture.html:63
 msgid "Description"
 msgstr ""
 
-#: website/templates/div_picture.html:251
+#: website/templates/div_picture.html:247
 msgid "Delete Picture"
 msgstr ""
 
-#: website/templates/div_picture.html:270
+#: website/templates/div_picture.html:266
 msgid "Ban Picture"
 msgstr ""
 
@@ -1013,7 +999,7 @@ msgid "Let's create a new account"
 msgstr ""
 
 #: website/templates/signup.html:65 website/templates/signup.html:72
-#: website/templates/user_profile.html:93
+#: website/templates/user_profile.html:97
 #: website/templates/user_settings.html:40
 msgid "About Me"
 msgstr ""
@@ -1250,39 +1236,43 @@ msgstr ""
 msgid "OFFLINE"
 msgstr ""
 
-#: website/templates/user_profile.html:101
+#: website/templates/user_profile.html:40
+msgid "MODERATOR"
+msgstr ""
+
+#: website/templates/user_profile.html:105
 msgid "Nothing yet..."
 msgstr ""
 
-#: website/templates/user_profile.html:111
+#: website/templates/user_profile.html:115
 msgid "Account Details"
 msgstr ""
 
-#: website/templates/user_profile.html:118
+#: website/templates/user_profile.html:122
 msgid "User ID"
 msgstr ""
 
-#: website/templates/user_profile.html:128
+#: website/templates/user_profile.html:132
 msgid "Account Created"
 msgstr ""
 
-#: website/templates/user_profile.html:138
+#: website/templates/user_profile.html:142
 msgid "Rank"
 msgstr ""
 
-#: website/templates/user_profile.html:148
+#: website/templates/user_profile.html:152
 msgid "Karma"
 msgstr ""
 
-#: website/templates/user_profile.html:168
+#: website/templates/user_profile.html:172
 msgid "Edit Profile"
 msgstr ""
 
-#: website/templates/user_profile.html:187
+#: website/templates/user_profile.html:190
 msgid "Delete User"
 msgstr ""
 
-#: website/templates/user_profile.html:206
+#: website/templates/user_profile.html:208
 msgid "Ban User"
 msgstr ""
 

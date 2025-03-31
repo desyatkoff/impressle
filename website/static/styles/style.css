@@ -282,6 +282,14 @@ img {
     border-radius: 8px;
     padding-left: 0.25em;
     padding-right: 0.25em;
+    background-color: #4c0099;
+}
+
+.moderator-label {
+    color: #e6e6e6;
+    border-radius: 8px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
     background-color: #7f00ff;
 }
 

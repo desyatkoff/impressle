@@ -42,7 +42,7 @@ def before_request():
         user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
 
 
-        if user.rank != "Admin":
+        if user.rank != ("Admin" or "Moderator"):
             if user.karma > 0:
                 user.rank = "Artist"
 

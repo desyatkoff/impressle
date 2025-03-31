@@ -31,59 +31,11 @@ admin = flask.Blueprint(
     import_name = __name__
 )
 
-access = False
-
 
 @admin.route("/", methods=["GET", "POST"])
 @flask_login.login_required
-def access_admin():
-    global access
-
-
-    if flask.request.method == "POST":
-        # Check if user is an actual admin and the secret key is correct
-
-
-        user = website.models.User.query.filter_by(uid=flask_login.current_user.uid).first()
-        secret_key = flask.request.form.get("secret-key")
-
-
-        if secret_key == config.FLASK_SECRET:
-            if user.rank == "Admin":
-                flask.flash(
-                    message = "Successfully accessed the admin panel",
-                    category = "success"
-                )
-
-                access = True
-
-
-                return flask.redirect(flask.url_for("admin.panel"))
-            else:
-                flask.flash(
-                    message = "You are not an admin",
-                    category = "error"
-                )
-        else:
-            flask.flash(
-                message = "Incorrect secret key",
-                category = "error"
-            )
-
-
-            return flask.redirect(flask.request.referrer)    # Return to previous page
-
-
-    return flask.render_template(
-        "access_admin.html",
-        user = flask_login.current_user
-    )
-
-
-@admin.route("/panel", methods=["GET", "POST"])
-@flask_login.login_required
 def panel():
-    if access:
+    if flask_login.current_user.rank == "Admin":
         if flask.request.method == "POST":
             form_type = flask.request.form.get("form-type")
 
@@ -119,6 +71,8 @@ def panel():
                         item.show_followers = new_value
                     elif column_name.lower() == ("allow_comments" or "allow comments"):
                         item.allow_comments = new_value
+                    elif column_name.lower() == ("show_status" or "show status"):
+                        item.show_status == new_value
                     elif column_name.lower() == "status":
                         item.status = new_value
                 elif table_name.lower() == ("picture" or "pictures"):
@@ -143,6 +97,8 @@ def panel():
                         item.comments_count = new_value
                     elif column_name.lower() == ("views_count" or "views count"):
                         item.views_count = new_value
+                    elif column_name.lower() == ("downloads_count" or "downloads count"):
+                        item.downloads_count = new_value
                     elif column_name.lower() == ("author_uid" or "author uid"):
                         item.author_uid = new_value
                     elif column_name.lower() == ("author_username" or "author username"):
@@ -219,6 +175,22 @@ def panel():
                         item.status = new_value
                 elif table_name.lower() == ("view" or "views"):
                     item = website.models.View.query.filter_by(uid=item_uid).first()
+
+
+                    if column_name.lower() == "id":
+                        item.id = new_value
+                    elif column_name.lower() == "uid":
+                        item.uid = new_value
+                    elif column_name.lower() == ("date_created" or "date created"):
+                        item.date_created = new_value
+                    elif column_name.lower() == ("picture_uid" or "picture uid"):
+                        item.picture_uid = new_value
+                    elif column_name.lower() == ("author_uid" or "author uid"):
+                        item.author_uid = new_value
+                    elif column_name.lower() == ("author_username" or "author username"):
+                        item.author_username = new_value
+                elif table_name.lower() == ("download" or "downloads"):
+                    item = website.models.Download.query.filter_by(uid=item_uid).first()
 
 
                     if column_name.lower() == "id":
@@ -352,7 +324,7 @@ def panel():
 @admin.route("/deactivate-user/<user_uid>", methods=["POST"])
 @flask_login.login_required
 def deactivate_user(user_uid):
-    if flask_login.current_user.rank == "Admin":
+    if flask_login.current_user.rank == ("Admin" or "Moderator"):
         try:
             user = website.models.User.query.filter_by(uid=int(user_uid)).first()
             user.status = "inactive"
@@ -368,14 +340,19 @@ def deactivate_user(user_uid):
 @admin.route("/ban-user/<user_uid>", methods=["POST"])
 @flask_login.login_required
 def ban_user(user_uid):
-    if flask_login.current_user.rank == "Admin":
-        try:
-            user = website.models.User.query.filter_by(uid=int(user_uid)).first()
-            user.status = "banned"
+    if flask_login.current_user.rank == ("Admin" or "Moderator"):
+        user = website.models.Picture.query.filter_by(uid=int(user_uid)).first()
 
-            extensions.db.session.commit()
-        except:
-            pass
+
+        user.status = "banned"
+
+        extensions.db.session.commit()
+
+
+        flask.flash(
+            message = f"Successfully banned the picture #{picture_uid}",
+            category = "success"
+        )
 
 
     return flask.redirect(flask.request.referrer)
@@ -384,17 +361,29 @@ def ban_user(user_uid):
 @admin.route("/ban-picture/<picture_uid>", methods=["POST"])
 @flask_login.login_required
 def ban_picture(picture_uid):
-    if flask_login.current_user.rank == "Admin":
-        try:
-            picture = website.models.Picture.query.filter_by(uid=int(picture_uid)).first()
+    if flask_login.current_user.rank == ("Admin" or "Moderator"):
+        picture = website.models.Picture.query.filter_by(uid=int(picture_uid)).first()
+        picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
+
+
+        if picture_author.rank != ("Admin" or "Moderator"):
             picture.status = "banned"
 
-            picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
             picture_author.karma -= 1
 
             extensions.db.session.commit()
-        except:
-            pass
+
+
+            flask.flash(
+                message = f"Successfully banned the picture #{picture_uid}",
+                category = "success"
+            )
+        else:
+            flask.flash(
+                message = f"Cannot ban picture #{picture_uid} because its author is the {picture_author.rank}",
+                category = "error"
+            )
+
 
 
     return flask.redirect(flask.request.referrer)
@@ -403,17 +392,29 @@ def ban_picture(picture_uid):
 @admin.route("/ban-comment/<comment_uid>", methods=["POST"])
 @flask_login.login_required
 def ban_comment(comment_uid):
-    if flask_login.current_user.rank == "Admin":
-        try:
-            comment = website.models.Comment.query.filter_by(uid=int(comment_uid)).first()
+    if flask_login.current_user.rank == ("Admin" or "Moderator"):
+        comment = website.models.Comment.query.filter_by(uid=int(comment_uid)).first()
+        comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
+
+
+        if picture_author.rank != ("Admin" or "Moderator"):
             comment.status = "banned"
 
-            comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
             comment_author.karma -= 1
 
             extensions.db.session.commit()
-        except:
-            pass
+
+
+            flask.flash(
+                message = f"Successfully banned the comment #{comment_uid}",
+                category = "success"
+            )
+        else:
+            flask.flash(
+                message = f"Cannot ban comment #{comment_uid} because its author is the {comment_author.rank}",
+                category = "error"
+            )
+
 
 
     return flask.redirect(flask.request.referrer)

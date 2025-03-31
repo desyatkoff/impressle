@@ -9,11 +9,6 @@
             <a href="{{ url_for('routes.user_profile', username=comment.author_username) }}">
                 @{{comment.author_username}}
             </a>
-            {% if models.User.query.filter_by(uid=comment.author_uid).first().rank == "Admin" %}
-                <span class="admin-label">
-                    {{ gettext("ADMIN") }}
-                </span>
-            {% endif %}
         </p>
         <p class="comment-date-created">
             {{ gettext("Commented on") }} {{ comment.date_created.strftime("%Y-%m-%d") }}
@@ -35,24 +30,49 @@
     </div>
 
 
-    {% if user.uid == comment.author_uid or user.rank == "Admin" %}
-        {% if comment.status == "normal" %}
-            <hr />
+    {% if user.uid == comment.author_uid or user.rank == "Admin" or user.rank == "Moderator" %}
+        <hr />
 
 
-            <form
-                method = "POST"
-                autocomplete = "off"
-                id = "delete-comment-form"
-                action = "{{ url_for('routes.delete_comment', comment_uid=comment.uid) }}"
-            >
-                <button
-                    type="submit"
-                    class = "pure-button button-danger"
-                >
-                    {{ gettext("Delete Comment") }}
-                </button>
-            </form>
-        {% endif %}
+        <div class="pure-g">
+            {% if user.uid == comment.author_uid or user.rank == "Admin" or  user.rank == "Moderator" %}
+                {% if comment.status == "normal" %}
+                    <div class="pure-u">
+                        <form
+                            method = "POST"
+                            autocomplete = "off"
+                            id = "delete-comment-form"
+                            action = "{{ url_for('routes.delete_comment', comment_uid=comment.uid) }}"
+                        >
+                            <button
+                                type = "submit"
+                                class = "pure-button button-danger"
+                            >
+                                {{ gettext("Delete Comment") }}
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            {% endif %}
+
+            {% if user.rank == "Admin" or user.rank == "Moderator" %}
+                <div class=pure-u>
+                    <form
+                        method = "POST"
+                        autocomplete = "off"
+                        id = "ban-comment-form"
+                        action = "{{ url_for('admin.ban_comment', comment_uid=comment.uid) }}"
+                    >
+                        <button
+                            type = "submit"
+                            class = "pure-button button-danger"
+                        >
+                            {{ gettext("Ban Comment") }}
+                        </button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
     {% endif %}
 </div>
+
