@@ -29,11 +29,6 @@
                 <a href="{{ url_for('routes.user_profile', username=picture.author_username) }}">
                     @{{ picture.author_username }}
                 </a>
-                {% if models.User.query.filter_by(uid=picture.author_uid).first().rank == "Admin" %}
-                    <span class="admin-label">
-                        {{ gettext("ADMIN") }}
-                    </span>
-                {% endif %}
             </p>
         </div>
 
@@ -93,6 +88,7 @@
                             >
                                 <img
                                     height = "24"
+                                    class = "pic-icon"
                                     src = "/static/images/thumbs-up.svg"
                                 />
                             </button>
@@ -230,12 +226,12 @@
         </div>
 
 
-        {% if user.uid == picture.author_uid or user.rank == "Admin" %}
+        {% if user.uid == picture.author_uid or user.rank == "Admin" or user.rank == "Moderator" %}
             <hr />
 
 
             <div class="pure-g">
-                {% if user.uid == picture.author_uid or user.rank == "Admin" %}
+                {% if user.uid == picture.author_uid or user.rank == "Admin" or  user.rank == "Moderator" %}
                     {% if picture.status == "normal" %}
                         <div class="pure-u">
                             <form
@@ -255,7 +251,7 @@
                     {% endif %}
                 {% endif %}
 
-                {% if user.rank == "Admin" %}
+                {% if user.rank == "Admin" or user.rank == "Moderator" %}
                     <div class=pure-u>
                         <form
                             method = "POST"

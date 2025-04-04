@@ -172,7 +172,8 @@ input:focus {
 }
 
 .liked, .disliked {
-    border: none;
+    border-radius: 8px;
+    border: 2px solid #7f00ff;
     background-color: #7f00ff;
 }
 
@@ -277,6 +278,14 @@ img {
 }
 
 .admin-label {
+    color: #e6e6e6;
+    border-radius: 8px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    background-color: #7f00ff;
+}
+
+.moderator-label {
     color: #e6e6e6;
     border-radius: 8px;
     padding-left: 0.25em;

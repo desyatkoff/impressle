@@ -353,6 +353,9 @@
                                 Allow Comments?
                             </th>
                             <th>
+                                Show Status?
+                            </th>
+                            <th>
                                 Status
                             </th>
                             <th>
@@ -392,6 +395,9 @@
                                 </td>
                                 <td>
                                     {{ user.allow_comments }}
+                                </td>
+                                <td>
+                                    {{ user.show_status }}
                                 </td>
                                 <td>
                                     {{ user.status }}
@@ -451,6 +457,9 @@
                                 Views
                             </th>
                             <th>
+                                Downloads
+                            </th>
+                            <th>
                                 Author UID
                             </th>
                             <th>
@@ -496,6 +505,9 @@
                                 </td>
                                 <td>
                                     {{ picture.views_count }}
+                                </td>
+                                <td>
+                                    {{ picture.downloads_count }}
                                 </td>
                                 <td>
                                     {{ picture.author_uid }}
@@ -834,5 +846,69 @@
                 </table>
             </div>
         </div>
+
+        <div class="card">
+            <div id="downloads">
+                <h1>
+                    Downloads
+                </h1>
+
+
+                <table
+                    width = "100%"
+                    align = "center"
+                    class = "pure-table"
+                >
+                    <thead>
+                        <tr>
+                            <th>
+                                Row ID
+                            </th>
+                            <th>
+                                UID
+                            </th>
+                            <th>
+                                Date Created
+                            </th>
+                            <th>
+                                Picture UID
+                            </th>
+                            <th>
+                                Author UID
+                            </th>
+                            <th>
+                                Author Username
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for download in downloads %}
+                            <tr>
+                                <td>
+                                    {{ download.id }}
+                                </td>
+                                <td>
+                                    {{ download.uid }}
+                                </td>
+                                <td>
+                                    {{ download.date_created }}
+                                </td>
+                                <td>
+                                    {{ download.picture_uid }}
+                                </td>
+                                <td>
+                                    {{ download.author_uid }}
+                                </td>
+                                <td>
+                                    @{{ download.author_username }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 {% endblock %}
+

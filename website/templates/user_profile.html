@@ -35,6 +35,10 @@
                             <span class="admin-label">
                                 {{ gettext("ADMIN") }}
                             </span>
+                        {% elif user_profile.rank == "Moderator" %}
+                            <span class="moderator-label">
+                                {{ gettext("MODERATOR") }}
+                            </span>
                         {% endif %}
 
                         {% if user_profile.status == "inactive" %}
@@ -156,7 +160,7 @@
             </div>
 
 
-            {% if user.uid == user_profile.uid or user.rank == "Admin" %}
+            {% if user.uid == user_profile.uid or user.rank == "Admin" or user.rank == "Moderator" %}
                 <hr />
 
 
@@ -171,7 +175,7 @@
                         </div>
                     {% endif %}
 
-                    {% if user.rank == "Admin" %}
+                    {% if user.rank == "Admin" or user.rank == "Moderator" %}
                         <div class="pure-u">
                             <form
                                 method = "POST"
@@ -189,7 +193,7 @@
                         </div>
                     {% endif %}
 
-                    {% if user.rank == "Admin" %}
+                    {% if user.rank == "Admin" or user.rank == "Moderator" %}
                         <div class=pure-u>
                             <form
                                 method = "POST"

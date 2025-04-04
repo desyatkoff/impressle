@@ -15,6 +15,13 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 
 
 function start(event) {
+    if (event.type === "touchstart") {
+        let touch = event.touches[0];
+
+        event.clientX = touch.clientX;
+        event.clientY = touch.clientY;
+    }
+
     is_mousedown = true;
     context.beginPath();
     context.moveTo(get_x(event), get_y(event));
@@ -23,6 +30,13 @@ function start(event) {
 }
 
 function draw(event) {
+    if (event.type === "touchmove") {
+        let touch = event.touches[0];
+
+        event.clientX = touch.clientX;
+        event.clientY = touch.clientY;
+    }
+
     if (is_mousedown == true) {
         context.lineTo(get_x(event), get_y(event));
         context.strokeStyle = brush_color;
@@ -46,21 +60,11 @@ function stop(event) {
 }
 
 function get_x(event) {
-    if (event.pageX == undefined) {
-        return event.targetTouches[0].pageX - canvas.offsetLeft;
-    }
-    else {
-        return event.pageX - canvas.offsetLeft;
-    }
+    return (event.clientX - canvas.getBoundingClientRect().left) * (1 / 0.9);
 }
 
 function get_y(event) {
-    if (event.pageY == undefined) {
-        return event.targetTouches[0].pageY - canvas.offsetTop;
-    }
-    else {
-        return event.pageY - canvas.offsetTop;
-    }
+    return (event.clientY - canvas.getBoundingClientRect().top) * (1 / 0.9);
 }
 
 
@@ -288,9 +292,9 @@ function reset_canvas() {
 }
 
 
-canvas.addEventListener("touchstart", start, false);
-canvas.addEventListener("touchmove", draw, false);
-canvas.addEventListener("touchend", stop, false);
+canvas.addEventListener("touchstart", start, { passive: false });
+canvas.addEventListener("touchmove", draw, { passive: false });
+canvas.addEventListener("touchend", stop, { passive: false });
 canvas.addEventListener("mousedown", start, false);
 canvas.addEventListener("mousemove", draw, false);
 canvas.addEventListener("mouseup", stop, false);

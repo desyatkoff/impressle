@@ -19,22 +19,27 @@
 
 
 import os
+import time
 import shutil
 import datetime
 
 import config
 
 
-BACKUP_FILE_PATH = f"{config.DB_BACKUP_PATH}/{datetime.datetime.now(datetime.timezone.utc).strftime("&Y-%m-%d")}-database~"
+BACKUP_FILE_PATH = f"{config.DB_BACKUP_PATH}{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')}-database.db~"
 
 
 if __name__ == "__main__":
     """Create the database backup every day"""
 
 
-    if not os.path.exists(BACKUP_FILE_PATH):
-        shutil.copy2(
-            src = config.DB_PATH,
-            dst = BACKUP_FILE_PATH
-        )
+    while True:
+        if not os.path.exists(BACKUP_FILE_PATH):
+            shutil.copy2(
+                src = config.DB_PATH,
+                dst = BACKUP_FILE_PATH
+            )
+
+
+        time.sleep(60 * 60 * 24)    # 24 hours
 

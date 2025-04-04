@@ -65,25 +65,6 @@ msgstr "этом репозитории GitHub"
 msgid "You can become a contributor if you want :)"
 msgstr "Вы можете стать участником проекта если хотите :)"
 
-#: website/templates/access_admin.html:5 website/templates/access_admin.html:49
-msgid "Access the Admin Panel"
-msgstr "Доступ к админ панели"
-
-#: website/templates/access_admin.html:10
-msgid "Welcome to the Admin Panel"
-msgstr "Добро пожаловать на админ панель"
-
-#: website/templates/access_admin.html:16
-msgid "You have to provide the secret key to prove that you are an admin"
-msgstr ""
-"Вы должны предоставить секретный ключ чтобы мы могли удостовериться что "
-"вы админ"
-
-#: website/templates/access_admin.html:33
-#: website/templates/access_admin.html:39
-msgid "Secret Key"
-msgstr "Секретный ключ"
-
 #: website/templates/admin.html:5 website/templates/admin.html:10
 #: website/templates/base.html:265
 msgid "Admin Panel"
@@ -298,42 +279,45 @@ msgid "Author"
 msgstr "Автор"
 
 #: website/templates/div_comment.html:14
-#: website/templates/div_compact_profile.html:16
-#: website/templates/div_picture.html:34 website/templates/user_profile.html:36
-msgid "ADMIN"
-msgstr "АДМИН"
-
-#: website/templates/div_comment.html:19
 msgid "Commented on"
 msgstr "Прокомментировано"
 
-#: website/templates/div_comment.html:29
+#: website/templates/div_comment.html:24
 #: website/templates/div_compact_profile.html:26
-#: website/templates/div_picture.html:19 website/templates/user_profile.html:46
+#: website/templates/div_picture.html:19 website/templates/user_profile.html:50
 msgid "BANNED"
 msgstr "ЗАБАНЕН"
 
-#: website/templates/div_comment.html:53
+#: website/templates/div_comment.html:51
 msgid "Delete Comment"
 msgstr "Удалить комментарий"
 
+#: website/templates/div_comment.html:70
+msgid "Ban Comment"
+msgstr "Забанить комментарий"
+
+#: website/templates/div_compact_profile.html:16
+#: website/templates/user_profile.html:36
+msgid "ADMIN"
+msgstr "АДМИН"
+
 #: website/templates/div_compact_profile.html:22
-#: website/templates/user_profile.html:42
+#: website/templates/user_profile.html:46
 msgid "INACTIVE"
 msgstr "НЕАКТИВНЫЙ"
 
 #: website/templates/div_compact_profile.html:41
-#: website/templates/user_profile.html:61
+#: website/templates/user_profile.html:65
 msgid "follower(s)"
 msgstr "подписчика(ов)"
 
 #: website/templates/div_compact_profile.html:52
-#: website/templates/user_profile.html:72
+#: website/templates/user_profile.html:76
 msgid "Unfollow"
 msgstr "Отписаться"
 
 #: website/templates/div_compact_profile.html:60
-#: website/templates/user_profile.html:80
+#: website/templates/user_profile.html:84
 msgid "Follow"
 msgstr "Подписаться"
 
@@ -341,22 +325,21 @@ msgstr "Подписаться"
 msgid "Untitled"
 msgstr "Без названия"
 
-#: website/templates/div_picture.html:42
+#: website/templates/div_picture.html:37
 msgid "Published on"
 msgstr "Опубликовано"
 
-#: website/templates/div_picture.html:68
+#: website/templates/div_picture.html:63
 msgid "Description"
 msgstr "Описание"
 
-#: website/templates/div_picture.html:251
+#: website/templates/div_picture.html:247
 msgid "Delete Picture"
 msgstr "Удалить картинку"
 
-#: website/templates/div_picture.html:270
-#, fuzzy
+#: website/templates/div_picture.html:266
 msgid "Ban Picture"
-msgstr "Картинка"
+msgstr "Забанить картинку"
 
 #: website/templates/faq.html:10
 msgid "FAQ (Frequently Asked Questions)"
@@ -1090,7 +1073,7 @@ msgid "Let's create a new account"
 msgstr "Давайте создадим новый аккаунт"
 
 #: website/templates/signup.html:65 website/templates/signup.html:72
-#: website/templates/user_profile.html:93
+#: website/templates/user_profile.html:97
 #: website/templates/user_settings.html:40
 msgid "About Me"
 msgstr "Обо мне"
@@ -1357,39 +1340,43 @@ msgstr "В СЕТИ"
 msgid "OFFLINE"
 msgstr "НЕ В СЕТИ"
 
-#: website/templates/user_profile.html:101
+#: website/templates/user_profile.html:40
+msgid "MODERATOR"
+msgstr "МОДЕРАТОР"
+
+#: website/templates/user_profile.html:105
 msgid "Nothing yet..."
 msgstr "Пока что ничего..."
 
-#: website/templates/user_profile.html:111
+#: website/templates/user_profile.html:115
 msgid "Account Details"
 msgstr "Подробности об аккаунте"
 
-#: website/templates/user_profile.html:118
+#: website/templates/user_profile.html:122
 msgid "User ID"
 msgstr "ID пользователя"
 
-#: website/templates/user_profile.html:128
+#: website/templates/user_profile.html:132
 msgid "Account Created"
 msgstr "Аккаунт создан"
 
-#: website/templates/user_profile.html:138
+#: website/templates/user_profile.html:142
 msgid "Rank"
 msgstr "Ранг"
 
-#: website/templates/user_profile.html:148
+#: website/templates/user_profile.html:152
 msgid "Karma"
 msgstr "Карма"
 
-#: website/templates/user_profile.html:168
+#: website/templates/user_profile.html:172
 msgid "Edit Profile"
 msgstr "Настроить профиль"
 
-#: website/templates/user_profile.html:187
+#: website/templates/user_profile.html:190
 msgid "Delete User"
 msgstr "Удалить пользователя"
 
-#: website/templates/user_profile.html:206
+#: website/templates/user_profile.html:208
 msgid "Ban User"
 msgstr "Забанить пользователя"
 
@@ -1431,6 +1418,11 @@ msgstr "Удалить аккаунт"
 msgid "I am totally sure I want to delete this account"
 msgstr "Я точно уверен что я хочу удалить этот аккаунт"
 
+#
 msgid "Admin"
 msgstr "Админ"
+
+#
+msgid "Moderator"
+msgstr "Модератор"
 
