@@ -240,6 +240,14 @@ msgstr "Выйти"
 msgid "Terms of Service"
 msgstr "Пользовательское Соглашение"
 
+#: website/templates/base.html:326
+msgid "Success!"
+msgstr "Успех!"
+
+#: website/templates/base.html:351
+msgid "Error!"
+msgstr "Ошибка!"
+
 #: website/templates/create_picture.html:5
 #: website/templates/create_picture.html:10 website/templates/feed.html:56
 #: website/templates/search.html:50
@@ -286,7 +294,7 @@ msgstr "Прокомментировано"
 #: website/templates/div_compact_profile.html:26
 #: website/templates/div_picture.html:19 website/templates/user_profile.html:50
 msgid "BANNED"
-msgstr "ЗАБАНЕН"
+msgstr "БАН"
 
 #: website/templates/div_comment.html:51
 msgid "Delete Comment"
@@ -584,7 +592,7 @@ msgid ""
 "account anymore and other users will see [ BANNED ] tag in your profile"
 msgstr ""
 "Если ваш аккаунт будет забанен, вы больше не сможете войти в него и "
-"другие пользователи увидят значок [ ЗАБАНЕН ] в вашем профиле"
+"другие пользователи увидят значок [ БАН ] в вашем профиле"
 
 #: website/templates/faq.html:235
 msgid ""
@@ -596,7 +604,7 @@ msgstr ""
 
 #: website/templates/faq.html:240
 msgid "If your comment gets banned, its text will be replaced with [ BANNED ]"
-msgstr "Если ваш комментарий будет забанен, его текст будет заменён на [ ЗАБАНЕН ]"
+msgstr "Если ваш комментарий будет забанен, его текст будет заменён на [ БАН ]"
 
 #: website/templates/faq.html:245
 msgid "Just don't be a bad guy and everything will be fine :)"
@@ -1418,11 +1426,115 @@ msgstr "Удалить аккаунт"
 msgid "I am totally sure I want to delete this account"
 msgstr "Я точно уверен что я хочу удалить этот аккаунт"
 
-#
+
 msgid "Admin"
 msgstr "Админ"
 
-#
 msgid "Moderator"
 msgstr "Модератор"
+
+msgid "Successfully banned the user"
+msgstr "Пользователь успешно забанен"
+
+msgid "Successfully banned the picture"
+msgstr "Картинка успешно забанена"
+
+msgid "Successfully banned the comment"
+msgstr "Комментарий успешно забанен"
+
+msgid "Username is already taken"
+msgstr "Имя пользователя занято"
+
+msgid "Username is too short"
+msgstr "Имя пользователя слишком короткое"
+
+msgid "Username is too long"
+msgstr "Имя пользователя слишком длинное"
+
+msgid "Password is too short"
+msgstr "Пароль слишком короткий"
+
+msgid "Password is too long"
+msgstr "Пароль слишком длинный"
+
+msgid "\"About Me\" is too long"
+msgstr "\"Обо мне\" слишком длинное"
+
+msgid "You have to read Terms of Service and Privacy Policy"
+msgstr "Вы должны прочитать Пользовательское Соглашение и Политика Конфиденциальности"
+
+msgid "Incorrect username"
+msgstr "Некорректное имя пользователя"
+
+msgid "Username is not allowed"
+msgstr "Имя пользователя недопустимо"
+
+msgid "Successfully created new account"
+msgstr "Новый аккаунт успешно создан"
+
+msgid "Account is inactive"
+msgstr "Аккаунт неактивен"
+
+msgid "Account is banned"
+msgstr "Аккаунт забанен"
+
+msgid "Successfully logged in"
+msgstr "Успешный вход"
+
+msgid "Invalid password"
+msgstr "Неверный пароль"
+
+msgid "Account does not exist"
+msgstr "Аккаунт не существует"
+
+msgid "Successfully logged out"
+msgstr "Успешный выход"
+
+msgid "Successfully saved new settings"
+msgstr "Настройки сохранены успешно"
+
+msgid "Picture title is too long"
+msgstr "Название картинки слишком длинное"
+
+msgid "Picture description is too long"
+msgstr "Описание картинки слишком длинное"
+
+msgid "Successfully published your picture"
+msgstr "Картинка опубликована успешно"
+
+msgid "No image data"
+msgstr "Нет данных картинки"
+
+msgid "Successfully deleted your picture"
+msgstr "Картинка удалена успешно"
+
+msgid "You do not have enough permissions to delete this picture"
+msgstr "У вас не достаточно прав на удаление данной картинки"
+
+msgid "Picture does not exist"
+msgstr "Картинка не существует"
+
+msgid "Go away then"
+msgstr "Тогда проваливай"
+
+msgid "User does not exist"
+msgstr "Пользователь не существует"
+
+msgid "Successfully downloaded the picture"
+msgstr "Картинка загружена успешно"
+
+msgid "No comment text"
+msgstr "Нет текста комментария"
+
+msgid "Successfully published your comment"
+msgstr "Комментарий опубликован успешно"
+
+msgid "Comment does not exist"
+msgstr "Комментарий не существует"
+
+msgid "Successfully deleted your comment"
+msgstr "Комментарий удалён успешно"
+
+msgid "You do not have enough permissions to delete this comment"
+msgstr "У вас не достаточно прав для удаления данного комментария"
 

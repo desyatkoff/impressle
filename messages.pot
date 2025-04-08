@@ -227,6 +227,14 @@ msgstr ""
 msgid "Terms of Service"
 msgstr ""
 
+#: website/templates/base.html:326
+msgid "Success!"
+msgstr ""
+
+#: website/templates/base.html:351
+msgid "Error!"
+msgstr ""
+
 #: website/templates/create_picture.html:5
 #: website/templates/create_picture.html:10 website/templates/feed.html:56
 #: website/templates/search.html:50

@@ -323,7 +323,7 @@
                                             </button>
 
                                             <h2>
-                                                Success!
+                                                {{ gettext("Success!") }}
                                             </h2>
 
                                             <i>
@@ -331,7 +331,7 @@
                                             </i>
                                         </div>
                                     </div>
-                                {% elif category == "error" %}                                    
+                                {% elif category == "error" %}
                                     <div
                                         id = "alert"
                                         class = "card card-error alert alert-error"
@@ -348,7 +348,7 @@
                                             </button>
 
                                             <h2>
-                                                Error!
+                                                {{ gettext("Error!") }}
                                             </h2>
 
                                             <i>
