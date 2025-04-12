@@ -259,10 +259,12 @@ msgid "Let's draw your impressive picture!"
 msgstr "Давайте нарисуем вашу впечатляющую картинку!"
 
 #: website/templates/create_picture.html:40
+#: website/templates/edit_picture.html:40
 msgid "Picture Title"
 msgstr "Название картинки"
 
 #: website/templates/create_picture.html:49
+#: website/templates/edit_picture.html:52
 msgid "Picture Description"
 msgstr "Описание картинки"
 
@@ -341,13 +343,31 @@ msgstr "Опубликовано"
 msgid "Description"
 msgstr "Описание"
 
-#: website/templates/div_picture.html:247
+#: website/templates/div_picture.html:246
+msgid "Edit Picture"
+msgstr "Редактировать картинку"
+
+#: website/templates/div_picture.html:265
 msgid "Delete Picture"
 msgstr "Удалить картинку"
 
-#: website/templates/div_picture.html:266
+#: website/templates/div_picture.html:284
 msgid "Ban Picture"
 msgstr "Забанить картинку"
+
+#: website/templates/edit_picture.html:5 website/templates/edit_picture.html:10
+msgid "Edit the Picture"
+msgstr "Редактировать картинку"
+
+#: website/templates/edit_picture.html:16
+msgid "Here you can edit title and description of the picture"
+msgstr "Здесь вы можете поменять название и описание картинки"
+
+#: website/templates/edit_picture.html:74
+#: website/templates/user_settings.html:61
+#: website/templates/user_settings.html:120
+msgid "Save"
+msgstr "Сохранить"
 
 #: website/templates/faq.html:10
 msgid "FAQ (Frequently Asked Questions)"
@@ -1396,11 +1416,6 @@ msgstr "Задать настройки для вашего аккаунта"
 msgid "Profile Settings"
 msgstr "Настройки профиля"
 
-#: website/templates/user_settings.html:61
-#: website/templates/user_settings.html:120
-msgid "Save"
-msgstr "Сохранить"
-
 #: website/templates/user_settings.html:67
 msgid "Privacy Settings"
 msgstr "Настройки приватности"
@@ -1425,7 +1440,6 @@ msgstr "Удалить аккаунт"
 #: website/templates/user_settings.html:137
 msgid "I am totally sure I want to delete this account"
 msgstr "Я точно уверен что я хочу удалить этот аккаунт"
-
 
 msgid "Admin"
 msgstr "Админ"
@@ -1461,7 +1475,9 @@ msgid "\"About Me\" is too long"
 msgstr "\"Обо мне\" слишком длинное"
 
 msgid "You have to read Terms of Service and Privacy Policy"
-msgstr "Вы должны прочитать Пользовательское Соглашение и Политика Конфиденциальности"
+msgstr ""
+"Вы должны прочитать Пользовательское "
+"Соглашение и Политика Конфиденциальности"
 
 msgid "Incorrect username"
 msgstr "Некорректное имя пользователя"
@@ -1502,14 +1518,20 @@ msgstr "Описание картинки слишком длинное"
 msgid "Successfully published your picture"
 msgstr "Картинка опубликована успешно"
 
+msgid "You do not have enough permissions to edit this picture's details"
+msgstr "У вас недостаточно прав на редактирование этой картинки"
+
 msgid "No image data"
 msgstr "Нет данных картинки"
+
+msgid "Successfully edited your picture details"
+msgstr "Картинка изменена успешно"
 
 msgid "Successfully deleted your picture"
 msgstr "Картинка удалена успешно"
 
 msgid "You do not have enough permissions to delete this picture"
-msgstr "У вас не достаточно прав на удаление данной картинки"
+msgstr "У вас недостаточно прав на удаление данной картинки"
 
 msgid "Picture does not exist"
 msgstr "Картинка не существует"
@@ -1536,5 +1558,5 @@ msgid "Successfully deleted your comment"
 msgstr "Комментарий удалён успешно"
 
 msgid "You do not have enough permissions to delete this comment"
-msgstr "У вас не достаточно прав для удаления данного комментария"
+msgstr "У вас недостаточно прав для удаления данного комментария"
 

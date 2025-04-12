@@ -416,6 +416,76 @@ def create_picture():
     )
 
 
+@routes.route("/edit-picture/<picture_uid>", methods=["GET", "POST"])
+@flask_login.login_required
+def edit_picture(picture_uid):
+    picture = website.models.Picture.query.filter_by(uid=picture_uid).first()
+
+
+    if flask.request.method == "POST":
+        user = flask_login.current_user
+        title = flask.request.form.get("title")
+        description = flask.request.form.get("description")
+
+        if len(title) > 100:
+            flask.flash(
+                message = "Picture title is too long",
+                category = "error"
+            )
+
+
+            return flask.redirect(
+                flask.url_for(
+                    endpoint = "routes.edit_picture",
+                    picture_uid = picture_uid
+                )
+            )
+        elif len(description) > 100:
+            flask.flash(
+                message = "Picture description is too long",
+                category = "error"
+            )
+
+
+            return flask.redirect(
+                flask.url_for(
+                    endpoint = "routes.edit_picture",
+                    picture_uid = picture_uid
+                )
+            )
+        elif user.uid != picture.author_uid:
+            flask.flash(
+                message = "You do not have enough permissions to edit this picture's details",
+                category = "error"
+            )
+        else:
+            flask.flash(
+                message = "Successfully edited your picture details",
+                category = "success"
+            )
+
+
+            picture.title = title
+            picture.description = description
+
+            extensions.db.session.commit()
+
+
+            return flask.redirect(
+                flask.url_for(
+                    endpoint = "routes.full_view_picture",
+                    picture_uid = picture_uid
+                )
+            )
+    else:
+        return flask.render_template(
+            "edit_picture.html",
+            user = flask_login.current_user,
+            picture = picture,
+            models = website.models
+        )
+
+
 @routes.route("/liked")
 @flask_login.login_required
 def liked():

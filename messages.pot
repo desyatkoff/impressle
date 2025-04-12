@@ -246,10 +246,12 @@ msgid "Let's draw your impressive picture!"
 msgstr ""
 
 #: website/templates/create_picture.html:40
+#: website/templates/edit_picture.html:40
 msgid "Picture Title"
 msgstr ""
 
 #: website/templates/create_picture.html:49
+#: website/templates/edit_picture.html:52
 msgid "Picture Description"
 msgstr ""
 
@@ -328,12 +330,30 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: website/templates/div_picture.html:247
+#: website/templates/div_picture.html:246
+msgid "Edit Picture"
+msgstr ""
+
+#: website/templates/div_picture.html:265
 msgid "Delete Picture"
 msgstr ""
 
-#: website/templates/div_picture.html:266
+#: website/templates/div_picture.html:284
 msgid "Ban Picture"
+msgstr ""
+
+#: website/templates/edit_picture.html:5 website/templates/edit_picture.html:10
+msgid "Edit the Picture"
+msgstr ""
+
+#: website/templates/edit_picture.html:16
+msgid "Here you can edit title and description of the picture"
+msgstr ""
+
+#: website/templates/edit_picture.html:74
+#: website/templates/user_settings.html:61
+#: website/templates/user_settings.html:120
+msgid "Save"
 msgstr ""
 
 #: website/templates/faq.html:10
@@ -1290,11 +1310,6 @@ msgstr ""
 
 #: website/templates/user_settings.html:34
 msgid "Profile Settings"
-msgstr ""
-
-#: website/templates/user_settings.html:61
-#: website/templates/user_settings.html:120
-msgid "Save"
 msgstr ""
 
 #: website/templates/user_settings.html:67
