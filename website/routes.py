@@ -67,15 +67,17 @@ def before_request():
                     user_.rank = "Impressive"
 
 
-            # If user's last activity was more than a month ago,
-            # set their status to "inactive"
-            if round(
-                    datetime.datetime.now(
-                        tz = datetime.timezone.utc
-                    ).timestamp()
-                ) - user_.last_activity > 2592000:    # 259200 seconds = 30 days
-                if user_.status != "banned":
-                    user_.status = "inactive"
+            # TEMPORARY DISABLED
+            #
+            # # If user's last activity was more than a month ago,
+            # # set their status to "inactive"
+            # if round(
+            #         datetime.datetime.now(
+            #             tz = datetime.timezone.utc
+            #         ).timestamp()
+            #     ) - user_.last_activity > 2592000:    # 259200 seconds = 30 days
+            #     if user_.status != "banned":
+            #         user_.status = "inactive"
 
 
             # If user's last activity was
