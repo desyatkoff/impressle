@@ -185,7 +185,7 @@ msgstr "Недавние картинки"
 #: website/templates/base.html:131 website/templates/leaderboard.html:5
 #: website/templates/leaderboard.html:10
 msgid "Leaderboard"
-msgstr ""
+msgstr "Лидерборд"
 
 #: website/templates/base.html:145
 msgid "Profile"
