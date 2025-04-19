@@ -120,20 +120,7 @@
                         </li>
                         <li class="pure-menu-item">
                             <a
-                                href = "{{ url_for('routes.feed_best') }}"
-                                class = "pure-menu-link pure-button"
-                            >
-                                <img
-                                    height = "30"
-                                    class = "icon"
-                                    src = "/static/images/heart.svg"
-                                />
-                                {{ gettext("Best Pictures") }}
-                            </a>
-                        </li>
-                        <li class="pure-menu-item">
-                            <a
-                                href = "{{ url_for('routes.feed_popular') }}"
+                                href = "{{ url_for('routes.leaderboard') }}"
                                 class = "pure-menu-link pure-button"
                             >
                                 <img
@@ -141,7 +128,7 @@
                                     class = "icon"
                                     src = "/static/images/trending-up.svg"
                                 />
-                                {{ gettext("Popular Pictures") }}
+                                {{ gettext("Leaderboard") }}
                             </a>
                         </li>
                         {% if user.is_authenticated %}
@@ -323,15 +310,15 @@
                                             </button>
 
                                             <h2>
-                                                Success!
+                                                {{ gettext("Success!") }}
                                             </h2>
 
                                             <i>
-                                                {{ message }}
+                                                {{ gettext(message) }}
                                             </i>
                                         </div>
                                     </div>
-                                {% elif category == "error" %}                                    
+                                {% elif category == "error" %}
                                     <div
                                         id = "alert"
                                         class = "card card-error alert alert-error"
@@ -348,11 +335,11 @@
                                             </button>
 
                                             <h2>
-                                                Error!
+                                                {{ gettext("Error!") }}
                                             </h2>
 
                                             <i>
-                                                {{ message }}
+                                                {{ gettext(message) }}
                                             </i>
                                         </div>
                                     </div>

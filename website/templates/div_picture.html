@@ -231,7 +231,25 @@
 
 
             <div class="pure-g">
-                {% if user.uid == picture.author_uid or user.rank == "Admin" or  user.rank == "Moderator" %}
+                {% if user.uid == picture.author_uid or user.rank == "Admin" or user.rank == "Moderator" %}
+                    <div class="pure-u">
+                        <form
+                            method = "GET"
+                            autocomplete = "off"
+                            id = "edit-picture-form"
+                            action = "{{ url_for('routes.edit_picture', picture_uid=picture.uid) }}"
+                        >
+                            <button
+                                type = "submit"
+                                class = "pure-button button-main"
+                            >
+                                {{ gettext("Edit Picture") }}
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+
+                {% if user.uid == picture.author_uid or user.rank == "Admin" or user.rank == "Moderator" %}
                     {% if picture.status == "normal" %}
                         <div class="pure-u">
                             <form

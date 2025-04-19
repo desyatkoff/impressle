@@ -342,7 +342,7 @@ def deactivate_user(user_uid):
 @flask_login.login_required
 def ban_user(user_uid):
     if flask_login.current_user.rank == ("Admin" or "Moderator"):
-        user = website.models.Picture.query.filter_by(uid=int(user_uid)).first()
+        user = website.models.User.query.filter_by(uid=int(user_uid)).first()
 
 
         user.status = "banned"
@@ -351,7 +351,7 @@ def ban_user(user_uid):
 
 
         flask.flash(
-            message = f"Successfully banned the picture #{picture_uid}",
+            message = f"Successfully banned the user #{user_uid}",
             category = "success"
         )
 
@@ -367,23 +367,17 @@ def ban_picture(picture_uid):
         picture_author = website.models.User.query.filter_by(uid=picture.author_uid).first()
 
 
-        if picture_author.rank != ("Admin" or "Moderator"):
-            picture.status = "banned"
+        picture.status = "banned"
 
-            picture_author.karma -= 1
+        picture_author.karma -= 1
 
-            extensions.db.session.commit()
+        extensions.db.session.commit()
 
 
-            flask.flash(
-                message = f"Successfully banned the picture #{picture_uid}",
-                category = "success"
-            )
-        else:
-            flask.flash(
-                message = f"Cannot ban picture #{picture_uid} because its author is the {picture_author.rank}",
-                category = "error"
-            )
+        flask.flash(
+            message = f"Successfully banned the picture #{picture_uid}",
+            category = "success"
+        )
 
 
 
@@ -398,23 +392,17 @@ def ban_comment(comment_uid):
         comment_author = website.models.User.query.filter_by(uid=comment.author_uid).first()
 
 
-        if picture_author.rank != ("Admin" or "Moderator"):
-            comment.status = "banned"
+        comment.status = "banned"
 
-            comment_author.karma -= 1
+        comment_author.karma -= 1
 
-            extensions.db.session.commit()
+        extensions.db.session.commit()
 
 
-            flask.flash(
-                message = f"Successfully banned the comment #{comment_uid}",
-                category = "success"
-            )
-        else:
-            flask.flash(
-                message = f"Cannot ban comment #{comment_uid} because its author is the {comment_author.rank}",
-                category = "error"
-            )
+        flask.flash(
+            message = f"Successfully banned the comment #{comment_uid}",
+            category = "success"
+        )
 
 
 
