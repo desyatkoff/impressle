@@ -30,7 +30,7 @@ msgstr ""
 "Если вы хотите знать как мы собираем, используем и защищаем вашу "
 "персональную информацию, проверьте"
 
-#: website/templates/about.html:43 website/templates/base.html:295
+#: website/templates/about.html:43 website/templates/base.html:282
 #: website/templates/privacy_policy.html:5
 #: website/templates/privacy_policy.html:10 website/templates/signup.html:93
 #: website/templates/terms_of_service.html:163
@@ -66,7 +66,7 @@ msgid "You can become a contributor if you want :)"
 msgstr "Вы можете стать участником проекта если хотите :)"
 
 #: website/templates/admin.html:5 website/templates/admin.html:10
-#: website/templates/base.html:265
+#: website/templates/base.html:252
 msgid "Admin Panel"
 msgstr "Админ панель"
 
@@ -182,69 +182,66 @@ msgstr "Поиск"
 msgid "Recent Pictures"
 msgstr "Недавние картинки"
 
-#: website/templates/base.html:131
-msgid "Best Pictures"
-msgstr "Лучшие картинки"
+#: website/templates/base.html:131 website/templates/leaderboard.html:5
+#: website/templates/leaderboard.html:10
+msgid "Leaderboard"
+msgstr ""
 
-#: website/templates/base.html:144
-msgid "Popular Pictures"
-msgstr "Популярные картинки"
-
-#: website/templates/base.html:158
+#: website/templates/base.html:145
 msgid "Profile"
 msgstr "Профиль"
 
-#: website/templates/base.html:171 website/templates/faq.html:213
+#: website/templates/base.html:158 website/templates/faq.html:213
 #: website/templates/user_settings.html:5
 #: website/templates/user_settings.html:10
 msgid "Settings"
 msgstr "Настройки"
 
-#: website/templates/base.html:184 website/templates/liked.html:5
+#: website/templates/base.html:171 website/templates/liked.html:5
 #: website/templates/liked.html:10
 msgid "You Liked"
 msgstr "Вы лайкнули"
 
-#: website/templates/base.html:197 website/templates/following.html:5
+#: website/templates/base.html:184 website/templates/following.html:5
 #: website/templates/following.html:10
 msgid "You Following"
 msgstr "Вы подписаны"
 
-#: website/templates/base.html:211 website/templates/login.html:5
+#: website/templates/base.html:198 website/templates/login.html:5
 #: website/templates/login.html:65 website/templates/signup.html:117
 msgid "Log In"
 msgstr "Войти"
 
-#: website/templates/base.html:224 website/templates/index.html:96
-#: website/templates/login.html:75 website/templates/signup.html:5
-#: website/templates/signup.html:107
+#: website/templates/base.html:211 website/templates/index.html:96
+#: website/templates/leaderboard.html:48 website/templates/login.html:75
+#: website/templates/signup.html:5 website/templates/signup.html:107
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
-#: website/templates/base.html:238
+#: website/templates/base.html:225
 msgid "About"
 msgstr "О сайте"
 
-#: website/templates/base.html:251 website/templates/faq.html:5
+#: website/templates/base.html:238 website/templates/faq.html:5
 msgid "FAQ"
 msgstr "ЧаВо"
 
-#: website/templates/base.html:280
+#: website/templates/base.html:267
 msgid "Log Out"
 msgstr "Выйти"
 
-#: website/templates/base.html:289 website/templates/privacy_policy.html:103
+#: website/templates/base.html:276 website/templates/privacy_policy.html:103
 #: website/templates/privacy_policy.html:242 website/templates/signup.html:89
 #: website/templates/terms_of_service.html:5
 #: website/templates/terms_of_service.html:10
 msgid "Terms of Service"
 msgstr "Пользовательское Соглашение"
 
-#: website/templates/base.html:326
+#: website/templates/base.html:313
 msgid "Success!"
 msgstr "Успех!"
 
-#: website/templates/base.html:351
+#: website/templates/base.html:338
 msgid "Error!"
 msgstr "Ошибка!"
 
@@ -293,7 +290,7 @@ msgid "Commented on"
 msgstr "Прокомментировано"
 
 #: website/templates/div_comment.html:24
-#: website/templates/div_compact_profile.html:26
+#: website/templates/div_compact_profile.html:30
 #: website/templates/div_picture.html:19 website/templates/user_profile.html:50
 msgid "BANNED"
 msgstr "БАН"
@@ -311,22 +308,32 @@ msgstr "Забанить комментарий"
 msgid "ADMIN"
 msgstr "АДМИН"
 
-#: website/templates/div_compact_profile.html:22
+#: website/templates/div_compact_profile.html:20
+#: website/templates/user_profile.html:40
+msgid "MODERATOR"
+msgstr "МОДЕРАТОР"
+
+#: website/templates/div_compact_profile.html:26
 #: website/templates/user_profile.html:46
 msgid "INACTIVE"
 msgstr "НЕАКТИВНЫЙ"
 
-#: website/templates/div_compact_profile.html:41
+#: website/templates/div_compact_profile.html:36
+#: website/templates/user_profile.html:152
+msgid "Karma"
+msgstr "Карма"
+
+#: website/templates/div_compact_profile.html:49
 #: website/templates/user_profile.html:65
 msgid "follower(s)"
 msgstr "подписчика(ов)"
 
-#: website/templates/div_compact_profile.html:52
+#: website/templates/div_compact_profile.html:60
 #: website/templates/user_profile.html:76
 msgid "Unfollow"
 msgstr "Отписаться"
 
-#: website/templates/div_compact_profile.html:60
+#: website/templates/div_compact_profile.html:68
 #: website/templates/user_profile.html:84
 msgid "Follow"
 msgstr "Подписаться"
@@ -363,7 +370,7 @@ msgstr "Редактировать картинку"
 msgid "Here you can edit title and description of the picture"
 msgstr "Здесь вы можете поменять название и описание картинки"
 
-#: website/templates/edit_picture.html:74
+#: website/templates/edit_picture.html:78
 #: website/templates/user_settings.html:61
 #: website/templates/user_settings.html:120
 msgid "Save"
@@ -696,11 +703,13 @@ msgstr "Найдите самые просматриваемые картинк�
 msgid "It seems that there are no any pictures... :("
 msgstr "Кажется, здесь нет ни одной картинки... :("
 
-#: website/templates/feed.html:53 website/templates/search.html:47
+#: website/templates/feed.html:53 website/templates/leaderboard.html:45
+#: website/templates/search.html:47
 msgid "Let's fix this, click"
 msgstr "Давайте исправим это, кликните"
 
-#: website/templates/feed.html:59 website/templates/search.html:53
+#: website/templates/feed.html:59 website/templates/leaderboard.html:51
+#: website/templates/search.html:53
 msgid "and Impressle will not be empty"
 msgstr "и Impressle не будет пустым"
 
@@ -793,6 +802,14 @@ msgstr "Готовы присоединиться к сообществу? Кл�
 #: website/templates/index.html:100
 msgid "to create your own account. Let's start!"
 msgstr "чтобы создать ваш собственный аккаунт. Давайте начнём!"
+
+#: website/templates/leaderboard.html:16
+msgid "Best artists ranked by karma"
+msgstr "Лучшие художники по карме"
+
+#: website/templates/leaderboard.html:39
+msgid "It seems that there are no any users... :("
+msgstr "Кажется, здесь нет ни одного пользователя... :("
 
 #: website/templates/liked.html:16
 msgid "All the pictures you have liked"
@@ -1368,10 +1385,6 @@ msgstr "В СЕТИ"
 msgid "OFFLINE"
 msgstr "НЕ В СЕТИ"
 
-#: website/templates/user_profile.html:40
-msgid "MODERATOR"
-msgstr "МОДЕРАТОР"
-
 #: website/templates/user_profile.html:105
 msgid "Nothing yet..."
 msgstr "Пока что ничего..."
@@ -1391,10 +1404,6 @@ msgstr "Аккаунт создан"
 #: website/templates/user_profile.html:142
 msgid "Rank"
 msgstr "Ранг"
-
-#: website/templates/user_profile.html:152
-msgid "Karma"
-msgstr "Карма"
 
 #: website/templates/user_profile.html:172
 msgid "Edit Profile"
@@ -1440,6 +1449,12 @@ msgstr "Удалить аккаунт"
 #: website/templates/user_settings.html:137
 msgid "I am totally sure I want to delete this account"
 msgstr "Я точно уверен что я хочу удалить этот аккаунт"
+
+msgid "Best Pictures"
+msgstr "Лучшие картинки"
+
+msgid "Popular Pictures"
+msgstr "Популярные картинки"
 
 msgid "Admin"
 msgstr "Админ"
