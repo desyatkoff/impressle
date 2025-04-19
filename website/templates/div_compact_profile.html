@@ -15,6 +15,10 @@
                         <span class="admin-label">
                             {{ gettext("ADMIN") }}
                         </span>
+                    {% elif user_.rank == "Moderator" %}
+                        <span class="moderator-label">
+                            {{ gettext("MODERATOR") }}
+                        </span>
                     {% endif %}
 
                     {% if user_.status == "inactive" %}
@@ -26,7 +30,11 @@
                             {{ gettext("BANNED") }}
                         </span>
                     {% endif %}
+
                 </h1>
+                <span>
+                    {{ gettext("Karma") }} : {{ user_.karma }}
+                </span>
             </div>
             <div class="pure-u-1-2" >
                 <p
