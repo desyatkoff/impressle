@@ -237,6 +237,18 @@ def feed_popular():
     )
 
 
+@routes.route("/leaderboard")
+def leaderboard():
+    return flask.render_template(
+        "leaderboard.html",
+        user = flask_login.current_user,
+        users = website.models.User.query.order_by(
+            website.models.User.karma.desc()
+        ).all(),
+        models = website.models
+    )
+
+
 @routes.route("/user")
 @flask_login.login_required
 def current_user_profile():

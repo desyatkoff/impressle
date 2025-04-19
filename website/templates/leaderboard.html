@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{%- block title -%}
+    Impressle | {{ gettext("Leaderboard") }}
+{%- endblock -%}
+
+{% block content %}
+    <h1 id="page-title">
+        {{ gettext("Leaderboard") }}
+    </h1>
+
+
+    <p id="page-subtitle">
+        <b>
+            {{ gettext("Best artists ranked by karma") }}
+        </b>
+    </p>
+
+
+    <hr />
+
+
+    <div id="page-content">
+        {% if users|length > 0 %}
+            <div
+                id = "pictures"
+                class = "pure-g"
+            >
+                {% for user_ in users %}
+                    {% include "div_compact_profile.html" %}
+
+                    <br />
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="card">
+                <h1>
+                    {{ gettext("It seems that there are no any users... :(") }}
+                </h1>
+
+                <br />
+
+                <span>
+                    {{ gettext("Let's fix this, click") }}
+                    <button class="pure-button button-main">
+                        <a href="{{ url_for('auth.signup') }}">
+                            {{ gettext("Sign Up") }}
+                        </a>
+                    </button>,
+                    {{ gettext("and Impressle will not be empty") }}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
