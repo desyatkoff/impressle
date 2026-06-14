@@ -1,0 +1,15 @@
+[project]
+name = "impressle"
+version = "1.1.3"
+description = "Impressle is a unique social network where you have to draw by hand, not uploading image files"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "flask>=3.1.3",
+    "flask-babel>=4.0.0",
+    "flask-login>=0.6.3",
+    "flask-sqlalchemy>=3.1.1",
+    "gunicorn>=26.0.0",
+    "python-dotenv>=1.2.2",
+    "werkzeug>=3.1.8",
+]

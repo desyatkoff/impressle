@@ -23,9 +23,6 @@
 4. [Tech Stack](#tech-stack)
 5. [Features](#features)
 6. [Install and Setup](#install-and-setup)
-    * [Easy Method](#easy-method)
-    * [Normal Method](#normal-method)
-    * [Using Docker Method](#using-docker-method)
 7. [Contributing](#contributing)
 8. [Support the Project](#support-the-project)
 
@@ -114,117 +111,46 @@
 
 ## Install and Setup
 
-### Easy Method
-
-1. **Clone the Repository**
+1. **Clone the repository**
     ```Shell
-    $ git clone https://github.com/desyatkoff/impressle.git
+    git clone https://github.com/desyatkoff/impressle.git
     ```
-2. **Go to the Repository Directory**
+2. **Go to the repository directory**
     ```Shell
-    $ cd impressle/
+    cd impressle/
     ```
-3. **Launch Auto-Setup Script (`setup.sh`)**
-    ```Shell
-    $ sh setup.sh
-    ```
-4. **Launch the Web App**
-    ```Shell
-    $ python main.py
-    ```
-5. **Go to `http://127.0.0.1:5000`**
-
-### Normal Method
-
-1. **Clone the Repository**
-    ```Shell
-    $ git clone https://github.com/desyatkoff/impressle.git
-    ```
-2. **Go to the Repository Directory**
-    ```Shell
-    $ cd impressle/
-    ```
-3. **Edit Configuration Files**
+3. **Edit configuration files**
     * Environment variables (secret data)
         + Rename `.env.example` to `.env`
         ```Shell
-        $ mv .env.example .env
+        mv .env.example .env
         ```
         + Edit `.env` using your code editor
     * Other configs (public data)
         + Edit `config.py` using your code editor
-4. **Install `pipenv`**
+4. **Install uv**
+5. **Add uv to PATH**
+6. **Create the virtual environment**
     ```Shell
-    $ pip install pipenv
+    uv venv
     ```
-5. **Add `pipenv` to PATH**
-6. **Create the Virtual Environment**
+7. **Install all dependencies**
     ```Shell
-    $ pipenv install --python 3.9
+    uv sync
     ```
-7. **Lock the `Pipfile`**
+8. **Compile translations**
     ```Shell
-    $ pipenv lock
+    uv run pybabel compile -f -d translations/
     ```
-8. **Install All the Dependencies**
-    ```Shell
-    $ pipenv sync
-    ```
-9. **Compile the Translations**
-    ```Shell
-    $ pybabel compile -f -d translations/
-    ```
-10. **Activate the Virtual Environment**
-    ```Shell
-    $ pipenv shell
-    ```
-11. **Launch the Web App**
-    * Using Python
-        ```Shell
-        $ python main.py
-        ```
+9. **Launch**
     * Using Flask
         ```Shell
-        $ flask --app main:app run
+        uv run flask --app main:app run
         ```
     * Using Gunicorn
         ```Shell
-        $ gunicorn main:app
+        uv run gunicorn main:app
         ```
-12. **Go to `http://127.0.0.1:5000`**
-
-### Using Docker Method
-
-1. **Clone the Repository**
-    ```Shell
-    $ git clone https://github.com/desyatkoff/impressle.git
-    ```
-2. **Go to the Repository Directory**
-    ```Shell
-    $ cd impressle/
-    ```
-3. **Edit Configuration Files**
-    * Environment variables (secret data)
-        + Rename `.env.example` to `.env`
-        ```Shell
-        $ mv .env.example .env
-        ```
-        + Edit `.env` using your code editor
-    * Other configs (public data)
-        + Edit `config.py` using your code editor
-4. **Compile the Translations**
-    ```Shell
-    $ pybabel compile -f -d translations/
-    ```
-5. **Build the Docker Image**
-    ```Shell
-    $ docker build -t impressle:latest
-    ```
-6. **Run Your New Docker Image**
-    ```Shell
-    $ docker run impressle:latest
-    ```
-7. **Go to `http://127.0.0.1:5000`**
 
 
 ## Contributing
@@ -248,14 +174,3 @@
 > 3. "COMMENT: Added/Edited/Removed a comment on line \*123\*"
 
 Done! I'll review your code changes and *maybe* will accept them. Even just adding comments for some lines is a good contribution
-
-
-## Support the Project
-
-**Want to help but don't know how to code?**
-
-* Crypto (only send TON, other coins will be lost!)
-    ```
-    UQCsdH1ItNGo9RB8f8AoNfGTr9gdPAi_YkCV2hk7_MVOHydV
-    ```
-* ...or just give a star to this repository and tell your friends about **Impressle** :)
